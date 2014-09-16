@@ -1,0 +1,199 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     rwd_default
+ * @copyright   Copyright (c) 2014 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+/**
+ * @var Mage_Page_Block_Html_Header $this
+ */
+?>
+<div id="homeSlides">
+<ul  class="homeSlides slider4">
+    	<li class="homeSlide" style="background: #140f0b url('<?php echo $this->getSkinUrl('img/home_slide_1.jpg', array('_secure'=>true)) ?>') no-repeat center center;">
+        
+        <section class="homeCallout homeCallouts">
+        <h3 class="txtViper">THE<span class="txtRed">FIRE</span>INSIDE</h3>
+        <p> In the outdoors, getting a fire started quickly can be a matter of life and death. And with our Emergency Fire Starter Kit, starting
+          a fire has never been easier. </p>
+        <div class="callLink homeCallouts"> <span> <a href="#">Find your firestarter  now!</a> </span> </div>
+      </section>
+        
+        </li>
+    	<li class="homeSlide" style="background: #140f0b url('<?php echo $this->getSkinUrl('img/home_slide_2.jpg', array('_secure'=>true)) ?>') no-repeat center center;">
+        
+        <section class="homeCallout homeCallouts">
+        <h3 class="txtViper">THE<span class="txtRed">FIRE</span>INSIDE</h3>
+        <p> In the outdoors, getting a fire started quickly can be a matter of life and death. And with our Emergency Fire Starter Kit, starting
+          a fire has never been easier. </p>
+        <div class="callLink clearfix"> <span> <a href="#">Find your firestarter  now!</a> </span> </div>
+      </section>
+        
+        </li>
+    	<li class="homeSlide" style="background: #140f0b url('<?php echo $this->getSkinUrl('img/home_slide_3.jpg', array('_secure'=>true)) ?>') no-repeat center center;">
+        
+        <section class="homeCallout homeCallouts">
+        <h3 class="txtViper">THE<span class="txtRed">FIRE</span>INSIDE</h3>
+        <p> In the outdoors, getting a fire started quickly can be a matter of life and death. And with our Emergency Fire Starter Kit, starting
+          a fire has never been easier. </p>
+        <div class="callLink clearfix"> <span> <a href="#">Find your firestarter  now!</a> </span> </div>
+      </section>
+        
+        </li>
+    	<li class="homeSlide" style="background: #140f0b url('<?php echo $this->getSkinUrl('img/home_slide_4.jpg', array('_secure'=>true)) ?>') no-repeat center center;">
+        
+        <section class="homeCallout homeCallouts">
+        <h3 class="txtViper">THE<span class="txtRed">FIRE</span>INSIDE</h3>
+        <p> In the outdoors, getting a fire started quickly can be a matter of life and death. And with our Emergency Fire Starter Kit, starting
+          a fire has never been easier. </p>
+        <div class="callLink clearfix"> <span> <a href="#">Find your firestarter  now!</a> </span> </div>
+      </section>
+        </li>    
+    </ul>
+ </div>
+
+ <div id="container" class="container clearfix">
+ <div style="display:none;">
+<header id="header" class="page-header">
+    <div class="page-header-container">
+
+
+
+        <!-- Skip Links -->
+
+        <div class="skip-links">
+            <a href="#header-nav" class="skip-link skip-nav">
+                <span class="icon"></span>
+                <span class="label"><?php echo $this->__('Menu'); ?></span>
+            </a>
+
+            <a href="#header-search" class="skip-link skip-search">
+                <span class="icon"></span>
+                <span class="label"><?php echo $this->__('Search'); ?></span>
+            </a>
+
+            <a href="#header-account" class="skip-link skip-account">
+                <span class="icon"></span>
+                <span class="label"><?php echo $this->__('Account'); ?></span>
+            </a>
+
+            <!-- Cart -->
+
+            <div class="header-minicart">
+               
+            </div>
+
+
+        </div>
+
+        <!-- Navigation -->
+
+        <div id="header-nav" class="skip-content">
+            <?php echo $this->getChildHtml('topMenu') ?>
+        </div>
+
+        <!-- Search -->
+
+        <div id="header-search" class="skip-content">
+            <?php echo $this->getChildHtml('topSearch') ?>
+        </div>
+
+        <!-- Account -->
+
+        <div id="header-account" class="skip-content">
+            <?php echo $this->getChildHtml('topLinks') ?>
+        </div>
+
+        <!-- Cart -->
+
+        <!-- <div id="header-cart" class="skip-content">
+            <div class="mini-cart">
+                <div class="menu-wrapper">
+                    <div class="menu cart-menu">
+                        <div class="empty">Your cart is empty.</div>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+    </div>
+</header>
+<?php echo $this->getChildHtml('topContainer'); ?>
+</div>
+
+<header id="hdrSite" class="hdrSite clearfix">
+        	<h2 class="logo">
+            	<a href="<?php echo $this->getUrl('') ?>" rel="nofollow">Zippo</a>
+            </h2>
+            <div class="navCartExpanded clearfix" id="expandedCart">
+            	<div class="inner clearfix">
+                	<div class="navCartInner" id="cartExpanded">
+                        Cart <span id="expCartQty" class="txtRed">(3)</span>
+                    </div>
+                    
+                    <?php echo $this->getChildHtml('minicart_head'); ?>
+                </div><!-- eo .inner -->
+            </div><!-- eo #expandedCart -->
+            <section class="globalNav clearfix">
+                <section class="navCart" id="navCart">
+                	<div class="navCartInner" id="cartCollapsed">
+                    	Cart <span class="txtRed" id="navCartQty">(3)</span>
+                        
+                         
+                    </div>
+                </section>
+            	<nav id="genTopNav" class="genTopNav clearfix">
+                	<?php //echo $this->getChildHtml('topLinks') ?>
+  
+                	<a class="active" rel="nofollow" href="Account/Register.html">
+                    	Home
+                    </a>
+                    <a  rel="nofollow" href="Account/Register.html">
+                    	My Account
+                    </a>
+                	
+                	<a href="CustomerCare/Contact.html">
+                    	Customer Care
+                    </a>
+                	<a href="About/AboutUs.html">
+                    	About Us
+                    </a>
+                	<a href="Account/Register.html">
+                    	My Account
+                    </a>
+                	<a href="Search.html">
+                    	Search
+                    </a>
+                	<a href="MailingList.html">
+                    	Mailing List
+                    </a>
+                	<a class="last" href="International.html">
+                    	Stores
+                    </a>
+          
+                    
+                </nav>
+                <nav id="catTopNav" class="catTopNav clearfix">
+                <?php echo $this->getChildHtml('topMenu') ?>
+               </nav>
+            </section>
+        </header>
+        
