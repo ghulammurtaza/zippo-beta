@@ -27,6 +27,21 @@
  * @var Mage_Page_Block_Html_Header $this
  */
 ?>
+<script>
+jQuery(document).ready(function(e) {
+	
+	jQuery(".navCart").mouseover(function(e) {
+        jQuery("#expandedCart").slideDown();
+    });
+    $("#expandedCart").mouseleave(function(e) {
+        $("#expandedCart").slideUp();
+    });
+	
+	
+});
+
+</script>
+
 <div id="homeSlides">
 <ul  class="homeSlides slider4">
     	<li class="homeSlide" style="background: #140f0b url('<?php echo $this->getSkinUrl('img/home_slide_1.jpg', array('_secure'=>true)) ?>') no-repeat center center;">
@@ -72,72 +87,8 @@
  </div>
 
  <div id="container" class="container clearfix">
- <div style="display:none;">
-<header id="header" class="page-header">
-    <div class="page-header-container">
+             
 
-
-
-        <!-- Skip Links -->
-
-        <div class="skip-links">
-            <a href="#header-nav" class="skip-link skip-nav">
-                <span class="icon"></span>
-                <span class="label"><?php echo $this->__('Menu'); ?></span>
-            </a>
-
-            <a href="#header-search" class="skip-link skip-search">
-                <span class="icon"></span>
-                <span class="label"><?php echo $this->__('Search'); ?></span>
-            </a>
-
-            <a href="#header-account" class="skip-link skip-account">
-                <span class="icon"></span>
-                <span class="label"><?php echo $this->__('Account'); ?></span>
-            </a>
-
-            <!-- Cart -->
-
-            <div class="header-minicart">
-               
-            </div>
-
-
-        </div>
-
-        <!-- Navigation -->
-
-        <div id="header-nav" class="skip-content">
-            <?php echo $this->getChildHtml('topMenu') ?>
-        </div>
-
-        <!-- Search -->
-
-        <div id="header-search" class="skip-content">
-            <?php echo $this->getChildHtml('topSearch') ?>
-        </div>
-
-        <!-- Account -->
-
-        <div id="header-account" class="skip-content">
-            <?php echo $this->getChildHtml('topLinks') ?>
-        </div>
-
-        <!-- Cart -->
-
-        <!-- <div id="header-cart" class="skip-content">
-            <div class="mini-cart">
-                <div class="menu-wrapper">
-                    <div class="menu cart-menu">
-                        <div class="empty">Your cart is empty.</div>
-                    </div>
-                </div>
-            </div>
-        </div> -->
-    </div>
-</header>
-<?php echo $this->getChildHtml('topContainer'); ?>
-</div>
 
 <header id="hdrSite" class="hdrSite clearfix">
         	<h2 class="logo">
@@ -145,49 +96,20 @@
             </h2>
             <div class="navCartExpanded clearfix" id="expandedCart">
             	<div class="inner clearfix">
-                	<div class="navCartInner" id="cartExpanded">
-                        Cart <span id="expCartQty" class="txtRed">(3)</span>
-                    </div>
-                    
-                    <?php echo $this->getChildHtml('minicart_head'); ?>
+                 <?php echo $this->getChildHtml('minicart_head'); ?>
+                 
                 </div><!-- eo .inner -->
             </div><!-- eo #expandedCart -->
             <section class="globalNav clearfix">
                 <section class="navCart" id="navCart">
-                	<div class="navCartInner" id="cartCollapsed">
-                    	Cart <span class="txtRed" id="navCartQty">(3)</span>
-                        
-                         
+                	<div class="navCartInner" id="cartCollapsed" >
+                    		<?php echo $this->getChildHtml('minicart_head'); ?>
+                            
                     </div>
                 </section>
             	<nav id="genTopNav" class="genTopNav clearfix">
                 	<?php //echo $this->getChildHtml('topLinks') ?>
-  
-                	<a class="active" rel="nofollow" href="Account/Register.html">
-                    	Home
-                    </a>
-                    <a  rel="nofollow" href="Account/Register.html">
-                    	My Account
-                    </a>
-                	
-                	<a href="CustomerCare/Contact.html">
-                    	Customer Care
-                    </a>
-                	<a href="About/AboutUs.html">
-                    	About Us
-                    </a>
-                	<a href="Account/Register.html">
-                    	My Account
-                    </a>
-                	<a href="Search.html">
-                    	Search
-                    </a>
-                	<a href="MailingList.html">
-                    	Mailing List
-                    </a>
-                	<a class="last" href="International.html">
-                    	Stores
-                    </a>
+  					<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('top-links')->toHtml() ?>
           
                     
                 </nav>

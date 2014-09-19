@@ -27,25 +27,10 @@
 
 </div>
 
-        <?php //echo $this->getChildHtml() ?>
-<footer class="ftrSite" id="ftrSite" style="position: fixed; width: 1366px; botoom: 0px;">
-
-
-
-                <div class="container ftrInner clearfix">
-        	        <section class="ftrLeft">
-            	        <span>&copy; 2014 Zippo Manufacturing Company</span>
-                    </section>
-                    <nav id="ftrSocial" class="ftrSocial">
-                        <a href="http://www.zippo.com/privacy.aspx" class="ftrPrivacy"><span>Privacy <br> AND Legal</span></a>
-            	        <a href="http://www.zippoencore.com" target="_blank" class="ftrEncore" title="Zippo Encore"></a>
-            	        <a href="http://www.facebook.com/Zippo" target="_blank" class="ftrFB" title="Zippo on Facebook"></a>
-            	        <a href="http://www.youtube.com/zippo" class="ftrYouTube" target="_blank" title="Zippo YouTube Channel"></a>
-            	        <a href="http://www.instagram.com/originalzippo" class="ftrInstagram" target="_blank" title="Zippo Instagram Feed"></a>
-            	        <a href="http://twitter.com/#!/zippo" class="ftrTwitter" target="_blank" title="Zippo on Twitter"></a>
-                    </nav>
-                </div>
-            </footer>
+<?php //echo $this->getChildHtml() ?>
+<footer class="ftrSite" id="ftrSite" style="position: fixed; width: 100%; botoom: 0px;">
+    <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('footer_links')->toHtml() ?>
+</footer>
 
     
     
