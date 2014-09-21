@@ -32,6 +32,8 @@
  */
 /* @var $this Mage_Catalog_Block_Product_List */
 ?>
+
+
 <?php
     $_productCollection=$this->getLoadedProductCollection();
     $_helper = $this->helper('catalog/output');
@@ -407,3 +409,5 @@ jQuery(document).ready(function(){
     ?>
     <?php echo $_afterChild->toHtml(); ?>
 <?php endforeach; ?>
+
+
