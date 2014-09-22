@@ -220,6 +220,8 @@ jQuery(document).ready(function(){
                             <p class="action availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
                         <?php endif; ?>
                         <ul class="add-to-links">
+
+
                             <?php if ($this->helper('wishlist')->isAllow()) : ?>
                                 <li><a href="<?php echo $this->helper('wishlist')->getAddUrl($_product) ?>" class="link-wishlist"><?php echo $this->__('Add to Wishlist') ?></a></li>
                             <?php endif; ?>
@@ -241,15 +243,15 @@ jQuery(document).ready(function(){
 
     <?php else: ?>
 
-    <?php // Grid Mode ?>
+    <?php  $this->setData('column_count',4); // Grid Mode ?>
 
     <?php $_collectionSize = $_productCollection->count() ?>
     <?php $_columnCount = $this->getColumnCount(); ?>
-    <ul class="products-grid listLighters  products-grid--max-<?php echo $_columnCount; ?>-col">
-        <?php $i=0; foreach ($_productCollection as $_product): ?>
-            <?php /*if ($i++%$_columnCount==0): ?>
-            <?php endif*/ ?>
-            <li class="item<?php if(($i-1)%$_columnCount==0): ?> first<?php elseif($i%$_columnCount==0): ?> <?php endif; ?>">
+    <?php $i=0; foreach ($_productCollection as $_product): ?>
+        <?php if ($i++%$_columnCount==0): ?>
+         <ul class="products-grid listLighters  products-grid--max-<?php echo $_columnCount; ?>-col">
+        <?php endif ?>
+            <li class="<?php if(($i-1)%$_columnCount==0): ?> first<?php elseif($i%$_columnCount==0): ?> reverse<?php endif; ?>">
                 <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="prodLink">
                     <?php $_imgSize = 210; ?>
                     <img id="product-collection-image-<?php echo $_product->getId(); ?>"
@@ -315,7 +317,9 @@ jQuery(document).ready(function(){
                             </div>           
                  </div>           
             </li>
+            
             <?php /*if ($i%$_columnCount==0 || $i==$_collectionSize): ?>
+			
             <?php endif*/ ?>
         <?php endforeach ?>
     </ul>
