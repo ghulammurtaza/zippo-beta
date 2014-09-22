@@ -11657,7 +11657,7 @@ a.ftrPrivacy span {
 	position:absolute;
 	top:-50%;
 	left:auto !important;
-	right:100% !important;
+	right:80% !important;
 }
 .timeItems li:hover {
 	display: block;	
@@ -11726,6 +11726,17 @@ border-radius:15px;
 .cms-repairs .leftInnerNav a.repairs {
 	color: #df101d;
 }
+
+
+.cms-current-news .leftInnerNav a.current-news,
+.cms-then-and-now .leftInnerNav a.then-and-now,
+.cms-date-codes .leftInnerNav a.date-codes{
+	color: #df101d;
+}
+
+
+
+
 .cms-customer .genTopNav .about,
 .cms-stores .genTopNav .stores,
 .cms-mailinglist .genTopNav .email,
@@ -11734,4 +11745,88 @@ border-radius:15px;
 .cms-about-us .genTopNav .about,
 .cms-home .genTopNav .home {
     background: none repeat scroll 0 0 #df101d;
+}
+
+
+
+
+
+
+
+
+
+
+.timeItems li {
+    cursor: help;
+    height: 138px;
+    margin-bottom: 18px;
+}
+.timeItems li img {
+    border: 1px solid #cacaca;
+    border-radius: 2px;
+    box-shadow: 1px 1px 1px rgba(50, 50, 50, 0.13);
+    height: 134px;
+    margin: 1px auto;
+    width: 78px;
+}
+.aboutPop {
+    background: url("img/bg_aboutPop.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    color: #a7a7a7;
+    font-size: 12px;
+    height: 212px;
+    width: 336px;
+}
+.aboutPopInner {
+    margin: 52px 75px 52px 52px;
+    text-align: left;
+}
+.aboutPop.reverse {
+    background: url("img/bg_aboutPopRev.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+}
+.aboutPop.reverse .aboutPopInner {
+    margin: 52px 52px 52px 75px;
+}
+.aboutPopHdr {
+    color: #000;
+    font-size: 24px;
+    line-height: 24px;
+    margin: 0 0 7px;
+}
+.aboutPop h5 {
+    font-size: 15px;
+    line-height: 15px;
+    margin: 0 0 12px;
+}
+.acctHdr h3 {
+    font-size: 18px;
+    font-weight: normal;
+    margin: 0 0 3px;
+}
+.acctHdr h5 {
+    font-size: 12px;
+    font-weight: normal;
+}
+.addrExisting {
+    border-left: 1px solid #e9e9e9;
+    float: left;
+    left: -2px;
+    width: 264px;
+}
+.addressList {
+    list-style: none outside none;
+    margin: 24px 0 0;
+    padding: 0;
+}
+.addressList li {
+    border-bottom: 1px solid #e9e9e9;
+    margin: 0 0 12px;
+    padding: 0 0 12px;
+    position: relative;
+    z-index: 1;
+}
+.addressList li.last {
+    border: medium none;
+}
+.timeItems li:hover .aboutPop{
+	display:block;
 }
