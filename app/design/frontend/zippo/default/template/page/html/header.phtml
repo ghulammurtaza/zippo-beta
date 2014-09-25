@@ -28,52 +28,52 @@
  */
 ?>
 <script>
-jQuery(document).ready(function(e) {
-	
-	jQuery(".navCart").mouseover(function(e) {
-        jQuery("#expandedCart").slideDown();
+    jQuery(document).ready(function(e) {
+
+        jQuery(".navCart").mouseover(function(e) {
+            jQuery("#expandedCart").slideDown();
+        });
+        jQuery("#expandedCart").mouseleave(function(e) {
+            jQuery("#expandedCart").slideUp();
+        });
+
+
     });
-    $("#expandedCart").mouseleave(function(e) {
-        $("#expandedCart").slideUp();
-    });
-	
-	
-});
 
 </script>
 
 
 
- <div id="container" class="container clearfix">
-             
+<div id="container" class="container clearfix">
 
 
-<header id="hdrSite" class="hdrSite clearfix">
-        	<h2 class="logo">
-            	<a href="<?php echo $this->getUrl('') ?>" rel="nofollow">Zippo</a>
-            </h2>
-            <div class="navCartExpanded clearfix" id="expandedCart">
-            	<div class="inner clearfix">
-                 <?php echo $this->getChildHtml('minicart_head'); ?>
-                 
-                </div><!-- eo .inner -->
-            </div><!-- eo #expandedCart -->
-            <section class="globalNav clearfix">
-                <section class="navCart" id="navCart">
-                	<div class="navCartInner" id="cartCollapsed" >
-                    		<?php echo $this->getChildHtml('minicart_head'); ?>
-                            
-                    </div>
-                </section>
-            	<nav id="genTopNav" class="genTopNav clearfix">
-                	<?php //echo $this->getChildHtml('topLinks') ?>
-  					<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('top-links')->toHtml() ?>
-          
-                    
-                </nav>
-                <nav id="catTopNav" class="catTopNav clearfix">
-                <?php echo $this->getChildHtml('topMenu') ?>
-               </nav>
+
+    <header id="hdrSite" class="hdrSite clearfix">
+        <h2 class="logo">
+            <a href="<?php echo $this->getUrl('') ?>" rel="nofollow">Zippo</a>
+        </h2>
+        <div class="navCartExpanded clearfix" id="expandedCart">
+            <div class="inner clearfix">
+                <?php echo $this->getChildHtml('minicart_head'); ?>
+
+            </div><!-- eo .inner -->
+        </div><!-- eo #expandedCart -->
+        <section class="globalNav clearfix">
+            <section class="navCart" id="navCart">
+                <div class="navCartInner" id="cartCollapsed" >
+                    <?php echo $this->getChildHtml('minicart_head'); ?>
+
+                </div>
             </section>
-        </header>
-        
+            <nav id="genTopNav" class="genTopNav clearfix">
+                <?php //echo $this->getChildHtml('topLinks') ?>
+                <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('top-links')->toHtml() ?>
+
+
+            </nav>
+            <nav id="catTopNav" class="catTopNav clearfix">
+                <?php echo $this->getChildHtml('topMenu') ?>
+            </nav>
+        </section>
+    </header>
+

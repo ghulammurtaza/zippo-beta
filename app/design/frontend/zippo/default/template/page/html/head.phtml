@@ -39,14 +39,18 @@
 //]]>
 </script>
 <![endif]-->
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="<?php echo $this->getSkinUrl('js/responsive.js', array('_secure' => true)) ?>"></script>
+<link rel="stylesheet" href="<?php echo $this->getSkinUrl('css/responsive.css', array('_secure' => true)) ?>">
+<script src="<?php echo $this->getSkinUrl('js/jquery.bxslider.js', array('_secure' => true)) ?>"></script>
+<script src="<?php echo $this->getSkinUrl('js/jquery.selectbox-0.2.js', array('_secure' => true)) ?>"></script>
+<script src="<?php echo $this->getSkinUrl('js/minicart.js', array('_secure' => true)) ?>"></script>
+<script>
+   jQuery.noConflict();
+</script>
 <?php echo $this->getCssJsHtml() ?>
 <?php echo $this->getChildHtml() ?>
 <?php echo $this->helper('core/js')->getTranslatorScript() ?>
 <?php echo $this->getIncludes() ?>
 
-
-	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-	<script src="<?php echo $this->getSkinUrl('js/responsive.js', array('_secure'=>true)) ?>"></script>
-<link rel="stylesheet" href="<?php echo $this->getSkinUrl('css/responsive.css', array('_secure'=>true)) ?>">
-<script src="<?php echo $this->getSkinUrl('js/jquery.bxslider.js', array('_secure'=>true)) ?>"></script>
-<script src="<?php echo $this->getSkinUrl('js/jquery.selectbox-0.2.js', array('_secure'=>true)) ?>"></script>
