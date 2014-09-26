@@ -4722,7 +4722,7 @@ h2.product-name a:hover, h3.product-name a:hover, h4.product-name a:hover, h5.pr
 }
 .cart-table .product-cart-image .product-image img {
 	max-width: 100%;
-	width: 100%;
+
 }
 .cart-table .product-cart-image a.cart-edit {
 	display: none;
@@ -9782,7 +9782,7 @@ body {
 	line-height: 29px;
 	margin: 0 0 9px;
 	padding: 0 3px;
-	width: 180px;
+	width: 158px;
 }
 .txtDouble {
 	background: url('img/sprite_forms.png') no-repeat -10px -29px;
@@ -10101,15 +10101,19 @@ td.txtRight, th.txtRight {
 	margin: 6px 0 0;
 	padding: 6px 0;
 }
-.chkCartItems .itemCol {
-	float: left;
-	height: 100%;
-	margin: 0 10px 0 0;
-	text-align: center;
+.chkCartItems th {
+    font-family: arial !important;
+    font-size: 12px;
+    font-weight: bold;
+    height: 100%;
+    margin: 0;
+    padding: 3px 0 !important;
+    text-align: center;
+    text-transform: capitalize;
 }
 .chkCartItems .chkCartProduct {
 	text-align: left;
-	width: 240px;
+
 }
 .prodImg {
 	float: left;
@@ -10122,6 +10126,9 @@ td.txtRight, th.txtRight {
 	float: left;
 	margin: 0 4px 0 6px;
 	width: 139px;
+}
+.prodDetails strong{
+	display:block;
 }
 .prodNameCart {
 	display: block;
@@ -11343,7 +11350,7 @@ input.active {
 	left: 0;
 	position: fixed;
 	width: 100%;
-	z-index: 1000;
+	z-index: 999999999999999999999999;
 }
 .ftrSite a, .ftrCopy {
 	color: #666;
@@ -11829,4 +11836,31 @@ border-radius:15px;
 }
 .timeItems li:hover .aboutPop{
 	display:block;
+}
+.cart-table tr td{
+	border-bottom:1px solid silver;
+}
+.product-cart-actions .cart-links{
+	display:none;
+}
+.cart-table .product-cart-actions .qty{
+	width:24px;
+}
+.cartTotals{
+	text-align:right;
+	color: #555;
+}
+.cartTotals  .txtBlack{
+	font-size:13px;
+	padding-top:8px;
+	font-family:Arial, Helvetica, sans-serif;
+}
+.cartTotals strong{
+	font-weight: bold;
+	font-family:Arial, Helvetica, sans-serif !important;
+}
+.cartTotals  span{
+	display:inline-block;
+	width:100px;
+	font-family:Arial, Helvetica, sans-serif !important;
 }
