@@ -32,24 +32,22 @@
  */
 ?>
 <?php $_priceDisplay = ($this->helper('tax')->displayCartBothPrices()) ? 'display-both-prices' : 'display-single-price'; ?>
-<div class="cart <?php echo $_priceDisplay; ?>">
-    <div class="page-title title-buttons">
-        <h1><?php echo $this->__('Shopping Cart') ?></h1>
-        <?php if(!$this->hasError()): ?>
-        <ul class="checkout-types top">
-        <?php foreach ($this->getMethods('top_methods') as $method): ?>
-            <?php if ($methodHtml = $this->getMethodHtml($method)): ?>
-            <li><?php echo $methodHtml; ?></li>
-            <?php endif; ?>
-        <?php endforeach; ?>
-        </ul>
-        <?php endif; ?>
-    </div>
+
+<section class="row">
+            	<section class="cartHolder clearfix">
+                	<header class="cartHeader txtBebas txtWhite">
+                    	Shopping <span class="txtRed">Cart</span>
+                    </header>
+                    <div class="cartBtm clearfix">
+                    	
+                        
+                        <div class="chkCartItems  cart <?php echo $_priceDisplay; ?>">
+    
     <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
     <?php echo $this->getChildHtml('form_before') ?>
     <form action="<?php echo $this->getUrl('checkout/cart/updatePost') ?>" method="post">
         <?php echo $this->getBlockHtml('formkey'); ?>
-        <table id="shopping-cart-table" class="cart-table data-table">
+        <table id="shopping-cart-table" class="cart-table data-table" style="width:100%;">
             <col width="1" />
             <col width="1" />
             <col width="1" />
@@ -62,21 +60,22 @@
             <?php endif; ?>
 
         <?php $mergedCells = ($this->helper('tax')->displayCartBothPrices() ? 2 : 1); ?>
-            <thead>
+            <thead class="cartItemsHd txtBold">
                 <tr>
-                    <th rowspan="<?php echo $mergedCells; ?>"><span class="nobr"><?php echo $this->__('Product') ?></span></th>
+                    <th class="chkCartProduct itemCol" rowspan="<?php echo $mergedCells; ?>"><span class="nobr"><?php echo $this->__('Product') ?></span></th>
 
                     <th rowspan="<?php echo $mergedCells; ?>">&nbsp;</th>
 
                     <th class="a-center cart-price-head" colspan="<?php echo $mergedCells; ?>">
 <!--                            <div class="cart-price-placeholder">-->
-                            <span class="nobr"><?php echo $this->__('Price') ?></span>
+<?php echo $this->__('Qty') ?>
+                           
 <!--                            </div>-->
                     </th>
 
                     <th rowspan="<?php echo $mergedCells; ?>" class="a-center">
-                        <?php echo $this->__('Qty') ?>
-
+                        
+ <span class="nobr"><?php echo $this->__('Price') ?></span>
                         <?php /*if ($this->helper('wishlist')->isAllowInCart()) : ?>
                             <span class="nobr"><?php echo $this->__('Move to Wishlist') ?></span>
                         <?php endif*/ ?>
@@ -89,7 +88,9 @@
 <!--                            </div>-->
                     </th>
 
-                    <th class="a-center" rowspan="<?php echo $mergedCells; ?>">&nbsp;</th>
+                    <th class="a-center" rowspan="<?php echo $mergedCells; ?>"><div class="chkCartRemove txtRed itemCol last">
+                                    Remove
+                                </div></th>
 
                 </tr>
                 <?php if ($this->helper('tax')->displayCartBothPrices()): ?>
@@ -105,18 +106,22 @@
                 <tr>
                     <td colspan="50" class="a-right cart-footer-actions">
 
+                        <div class="cartBtns clearfix clear">
+                        	<div class="cartBtnsLeft">
+                         
+                                <button type="submit" name="update_cart_action" value="update_qty" title="<?php echo $this->__('Update Shopping Cart'); ?>" class="pillDrkGray26"><span><img src="../assets/img/arw_right_red_9x7.png" alt="" width="9" height="7" />Update Cart</span></button>
+                            	<a href="" onclick="setLocation('<?php echo $this->getContinueShoppingUrl() ?>')" id="btnContinueShopping" class="pillDrkGray26">
+                                	<span><img src="../assets/img/arw_right_red_9x7.png" alt="" width="9" height="7" />Continue Shopping</span>
+                                </a>
+                            </div>
+                            </div>
                         <!-- Make this button the first responder rather than empty cart -->
-                        <button type="submit" style="visibility:hidden;" name="update_cart_action" value="update_qty" title="<?php echo $this->__('Update Shopping Cart'); ?>" class="button2 btn-update"><span><span><?php echo $this->__('Update Shopping Cart'); ?></span></span></button>
+                        
 
-                        <button type="submit" name="update_cart_action" value="empty_cart" title="<?php echo $this->__('Empty Cart'); ?>" class="button2 btn-empty" id="empty_cart_button"><span><span><?php echo $this->__('Empty Cart'); ?></span></span></button>
+                       
 
-                        <button type="submit" name="update_cart_action" value="update_qty" title="<?php echo $this->__('Update Shopping Cart'); ?>" class="button2 btn-update"><span><span><?php echo $this->__('Update Shopping Cart'); ?></span></span></button>
-
-                        <span class="or">-or-</span>
-
-                        <?php if($this->getContinueShoppingUrl()): ?>
-                            <button type="button" title="<?php echo $this->__('Continue Shopping') ?>" class="button2 btn-continue" onclick="setLocation('<?php echo $this->getContinueShoppingUrl() ?>')"><span><span><?php echo $this->__('Continue Shopping') ?></span></span></button>
-                        <?php endif; ?>
+                       
+                        
                         <!--[if lt IE 8]>
                         <input type="hidden" id="update_cart_action_container" />
                         <script type="text/javascript">
@@ -151,6 +156,8 @@
         <script type="text/javascript">decorateTable('shopping-cart-table')</script>
     </form>
 
+
+	<div style="display:none;">
     <?php echo $this->getChildHtml('shopping.cart.table.after'); ?>
     <div class="cart-forms">
         <?php /* Extensions placeholder */ ?>
@@ -173,5 +180,121 @@
             <?php endif; ?>
         </div>
     </div>
-    <?php echo $this->getChildHtml('crosssell') ?>
+   
+    </div>
 </div>
+                        
+                    	 <?php echo $this->getChildHtml('crosssell') ?>
+                        <!-- eo .cartUpsells -->
+                        <div class="cartInputs clearfix">
+                         <?php echo $this->getChildHtml('coupon') ?>
+                        	<!-- eo .promoCode -->
+                            <div class="addMessage cartInputRow clearfix" style="position:relative;">
+                            	<label for="txtMesssage">Add a message (optional):</label><br class="clear" />
+                                <textarea name="txtMessage" class="bigTxtArea" id="txtMessage"></textarea>
+                                <div class="txtA7 txtSmall width50">
+                                	Max 300 Characters
+                                </div>
+                                <div class="width50">
+                                	<a href="#" class="pillDrkGray20" id="lnkAddMsg" title="Add Message">
+                                    	<span><img src="<?php echo $this->getSkinUrl('img/arw_right_red_9x7.png', array('_secure'=>true)) ?>" alt="" width="9" height="7" />Add Message</span>
+                                    </a>
+                                </div>
+                            </div><!-- eo .addMessage -->
+                            
+                            
+                            
+                            <div class="cartInputRow cartTotalsHolder clearfix">
+                           
+                                <ul class="cartTotals">
+                                    <li class="clearfix">
+                                         <?php echo $this->getChildHtml('totals'); ?>
+                                    </li>
+                                    
+                                    
+                                </ul>
+                            </div><!-- eo .cartTotalsHolder -->
+                            <div class="cartInputRow cartPromo clearfix">
+                                <div id="promoHelp" class="helpIcon" style="display:none;">
+                                    <div class="cartTip clearfix">
+                                        <div class="tipText txtA7 clearfix">
+                                            <img src="../assets/img/bigQuestionIcon.png" alt="?" width="23" height="24" class="bigQ" />
+                                            <div class="tipInner">
+                                                <strong>Shipping &amp; Handling:</strong><br />
+                                                We are estimating the cost <br />
+                                                until we get your address
+                                            </div>
+                                        </div>
+                                    </div><!-- eo .cartTip -->
+                                </div><!-- eo .helpIcon -->
+                            	Purchase <strong class="txtRed">five items</strong> and get a <strong class="txtRed">sixth</strong> item of your choice* <strong class="txtRed">FREE</strong>!<br />
+                                <span class="txt11px">* of equal or lesser value</span>
+                            </div><!-- eo .cartPromo -->
+                        </div><!-- eo .cartInputs -->
+                        <div class="cartBtns clearfix clear">
+                        	<div class="cartBtnsLeft">
+                            	<a href="#" id="btnUpdateCart" class="pillDrkGray26">
+                                	<span><img src="../assets/img/arw_right_red_9x7.png" alt="" width="9" height="7" />Update Cart</span>
+                                </a>
+                            	<a href="../index.html" id="btnContinueShopping" class="pillDrkGray26">
+                                	<span><img src="../assets/img/arw_right_red_9x7.png" alt="" width="9" height="7" />Continue Shopping</span>
+                                </a>
+                            </div>
+                            <div class="cartBtnsRight">
+                            <ul class="checkout-types">
+        <?php foreach ($this->getMethods('top_methods') as $method): ?>
+            <?php if ($methodHtml = $this->getMethodHtml($method)): ?>
+            <li><?php echo $methodHtml; ?></li>
+            <?php endif; ?>
+        <?php endforeach; ?>
+        </ul>
+                            	<a class="pillRed26" href="Checkout.html">
+                                	<span>
+                                    	<img src="../assets/img/arw_right_orange_9x7.png" alt="" width="9" height="7" /> Checkout
+                                    </span>
+                                </a>
+                            </div>
+                            
+                            
+                            
+                        </div><!-- eo .cartBtns -->
+                        
+                        
+                    </div><!-- eo .cartBtm -->
+                    
+                    
+                    
+                </section><!-- eo .productHolder -->
+                <section class="listKickersRight">
+                	<section class="listKickerAdTop">
+                    	
+                    </section><!-- eo .listKickerAdTop -->
+                	<section class="bestSellKicker" style="margin-top:0;">
+                    	<div class="inner clearfix">
+                        	<h3 class="bestSellHdr txtBebas">
+                            	best sellers
+                            </h3>
+                            <div class="bsSlider">
+                            	<div class="bsFaker"></div>
+                            	<strong class="shortDesc"></strong>
+                            	<div class="bsSlideWrap clearfix" id="bsKickSlide">
+                                    <ul id="bestSellersList">
+                                    	<li class="bsSlideItem"><img src="<?php echo $this->getSkinUrl('img/bsSlider1.jpg', array('_secure'=>true)) ?>" alt="First rugged yet refined classic" /></li>
+                                    	<li class="bsSlideItem"><img src="<?php echo $this->getSkinUrl('img/bsSlider1.jpg', array('_secure'=>true)) ?>" alt="2nd rugged yet refined classic" /></li>
+                                    	<li class="bsSlideItem"><img src="<?php echo $this->getSkinUrl('img/bsSlider1.jpg', array('_secure'=>true)) ?>" alt="3rd rugged yet refined classic" /></li>
+                                    </ul>
+                                	<!--<div class="bsSlideItem onDeck prevItem"><img src="assets/img/bsSlider1.jpg" alt="product name" width="107" height="146" /></div>-->
+                                	<!--<div class="bsSlideItem onDeck nextItem"><img src="assets/img/bsSlider1.jpg" alt="product name" width="107" height="146" /></div>-->
+                                </div>
+                            </div>
+                            <div class="sliderLinks clearfix">
+                            	<a id="btnBsProdInfo" href="ProductDetail.html" title="product info"></a>
+                            	<a id="btnBsAddCart" href="#" title="add to cart"></a>
+                            </div>
+                        </div>
+                    </section><!-- eo .listKickerSlide -->
+                    <!-- eo .kickerPromo -->
+                </section><!-- eo .listKickersRight -->
+            </section>
+
+
