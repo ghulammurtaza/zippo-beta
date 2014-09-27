@@ -27,7 +27,9 @@ $products = Mage::getResourceModel('reports/product_collection')
                 ->addStoreFilter($storeId)
                 ->setOrder('ordered_qty', 'desc')
                 ->getSelect()->limit(10)->query();
+if (count($products) > 0):
 ?>
+
 <section class="listKickersRight">
     <section class="listKickerAdTop">
 
@@ -57,3 +59,4 @@ $products = Mage::getResourceModel('reports/product_collection')
         </div>
     </section>
 </section>
+<?php endif;

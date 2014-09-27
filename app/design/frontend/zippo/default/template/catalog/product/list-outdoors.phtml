@@ -57,16 +57,15 @@
 $catModel = Mage::getModel('catalog/category');
 $prodModel = Mage::getModel('catalog/product');
 $categoryId = $this->getCategoryId();
+$mainCategory = $catModel->load($categoryId);
 $childern = $catModel->load($categoryId)->getChildrenCategories();
 ?>
 <section class="row zOutdoor" >
   <section class="listHolder listHolderWhiteBg clearfix">
     <div class="listTop listOutdoors clearfix">
       <div class="listHero listOutdoorHero">
-        <h3 class="listCatHead txtWhite txtBebas"> OUTDOORS </h3>
-        <h5 class="listSubHead txtRed txtBebas"> Now Campfires Have an On Switch </h5>
-        <p class="txtWhite"> Be ready for tailgating season with Zippo Outdoor products and accessories.
-          A trustworthy companion through everyday life and uncommon adventures. </p>
+          <h3 class="listCatHead txtWhite txtBebas"> <?php echo $mainCategory->getData('name');?> </h3>        
+        <?php echo $mainCategory->getData('description');?>
       </div>
       <!-- eo .listHero --> 
     </div>
@@ -80,7 +79,7 @@ $childern = $catModel->load($categoryId)->getChildrenCategories();
     <?php $_collectionSize = $collection->count() ?>
     <div class="listSlider">
         <div class="slideHdr clearfix">
-            <h3 class="txtBebas"><?php $child->getName() ?></h3><span class="listCount txtBebas"><?php echo $_collectionSize; ?>&nbsp;<?php echo $this->__('items') ?> </span>
+            <h3 class="txtBebas"><?php echo $child->getName() ?></h3><span class="listCount txtBebas"><?php echo $_collectionSize; ?>&nbsp;<?php echo $this->__('items') ?> </span>
         </div>
         <div class="multiSlide">
             <div class="scroll-pane-os horizontal-only"  style="width:624px; height:250px;">
