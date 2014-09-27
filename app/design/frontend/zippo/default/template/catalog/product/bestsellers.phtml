@@ -30,10 +30,7 @@ $products = Mage::getResourceModel('reports/product_collection')
 if (count($products) > 0):
 ?>
 
-<section class="listKickersRight">
-    <section class="listKickerAdTop">
 
-    </section><!-- eo .listKickerAdTop -->
     <section class="bestSellKicker" style="margin-top:0;">
         <div class="inner clearfix">
             <h3 class="bestSellHdr txtBebas">
@@ -46,17 +43,18 @@ if (count($products) > 0):
                     <ul id="bestSellersList">
                         <?php foreach ($products as $_product):?>
                         <?php $product = Mage::getModel('catalog/product');
-				$product->load($_product['entity_id']);?>
+						$product->load($_product['entity_id']);?>
                          <li class="bsSlideItem"><img src="<?php echo $this->helper('catalog/image')->init($product, 'small_image')->resize(100)?>" alt="<?php echo $product->getName()?>" /></li>
-                        <div class="sliderLinks clearfix">
+                        
+                             <?php endforeach;?>
+                    </ul>
+                    <div class="sliderLinks clearfix">
                 <a id="btnBsProdInfo" href="<?php echo $product->getProductUrl()?>" title="product info"></a>
                 <a id="btnBsAddCart" href="#" onclick="setLocation('<?php echo Mage::getUrl('checkout/cart/add/product/'.$product->getId())?>')"title="add to cart"></a>
             </div>
-                             <?php endforeach;?>
-                    </ul>
                 </div>
             </div>            
         </div>
     </section>
-</section>
+
 <?php endif;
