@@ -8272,7 +8272,7 @@ body {
 	text-decoration: none;
 	text-transform: uppercase;
 }
-.catTopNav a:hover, .catTopNav .active {
+.catTopNav a:hover, .catTopNav .active a {
 	color: #df101d;
 }
 .catTopNav span {
@@ -11933,4 +11933,8 @@ border-radius:15px;
 .acctCreate .field  {
     float: left;
     width: 50% !important;
+}
+
+.category-description.std{
+	display:none;
 }

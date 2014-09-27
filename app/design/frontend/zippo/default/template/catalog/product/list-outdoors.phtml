@@ -1,3 +1,24 @@
+<style type="text/css" id="page-css">
+			/* Styles specific to this particular page */
+			.scroll-pane-before,
+			.scroll-pane-after,
+			.scroll-pane-split,
+			.scroll-pane-os
+			{
+				width: 90%;
+			
+				overflow: auto;
+			}
+			.horizontal-only
+			{
+				height: auto;
+				
+			}
+			.jspTrack{
+				width:576px !important;
+				overflow:hidden;
+			}
+		</style>
 <?php
 $catModel = Mage::getModel('catalog/category');
 $prodModel = Mage::getModel('catalog/product');
@@ -13,6 +34,7 @@ $childern = $catModel->load($categoryId)->getChildrenCategories();
         <?php echo $mainCategory->getDescription();?>
       </div>
     </div>
+       <div class="listSlider">
 <?php foreach ($childern as $child): ?>
     <?php
     $collection = $prodModel->getCollection()
@@ -22,7 +44,7 @@ $childern = $catModel->load($categoryId)->getChildrenCategories();
             ->addAttributeToFilter('category_id', array('eq' => $child->getId()));
     ?>
     <?php $_collectionSize = $collection->count() ?>
-    <div class="listSlider">
+ 
         <div class="slideHdr clearfix">
             <h3 class="txtBebas"><?php echo $child->getName() ?></h3><span class="listCount txtBebas"><?php echo $_collectionSize; ?>&nbsp;<?php echo $this->__('items') ?> </span>
         </div>
@@ -35,8 +57,14 @@ $childern = $catModel->load($categoryId)->getChildrenCategories();
                 </ul>
             </div>
         </div>
-    </div>
+    
 <?php endforeach;?>
-      <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('bestseller')->toHtml();?> 
+</div>
   </section>
+  
+
+ <section class="listKickersRight">
+  <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('bestseller')->toHtml();?> 
+ </section>
+  
 </section>
