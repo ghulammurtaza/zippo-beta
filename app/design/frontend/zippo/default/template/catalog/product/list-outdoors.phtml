@@ -1,4 +1,7 @@
-<script type="text/javascript" id="sourcecode">
+<!-- latest jQuery direct from google's CDN -->
+
+
+		<script type="text/javascript" id="sourcecode">
 			jQuery(function()
 			{
 				jQuery('.scroll-pane-before').jScrollPane(
@@ -83,11 +86,10 @@ $childern = $catModel->load($categoryId)->getChildrenCategories();
         </div>
         <div class="multiSlide">
             <div class="scroll-pane-os horizontal-only"  style="width:624px; height:250px;">
-                <ul class="prodListSm clearfix   listPageProds" style="width: 1008px;">
+                <ul class="prodListSm clearfix   listPageProds" style="width: 11008px;">
                     <?php foreach ($collection as $product): ?>
-                       <li><a class="prodLink" title="<?php echo $product->getName()?>" href="<?php echo $product->getUrl()?>"><img width="94" alt="Rugged Lanternâ„¢" src="http://images.zippo.com/images/products/1_1025704_TH.JPG"><span class="newTag"></span></a>
-                            <li><a class="prodLink" title="<?php echo $product->getName()?>" href="<?php echo $product->getUrl()?>"><img width="94" alt="Rugged Lanternâ„¢" src="http://images.zippo.com/images/products/1_1025704_TH.JPG"><span class="newTag"></span></a>
-                    <?php endforeach ?>
+                       <li><a class="prodLink" title="<?php echo $product->getName()?>" href="<?php echo $product->getProductUrl()?>"><img width="94" alt="Rugged Lanternâ„¢" src="http://images.zippo.com/images/products/1_1025704_TH.JPG"><span class="newTag"></span></a>
+                   <?php endforeach ?>
                 </ul>
             </div>
         </div>
