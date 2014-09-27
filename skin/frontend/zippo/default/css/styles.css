@@ -1171,7 +1171,7 @@ a.button:hover {
 	margin-bottom: 1.5em;
 }
 .std ul li {
-	margin-left: 2em;
+	
 }
 .std .note {
 	color: #a0a0a0;
@@ -11863,4 +11863,74 @@ border-radius:15px;
 	display:inline-block;
 	width:100px;
 	font-family:Arial, Helvetica, sans-serif !important;
+}
+
+/*tabs css*/
+.ui-tabs-nav, .repairTabsUl{
+	border-bottom: 3px solid #abaaaa;
+	position: relative;
+	z-index: 1;
+}
+.ui-state-default, .repairTabsUl li{
+	background: #fff url('img/bg_ui-tab-default.png') no-repeat 0 0;
+	font-size: 16px;
+	height: 44px;
+	float: left;
+	margin: 0 0 -3px;
+	position: relative;
+	text-align: center;
+	width: 134px;
+	z-index: 10;
+}
+.ui-state-default a, .repairTabsUl a{
+	color: #868585;
+	display: block;
+	padding: 11px 0 0;
+	text-decoration: none;
+}
+.ui-tabs-selected, .repairTabsUl li.ui-tabs-selected{
+	background: #fff url('img/bg_ui-tab-default.png') no-repeat 0 -44px;
+}
+.ui-tabs-selected a, .repairTabsUl li.ui-tabs-selected a{
+	color: #df101d;
+}
+.ui-tabs-hide, .repLtPanel{
+	display: none;
+}
+.repLtPanel.active{
+	display: block;
+}
+.ui-tabs-panel{
+	padding: 24px 12px;
+}
+
+
+
+
+.acctLogin  input,
+.acctCreate input {
+    background: none repeat scroll 0 0 #fff !important;
+    border: 1px solid #000;
+    color: #000;
+    width: 234px;
+}
+
+.acctCreate button,
+.acctLogin button {
+    background: url("img/sprite_icons.png") no-repeat scroll right -388px #000000;
+    margin: 9px 0 0;
+	padding:1px 5px;
+	 font-family: 'BebasRegular',Impact,Helvetica,Arial,sans-serif;
+	font-size:14px;
+	color:#FFF;
+    padding-right: 20px;
+	border:none;
+	float:right;
+	box-shadow:0 1px 1px rgba(0, 0, 0, 0.2);
+
+}
+
+.acctCreate .field  {
+    float: left;
+    width: 50% !important;
 }
