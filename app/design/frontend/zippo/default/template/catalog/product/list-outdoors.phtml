@@ -1,65 +1,3 @@
-<link  rel="stylesheet" href="<?php echo $this->getSkinUrl('css/jquery.jscrollpane.css', array('_secure' => true)) ?>">
-
-        <script src="<?php echo $this->getSkinUrl('js/jquery.mousewheel.js', array('_secure' => true)) ?>"></script>
-        <script src="<?php echo $this->getSkinUrl('js/jquery.jscrollpane.min.js', array('_secure' => true)) ?>"></script>
-<!-- latest jQuery direct from google's CDN -->
-
-
-		<script type="text/javascript" id="sourcecode">
-			jQuery(function()
-			{
-				jQuery('.scroll-pane-before').jScrollPane(
-					{
-						showArrows: true,
-						verticalArrowPositions: 'before',
-						horizontalArrowPositions: 'before'
-					}
-				);
-				jQuery('.scroll-pane-after').jScrollPane(
-					{
-						showArrows: true,
-						verticalArrowPositions: 'after',
-						horizontalArrowPositions: 'after'
-					}
-				);
-				jQuery('.scroll-pane-os').jScrollPane(
-					{
-						showArrows: true,
-						verticalArrowPositions: 'os',
-						horizontalArrowPositions: 'os'
-					}
-				);
-				jQuery('.scroll-pane-split').jScrollPane(
-					{
-						showArrows: true,
-						verticalArrowPositions: 'split',
-						horizontalArrowPositions: 'split'
-					}
-				);
-			});
-		</script>
-
-<style type="text/css" id="page-css">
-			/* Styles specific to this particular page */
-			.scroll-pane-before,
-			.scroll-pane-after,
-			.scroll-pane-split,
-			.scroll-pane-os
-			{
-				width: 90%;
-			
-				overflow: auto;
-			}
-			.horizontal-only
-			{
-				height: auto;
-				
-			}
-			.jspTrack{
-				width:576px !important;
-				overflow:hidden;
-			}
-		</style>
 <?php
 $catModel = Mage::getModel('catalog/category');
 $prodModel = Mage::getModel('catalog/product');
@@ -69,11 +7,10 @@ $childern = $catModel->load($categoryId)->getChildrenCategories();
 ?>
 <section class="row zOutdoor" >
   <section class="listHolder listHolderWhiteBg clearfix">
-    <div class="listTop listOutdoors clearfix">
+      <div class="listTop listOutdoors clearfix" style="background:url(<?php echo $mainCategory->getImageUrl()?>)">
       <div class="listHero listOutdoorHero">
           <h3 class="listCatHead txtWhite txtBebas"> <?php echo $mainCategory->getData('name');?> </h3>        
         <?php echo $mainCategory->getData('description');?>
-        <?php echo $mainCategory->getData('image');?>
       </div>
       <!-- eo .listHero --> 
     </div>
@@ -93,19 +30,13 @@ $childern = $catModel->load($categoryId)->getChildrenCategories();
             <div class="scroll-pane-os horizontal-only"  style="width:624px; height:250px;">
                 <ul class="prodListSm clearfix   listPageProds" style="width: 11008px;">
                     <?php foreach ($collection as $product): ?>
-                       <li><a class="prodLink" title="<?php echo $product->getName()?>" href="<?php echo $product->getUrl()?>"><img width="94" alt="Rugged Lanternâ„¢" src="http://images.zippo.com/images/products/1_1025704_TH.JPG"><span class="newTag"></span></a>
-                            <li><a class="prodLink" title="<?php echo $product->getName()?>" href="<?php echo $product->getUrl()?>"><img width="94" alt="Rugged Lanternâ„¢" src="http://images.zippo.com/images/products/1_1025704_TH.JPG"><span class="newTag"></span></a>
-                    <?php endforeach ?>
+                       <li><a class="prodLink" title="<?php echo $product->getName()?>" href="<?php echo $product->getProductUrl()?>"><img width="94" alt="Rugged Lanternâ„¢" src="http://images.zippo.com/images/products/1_1025704_TH.JPG"><span class="newTag"></span></a>
+                   <?php endforeach ?>
                 </ul>
             </div>
         </div>
     </div>
 <?php endforeach;?>
-    
+      <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('bestseller')->toHtml();?> 
   </section>
-  <section class="listKickersRight">
-  <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('bestseller')->toHtml();?> 
- </section>
-  
-  
 </section>
