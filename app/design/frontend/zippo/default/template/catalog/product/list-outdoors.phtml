@@ -7,10 +7,10 @@ $childern = $catModel->load($categoryId)->getChildrenCategories();
 ?>
 <section class="row zOutdoor" >
   <section class="listHolder listHolderWhiteBg clearfix">
-      <div class="listTop listOutdoors clearfix" style="background:url(<?php echo $mainCategory->getImageUrl()?>)">
+      <div class="listTop listOutdoors clearfix" <?php if ($mainCategory->getImageUrl()):  ?> style="background:url('<?php echo $mainCategory->getImageUrl()?> <?php endif;?>')">
       <div class="listHero listOutdoorHero">
-          <h3 class="listCatHead txtWhite txtBebas"> <?php echo $mainCategory->getData('name');?> </h3>        
-        <?php echo $mainCategory->getData('description');?>
+          <h3 class="listCatHead txtWhite txtBebas"> <?php echo $mainCategory->getName();?> </h3>        
+        <?php echo $mainCategory->getDescription();?>
       </div>
       <!-- eo .listHero --> 
     </div>
