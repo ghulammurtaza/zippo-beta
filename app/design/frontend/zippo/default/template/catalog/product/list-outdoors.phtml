@@ -1,71 +1,15 @@
-<!-- latest jQuery direct from google's CDN -->
-
-
-		<script type="text/javascript" id="sourcecode">
-			jQuery(function()
-			{
-				jQuery('.scroll-pane-before').jScrollPane(
-					{
-						showArrows: true,
-						verticalArrowPositions: 'before',
-						horizontalArrowPositions: 'before'
-					}
-				);
-				jQuery('.scroll-pane-after').jScrollPane(
-					{
-						showArrows: true,
-						verticalArrowPositions: 'after',
-						horizontalArrowPositions: 'after'
-					}
-				);
-				jQuery('.scroll-pane-os').jScrollPane(
-					{
-						showArrows: true,
-						verticalArrowPositions: 'os',
-						horizontalArrowPositions: 'os'
-					}
-				);
-				jQuery('.scroll-pane-split').jScrollPane(
-					{
-						showArrows: true,
-						verticalArrowPositions: 'split',
-						horizontalArrowPositions: 'split'
-					}
-				);
-			});
-		</script>
-
-<style type="text/css" id="page-css">
-			/* Styles specific to this particular page */
-			.scroll-pane-before,
-			.scroll-pane-after,
-			.scroll-pane-split,
-			.scroll-pane-os
-			{
-				width: 90%;
-			
-				overflow: auto;
-			}
-			.horizontal-only
-			{
-				height: auto;
-				
-			}
-			.jspTrack{
-				width:576px !important;
-				overflow:hidden;
-			}
-		</style>
 <?php
 $catModel = Mage::getModel('catalog/category');
 $prodModel = Mage::getModel('catalog/product');
 $categoryId = $this->getCategoryId();
 $mainCategory = $catModel->load($categoryId);
+print_r($mainCategory->getData());exit;
 $childern = $catModel->load($categoryId)->getChildrenCategories();
 ?>
 <section class="row zOutdoor" >
   <section class="listHolder listHolderWhiteBg clearfix">
     <div class="listTop listOutdoors clearfix">
+        
       <div class="listHero listOutdoorHero">
           <h3 class="listCatHead txtWhite txtBebas"> <?php echo $mainCategory->getData('name');?> </h3>        
         <?php echo $mainCategory->getData('description');?>

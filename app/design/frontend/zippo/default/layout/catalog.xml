@@ -81,7 +81,9 @@ Category default layout
             <action method="setTemplate"><template>page/1column.phtml</template></action>
         </reference>
         <reference name="head">
+            <action method="addItem"><type>skin_css</type><name>css/custom.css</name><params/></action>
             <action method="addItem"><type>skin_css</type><name>css/jquery.jscrollpane.css</name><params/></action>
+            <action method="addItem"><type>skin_js</type><name>js/custom.js</name></action>
             <action method="addItem"><type>skin_js</type><name>js/jquery.mousewheel.js</name></action>
             <action method="addItem"><type>skin_js</type><name>js/jquery.jscrollpane.min.js</name></action>
         </reference>
@@ -123,7 +125,9 @@ Category layered navigation layout
     <catalog_category_layered translate="label">
         <label>Catalog Category (Anchor)</label>
         <reference name="head">
+            <action method="addItem"><type>skin_css</type><name>css/custom.css</name><params/></action>
             <action method="addItem"><type>skin_css</type><name>css/jquery.jscrollpane.css</name><params/></action>
+            <action method="addItem"><type>skin_js</type><name>js/custom.js</name></action>
             <action method="addItem"><type>skin_js</type><name>js/jquery.mousewheel.js</name></action>
             <action method="addItem"><type>skin_js</type><name>js/jquery.jscrollpane.min.js</name></action>
         </reference>
