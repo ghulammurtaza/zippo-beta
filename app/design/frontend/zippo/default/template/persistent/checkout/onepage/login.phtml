@@ -32,6 +32,724 @@
  */
 /** @var $this Mage_Checkout_Block_Onepage_Login */
 ?>
+
+<section class="row" style=" width:1024px;">
+            	<section class="cartHolder clearfix">
+                	<header class="cartHeader txtBebas txtWhite">
+                    	Checkout
+                    </header>
+                    <div class="cartBtm clearfix">
+                    	<div id="checkInBegin" class="checkBegin clearfix">
+                        	<div class="checkLogin clearfix">
+                            	<h3 class="txtBebas txtRed">Log In</h3>
+                            	<div class="width50 clearfix">
+                                    <label class="txtBebas" for="txtEmail">Email Address</label>
+                                    <input type="text" name="txtEmail" id="txtEmail" class="txtDef">
+                                </div>
+                            	<div class="width50 clearfix">
+                                	<label class="txtBebas" for="txtPassword">Password</label>
+                                    <input type="password" name="txtPassword" id="txtPassword" class="txtDef">
+                                </div>
+                                <p>
+                                	Forgot your password? <a class="lnkBlack" id="lnkForgot" href="#">Click here</a>.
+                                </p>
+                                <a id="lnkLogin" class="pillDrkGray26" href="#"><span><img width="9" height="7" alt="" src="../assets/img/arw_right_red_9x7.png">Sign In</span></a>
+                            </div><!-- eo .checkLogin -->
+                        	<div class="checkGuest clearfix">
+                            	<div class="inner">
+                                    <h3 class="txtBebas txtRed">Guest Checkout</h3>
+                                    <p>No sign-in required for new customers.</p>
+                                    <p>
+                                        Use your checkout info to create a Zippo account.<br>
+                                        <strong>Benefits include:</strong>
+                                    </p>
+                                    <ul class="ulDisc">
+                                        <li>
+                                            Save time with <strong>Express Checkout</strong>.
+                                        </li>
+                                        <li>
+                                            Track orders with access to <strong>Order History</strong>.
+                                        </li>
+                                        <li>
+                                            Store addresses you ship to the most.
+                                        </li>
+                                        <li>
+                                            Make a <strong>Wish List</strong> of your favorite items and save for later or share with others.
+                                        </li>
+                                    </ul>
+                                </div><!-- eo .inner -->
+                                    <a id="lnkGuestContinue" class="pillDrkGray26" href="#"><span><img width="9" height="7" alt="" src="../assets/img/arw_right_red_9x7.png">Continue</span></a>
+                            </div><!-- eo .checkGuest -->
+                        </div>
+                    	<div id="checkoutForms" class="checkoutForms clearfix">
+                            <div class="checkout clearfix">
+                            	<div id="checkoutStep1" class="checkoutStep billInfoForm">
+                                	<h3 class="txtBebas txtA7 hdrCheckStep clearfix">
+                                    	<span class="txtRed">1.</span> Billing Address
+                                        <a title="edit billing information" id="lnkEditStep1" class="editCheckStep pillGray20" href="#"><span>Edit Information</span></a>
+                                    </h3>
+                                	<div id="checkStep1Form" class="checkStepForm clearfix">
+                                        <ul class="checkoutForm clearfix">
+                                            <li>&nbsp;</li>
+                                            <li class="clear">
+                                                <label class="txtBebas reqd" for="txtFnameBill">*First Name</label>
+                                                <input type="text" class="txtDef" tabindex="2" name="txtFnameBill">
+                                            </li>
+                                            <li>
+                                                <label class="txtBebas reqd" for="txtLnameBill">*Last Name</label>
+                                                <input type="text" class="txtDef" tabindex="3" name="txtLnameBill">
+                                            </li>
+                                            <li class="width100">
+                                                <label class="txtBebas reqd" for="txtStreetBill">*Street Address</label>
+                                                <input type="text" class="txtDef txtDouble" tabindex="4" name="txtStreet">
+                                            </li>
+                                            <li class="width100 clear">
+                                                <label class="txtBebas" for="txtStreet2Bill">Street Address 2</label>
+                                                <input type="text" class="txtDef txtDouble" tabindex="5" name="txtStreet2Bill">
+                                            </li>
+                                            <li class="clear">
+                                                <label class="txtBebas" for="txtCityBill">*City</label>
+                                                <input type="text" class="txtDef" tabindex="6" name="txtCityBill">
+                                            </li>
+                                            <li>
+                                                <label class="txtBebas" for="selStateBill">*State</label>
+                                                <select id="selBillState" tabindex="7" class="addrState" name="selStateBill" style="display: none;" aria-disabled="false">
+                                                    <option selected="selected" value="">Select a State</option>
+                                                    <option value="AK">AK - Alaska</option>
+                                                    <option value="AL">AL - Alabama</option>
+                                                    <option value="AR">AR - Arkansas</option>
+                                                    <option value="AZ">AZ - Arizona</option>
+                                                    <option value="CA">CA - California</option>
+                                                    <option value="CO">CO - Colorado</option>
+                                                    <option value="CT">CT - Connecticut</option>
+                                                    <option value="DC">DC - District of Columbia</option>
+                                                    <option value="DE">DE - Delaware</option>
+                                                    <option value="FL">FL - Florida</option>
+                                                    <option value="GA">GA - Georgia</option>
+                                                    <option value="HI">HI - Hawaii</option>
+                                                    <option value="IA">IA - Iowa</option>
+                                                    <option value="ID">ID - Idaho</option>
+                                                    <option value="IL">IL - Illinois</option>
+                                                    <option value="IN">IN - Indiana</option>
+                                                    <option value="KS">KS - Kansas</option>
+                                                    <option value="KY">KY - Kentucky</option>
+                                                    <option value="LA">LA - Louisiana</option>
+                                                    <option value="MA">MA - Massachusetts</option>
+                                                    <option value="MD">MD - Maryland</option>
+                                                    <option value="ME">ME - Maine</option>
+                                                    <option value="MI">MI - Michigan</option>
+                                                    <option value="MN">MN - Minnesota</option>
+                                                    <option value="MO">MO - Missouri</option>
+                                                    <option value="MS">MS - Mississippi</option>
+                                                    <option value="MT">MT - Montana</option>
+                                                    <option value="NC">NC - North Carolina</option>
+                                                    <option value="ND">ND - North Dakota</option>
+                                                    <option value="NE">NE - Nebraska</option>
+                                                    <option value="NH">NH - New Hampshire</option>
+                                                    <option value="NJ">NJ - New Jersey</option>
+                                                    <option value="NM">NM - New Mexico</option>
+                                                    <option value="NV">NV - Nevada</option>
+                                                    <option value="NY">NY - New York</option>
+                                                    <option value="OH">OH - Ohio</option>
+                                                    <option value="OK">OK - Oklahoma</option>
+                                                    <option value="OR">OR - Oregon</option>
+                                                    <option value="PA">PA - Pennsylvania</option>
+                                                    <option value="RI">RI - Rhode Island</option>
+                                                    <option value="SC">SC - South Carolina</option>
+                                                    <option value="SD">SD - South Dakota</option>
+                                                    <option value="TN">TN - Tennessee</option>
+                                                    <option value="TX">TX - Texas</option>
+                                                    <option value="UT">UT - Utah</option>
+                                                    <option value="VA">VA - Virginia</option>
+                                                    <option value="VT">VT - Vermont</option>
+                                                    <option value="WA">WA - Washington</option>
+                                                    <option value="WI">WI - Wisconsin</option>
+                                                    <option value="WV">WV - West Virginia</option>
+                                                    <option value="WY">WY - Wyoming</option>
+                                                </select><a aria-owns="selBillState-menu" aria-haspopup="true" tabindex="7" href="#" role="button" id="selBillState-button" class="ui-selectmenu ui-widget ui-state-default ui-corner-all ui-selectmenu-popup addrState" style="width: 192px;" aria-disabled="false"><span class="ui-selectmenu-status">Select a State</span><span class="ui-selectmenu-icon ui-icon ui-icon-triangle-2-n-s"></span></a>
+                                            </li>
+                                            <li class="clear">
+                                                <label class="txtBebas" for="txtZip">*Zip Code</label>
+                                                <input type="text" class="txtDef" tabindex="8" name="txtZip">
+                                            </li>
+                                            <li>
+                                                <label class="txtBebas" for="&#65279;txtBillPhoneArea">*Phone Number</label>
+                                                <input type="text" class="txtDef txt3" maxlength="3" tabindex="9" id="&#65279;txtBillPhoneArea" name="&#65279;txtBillPhoneArea">
+                                                <input type="text" class="txtDef txt3" maxlength="3" tabindex="10" id="&#65279;&#65279;&#65279;txtBillPhonePrefix" name="&#65279;txtBillPhonePrefix">
+                                                <input type="text" class="txtDef txt4" maxlength="4" tabindex="11" id="&#65279;&#65279;txtBillPhoneSuffix" name="&#65279;txtBillPhoneSuffix">
+                                            </li>
+                                            <li class="clear">
+                                                <label class="txtBebas" for="txtEmailBill">*Email</label>
+                                                <input type="text" class="txtDef" tabindex="12" name="txtEmailBill">
+                                            </li>
+                                            <li>
+                                                <div class="checker" id="uniform-chkOptIn"><span class="checked"><input type="checkbox" checked="checked" tabindex="13" id="chkOptIn" class="chkDef" value="1" name="chkOptIn" style="opacity: 0;"></span></div>
+                                                <span class="optInText">
+                                                    I want to receive emails from Zippo about news, promotions, and special events.
+                                                </span>
+                                            </li>
+                                            <li class="clear width100 selectDOB">
+                                                <label class="txtBebas" for="selDOB">*Date of Birth</label>
+                                                <select tabindex="14" id="selDOBMonth" class="selDOBMonth selDOB" style="display: none;" aria-disabled="false">
+                                                    <option value="">Month</option>
+                                                    <option value="01">January</option>
+                                                    <option value="02">February</option>
+                                                    <option value="03">March</option>
+                                                    <option value="04">April</option>
+                                                    <option value="05">May</option>
+                                                    <option value="06">June</option>
+                                                    <option value="07">July</option>
+                                                    <option value="08">August</option>
+                                                    <option value="09">September</option>
+                                                    <option value="10">October</option>
+                                                    <option value="11">November</option>
+                                                    <option value="12">December</option>
+                                                </select><a aria-owns="selDOBMonth-menu" aria-haspopup="true" tabindex="14" href="#" role="button" id="selDOBMonth-button" class="ui-selectmenu ui-widget ui-state-default ui-corner-all ui-selectmenu-popup selDOBMonth selDOB" style="width: 96px;" aria-disabled="false"><span class="ui-selectmenu-status">Month</span><span class="ui-selectmenu-icon ui-icon ui-icon-triangle-2-n-s"></span></a>
+                                                <select tabindex="15" id="selDOBDate" class="selDOBDate selDOB" style="display: none;" aria-disabled="false">
+                                                    <option value="">Date</option>
+                                                    <option value="01">1</option>
+                                                    <option value="02">2</option>
+                                                    <option value="03">3</option>
+                                                    <option value="04">4</option>
+                                                    <option value="05">5</option>
+                                                    <option value="06">6</option>
+                                                    <option value="07">7</option>
+                                                    <option value="08">8</option>
+                                                    <option value="09">9</option>
+                                                    <option value="10">10</option>
+                                                    <option value="11">11</option>
+                                                    <option value="12">12</option>
+                                                    <option value="13">13</option>
+                                                    <option value="14">14</option>
+                                                    <option value="15">15</option>
+                                                    <option value="16">16</option>
+                                                    <option value="17">17</option>
+                                                    <option value="18">18</option>
+                                                    <option value="19">19</option>
+                                                    <option value="20">20</option>
+                                                    <option value="21">21</option>
+                                                    <option value="22">22</option>
+                                                    <option value="23">23</option>
+                                                    <option value="24">24</option>
+                                                    <option value="25">25</option>
+                                                    <option value="26">26</option>
+                                                    <option value="27">27</option>
+                                                    <option value="28">28</option>
+                                                    <option value="29">29</option>
+                                                    <option value="30">30</option>
+                                                    <option value="31">31</option>
+                                                </select><a aria-owns="selDOBDate-menu" aria-haspopup="true" tabindex="15" href="#" role="button" id="selDOBDate-button" class="ui-selectmenu ui-widget ui-state-default ui-corner-all ui-selectmenu-popup selDOBDate selDOB" style="width: 64px;" aria-disabled="false"><span class="ui-selectmenu-status">Date</span><span class="ui-selectmenu-icon ui-icon ui-icon-triangle-2-n-s"></span></a>
+                                                <select tabindex="16" id="selDOBYear" name="selDOBYear" class="selDOBYear selDOB" style="display: none;" aria-disabled="false">
+                                                    <option value="">Year</option>
+                                                    <option value="1993">1993</option>
+                                                    <option value="1992">1992</option>
+                                                    <option value="1991">1991</option>
+                                                    <option value="1990">1990</option>
+                                                    <option value="1989">1989</option>
+                                                    <option value="1988">1988</option>
+                                                    <option value="1987">1987</option>
+                                                    <option value="1986">1986</option>
+                                                    <option value="1985">1985</option>
+                                                    <option value="1984">1984</option>
+                                                    <option value="1983">1983</option>
+                                                    <option value="1982">1982</option>
+                                                    <option value="1981">1981</option>
+                                                    <option value="1980">1980</option>
+                                                    <option value="1979">1979</option>
+                                                    <option value="1978">1978</option>
+                                                    <option value="1977">1977</option>
+                                                    <option value="1976">1976</option>
+                                                    <option value="1975">1975</option>
+                                                    <option value="1974">1974</option>
+                                                    <option value="1973">1973</option>
+                                                    <option value="1972">1972</option>
+                                                    <option value="1971">1971</option>
+                                                    <option value="1970">1970</option>
+                                                    <option value="1969">1969</option>
+                                                    <option value="1968">1968</option>
+                                                    <option value="1967">1967</option>
+                                                    <option value="1966">1966</option>
+                                                    <option value="1965">1965</option>
+                                                    <option value="1964">1964</option>
+                                                    <option value="1963">1963</option>
+                                                    <option value="1962">1962</option>
+                                                    <option value="1961">1961</option>
+                                                    <option value="1960">1960</option>
+                                                    <option value="1959">1959</option>
+                                                    <option value="1958">1958</option>
+                                                    <option value="1957">1957</option>
+                                                    <option value="1956">1956</option>
+                                                    <option value="1955">1955</option>
+                                                    <option value="1954">1954</option>
+                                                    <option value="1953">1953</option>
+                                                    <option value="1952">1952</option>
+                                                    <option value="1951">1951</option>
+                                                    <option value="1950">1950</option>
+                                                    <option value="1949">1949</option>
+                                                    <option value="1948">1948</option>
+                                                    <option value="1947">1947</option>
+                                                    <option value="1946">1946</option>
+                                                    <option value="1945">1945</option>
+                                                    <option value="1944">1944</option>
+                                                    <option value="1943">1943</option>
+                                                    <option value="1942">1942</option>
+                                                    <option value="1941">1941</option>
+                                                    <option value="1940">1940</option>
+                                                    <option value="1939">1939</option>
+                                                    <option value="1938">1938</option>
+                                                    <option value="1937">1937</option>
+                                                    <option value="1936">1936</option>
+                                                    <option value="1935">1935</option>
+                                                    <option value="1934">1934</option>
+                                                    <option value="1933">1933</option>
+                                                    <option value="1932">1932</option>
+                                                    <option value="1931">1931</option>
+                                                    <option value="1930">1930</option>
+                                                    <option value="1929">1929</option>
+                                                    <option value="1928">1928</option>
+                                                    <option value="1927">1927</option>
+                                                    <option value="1926">1926</option>
+                                                    <option value="1925">1925</option>
+                                                    <option value="1924">1924</option>
+                                                    <option value="1923">1923</option>
+                                                    <option value="1922">1922</option>
+                                                    <option value="1921">1921</option>
+                                                    <option value="1920">1920</option>
+                                                    <option value="1919">1919</option>
+                                                    <option value="1918">1918</option>
+                                                    <option value="1917">1917</option>
+                                                    <option value="1916">1916</option>
+                                                    <option value="1915">1915</option>
+                                                    <option value="1914">1914</option>
+                                                    <option value="1913">1913</option>
+                                                    <option value="1912">1912</option>
+                                                    <option value="1911">1911</option>
+                                                </select><a aria-owns="selDOBYear-menu" aria-haspopup="true" tabindex="16" href="#" role="button" id="selDOBYear-button" class="ui-selectmenu ui-widget ui-state-default ui-corner-all ui-selectmenu-popup selDOBYear selDOB" style="width: 67px;" aria-disabled="false"><span class="ui-selectmenu-status">Year</span><span class="ui-selectmenu-icon ui-icon ui-icon-triangle-2-n-s"></span></a>
+                                            </li>
+                                        </ul>
+                                        <a id="lnkBillContinue" class="pillDrkGray26 btnChkCont" href="#"><span><img width="9" height="7" alt="" src="../assets/img/arw_right_red_9x7.png">Continue</span></a>
+                                    </div><!-- eo .checkoutStep1 -->
+                                </div><!-- eo #checkoutStep1 -->
+                                <div id="checkoutStep2" class="checkoutStep billInfoForm">
+                                	<h3 class="txtBebas txtA7 hdrCheckStep clearfix">
+                                		<span class="txtRed">2.</span> Method &amp; Shipping Address
+                                        <a title="edit shipping information" id="lnkEditStep2" class="editCheckStep pillGray20" href="#"><span>Edit Shipping Information</span></a>
+                                    </h3>
+                                    <div id="checkStep2Form" class="checkStepForm clearfix">
+                                    	<ul class="shipHeader">
+                                            <li class="clearfix">
+                                                <div class="radio" id="uniform-radShipBill"><span class="checked"><input type="radio" checked="checked" class="radDef" id="radShipBill" value="ship to billing" name="radBillAddress" style="opacity: 0;"></span></div>
+                                                <strong>Ship to my Billing Address</strong>
+                                            </li>
+                                            <li class="clearfix">
+                                                <div class="radio" id="uniform-radShipDiff"><span><input type="radio" class="radDef" id="radShipDiff" value="ship to different" name="radBillAddress" style="opacity: 0;"></span></div>
+                                                <strong>Ship to a Different Address</strong>
+                                            </li>
+                                        </ul>
+                                        <ul id="checkShipAddr" class="checkoutForm clearfix checkShipAddr">
+                                            <li id="savedAddresses" class="width100 clearfix savedAddresses">
+                                                <label class="txtBebas" for="selSavedAddr-button">Ship to an address from your address book?</label>
+                                                <select id="selSavedAddr" class="selSavedAddr addrState" name="selSavedAddr" style="display: none;" aria-disabled="false">
+                                                    <option value="address1">Joe's House</option>
+                                                    <option value="address2">Mary's House</option>
+                                                    <option value="address3">Carpenter's Store</option>
+                                                </select><a aria-owns="selSavedAddr-menu" aria-haspopup="true" tabindex="0" href="#" role="button" id="selSavedAddr-button" class="ui-selectmenu ui-widget ui-state-default ui-corner-all ui-selectmenu-popup selSavedAddr addrState" style="width: 192px;" aria-disabled="false"><span class="ui-selectmenu-status">Joe's House</span><span class="ui-selectmenu-icon ui-icon ui-icon-triangle-2-n-s"></span></a>
+                                            </li>
+                                            <li id="checkShipBtns" class="width100 checkShipBtns clearfix">
+                                                <a class="shipWidget lnkSingleAddr active" id="lnkSingleAddr" href="#">
+                                                    <span><img width="9" height="7" alt="" src="../assets/img/arw_right_red_9x7.png"> Single Address</span>
+                                                </a>
+                                                <a class="shipWidget lnkAPO" id="lnkAPO" href="#">
+                                                    <span><img width="9" height="7" alt="" src="../assets/img/arw_right_red_9x7.png"> APO/AFO</span>
+                                                    <div class="helpIcon" id="apoHelp">
+                                                        <div class="cartTip clearfix">
+                                                            <div class="tipText txtA7 clearfix">
+                                                                <img width="23" height="24" class="bigQ" alt="?" src="../assets/img/bigQuestionIcon.png">
+                                                                <div class="tipInner">
+                                                                    <strong>APO/AFO:</strong><br>
+                                                                    These are addresses for<br>
+                                                                    the military or something
+                                                                </div><!-- eo .tipInner -->
+                                                            </div>
+                                                        </div><!-- eo .cartTip -->
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li>&nbsp;</li>
+                                            <li class="clear">
+                                                <label class="txtBebas reqd" for="txtFnameShip">*First Name</label>
+                                                <input type="text" class="txtDef" tabindex="2" name="txtFnameShip">
+                                            </li>
+                                            <li>
+                                                <label class="txtBebas reqd" for="txtLnameShip">*Last Name</label>
+                                                <input type="text" class="txtDef" tabindex="3" name="txtLnameShip">
+                                            </li>
+                                            <li class="width100">
+                                                <label class="txtBebas reqd" for="txtStreetShip">*Street Address</label>
+                                                <input type="text" class="txtDef txtDouble" tabindex="4" name="txtStreetShip">
+                                            </li>
+                                            <li class="width100 clear normAddr">
+                                                <label class="txtBebas" for="txtStreet2Ship">Street Address 2</label>
+                                                <input type="text" class="txtDef txtDouble" tabindex="5" name="txtStreet2Ship">
+                                            </li>
+                                            <li class="width100 clear milAddr">
+                                                <label class="txtBebas" for="txtMilAddr">Military Command or Organization Name</label>
+                                                <input type="text" class="txtDef txtDouble" tabindex="5" name="txtMilAddr">
+                                            </li>
+                                            <li class="clear normAddr">
+                                                <label class="txtBebas" for="txtCityShip">*City</label>
+                                                <input type="text" class="txtDef" tabindex="6" name="txtCityShip">
+                                            </li>
+                                            <li class="normAddr">
+                                                <label class="txtBebas" for="selStateShip">*State</label>
+                                                <select id="selShipState" tabindex="7" class="addrState" name="selStateShip" style="display: none;" aria-disabled="false">
+                                                    <option selected="selected" value="">Select a State</option>
+                                                    <option value="AK">AK - Alaska</option>
+                                                    <option value="AL">AL - Alabama</option>
+                                                    <option value="AR">AR - Arkansas</option>
+                                                    <option value="AZ">AZ - Arizona</option>
+                                                    <option value="CA">CA - California</option>
+                                                    <option value="CO">CO - Colorado</option>
+                                                    <option value="CT">CT - Connecticut</option>
+                                                    <option value="DC">DC - District of Columbia</option>
+                                                    <option value="DE">DE - Delaware</option>
+                                                    <option value="FL">FL - Florida</option>
+                                                    <option value="GA">GA - Georgia</option>
+                                                    <option value="HI">HI - Hawaii</option>
+                                                    <option value="IA">IA - Iowa</option>
+                                                    <option value="ID">ID - Idaho</option>
+                                                    <option value="IL">IL - Illinois</option>
+                                                    <option value="IN">IN - Indiana</option>
+                                                    <option value="KS">KS - Kansas</option>
+                                                    <option value="KY">KY - Kentucky</option>
+                                                    <option value="LA">LA - Louisiana</option>
+                                                    <option value="MA">MA - Massachusetts</option>
+                                                    <option value="MD">MD - Maryland</option>
+                                                    <option value="ME">ME - Maine</option>
+                                                    <option value="MI">MI - Michigan</option>
+                                                    <option value="MN">MN - Minnesota</option>
+                                                    <option value="MO">MO - Missouri</option>
+                                                    <option value="MS">MS - Mississippi</option>
+                                                    <option value="MT">MT - Montana</option>
+                                                    <option value="NC">NC - North Carolina</option>
+                                                    <option value="ND">ND - North Dakota</option>
+                                                    <option value="NE">NE - Nebraska</option>
+                                                    <option value="NH">NH - New Hampshire</option>
+                                                    <option value="NJ">NJ - New Jersey</option>
+                                                    <option value="NM">NM - New Mexico</option>
+                                                    <option value="NV">NV - Nevada</option>
+                                                    <option value="NY">NY - New York</option>
+                                                    <option value="OH">OH - Ohio</option>
+                                                    <option value="OK">OK - Oklahoma</option>
+                                                    <option value="OR">OR - Oregon</option>
+                                                    <option value="PA">PA - Pennsylvania</option>
+                                                    <option value="RI">RI - Rhode Island</option>
+                                                    <option value="SC">SC - South Carolina</option>
+                                                    <option value="SD">SD - South Dakota</option>
+                                                    <option value="TN">TN - Tennessee</option>
+                                                    <option value="TX">TX - Texas</option>
+                                                    <option value="UT">UT - Utah</option>
+                                                    <option value="VA">VA - Virginia</option>
+                                                    <option value="VT">VT - Vermont</option>
+                                                    <option value="WA">WA - Washington</option>
+                                                    <option value="WI">WI - Wisconsin</option>
+                                                    <option value="WV">WV - West Virginia</option>
+                                                    <option value="WY">WY - Wyoming</option>
+                                                </select><a aria-owns="selShipState-menu" aria-haspopup="true" tabindex="7" href="#" role="button" id="selShipState-button" class="ui-selectmenu ui-widget ui-state-default ui-corner-all ui-selectmenu-popup addrState" style="width: 192px;" aria-disabled="false"><span class="ui-selectmenu-status">Select a State</span><span class="ui-selectmenu-icon ui-icon ui-icon-triangle-2-n-s"></span></a>
+                                            </li>
+                                            <li class="clear milAddr milSel">
+                                                <label class="txtBebas" for="selMilAPO-button">*APO/AFO</label>
+                                                <select id="selMilAPO" tabindex="6" class="addrAPO addrState" name="selMilAPO" style="display: none;" aria-disabled="false">
+                                                    <option value="APO1">Some Option 1</option>
+                                                    <option value="APO2">Some Option 2</option>
+                                                    <option value="APO3">Some Option 3</option>
+                                                    <option value="APO4">Some Option 4</option>
+                                                    <option value="APO5">Some Option 5</option>
+                                                </select><a aria-owns="selMilAPO-menu" aria-haspopup="true" tabindex="6" href="#" role="button" id="selMilAPO-button" class="ui-selectmenu ui-widget ui-state-default ui-corner-all ui-selectmenu-popup addrAPO addrState" style="width: 192px;" aria-disabled="false"><span class="ui-selectmenu-status">Some Option 1</span><span class="ui-selectmenu-icon ui-icon ui-icon-triangle-2-n-s"></span></a>
+                                            </li>
+                                            <li class="milAddr milSel">
+                                                <label class="txtBebas" for="selMilRegion-button">*Region</label>
+                                                <select id="selMilRegion" tabindex="7" class="addrRegion addrState" name="selMilRegion" style="display: none;" aria-disabled="false">
+                                                    <option value="Region1">Armed Forces 1</option>
+                                                    <option value="Region2">Armed Forces 2</option>
+                                                    <option value="Region3">Armed Forces 3</option>
+                                                    <option value="Region4">Armed Forces 4</option>
+                                                    <option value="region5">Armed Forces 5</option>
+                                                </select><a aria-owns="selMilRegion-menu" aria-haspopup="true" tabindex="7" href="#" role="button" id="selMilRegion-button" class="ui-selectmenu ui-widget ui-state-default ui-corner-all ui-selectmenu-popup addrRegion addrState" style="width: 192px;" aria-disabled="false"><span class="ui-selectmenu-status">Armed Forces 1</span><span class="ui-selectmenu-icon ui-icon ui-icon-triangle-2-n-s"></span></a>
+                                            </li>
+                                            <li class="clear">
+                                                <label class="txtBebas" for="txtZip">*Zip Code</label>
+                                                <input type="text" class="txtDef" tabindex="8" name="txtZip">
+                                            </li>
+                                            <li>
+                                                <label class="txtBebas" for="txtPhoneShipArea">*Phone Number</label>
+                                                <input type="text" class="txtDef txt3" maxlength="3" tabindex="9" id="&#65279;txtShipPhoneArea" name="txtPhoneBillArea">
+                                                <input type="text" class="txtDef txt3" maxlength="3" tabindex="10" id="&#65279;txtShipPhonePrefix" name="txtPhoneBill3">
+                                                <input type="text" class="txtDef txt4" maxlength="4" tabindex="11" id="&#65279;txtShipPhoneSuffix" name="txtPhoneBill4">
+                                            </li>
+                                        </ul>
+                                        <ul class="shipMethod">
+                                            <li class="clear clearfix shipRadios width100">
+                                                <div class="radio" id="uniform-radShipStd"><span><input type="radio" id="radShipStd" class="radDef" value="standard" name="radioShipMethod" style="opacity: 0;"></span></div>
+                                                <label for="radShipStd">
+                                                    <strong>Standard Shipping:</strong> <span class="txtRed">$7.95</span> (Ships in 3-5 business days)
+                                                </label>
+                                                <div class="helpIcon" id="shipStdHelp">
+                                                    <div class="cartTip clearfix">
+                                                        <div class="tipText txtA7 clearfix">
+                                                            <img width="23" height="24" class="bigQ" alt="?" src="../assets/img/bigQuestionIcon.png">
+                                                            <div class="tipInner">
+                                                                <strong>Standard Shipping:</strong><br>
+                                                                Something informative<br>
+                                                                explained here about shipping
+                                                            </div>
+                                                        </div>
+                                                    </div><!-- eo .cartTip -->
+                                                </div><!-- #shipStdHelp -->
+                                            </li>
+                                            <li class="clear clearfix shipRadios width100">
+                                                <div class="radio" id="uniform-radShip2Day"><span><input type="radio" id="radShip2Day" class="radDef" value="express 2 day" name="radioShipMethod" style="opacity: 0;"></span></div>
+                                                <label for="radShipStd">
+                                                    <strong>Express - 2 Day Shipping:</strong> <span class="txtRed">$14.95</span> (Ships in 2 business days)
+                                                </label>
+                                                <div class="helpIcon" id="shipStdHelp">
+                                                    <div class="cartTip clearfix">
+                                                        <div class="tipText txtA7 clearfix">
+                                                            <img width="23" height="24" class="bigQ" alt="?" src="../assets/img/bigQuestionIcon.png">
+                                                            <div class="tipInner">
+                                                                <strong>Express 2 Day Shipping:</strong><br>
+                                                                Something informative<br>
+                                                                explained here about shipping
+                                                            </div>
+                                                        </div>
+                                                    </div><!-- eo .cartTip -->
+                                                </div><!-- #shipStdHelp -->
+                                            </li>
+                                            <li class="clear clearfix shipRadios width100">
+                                                <div class="radio" id="uniform-radShip1Day"><span><input type="radio" id="radShip1Day" class="radDef" value="express 1 day" name="radioShipMethod" style="opacity: 0;"></span></div>
+                                                <label for="radShipStd">
+                                                    <strong>Express - 1 Day Shipping:</strong> <span class="txtRed">$19.95</span> (Ships in 1 business day)
+                                                </label>
+                                                <div class="helpIcon" id="shipStdHelp">
+                                                    <div class="cartTip clearfix">
+                                                        <div class="tipText txtA7 clearfix">
+                                                            <img width="23" height="24" class="bigQ" alt="?" src="../assets/img/bigQuestionIcon.png">
+                                                            <div class="tipInner">
+                                                                <strong>Express 1 Day Shipping:</strong><br>
+                                                                Something informative<br>
+                                                                explained here about shipping
+                                                            </div>
+                                                        </div>
+                                                    </div><!-- eo .cartTip -->
+                                                </div><!-- #shipStdHelp -->
+                                            </li>
+                                        </ul>
+                                        <a id="lnkShipContinue" class="pillDrkGray26 btnChkCont" href="#"><span><img width="9" height="7" alt="" src="../assets/img/arw_right_red_9x7.png">Continue</span></a>
+                                    </div><!-- eo #checkStep2Form -->
+                                </div><!-- eo #checkoutStep2 -->
+                                <div id="checkoutStep3" class="checkoutStep billInfoForm">
+                                	<h3 class="txtBebas txtA7 hdrCheckStep clearfix">
+                                		<span class="txtRed">3.</span> Payment Method
+                                    </h3>
+                                    <div id="checkStep3Form" class="checkStepForm clearfix payInfoForm">
+                                    	<div class="checkCredit clearfix">
+                                            <div class="ccTypeHolder clearfix">
+                                                <img width="120" height="42" class="ccImage" alt="credit cards" src="../assets/img/creditcards.png">
+                                                <select class="addrState selCC selCCType" id="selCardType" name="selCardType" style="display: none;" aria-disabled="false">
+                                                    <option value="">Credit Card Type</option>
+                                                    <option value="Visa">Visa</option>
+                                                    <option value="MasterCard">MasterCard</option>
+                                                    <option value="Amex">American Express</option>
+                                                    <option value="DinersClub">Diner's Club</option>
+                                                    <option value="LAPurchaseCard">LA Purchase Card</option>
+                                                </select><a aria-owns="selCardType-menu" aria-haspopup="true" tabindex="0" href="#" role="button" id="selCardType-button" class="ui-selectmenu ui-widget ui-state-default ui-corner-all ui-selectmenu-popup addrState selCC selCCType" style="width: 192px;" aria-disabled="false"><span class="ui-selectmenu-status">Credit Card Type</span><span class="ui-selectmenu-icon ui-icon ui-icon-triangle-2-n-s"></span></a>
+                                            </div>
+                                            <div class="ccHolder clear clearfix">
+                                                <div class="ccNumber">
+                                                    <label class="txtBebas" for="txtCCNumber">*Credit Card Number</label>
+                                                    <input type="text" class="txtDef txt16" id="txtCCNumber" name="txtCCNumber">
+                                                </div><!-- eo .ccNumber -->
+                                                <div class="secHolder clearfix">
+                                                    <label class="txtBebas" for="txtSecCode">*Security Code</label>
+                                                    <div id="secCodeHelp" class="helpIcon">
+                                                        <div class="cartTip clearfix">
+                                                            <div class="tipText txtA7 clearfix">
+                                                                <img width="23" height="24" class="bigQ" alt="?" src="../assets/img/bigQuestionIcon.png">
+                                                                <div class="tipInner">
+                                                                    <strong>Security Code:</strong><br>
+                                                                    It's the 3 digits on<br>
+                                                                    the back of your card<br>
+                                                                    or on the front for AmEx
+                                                                </div>
+                                                            </div>
+                                                        </div><!-- eo .cartTip -->
+                                                    </div><!-- eo .helpIcon -->
+                                                    <input type="text" class="clear txtDef txt3" id="txtCCNumber" name="txtSecCode">
+                                                </div><!--  eo .secHolder -->
+                                            </div><!--  eo .ccHolder -->
+                                            <div class="ccDDL clear clearfix">
+                                                <label class="txtBebas" for="selExpMonth-button">*Exp Month</label>
+                                                <select class="selExpMonth selDOB selCC" id="selExpMonth" name="selExpMonth" style="display: none;" aria-disabled="false">
+                                                    <option value="">Month</option>
+                                                    <option value="January">January</option>
+                                                    <option value="February">February</option>
+                                                    <option value="March">March</option>
+                                                    <option value="April">April</option>
+                                                    <option value="May">May</option>
+                                                    <option value="June">June</option>
+                                                    <option value="July">July</option>
+                                                    <option value="August">August</option>
+                                                    <option value="September">September</option>
+                                                    <option value="October">October</option>
+                                                    <option value="November">November</option>
+                                                    <option value="December">December</option>
+                                                </select><a aria-owns="selExpMonth-menu" aria-haspopup="true" tabindex="0" href="#" role="button" id="selExpMonth-button" class="ui-selectmenu ui-widget ui-state-default ui-corner-all ui-selectmenu-popup selExpMonth selDOB selCC" style="width: 96px;" aria-disabled="false"><span class="ui-selectmenu-status">Month</span><span class="ui-selectmenu-icon ui-icon ui-icon-triangle-2-n-s"></span></a>
+                                            </div><!-- eo .ccDDL -->
+                                            <div class="ccDDL clearfix">
+                                                <label class="txtBebas" for="selExpYear-button">*Exp Year</label>
+                                                <select class="selExpYear selDOB selCC" id="selExpYear" name="selExpYear" style="display: none;" aria-disabled="false">
+                                                    <option value="">Year</option>
+                                                    <option value="2011">2011</option>
+                                                    <option value="2012">2012</option>
+                                                    <option value="2013">2013</option>
+                                                    <option value="2014">2014</option>
+                                                    <option value="2015">2015</option>
+                                                    <option value="2016">2016</option>
+                                                    <option value="July">July</option>
+                                                </select><a aria-owns="selExpYear-menu" aria-haspopup="true" tabindex="0" href="#" role="button" id="selExpYear-button" class="ui-selectmenu ui-widget ui-state-default ui-corner-all ui-selectmenu-popup selExpYear selDOB selCC" style="width: 67px;" aria-disabled="false"><span class="ui-selectmenu-status">Year</span><span class="ui-selectmenu-icon ui-icon ui-icon-triangle-2-n-s"></span></a>
+                                            </div><!-- eo .ccDDL -->
+                                        </div><!-- eo .checkCredit -->
+                                        <div class="checkGC clearfix">
+                                            <div class="inner">
+                                                <p>
+                                                    Apply an e-Gift Card <img width="40" height="24" alt="e-gift card" src="../assets/img/icon_gc.png">
+                                                </p>
+                                                <p>
+                                                    <label class="txtBebas" for="txtGC">Gift Card Number</label>
+                                                    <input type="text" id="txtGC" name="txtGC" class="txtDef">
+                                                </p>
+                                                <p>
+                                                    <a class="lnkBlack" id="lnkGCAmt" href="#">Check Balance</a>
+                                                </p>
+                                                <p>
+                                                    <a id="lnkApplyGC" class="pillDrkGray20 applyGC" href="#"><span><img width="9" height="7" alt="" src="../assets/img/arw_right_red_9x7.png">Apply Gift Card</span></a>
+                                                </p>
+                                            </div><!-- eo .inner -->
+                                        </div><!-- eo .checkGC -->
+                                    </div><!-- eo #checkStep3Form -->
+                                </div><!-- eo checkoutStep3 -->
+                            </div><!-- eo .checkout -->
+                            <div id="chkOutFinalBtns" class="cartBtns clearfix clear chkOutFinalBtns">
+                                <div class="cartBtnsLeft">
+                                    &nbsp;
+                                </div>
+                                <div class="cartBtnsRight">
+                                    <a href="Confirmation.html" class="pillRed26">
+                                        <span>
+                                            <img width="9" height="7" alt="" src="../assets/img/arw_right_orange_9x7.png"> Submit Order
+                                        </span>
+                                    </a>
+                                </div>
+                            </div><!-- eo .cartBtns -->
+                        </div><!-- eo #checkoutForms -->
+                    </div><!-- eo .cartBtm -->
+                </section><!-- eo .cartHolder -->
+                <section class="listKickersRight clearfix">
+                    <section class="kickerHelp clear">
+                        <h3 class="txtRed txtBebas">
+                            NEED HELP?
+                        </h3>
+                    	<div class="kickerHelpBtm">
+                        	<div class="inner clearfix">
+                                <p class="txtBebas helpP">
+                                    <span>Call Us</span>
+                                    <span class="txtRed">877.746.3942</span>
+                                    </p><div id="callHelp" class="helpIcon">
+                                        <div class="cartTip clearfix">
+                                            <div class="tipText txtA7 clearfix">
+                                                <img width="23" height="24" class="bigQ" alt="?" src="../assets/img/bigQuestionIcon.png">
+                                                <div class="tipInner">
+                                                    <strong>Live Customer Care hours:</strong><br>
+                                                    Mon-Fri, 8 am to 6 pm<br>
+                                                    Sat-Sun, 12 pm to 3 pm
+                                                </div>
+                                            </div>
+                                        </div><!-- eo .cartTip -->
+                                    </div>
+                                <p></p>
+                            	<a href="../CustomerCare/CustomerCare.html" class="kickerPromoLink"><strong>Visit Customer Care</strong></a>
+                            </div><!-- eo .inner -->
+                        </div><!-- eo .kickerHelpBtm -->
+                    </section><!-- eo .kickerHelp -->
+                	<section id="kickerCheckout" class="kickerCheckout" style="position: absolute; top: 124px; left: 0px; margin: 0px; width: 224px;">
+                        <h3 class="txtWhite txtBebas">
+                            ORDER SUMMARY
+                        </h3>
+                    	<div class="kickerCheckBtm clearfix">
+                            <ul class="chkSummary clearfix">
+                                <li>
+                                    <div class="leftCol">
+                                        Products
+                                    </div>
+                                    <div id="lblSummProdPrice" class="rightCol">
+                                        $131.80
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="leftCol">
+                                        Sales Tax
+                                    </div>
+                                    <div id="lblSummSalesTax" class="rightCol">
+                                        $-.--
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="leftCol">
+                                        Shipping
+                                    </div>
+                                    <div id="lblSummShipPrice" class="rightCol">
+                                        $-.--
+                                    </div>
+                                </li>
+                                <li id="summPromo"><!-- only shows if they've entered a promo code on the cart page-->
+                                    <div class="leftCol">
+                                        Promo <span class="txtRed">ABC123</span>
+                                    </div>
+                                    <div id="lblSummPromoDisc" class="rightCol">
+                                        $9.95
+                                    </div>
+                                </li>
+                                <li class="summGC" id="summGC">
+                                    <div class="leftCol">
+                                        Gift Card
+                                    </div>
+                                    <div id="lblSummGCAmount" class="rightCol">
+                                        $25.00
+                                    </div>
+                                </li>
+                                <li class="summSubTotal">
+                                    <div class="leftCol">
+                                        Subtotal
+                                    </div>
+                                    <div id="lblSummSubtotal" class="rightCol">
+                                        $143.70
+                                    </div>
+                                </li>
+                                <li class="summTotal">
+                                    <div class="leftCol">
+                                        Order Total
+                                    </div>
+                                    <div id="lblSummTotal" class="rightCol">
+                                        $143.70
+                                    </div>
+                                </li>
+                            </ul>
+                        </div><!-- eo .kickerCheckBtm -->
+                    </section><!-- eo .kickerCheckout -->
+                </section><!-- eo .listKickersRight -->
+            </section>
+
+
 <?php echo $this->getChildHtml('login_before') ?>
 <div class="col2-set"<?php if (!$this->helper('customer')->isRegistrationAllowed() && !$this->getQuote()->isAllowedGuestCheckout()) echo ' login-only' ?>">
     <div class="col-1">
