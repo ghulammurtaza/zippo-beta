@@ -12,13 +12,13 @@ $childern = $catModel->load($categoryId)->getChildrenCategories();
           <h3 class="listCatHead txtWhite txtBebas"> <?php echo $mainCategory->getName();?> </h3>        
         <?php echo $mainCategory->getDescription();?>
       </div>
-      <!-- eo .listHero --> 
     </div>
 <?php foreach ($childern as $child): ?>
     <?php
     $collection = $prodModel->getCollection()
             ->joinField('category_id', 'catalog/category_product', 'category_id', 'product_id = entity_id', null, 'left')
             ->addAttributeToSelect('*')
+            ->addUrlRewrite($child->getId())
             ->addAttributeToFilter('category_id', array('eq' => $child->getId()));
     ?>
     <?php $_collectionSize = $collection->count() ?>
