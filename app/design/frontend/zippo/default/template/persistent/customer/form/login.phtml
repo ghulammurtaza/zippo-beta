@@ -32,73 +32,109 @@
  */
 /** @var $this Mage_Customer_Block_Form_Login */
 ?>
-<div class="account-login<?php if (!$this->helper('customer')->isRegistrationAllowed()) echo ' login-only' ?>">
-    <div class="page-title">
-        <h1><?php if ($this->helper('customer')->isRegistrationAllowed()): ?>
-                <?php echo $this->__('Login or Create an Account') ?>
-            <?php else: ?>
-                <?php echo $this->__('Login'); ?>
-            <?php endif; ?></h1>
-    </div>
-    <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
-    <form action="<?php echo $this->getPostActionUrl() ?>" method="post" id="login-form" class="scaffold-form">
-        <?php echo $this->getBlockHtml('formkey'); ?>
-        <div class="col2-set">
-            <?php if ($this->helper('customer')->isRegistrationAllowed()): ?>
-            <div class="col-1 new-users">
-                <div class="content">
-                    <h2><?php echo $this->__('New Here?') ?></h2>
-                    <p class="form-instructions"><?php echo $this->__('Registration is free and easy!') ?></p>
-                    <ul class="benefits">
-                        <li><?php echo $this->__('Faster checkout') ?></li>
-                        <li><?php echo $this->__('Save multiple shipping addresses') ?></li>
-                        <li><?php echo $this->__('View and track orders and more') ?></li>
-                    </ul>
-                </div>
-                <div class="buttons-set">
-                    <a title="<?php echo $this->__('Create an Account') ?>" class="button" href="<?php echo Mage::helper('persistent')->getCreateAccountUrl($this->getCreateAccountUrl()) ?>"><span><span><?php echo $this->__('Create an Account') ?></span></span></a>
-                </div>
+
+<section class="wholePage acctAddress clearfix">
+  <div class="wholeMain clearfix">
+    <div class="wholeInner clearfix">
+      <h2 class="wholeHdr txtBebas"> MY ACCOUNT </h2>
+      <section id="acctLoginContent" class="acctLoginForms clearfix">
+        <section id="passModal" class="confimModal modalWindow">
+          <div class="modalInner">
+            <div class="modalContent clearfix">
+              <header class="redBg txtBebas txtWhite">Retrieve your Password</header>
+              <div id="forgotForm">
+                <p class="txtBold"> Please enter your email address to retrieve your password </p>
+              </div>
+              <div style="display: none;" id="retMessage">
+                <p class="txtBold"><!-- show if success --> 
+                  Please check your email for your password. </p>
+                <p class="txtBold txtRed"><!-- show if failure --> 
+                  Error message about the email address you submitted </p>
+              </div>
+              <label class="txtBebas txtBlack">Email Address</label>
+              <br>
+              <input type="text" style="float: left; margin: 0 12px 0 0;" class="txtDef" id="txtRetEmail" name="txtRetEmail">
+              <a style="margin-top: 3px;" class="lnkBlkWhtArw" id="btnRetPass" href="#">Submit</a>
+              <div class="modalConfirmBtns clearfix"> <a id="retCancel" class="delNo" href="#">Cancel</a> </div>
+              <!-- eo .modalConfirmBtns --> 
             </div>
-            <?php endif; ?>
-            <?php // This column should be col-1 if the registration column is not displayed ?>
-            <div class="<?php if ($this->helper('customer')->isRegistrationAllowed()): ?>col-2<?php else: ?>col-1<?php endif; ?> registered-users">
-                <div class="content fieldset">
-                    <h2><?php echo $this->__('Already registered?') ?></h2>
-                    <p class="form-instructions"><?php echo $this->__('If you have an account with us, please log in.') ?></p>
-                    <p class="required"><?php echo $this->__('* Required Fields') ?></p>
-                    <ul class="form-list">
-                        <li>
-                            <label for="email" class="required"><em>*</em><?php echo $this->__('Email Address') ?></label>
-                            <div class="input-box">
-                                <input type="email" autocapitalize="off" autocorrect="off" spellcheck="false" name="login[username]" value="<?php echo $this->escapeHtml($this->getUsername()) ?>" id="email" class="input-text required-entry validate-email" title="<?php echo $this->__('Email Address') ?>" />
-                            </div>
-                        </li>
-                        <li>
-                            <label for="pass" class="required"><em>*</em><?php echo $this->__('Password') ?></label>
-                            <div class="input-box">
-                                <input type="password" name="login[password]" class="input-text required-entry validate-password" id="pass" title="<?php echo $this->__('Password') ?>" />
-                            </div>
-                        </li>
-                        <?php echo $this->getChildHtml('form.additional.info'); ?>
-                        <li>
-                            <a href="<?php echo $this->getForgotPasswordUrl() ?>" class="f-left"><?php echo $this->__('Forgot Your Password?') ?></a>
-                        </li>
-                        <?php echo $this->getChildHtml('persistent.remember.me'); ?>
-                    </ul>
-                    <?php echo $this->getChildHtml('persistent.remember.me.tooltip'); ?>
-                </div>
-                <div class="buttons-set">
-                    <button type="submit" class="button" title="<?php echo $this->__('Login') ?>" name="send" id="send2"><span><span><?php echo $this->__('Login') ?></span></span></button>
-                </div>
-            </div>
-        </div>
-        <?php if (Mage::helper('checkout')->isContextCheckout()): ?>
-            <input name="context" type="hidden" value="checkout" />
-        <?php endif; ?>
-    </form>
-    <script type="text/javascript">
+            <!-- eo .modalContent --> 
+          </div>
+          <!-- eo .modalInner --> 
+        </section>
+        <!-- eo #passModal -->
+        <div class="inner clearfix">
+          <section id="acctExisting" class="acctExisting clearfix">
+            <div class="column clearfix">
+              <header class="txtBebas acctHdr">
+                <h3 class="txtRed">Registered Customers</h3>
+              </header>
+              <div class="acctLogin txtBebas clearfix">
+                <div class="account-login<?php if (!$this->helper('customer')->isRegistrationAllowed()) echo ' login-only' ?>"> <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+                  <form action="<?php echo $this->getPostActionUrl() ?>" method="post" id="login-form" class="scaffold-form">
+                    <?php echo $this->getBlockHtml('formkey'); ?>
+                  
+                    <?php // This column should be col-1 if the registration column is not displayed ?>
+                    <?php echo $this->getChildHtml('form.additional.info'); ?> <?php echo $this->getChildHtml('persistent.remember.me'); ?> <?php echo $this->getChildHtml('persistent.remember.me.tooltip'); ?>
+                    <label for="txtEmail">Email Address</label>
+                    <input type="email" autocapitalize="off" autocorrect="off" spellcheck="false" name="login[username]" value="<?php //echo $this->escapeHtml($this->getUsername()) ?>" id="email" class="required-entry validate-email" title="<?php //echo $this->__('Email Address') ?>" />
+                    <label for="txtPassLogin">Password</label>
+                    <input type="password" name="login[password]" class="required-entry validate-password" id="pass" title="<?php echo $this->__('Password') ?>" />
+                    <div class="frmBtns clearfix" style="padding-top:10px;"> <a id="lnkForgotPass" class="lnkForgot" href="<?php echo $this->getForgotPasswordUrl() ?>">FORGOT PASSWORD?</a>
+                    <div class="clear clr"></div>
+                      <button type="submit" class="btnLogin" title="<?php echo $this->__('Login') ?>" name="send" id="send2">LOG me in</button>
+                   
+                    <!-- eo .frmBtns -->
+                    
+                    <?php if (Mage::helper('checkout')->isContextCheckout()): ?>
+                    <input name="context" type="hidden" value="checkout" />
+                    <?php endif; ?>
+                  </form>
+                  <script type="text/javascript">
     //<![CDATA[
         var dataForm = new VarienForm('login-form', true);
     //]]>
-    </script>
-</div>
+    </script> 
+                </div>
+              </div>
+              <!-- eo .acctLogin --> 
+            </div>
+            <!-- eo .column --> 
+          </section>
+          <!-- eo .acctExisting -->
+          <section id="acctCreate" class="acctCreate">
+            <div class="column clearfix">
+              <header class="acctHdr">
+                <h3 class="txtRed txtBebas">CREATE AN ACCOUNT</h3>
+              </header>
+              <ul class="whyCreate txtBebas txtA7">
+                <li> <img width="4" height="8" style="margin-right: 4px; position:relative;top:-2px;" alt="" src="<?php echo $this->getSkinUrl('img/triangle_right_gray.png', array('_secure'=>true)) ?>"> Save time with Express Checkout. </li>
+                <li> <img width="4" height="8" style="margin-right: 4px; position:relative;top:-2px;" alt="" src="<?php echo $this->getSkinUrl('img/triangle_right_gray.png', array('_secure'=>true)) ?>"> Track orders with access to Order History. </li>
+                <li> <img width="4" height="8" style="margin-right: 4px; position:relative;top:-2px;" alt="" src="<?php echo $this->getSkinUrl('img/triangle_right_gray.png', array('_secure'=>true)) ?>"> Store addresses you ship to the most. </li>
+                <li> <img width="4" height="8" style="margin-right: 4px; position:relative;top:-2px;" alt="" src="<?php echo $this->getSkinUrl('img/triangle_right_gray.png', array('_secure'=>true)) ?>"> Make a Wish List of your favotire items and save for later or share with others. </li>
+              </ul>
+
+              <?php echo $this->getChildHtml('customer_form_register') ?>
+              <!-- eo .frmBtns --> 
+            </div>
+            <!-- eo .column --> 
+          </section>
+          <!-- eo .acctCreate --> 
+        </div>
+        <!-- eo .inner --> <section class="btmPromo clear clearfix">
+                            <div class="promoInner clearfix">
+                                <h3 class="txtBebas txtBlack">Zippo eGift Card</h3>
+                                <p class="txtBold txtA7">Give the perfect gift that is sure to please every time.  Let them choose <br> the gift they want with a Zippo eGift Card.  </p>
+                                 <img width="195" alt="" src="https://www.zippo.com/images/c9/1_270.jpg">
+                                <a class="txtBebas" title="" href="http://zippo.com/giftcards">Shop Now</a> </div>
+                        </section>
+      </section>
+      <!-- eo .wholeContent -->
+      
+      
+      <!-- eo .btmPromo --> 
+    </div>
+    <!-- eo .wholeInner --> 
+  </div>
+  <!-- eo .wholeMain --> 
+</section>
