@@ -13,21 +13,7 @@ $products = Mage::getResourceModel('reports/product_collection')
                 ->setOrder('ordered_qty', 'desc')
                 ->getSelect()->limit(10)->query();
 ?>
-<?php
-$visibility = array(
-    Mage_Catalog_Model_Product_Visibility::VISIBILITY_BOTH,
-    Mage_Catalog_Model_Product_Visibility::VISIBILITY_IN_CATALOG
-);
-$storeId = Mage::app()->getStore()->getId();
-$products = Mage::getResourceModel('reports/product_collection')
-                ->addOrderedQty()
-                ->addAttributeToFilter('visibility', $visibility)
-                ->addAttributeToSelect('*')
-                ->setStoreId($storeId)
-                ->addStoreFilter($storeId)
-                ->setOrder('ordered_qty', 'desc')
-                ->getSelect()->limit(10)->query();
-if (count($products) > 0):
+<?php if (count($products) > 0):
 ?>
 
 <section class="listKickersRight">
