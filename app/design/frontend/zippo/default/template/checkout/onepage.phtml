@@ -24,12 +24,17 @@
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
 ?>
-<div class="page-title">
-    <h1><?php echo $this->__('Checkout') ?></h1>
-</div>
 <script type="text/javascript" src="<?php echo $this->getJsUrl('varien/accordion.js') ?>"></script>
 <script type="text/javascript" src="<?php echo $this->getSkinUrl('js/opcheckout.js') ?>"></script>
 <script type="text/javascript" src="<?php echo $this->getSkinUrl('js/opcheckout_rwd.js') ?>"></script>
+<section class="row" style="padding-top:10px;" >
+            	<section class="cartHolder clearfix">
+                	<header class="cartHeader txtBebas txtWhite">
+                    	<?php echo $this->__('Checkout') ?>
+                    </header>
+                    <div class="cartBtm clearfix">
+                    	<div id="checkInBegin" class="checkBegin clearfix">
+
 <ol class="opc opc-firststep-<?php echo $this->getActiveStep() ?>" id="checkoutSteps">
 <?php $i=0; foreach($this->getSteps() as $_stepId => $_stepInfo): ?>
 <?php if (!$this->getChild($_stepId) || !$this->getChild($_stepId)->isShow()): continue; endif; $i++ ?>
@@ -45,6 +50,113 @@
     </li>
 <?php endforeach ?>
 </ol>
+
+
+                        </div>
+                    	<!-- eo #checkoutForms -->
+                    </div><!-- eo .cartBtm -->
+                </section><!-- eo .cartHolder -->
+                <!-- eo .listKickersRight -->
+         
+
+
+<section class="listKickersRight clearfix">
+                    <section class="kickerHelp clear">
+                        <h3 class="txtRed txtBebas">
+                            NEED HELP?
+                        </h3>
+                    	<div class="kickerHelpBtm">
+                        	<div class="inner clearfix">
+                                <p class="txtBebas helpP">
+                                    <span>Call Us</span>
+                                    <span class="txtRed">877.746.3942</span>
+                                    </p><div id="callHelp" class="helpIcon">
+                                        <div class="cartTip clearfix">
+                                            <div class="tipText txtA7 clearfix">
+                                                <img width="23" height="24" class="bigQ" alt="?" src="../assets/img/bigQuestionIcon.png">
+                                                <div class="tipInner">
+                                                    <strong>Live Customer Care hours:</strong><br>
+                                                    Mon-Fri, 8 am to 6 pm<br>
+                                                    Sat-Sun, 12 pm to 3 pm
+                                                </div>
+                                                
+                                            </div>
+                                        </div><!-- eo .cartTip -->
+                                    </div>
+                                <p></p>
+                            	<a href="<?php echo $this->getUrl('') ?>customer/" class="kickerPromoLink"><strong>Visit Customer Care</strong></a>
+                            </div><!-- eo .inner -->
+                        </div><!-- eo .kickerHelpBtm -->
+                    </section><!-- eo .kickerHelp -->
+                	<section id="kickerCheckout" class="kickerCheckout" style="position:; display:none; top: 124px; left: 0px; margin: 0px; width: 224px;">
+                        <h3 class="txtWhite txtBebas">
+                            ORDER SUMMARY
+                        </h3>
+                    	<div class="kickerCheckBtm clearfix">
+                            <ul class="chkSummary clearfix">
+                                <li>
+                                    <div class="leftCol">
+                                        Products
+                                    </div>
+                                    <div id="lblSummProdPrice" class="rightCol">
+                                        $131.80
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="leftCol">
+                                        Sales Tax
+                                    </div>
+                                    <div id="lblSummSalesTax" class="rightCol">
+                                        $-.--
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="leftCol">
+                                        Shipping
+                                    </div>
+                                    <div id="lblSummShipPrice" class="rightCol">
+                                        $-.--
+                                    </div>
+                                </li>
+                                <li id="summPromo"><!-- only shows if they've entered a promo code on the cart page-->
+                                    <div class="leftCol">
+                                        Promo <span class="txtRed">ABC123</span>
+                                    </div>
+                                    <div id="lblSummPromoDisc" class="rightCol">
+                                        $9.95
+                                    </div>
+                                </li>
+                                <li class="summGC" id="summGC">
+                                    <div class="leftCol">
+                                        Gift Card
+                                    </div>
+                                    <div id="lblSummGCAmount" class="rightCol">
+                                        $25.00
+                                    </div>
+                                </li>
+                                <li class="summSubTotal">
+                                    <div class="leftCol">
+                                        Subtotal
+                                    </div>
+                                    <div id="lblSummSubtotal" class="rightCol">
+                                        $143.70
+                                    </div>
+                                </li>
+                                <li class="summTotal">
+                                    <div class="leftCol">
+                                        Order Total
+                                    </div>
+                                    <div id="lblSummTotal" class="rightCol">
+                                        $143.70
+                                    </div>
+                                </li>
+                            </ul>
+                        </div><!-- eo .kickerCheckBtm -->
+                    </section><!-- eo .kickerCheckout -->
+                </section>
+
+
+
 <script type="text/javascript">
 //<![CDATA[
     var accordion = new Accordion('checkoutSteps', '.step-title', true);
@@ -59,3 +171,4 @@
     );
 //]]>
 </script>
+   </section>

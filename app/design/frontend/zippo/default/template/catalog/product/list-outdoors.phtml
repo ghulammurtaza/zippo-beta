@@ -1,24 +1,18 @@
 <style type="text/css" id="page-css">
-			/* Styles specific to this particular page */
-			.scroll-pane-before,
-			.scroll-pane-after,
-			.scroll-pane-split,
-			.scroll-pane-os
-			{
-				width: 90%;
-			
-				overflow: auto;
-			}
-			.horizontal-only
-			{
-				height: auto;
-				
-			}
-			.jspTrack{
-				width:576px !important;
-				overflow:hidden;
-			}
-		</style>
+/* Styles specific to this particular page */
+
+.scroll-pane-before,  .scroll-pane-after,  .scroll-pane-split,  .scroll-pane-os {
+	width: 90%;
+	overflow: auto;
+}
+.horizontal-only {
+	height: auto;
+}
+.jspTrack {
+	width: 576px !important;
+	overflow: hidden;
+}
+</style>
 <?php
 $catModel = Mage::getModel('catalog/category');
 $prodModel = Mage::getModel('catalog/product');
@@ -28,43 +22,49 @@ $childern = $catModel->load($categoryId)->getChildrenCategories();
 ?>
 <section class="row zOutdoor" >
   <section class="listHolder listHolderWhiteBg clearfix">
-      <div class="listTop listOutdoors clearfix" <?php if ($mainCategory->getImageUrl()):  ?> style="background:url('<?php echo $mainCategory->getImageUrl()?> <?php endif;?>')">
+    <div class="listTop listOutdoors clearfix" <?php if ($mainCategory->getImageUrl()):  ?> style="background:url('<?php echo $mainCategory->getImageUrl()?> <?php endif;?>')">
       <div class="listHero listOutdoorHero">
-          <h3 class="listCatHead txtWhite txtBebas"> <?php echo $mainCategory->getName();?> </h3>        
-        <?php echo $mainCategory->getDescription();?>
-      </div>
+        <h3 class="listCatHead txtWhite txtBebas"> <?php echo $mainCategory->getName();?> </h3>
+        <?php echo $mainCategory->getDescription();?> </div>
     </div>
-       <div class="listSlider">
-<?php foreach ($childern as $child): ?>
-    <?php
+    <div class="listSlider">
+      <?php foreach ($childern as $child): ?>
+      <?php
     $collection = $prodModel->getCollection()
             ->joinField('category_id', 'catalog/category_product', 'category_id', 'product_id = entity_id', null, 'left')
             ->addAttributeToSelect('*')
             ->addUrlRewrite($child->getId())
             ->addAttributeToFilter('category_id', array('eq' => $child->getId()));
     ?>
-    <?php $_collectionSize = $collection->count() ?>
- 
-        <div class="slideHdr clearfix">
-            <h3 class="txtBebas"><?php echo $child->getName() ?></h3><span class="listCount txtBebas"><?php echo $_collectionSize; ?>&nbsp;<?php echo $this->__('items') ?> </span>
+      <?php $_collectionSize = $collection->count() ?>
+      <div class="slideHdr clearfix">
+        <h3 class="txtBebas"><?php echo $child->getName() ?></h3>
+        <span class="listCount txtBebas"><?php echo $_collectionSize; ?>&nbsp;<?php echo $this->__('items') ?> </span> </div>
+      <div class="multiSlide">
+        <div class="scroll-pane-os horizontal-only"  style="width:624px; height:250px;">
+          <ul class="prodListSm clearfix   listPageProds" style="width: <?php echo $_collectionSize * 126?>px;">
+            <?php foreach ($collection as $product): ?>
+            <li><a class="prodLink" title="<?php echo $product->getName()?>" href="<?php echo $product->getProductUrl()?>"><img width="94" alt="<?php echo $product->getName()?>" src="<?php echo $this->helper('catalog/image')->init($product, 'small_image')->resize(200)?>"><span class="newTag"></span></a>
+              <div class="listProdPopUps">
+                <div class="productListingPopup clearfix">
+                  <div class="inner clearfix">
+                    <div class="prodHero"> 
+                    <a class="prodLink" title="<?php echo $product->getName()?>" href="<?php echo $product->getProductUrl()?>"><img width="94" alt="<?php echo $product->getName()?>" src="<?php echo $this->helper('catalog/image')->init($product, 'small_image')->resize(162,230)?>"></span></a>
+                    </div>
+                    <div class="popRight">
+                      <h2 class="jProductName txtRed"><?php echo $product->getName()?></h2>
+                    </div>
+                  </div>
+                  <a href="<?php echo $product->getProductUrl()?>" title="<?php echo $product->getName()?>" class="btnProdClickreviews">Click for more info!</a>
+                </div>
+              </div>
+            </li>
+            <?php endforeach ?>
+          </ul>
         </div>
-        <div class="multiSlide">
-            <div class="scroll-pane-os horizontal-only"  style="width:624px; height:250px;">
-                <ul class="prodListSm clearfix   listPageProds" style="width: <?php echo $_collectionSize * 126?>px;">
-                    <?php foreach ($collection as $product): ?>
-                    <li><a class="prodLink" title="<?php echo $product->getName()?>" href="<?php echo $product->getProductUrl()?>"><img width="94" alt="<?php echo $product->getName()?>" src="<?php echo $this->helper('catalog/image')->init($product, 'small_image')->resize(200)?>"><?php if(Mage::helper('zippo')->isNew($product)):?><span class="newTag"></span><?php endif;?></a>
-                   <?php endforeach ?>
-                </ul>
-            </div>
-        </div>
-    
-<?php endforeach;?>
-</div>
+      </div>
+      <?php endforeach;?>
+    </div>
   </section>
-  
-
- <section class="listKickersRight">
-  <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('bestseller')->toHtml();?> 
- </section>
-  
+  <section class="listKickersRight"> <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('bestseller')->toHtml();?> </section>
 </section>

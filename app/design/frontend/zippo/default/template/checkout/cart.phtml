@@ -106,12 +106,12 @@
                 <tr>
                     <td colspan="50" class="a-right cart-footer-actions">
 
-                        <div class="cartBtns clearfix clear">
-                        	<div class="cartBtnsLeft">
+                        <div class="clearfix clear">
+                        	<div class="cartBtnsLeft" style="float:right; width:auto;">
                          
-                                <button type="submit" name="update_cart_action" value="update_qty" title="<?php echo $this->__('Update Shopping Cart'); ?>" class="pillDrkGray26"><span><img src="../assets/img/arw_right_red_9x7.png" alt="" width="9" height="7" />Update Cart</span></button>
+                                <button type="submit" name="update_cart_action" value="update_qty" title="<?php echo $this->__('Update Shopping Cart'); ?>" class="pillDrkGray26"><span><img src="<?php echo $this->getSkinUrl('img/arw_right_red_9x7.png', array('_secure'=>true)) ?>" alt="" width="9" height="7" />Update Cart</span></button>
                             	<a href="" onclick="setLocation('<?php echo $this->getContinueShoppingUrl() ?>')" id="btnContinueShopping" class="pillDrkGray26">
-                                	<span><img src="../assets/img/arw_right_red_9x7.png" alt="" width="9" height="7" />Continue Shopping</span>
+                                	<span><img src="<?php echo $this->getSkinUrl('img/arw_right_red_9x7.png', array('_secure'=>true)) ?>" alt="" width="9" height="7" />Continue Shopping</span>
                                 </a>
                             </div>
                             </div>
@@ -233,14 +233,14 @@
                         </div><!-- eo .cartInputs -->
                         <div class="cartBtns clearfix clear">
                         	<div class="cartBtnsLeft">
-                            	<a href="#" id="btnUpdateCart" class="pillDrkGray26">
+                            	<!--<a href="#" id="btnUpdateCart" class="pillDrkGray26">
                                 	<span><img src="../assets/img/arw_right_red_9x7.png" alt="" width="9" height="7" />Update Cart</span>
                                 </a>
                             	<a href="../index.html" id="btnContinueShopping" class="pillDrkGray26">
                                 	<span><img src="../assets/img/arw_right_red_9x7.png" alt="" width="9" height="7" />Continue Shopping</span>
-                                </a>
+                                </a>-->
                             </div>
-                            <div class="cartBtnsRight">
+                            <div class="cartBtnsRight" style="float:right; width:auto;">
                             <ul class="checkout-types">
         <?php foreach ($this->getMethods('top_methods') as $method): ?>
             <?php if ($methodHtml = $this->getMethodHtml($method)): ?>
@@ -248,11 +248,7 @@
             <?php endif; ?>
         <?php endforeach; ?>
         </ul>
-                            	<a class="pillRed26" href="Checkout.html">
-                                	<span>
-                                    	<img src="../assets/img/arw_right_orange_9x7.png" alt="" width="9" height="7" /> Checkout
-                                    </span>
-                                </a>
+                            	
                             </div>
                             
                             
@@ -266,34 +262,10 @@
                     
                 </section><!-- eo .productHolder -->
                 <section class="listKickersRight">
-                	<section class="listKickerAdTop">
-                    	
-                    </section><!-- eo .listKickerAdTop -->
-                	<section class="bestSellKicker" style="margin-top:0;">
-                    	<div class="inner clearfix">
-                        	<h3 class="bestSellHdr txtBebas">
-                            	best sellers
-                            </h3>
-                            <div class="bsSlider">
-                            	<div class="bsFaker"></div>
-                            	<strong class="shortDesc"></strong>
-                            	<div class="bsSlideWrap clearfix" id="bsKickSlide">
-                                    <ul id="bestSellersList">
-                                    	<li class="bsSlideItem"><img src="<?php echo $this->getSkinUrl('img/bsSlider1.jpg', array('_secure'=>true)) ?>" alt="First rugged yet refined classic" /></li>
-                                    	<li class="bsSlideItem"><img src="<?php echo $this->getSkinUrl('img/bsSlider1.jpg', array('_secure'=>true)) ?>" alt="2nd rugged yet refined classic" /></li>
-                                    	<li class="bsSlideItem"><img src="<?php echo $this->getSkinUrl('img/bsSlider1.jpg', array('_secure'=>true)) ?>" alt="3rd rugged yet refined classic" /></li>
-                                    </ul>
-                                	<!--<div class="bsSlideItem onDeck prevItem"><img src="assets/img/bsSlider1.jpg" alt="product name" width="107" height="146" /></div>-->
-                                	<!--<div class="bsSlideItem onDeck nextItem"><img src="assets/img/bsSlider1.jpg" alt="product name" width="107" height="146" /></div>-->
-                                </div>
-                            </div>
-                            <div class="sliderLinks clearfix">
-                            	<a id="btnBsProdInfo" href="ProductDetail.html" title="product info"></a>
-                            	<a id="btnBsAddCart" href="#" title="add to cart"></a>
-                            </div>
-                        </div>
-                    </section><!-- eo .listKickerSlide -->
+                	<!-- eo .listKickerAdTop -->
+                	<!-- eo .listKickerSlide -->
                     <!-- eo .kickerPromo -->
+                     <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('bestseller')->toHtml();?> 
                 </section><!-- eo .listKickersRight -->
             </section>
 

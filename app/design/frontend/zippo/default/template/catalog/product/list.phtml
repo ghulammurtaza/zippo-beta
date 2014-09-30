@@ -325,30 +325,8 @@ jQuery(document).ready(function(){
                 	<section class="listKickerAdTop">
                     	
                     </section><!-- eo .listKickerAdTop -->
-                	<section class="bestSellKicker" style="margin-top:0;">
-                    	<div class="inner clearfix">
-                        	<h3 class="bestSellHdr txtBebas">
-                            	best sellers
-                            </h3>
-                            <div class="bsSlider">
-                            	<div class="bsFaker"></div>
-                            	<strong class="shortDesc"></strong>
-                            	<div class="bsSlideWrap clearfix" id="bsKickSlide">
-                                    <ul id="bestSellersList">
-                                    	<li class="bsSlideItem"><img src="<?php echo $this->getSkinUrl('img/bsSlider1.jpg', array('_secure'=>true)) ?>" alt="First rugged yet refined classic" /></li>
-                                    	<li class="bsSlideItem"><img src="<?php echo $this->getSkinUrl('img/bsSlider1.jpg', array('_secure'=>true)) ?>" alt="2nd rugged yet refined classic" /></li>
-                                    	<li class="bsSlideItem"><img src="<?php echo $this->getSkinUrl('img/bsSlider1.jpg', array('_secure'=>true)) ?>" alt="3rd rugged yet refined classic" /></li>
-                                    </ul>
-                                	<!--<div class="bsSlideItem onDeck prevItem"><img src="assets/img/bsSlider1.jpg" alt="product name" width="107" height="146" /></div>-->
-                                	<!--<div class="bsSlideItem onDeck nextItem"><img src="assets/img/bsSlider1.jpg" alt="product name" width="107" height="146" /></div>-->
-                                </div>
-                            </div>
-                            <div class="sliderLinks clearfix">
-                            	<a id="btnBsProdInfo" href="ProductDetail.html" title="product info"></a>
-                            	<a id="btnBsAddCart" href="#" title="add to cart"></a>
-                            </div>
-                        </div>
-                    </section><!-- eo .listKickerSlide -->
+                    <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('bestseller')->toHtml();?> 
+                	<!-- eo .listKickerSlide -->
                     <!-- eo .kickerPromo -->
                 </section><!-- eo .listKickersRight -->
             </section>

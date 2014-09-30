@@ -911,6 +911,7 @@ a.button:hover {
 	display: inline-block;
 	margin-left: 10px;
 	margin-top: 5px;
+	float:left;
 	line-height: 24px;
 	height: 24px;
 	white-space: nowrap;/* Prevent the linebreak in the HTML from causing layout issues */
@@ -5204,11 +5205,11 @@ h2.product-name a:hover, h3.product-name a:hover, h4.product-name a:hover, h5.pr
  @media only screen and (min-width: 980px) {
 .checkout-onepage-index .col-main {
 	float: left;
-	width: 68.75%;
+	width: 76.75%;
 	padding-right: 20px;
 }
 .checkout-onepage-index .col-right,  .checkout-onepage-index .col-left {
-	width: 31.25%;
+	width: 23.25%;
 	display: block;
 }
 .checkout-onepage-index .col-right {
@@ -5217,6 +5218,12 @@ h2.product-name a:hover, h3.product-name a:hover, h4.product-name a:hover, h5.pr
 }
 .opc select {
 	width: 365px;
+	padding:5px 4px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:13px;
+	width:190px;
+	max-width:190px;
+	border:#000 solid 1px;
 }
 /* -------------------------------------------- *
  * Section Styling - Default
@@ -5260,23 +5267,13 @@ h2.product-name a:hover, h3.product-name a:hover, h4.product-name a:hover, h5.pr
 	text-decoration: none;
 }
 .opc .section .step-title .number, .opc .section.allow.active .step-title .number, .no-touch .opc .section.allow:hover .step-title .number {
-	width: 26px;
-	height: 26px;
-	text-align: center;
-	color: #FFFFFF;
-	line-height: 26px;
-	background-color: #3399cc;
-	display: block;
-	position: absolute;
-	top: 50%;
-	left: 10px;
-	margin-top: -13px;
+
 }
 .opc .section.allow .step-title .number {
 	background-color: #99cce5;
 }
 .opc .section.allow .step-title h2 {
-	color: #a0a0a0;
+	color: #a0a0a0 !important;
 }
 .opc .section.allow .step-title:hover h2, .opc .section.active .step-title h2 {
 	color: #3399cc;
@@ -5287,7 +5284,7 @@ h2.product-name a:hover, h3.product-name a:hover, h4.product-name a:hover, h5.pr
 	line-height: 40px;
 	height: 40px;
 	float: left;
-	margin: 0px 4px 0px 45px;
+	margin: 0px 4px 0px 5px;
 }
 .opc .section .step {
 	padding: 20px;
@@ -5465,40 +5462,58 @@ body:not(.opc-has-progressed-from-login) .opc.opc-firststep-login .section#opc-l
 .block-progress {
 	border: 0;
 	margin: 0;
-	border-left: 1px solid #cccccc;
-	padding-left: 20px;
+	border-left:0;
+	width:223px;
+}
+.block-progress .block-title strong{
+	display:none;
+}
+.block-progress .block-title:after{
+	content:"ORDER SUMMARY ";
+    font-family: 'BebasRegular',Impact,Helvetica,Arial,sans-serif;
+    font-weight: normal;
+    text-transform: uppercase;
+    word-spacing: 0.25em;
+	 color: #fff;
+	 position:relative;
+	 top:4px;
 }
 .block-progress .block-content {
 	font-size: 13px;
+	margin-top:0px;
+}
+.block-progress dl{
+	padding-left:20px;
+	padding-bottom:20px;
+	padding-top:10px;
 }
 .block-progress dt {
-	padding-top: 6px;
+	padding-top: 3px;
 	margin: 0;
-	margin-bottom: 10px;
-	color: #636363;
-	font-family: "Raleway", "Helvetica Neue", Verdana, Arial, sans-serif;
+	margin-bottom: 5px;
+	color: #333;
+	font-family: 'BebasRegular',Impact,Helvetica,Arial,sans-serif;f;
 	font-size: 14px;
 	font-weight: bold;
 	font-style: normal;
 	line-height: 1.4;
 	text-rendering: optimizeSpeed;
 	text-transform: uppercase;
-	margin-bottom: 6px;
+	margin-bottom: 2px;
 	text-transform: uppercase;
 	font-weight: normal;
 	color: #a0a0a0;
 }
 .block-progress dt.complete {
-	color: #636363;
+	color: #333;
 }
 .block-progress dd {
-	padding-left: 15px;
+
 	margin-bottom: 10px;
-	font-family: Georgia, Times, "Times New Roman", serif;
-	font-style: italic;
+	font-family:Arial, Helvetica, sans-serif;
 }
 .block-progress dd address {
-	font-style: italic;
+
 }
 .block-progress #payment-progress-opcheckout .subtitle {
 	margin-bottom: 3px;
@@ -5898,10 +5913,6 @@ body:not(.opc-has-progressed-from-login) .opc.opc-firststep-login .section#opc-l
 	width: 140px;
 }
 .opc #opc-login p:not(.required) {
-	font-style: italic;
-	font-family: Georgia, Times, "Times New Roman", serif;
-	font-size: 13px;
-	color: #a0a0a0;
 }
 .remember-me-box a.hide {
 	display: none;
@@ -8750,7 +8761,7 @@ body {
 }
 .reverse .listProdPopUps {
 	left:auto;
-	right:100%;
+	right:81%;
 	
 }
 .reverse .inner {
@@ -9089,12 +9100,14 @@ body {
 .zcheckout .kickerHelp {
 	margin-top: 0;
 }
-.kickerPromo h3, .kickerHelp h3, .kickerCheckout h3 {
+.kickerPromo h3, .kickerHelp h3, .kickerCheckout h3,
+.block-progress .block-title {
 	background: url('img/sprite_kicker_promo.png') no-repeat 0 0;
 	font-size: 18px;
 	line-height: 38px;
 	padding: 4px 20px 0;
 	position: relative;
+	margin-bottom:0px;
 	z-index: 20;
 }
 .kickerCheckout h3 {
@@ -9105,7 +9118,8 @@ body {
 	color: #fff;
 	padding: 4px 0 0;
 }
-.kickerHelpBtm {
+.kickerHelpBtm,
+.block-progress .block-content {
 	background: url('img/sprite_kicker_promo.png') no-repeat -896px bottom;
 	top: 0;
 	z-index: 30;
@@ -10304,6 +10318,7 @@ td.txtRight, th.txtRight {
 }
 .cartBtns {
 	margin: 0 24px 24px;
+	font-family:Arial, Helvetica, sans-serif;
 }
 .cartBtnsLeft, .cartBtnsRight {
 	float: left;
@@ -11644,7 +11659,7 @@ a.ftrPrivacy span {
 	display:none;
 	position:absolute;
 	top:-50%;
-	left:100%;
+	left:81%;
 	z-index:100000;
 }
 .products-grid--max-4-col > li:hover .listProdPopUps{
@@ -11937,4 +11952,133 @@ border-radius:15px;
 
 .category-description.std{
 	display:none;
+}
+#checkout-progress-wrapper{
+	padding-top:157px;
+
+}
+.opc .section .step-title{
+	width:94%;
+	left:-5px;
+	  font-family: 'BebasRegular',Impact,Helvetica,Arial,sans-serif;
+	margin:auto;
+}
+.opc .section .step-title .number {
+    color: #df101d;
+	float:left;
+	  font-size: 18px;
+    line-height: 38px;
+	background:none !important;
+}
+.hdrCheckStep {
+    border-bottom: 1px solid #e9e9e9;
+    clear: both;
+    display: block;
+    font-size: 18px;
+    line-height: 32px;
+    margin: 0 0 6px;
+}
+#opc-login .step-title{
+	border-top:none;
+}
+#checkoutSteps .input-box input{
+  background: none repeat scroll 0 0 #fff;
+    border: 1px solid #000;
+    color: #000;
+    height: 29px;
+    line-height: 29px;
+    margin: 0 0 9px;
+    padding: 0 3px;
+	width:70.2%;
+}
+#checkoutSteps .field {
+	display:inline-block;
+	vertical-align:top;
+	width:40%;
+	margin-right:5px;
+}
+#checkoutSteps .field input{
+	width:72%;
+}
+.pillDrkGray26 span, .pillGray26 span{
+	font-family:Arial, Helvetica, sans-serif;
+}
+
+.cartBtnsRight .button{
+	background:none;
+	border:none;
+	float:right;
+
+}
+.cartBtnsRight .button  span {
+	background: url('img/sprite_pill_buttons.png') no-repeat left -526px;
+	border: none;
+	color: #fff;
+	float: left;
+	font-size: 14px;
+	height: 40px;
+	line-height: 38px;
+ font-family: 'BebasRegular',Impact,Helvetica,Arial,sans-serif;
+	padding: 0 0 0 20px;
+	text-decoration: none;
+}
+.cartBtnsRight .button  span span{
+	background: url('img/sprite_pill_buttons.png') no-repeat right -566px;
+	float: left;
+
+	height: 40px;
+	padding: 0 20px 0 0;
+}
+
+
+#checkoutSteps .button{
+	background:none !important;
+	border:none !important;
+	padding:0 !important;
+}
+#checkoutSteps .button span {
+	background: url('img/sprite_pill_buttons.png') no-repeat left -302px;
+	border: none;
+	color: #fff;
+	float: left;
+	font-size: 14px;
+	height: 40px;
+	line-height: 38px;
+	padding: 0 0 0 19px;
+	text-decoration: none;
+}
+
+#checkoutSteps .button span span {
+	background: url('img/sprite_pill_buttons.png') no-repeat right -345px;
+	float: left;
+	height: 100%;
+	padding: 0 27px 0 0;
+}
+
+.prodListSm li{
+	height:206px;
+	z-index:0;
+	position:static !important;
+}
+.prodListSm li:hover{
+	position:relative !important;
+}
+.prodListSm li:hover,
+.multiSlide:hover .jspPane{
+	z-index:100000;
+}
+.prodListSm li:hover .listProdPopUps{
+	position:absolute;
+	left:80%;
+	top:-100%;
+	display:block;
+	z-index:100000000;
+	
+}
+.jspScrollable,
+.jspContainer,
+.prodListSm ,
+.multiSlide,
+.horizontal-only{
+	overflow:visible !important;
 }

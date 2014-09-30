@@ -32,9 +32,12 @@
 
         jQuery(".navCart").mouseover(function(e) {
             jQuery("#expandedCart").slideDown();
+			 jQuery("#expandedCart").clearQueue();
         });
         jQuery("#expandedCart").mouseleave(function(e) {
             jQuery("#expandedCart").slideUp();
+		
+		
         });
 
 
