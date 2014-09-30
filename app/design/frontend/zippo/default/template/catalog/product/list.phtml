@@ -302,6 +302,8 @@ jQuery(document).ready(function(){
                  </div>           
             </li>
             
+            
+            
             <?php /*if ($i%$_columnCount==0 || $i==$_collectionSize): ?>
 			
             <?php endif*/ ?>
@@ -309,10 +311,10 @@ jQuery(document).ready(function(){
     </ul>
     <script type="text/javascript">decorateGeneric($$('ul.products-grid'), ['odd','even','first','last'])</script>
     <?php endif; ?>
-
-    <div class="toolbar-bottom">
+<div class="toolbar-bottom">
         <?php //echo $this->getToolbarHtml() ?>
     </div>
+    
 </div>
                             	
                             </div>
@@ -321,7 +323,9 @@ jQuery(document).ready(function(){
                         </div>
                     </div><!-- eo .listSlider -->
                 </section><!-- eo .listHolder -->
+                 <section class="listKickersRight">
               <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('bestseller')->toHtml();?> 
+              </section>
             </section>
 
 
