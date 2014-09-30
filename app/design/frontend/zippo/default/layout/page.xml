@@ -54,7 +54,7 @@
                 <action method="removeItem"><type>skin_js</type><name>js/ie6.js</name></action>
 
                 <!-- Add vendor dependencies -->
-                <action method="addItem"><type>skin_js</type><name>js/lib/jquery-1.10.2.min.js</name></action>
+                <action method="addItem"><type>skin_js</type><name>js/lib/jquery-1.10.2.min.js</name></action>               
                 <action method="addItem"><type>skin_js</type><name>js/lib/modernizr.custom.min.js</name></action>
                 <action method="addItem"><type>skin_js</type><name>js/lib/selectivizr.js</name></action>
                 <action method="addItem"><type>skin_js</type><name>js/lib/matchMedia.js</name></action>
@@ -66,7 +66,16 @@
                 <action method="addItem"><type>skin_js</type><name>js/slideshow.js</name></action>
                 <action method="addItem"><type>skin_js</type><name>js/lib/imagesloaded.js</name></action>
                 <action method="addLinkRel"><rel>stylesheet</rel><href>//fonts.googleapis.com/css?family=Raleway:300,400,500,700,600</href></action>
+                 <action method="addItem"><type>skin_js</type><name>js/responsive.js</name></action>
+                <action method="addItem"><type>skin_js</type><name>js/jquery.bxslider.js</name></action>
+                <action method="addItem"><type>skin_js</type><name>js/jquery.selectbox-0.2.js</name></action>
                 <action method="addItem"><type>skin_js</type><name>js/minicart.js</name></action>
+                
+                <!-- Add js for ajax scroll-->
+                <action method="addItem"><type>skin_js</type><name>js/lib/ias/jquery.ias.min.js</name></action>
+                <action method="addItem"><type>skin_js</type><name>js/lib/ias/jquery.easing-1.3.pack.js</name></action>
+                <action method="addItem"><type>skin_js</type><name>js/lib/ias/jquery.ui.totop.min.js</name></action>
+                
 
                 <!-- Add stylesheets with no media queries for use in IE 8 and below -->
                 <action method="addItem"><type>skin_css</type><name>css/styles-ie8.css</name><params/><if><![CDATA[ (lte IE 8) & (!IEMobile)]]></if></action>
