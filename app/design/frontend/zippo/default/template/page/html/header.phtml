@@ -71,7 +71,8 @@
             <nav id="genTopNav" class="genTopNav clearfix">
                 <?php //echo $this->getChildHtml('topLinks') ?>
                 <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('top-links')->toHtml() ?>
-
+                <?php echo $this->getChildHtml('store_language') ?>
+       
 
             </nav>
             <nav id="catTopNav" class="catTopNav clearfix">
