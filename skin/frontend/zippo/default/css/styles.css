@@ -3171,7 +3171,7 @@ h2.product-name a:hover, h3.product-name a:hover, h4.product-name a:hover, h5.pr
 	padding: 10px;
 }
 .category-image img {
-	width: 100%;
+	
 	max-width: 100%;
 }
 .category-image img:hidden {
@@ -8403,23 +8403,23 @@ body {
 	list-style: none outside none;
 	margin: 12px 0 0;
 	width: 100%;
+	position: relative;
 }
 .ie7 .listTopNav {
 	width: 676px;
 }
-.listTopNav li {
+.listTopNav > li {
 	background: url('img/bg_listing_cat.gif') repeat-x left bottom;
 	float: left;
 	height: 161px;
-	overflow: hidden;
-	position: relative;
+
 	text-align: center;
 	width: 25%;
 }
 .listTopNav img {
 	margin: 0 auto;
 }
-.listTopNav a {
+.listTopNav > li > a {
 	background: url('img/sprite_lighters_cat.png') no-repeat right 2px;
 	color: #989797;
 	display: block;
@@ -8447,6 +8447,9 @@ body {
 .listSubCat {
 	float: left;
 	height: 28px;
+	position:absolute;
+	left:0px;
+	top:100%;
 	list-style: none outside none;
 	margin: 3px 0 0 35px;
 }
@@ -12081,4 +12084,8 @@ border-radius:15px;
 .multiSlide,
 .horizontal-only{
 	overflow:visible !important;
+}
+
+.col-main .category-image{
+	display:none;
 }
