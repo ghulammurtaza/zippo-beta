@@ -575,7 +575,7 @@ a.button:hover {
 }
 .col-left {
 	float: left;
-	width: 25%;
+	width: 17%;
 	padding-left: 0;
 	/* Remove the 15px padding */
 	clear: left;
@@ -593,7 +593,7 @@ a.button:hover {
 }
 .col-main {
 	float: left;
-	width: 75%;
+	width: 82%;
 }
 .col1-layout .col-main {
 	float: none;
@@ -1568,19 +1568,11 @@ a.button:hover {
 	margin-top: 5px;
 }
 form .legend {
-	margin: 0;
-	margin-bottom: 10px;
-	color: #636363;
-	font-family: "Raleway", "Helvetica Neue", Verdana, Arial, sans-serif;
-	font-size: 18px;
-	font-weight: 400;
-	font-style: normal;
-	line-height: 1.4;
-	text-rendering: optimizeSpeed;
-	text-transform: uppercase;
-	margin-bottom: 15px;
-	padding-bottom: 7px;
-	border-bottom: 1px solid #ededed;
+font-family: 'BebasRegular',Impact,Helvetica,Arial,sans-serif;
+  color: #636363;
+  font-weight:normal;
+  margin-bottom:10px;
+  font-size:14px;
 }
 /* -------------------------------------------- *
  * Input Box
@@ -6083,8 +6075,7 @@ body.customer-account .sidebar .block-reorder ol#cart-sidebar-reorder p.product-
 	margin-bottom: 45px;
 }
 .dashboard .box-account p, .dashboard .box-account address {
-	font-family: Georgia, Times, "Times New Roman", serif;
-	font-style: italic;
+
 }
 .dashboard .col2-set .col-1, .dashboard .col2-set .col-2 {
 	padding-right: 12.09677%;
@@ -12126,4 +12117,74 @@ border-radius:15px;
     font: italic 12px/1.17 Helvetica,Arial,sans-serif;
     color: #df101d;
 	margin-bottom:0px;
+	display: none;
+}
+
+.block-account .block-title,
+.block-compare,
+.buttons-set p.required{
+	display:none;
+}
+
+.my-account h1 {
+    font-size: 18px;
+    font-weight: normal;
+    margin: 0 0 15px;
+    color: #df101d;
+    font-family: 'BebasRegular',Impact,Helvetica,Arial,sans-serif;
+    font-weight: normal;
+    text-transform: uppercase;
+    word-spacing: 0.25em;
+}
+
+.block-account li strong, .block-cms-menu li strong{
+	 color: #df101d;
+}
+.block-account li {
+	  font-family: 'BebasRegular',Impact,Helvetica,Arial,sans-serif;}
+	  
+.input-text {
+    -moz-appearance: none;
+    background: none repeat scroll 0 0 #ffffff;
+    border: 1px solid  #000;
+    border-radius: 2px;
+    font-size: 15px;
+}
+.my-account{
+	padding-top:35px;
+}
+
+.my-account button{
+	background:none !important;
+	padding:0px;
+	border:none;
+}
+.my-account button span {
+    background: url("img/sprite_pill_buttons.png") no-repeat scroll left -302px rgba(0, 0, 0, 0);
+    border: medium none;
+    color: #fff;
+    float: left;
+    font-size: 14px;
+    height: 40px;
+    line-height: 38px;
+ 
+    padding: 0 0 0 19px;
+    text-decoration: none;
+}
+.my-account button span{
+    font-family: Arial,Helvetica,sans-serif;
+}
+.my-account button span span {
+    background: url("img/sprite_pill_buttons.png") no-repeat scroll right -345px rgba(0, 0, 0, 0);
+    float: left;
+    height: 100%;
+
+    padding: 0 20px 0 0;
+}
+
+.listFilters{
+	height:5px;
+}
+.listFilters li{
+	display:none;
 }
