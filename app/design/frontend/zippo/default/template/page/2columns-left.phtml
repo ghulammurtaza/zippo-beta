@@ -49,17 +49,28 @@
         <?php echo $this->getChildHtml('header') ?>
         <div class="main-container col2-left-layout">
             <div class="main">
+            <section class="wholePage acctAddress clearfix">
+<div class="wholeMain clearfix">
+<div class="wholeInner clearfix">
+<h2 class="wholeHdr txtBebas">MY ACCOUNT </h2>
+
                 <?php echo $this->getChildHtml('breadcrumbs') ?>
                 <?php // This left_first block will display above the main content on smaller viewports ?>
                 <?php if ($_leftContent = $this->getChildHtml('left_first')): ?>
                 <div class="col-left sidebar col-left-first"><?php echo $_leftContent;   ?></div>
                 <?php endif; ?>
                 <div class="col-main">
+                
                     <?php echo $this->getChildHtml('global_messages') ?>
                     <?php echo $this->getChildHtml('content') ?>
                 </div>
                 <div class="col-left sidebar"><?php echo $this->getChildHtml('left') ?></div>
             </div>
+            
+            </div>
+</div>
+</section>
+            
         </div>
         <?php echo $this->getChildHtml('footer_before') ?>
         <?php echo $this->getChildHtml('footer') ?>

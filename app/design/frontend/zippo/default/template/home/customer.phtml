@@ -40,7 +40,7 @@
     <p class="txtBold">Providing exceptional service is our priority; feedback is always welcomed. If your inquiry is time-sensitive, please call us Monday-Friday 8:00 am to 4:30 pm EST at 888.442.1932.</p>
     <p class="txtBold">Fields marked with <strong class="txtRed">*</strong> are required.</p>
     <div class="tab-1">
-      <form method="post" action="" name="contact_frm" id="contact_frm">
+      <form method="post" action="" name="contact_frm" id="contact_frm1">
         <?php
 		 echo Mage::getStoreConfig('trans_email/ident_general/email');
 					if($_POST) {
@@ -109,231 +109,43 @@
         <ul class="contactFields">
           <li id="liOrderNum">
             <label class="txtBlack txtBebas" for="txtOrderNumber">Order Number <strong class="txtRed">*</strong></label>
-                <?php if($empty_order_error) { ?>
-				    <p class="red">Name is required</p>
-			    <?php }?>
-            <input type="text"  class="txtDef" id="txtOrderNumber" name="txtOrderNumber" value="<?php if(isset($_POST['txtOrderNumber']) && $_POST['txtOrderNumber'] != ''){ echo $_POST['txtOrderNumber']; } else { echo ''; } ?>" onfocus="if(this.value=='Order Number')this.value=''; " />
-             </li>
-          <li style="display: none;" id="liBusinessName">
-            <label class="txtBlack txtBebas" for="txtBusinessName">Business Name <strong class="txtRed">*</strong></label>
-            <span class="frmError" id="lblBusNameErr"></span>
-            <input type="text" class="txtDef" id="txtBusinessName" name="txtBusinessName">
-          </li>
-          <li class="clearfix">
-            <div class="width50">
-              <label class="txtBlack txtBebas" for="txtFname">First Name <strong class="txtRed">*</strong></label>
-             <?php if($empty_nameF_error) { ?>
-				    <p class="red">Name is required</p>
-			    <?php }?>
-              <input type="text" tabindex="2" class="txtDef" id="txtFname" name="txtFname" value="<?php if(isset($_POST['txtFname']) && $_POST['txtFname'] != ''){ echo $_POST['txtFname']; } else { echo ''; } ?>" onfocus="if(this.value=='First Name')this.value=''; ">
-            </div>
-            <div class="width50">
-              <label class="txtBlack txtBebas" for="txtLname">Last Name <strong class="txtRed">*</strong></label>
-              <?php if($empty_nameL_error) { ?>
-				    <p class="red">Name is required</p>
-			    <?php }?>
-              <input type="text" tabindex="3" class="txtDef" id="txtLname" name="txtLname" value="<?php if(isset($_POST['txtLname']) && $_POST['txtLname'] != ''){ echo $_POST['txtLname']; } else { echo ''; } ?>" onfocus="if(this.value=='Last Name')this.value=''; ">
-            </div>
-          </li>
-          <li class="clearfix">
-            <div class="width50">
-              <label class="txtBlack txtBebas" for="txtStreet">Street Address <strong class="txtRed">*</strong></label>
-              <?php if($empty_street_error) { ?>
-				    <p class="red">Name is required</p>
-			    <?php }?>
-              <input type="text" tabindex="4" class="txtDef" id="txtStreet" name="txtStreet" value="<?php if(isset($_POST['txtStreet']) && $_POST['txtStreet'] != ''){ echo $_POST['txtStreet']; } else { echo ''; } ?>" onfocus="if(this.value=='Street Address')this.value=''; ">
-            </div>
-            <div class="width50">
-              <label class="txtBlack txtBebas" for="txtStreet2">Street Address 2</label>
-              <input type="text" tabindex="5" class="txtDef" id="txtStreet2" name="txtStreet2"  value="<?php if(isset($_POST['txtStreet2']) && $_POST['txtStreet2'] != ''){ echo $_POST['txtStreet2']; } else { echo ''; } ?>" onfocus="if(this.value=='Street Address 2')this.value=''; ">
-            </div>
-          </li>
-          <li class="clearfix">
-            <div class="width50">
-              <label class="txtBlack txtBebas" for="txtCity">City <strong class="txtRed">*</strong></label>
-              <?php if($empty_city_error) { ?>
-				    <p class="red">Name is required</p>
-			    <?php }?>
-              <input type="text" tabindex="6" class="txtDef" id="txtCity" name="txtCity" value="<?php if(isset($_POST['txtCity']) && $_POST['txtCity'] != ''){ echo $_POST['txtCity']; } else { echo ''; } ?>" onfocus="if(this.value=='City')this.value=''; ">
-            </div>
-            <div id="divSelState" class="width50">
-              <label class="txtBlack txtBebas" for="selState-button">State <strong class="txtRed">*</strong></label>
-              <?php if($empty_state_error) { ?>
-				    <p class="red">Name is required</p>
-			    <?php }?>
-              <select name="state">
-                <option value="Duabi">Duabi</option>
-                <option value="Abu Dahabi">Abu Dahabi</option>
-              </select>
-            </div>
-          </li>
-          <li class="clearfix clear" id="liTxtZip">
-            <label class="txtBlack txtBebas" for="txtZipCode">Zip Code<strong class="txtRed">*</strong></label>
-            <?php if($empty_zipo_error) { ?>
-				    <p class="red">Name is required</p>
-			    <?php }?>
-            <input type="text" tabindex="9" class="txtDef" id="txtZipCode" name="txtZipCode" value="<?php if(isset($_POST['txtZipCode']) && $_POST['txtZipCode'] != ''){ echo $_POST['txtZipCode']; } else { echo ''; } ?>" onfocus="if(this.value=='Zip Code')this.value=''; ">
-          </li>
-          <li style="margin-top: 9px;" class="clearfix">
-            <div class="width50">
-              <label class="txtBlack txtBebas" for="txtPhoneArea">Phone <strong class="txtRed">*</strong></label>
-              <?php if($empty_phone_error) { ?>
-				    <p class="red">Name is required</p>
-			    <?php }?>
-
-              <input type="text" class="txtDef txt3" tabindex="11" id="txtPhoneArea" maxlength="3" name="txtPhoneArea" value="<?php if(isset($_POST['txtPhoneArea']) && $_POST['txtPhoneArea'] != ''){ echo $_POST['txtPhoneArea']; } else { echo ''; } ?>" onfocus="if(this.value=='Phone')this.value=''; ">
-              <input type="text" class="txtDef txt3" tabindex="12" id="txtPhonePrefix" maxlength="3" name="txtPhonePrefix" value="<?php if(isset($_POST['txtPhonePrefix']) && $_POST['txtPhonePrefix'] != ''){ echo $_POST['txtPhonePrefix']; } else { echo ''; } ?>" onfocus="if(this.value=='')this.value=''; ">
-              <input type="text" class="txtDef txt4" tabindex="13" id="txtPhoneSuffix" maxlength="4" name="txtPhoneSuffix" value="<?php if(isset($_POST['txtPhoneSuffix']) && $_POST['txtPhoneSuffix'] != ''){ echo $_POST['txtPhoneArea']; } else { echo ''; } ?>" onfocus="if(this.value=='Phone')this.value=''; ">
-            </div>
-            <div class="width50">
-              <label class="txtBlack txtBebas" for="txtEmail">Email <strong class="txtRed">*</strong></label>
-              <?php if($empty_email_error) { ?>
-    <p class="red">E-mail is required</p>
-    <?php } elseif($_POST && !$valid_email) { ?>
-    <p class="red">Valid E-mail Address is required</p>
-    <?php }?>
-              <input type="text" class="txtDef" tabindex="14" id="txtEmail" name="contact_email" value="<?php if(isset($_POST['txtPhoneSuffix']) && $_POST['txtPhoneSuffix'] != ''){ echo $_POST['txtPhoneArea']; } else { echo ''; } ?>" onfocus="if(this.value=='Phone')this.value=''; ">
-            </div>
-          </li>
-          <li class="clear">
-            <label class="txtBlack txtBebas" for="txtMessage">Message</label>
-             <textarea name="contact_content"  class="bigTxtArea" cols="" rows=""><?php if(isset($_POST['contact_content']) && $_POST['contact_content'] != ''){ echo $_POST['contact_content']; } else { echo ''; } ?>
-</textarea>
-          </li>
-          <li class="clearfix">
-          	<button type="button" class="lnkBlkWhtArw" style="float:right;" onclick="document.contact_frm.submit();" >
-            	<span>submit</span>
-            </button>
-            </li>
-        </ul>
-      </form>
-    </div>
-    </div>
-    <div id="from2" class="frombox">
-    <h3 id="contactHeading" class="txtRed txtBebas">New Retailer Inquiries</h3>
-    <p class="txtBold">Providing exceptional service is our priority; feedback is always welcomed. If your inquiry is time-sensitive, please call us Monday-Friday 8:00 am to 4:30 pm EST at 888.442.1932.</p>
-    <p class="txtBold">Fields marked with <strong class="txtRed">*</strong> are required.</p>
-    <div class="tab-1">
-      <form method="post" action="" name="contact_frm2" id="contact_frm2">
-        <?php
-		 echo Mage::getStoreConfig('trans_email/ident_general/email');
-					if($_POST) {
-						if($_POST['txtBusines'] == '')
-							$empty_order_error = true;
-						if($_POST['txtFname'] == '')
-							$empty_nameF_error = true;
-						if($_POST['txtLname'] == '')
-							$empty_nameL_error = true;							
-						if($_POST['txtStreet'] == '')
-							$empty_street_error = true;
-						if($_POST['txtCity'] == '')
-							$empty_city_error = true;
-						if($_POST['state'] == '')
-							$empty_state_error = true;
-						if($_POST['txtZipCode'] == '')
-							$empty_zipo_error = true;
-						if($_POST['txtPhoneArea'] == '')
-							$empty_phone_error = true;							
-						if($_POST['txtPhonePrefix'] == '')
-							$empty_phone1_error = true;
-						if($_POST['txtPhoneSuffix'] == '')
-							$empty_phone2_error = true;																					
-						if($_POST['txtCountry'] == '')
-							$empty_country_error = true;								
-						if($_POST['contact_email'] == '')
-							$empty_email_error = true;
-
-						if($_POST['contact_email'] != '') {
-							$expression = '[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}';
-							if (eregi($expression, $_POST['contact_email'])) {
-								$valid_email = true;
-							}
- 
-						}
-						if(!$txtBusines && !$empty_nameF_error && !$empty_nameL_error && !$empty_city_error && !$empty_state_error && !$empty_zipo_error && !$empty_phone_error && !$empty_phone_error1 && $valid_email && !$empty_country_error) {
-							$admin_email	 = 'frenklen2004@gmail.com';
-							$subject		 = 'New Retailer Inquiries';
-							$headers		 = 'MIME-Version: 1.0' . "\r\n";
-							$headers		.= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
-							$headers		.= 'To:'.$admin_email. "\r\n";
-							$headers		.= 'From:'.$_POST['contact_email']."\r\n";
-							$txt_Message	 = "Business Name : ".$_POST['txtBusines']." . <br>
-												First Name : ".$_POST['txtFname']." . <br>
-												Last Name : ".$_POST['txtLname']." . <br>
-												Street Address : ".$_POST['txtStreet']." . <br>
-												Street Address 2 : ".$_POST['txtStreet2']." . <br>
-												City : ".$_POST['txtCity']." . <br>
-												State  : ".$_POST['state']." . <br>
-												Zip Code : ".$_POST['txtZipCode']." . <br>
-												Country : ".$_POST['txtCountry']." . <br>
-												Phone : ".$_POST['txtPhoneArea']." . <br>
-												Phone : ".$_POST['txtPhonePrefix']." . <br>
-												Phone : ".$_POST['txtPhoneSuffix']." . <br>
-											    Email : ".$_POST['contact_email']." . <br>
-											    Message : ".$_POST['contact_content']." . <br>";
-							$message = $txt_Message;
-							$to = $admin_email;
-							mail($to, $subject, $message, $headers);
-							$mail_success = true;
-						}
-					}
-					?>
-        <?php if($mail_success) { ?>
-        <p class="yellow">Your email has been sent! We will contact you shortly</p>
-
-        <?php }?>
-        <ul class="contactFields">
-          <li id="liOrderNum">
-            <label class="txtBlack txtBebas" for="txtOrderNumber">Business Name <strong class="txtRed">*</strong></label>
-                <?php if($empty_order_error) { ?>
-				    <p class="red">Name is required</p>
-			    <?php }?>
-            <input type="text"  class="txtDef" id="txtOrderNumber" name="txtBusines" value="<?php if(isset($_POST['txtBusines']) && $_POST['txtBusines'] != ''){ echo $_POST['txtBusines']; } else { echo ''; } ?>" onfocus="if(this.value=='Order Number')this.value=''; " />
+				    <p class="red" id="txtOrderNumber_1_error">Name is required</p>
+            <input type="text"  class="txtDef" id="txtOrderNumber_1" name="txtOrderNumber_1" value=""  />
              </li>
           
           <li class="clearfix">
             <div class="width50">
               <label class="txtBlack txtBebas" for="txtFname">First Name <strong class="txtRed">*</strong></label>
-             <?php if($empty_nameF_error) { ?>
-				    <p class="red">Name is required</p>
-			    <?php }?>
-              <input type="text" tabindex="2" class="txtDef" id="txtFname" name="txtFname" value="<?php if(isset($_POST['txtFname']) && $_POST['txtFname'] != ''){ echo $_POST['txtFname']; } else { echo ''; } ?>" onfocus="if(this.value=='First Name')this.value=''; ">
+              <p class="red" id="txtFname_1_error">Name is required</p>
+              <input type="text" tabindex="2" class="txtDef" id="txtFname_1" name="txtFname_1" >
             </div>
             <div class="width50">
               <label class="txtBlack txtBebas" for="txtLname">Last Name <strong class="txtRed">*</strong></label>
-              <?php if($empty_nameL_error) { ?>
-				    <p class="red">Name is required</p>
-			    <?php }?>
-              <input type="text" tabindex="3" class="txtDef" id="txtLname" name="txtLname" value="<?php if(isset($_POST['txtLname']) && $_POST['txtLname'] != ''){ echo $_POST['txtLname']; } else { echo ''; } ?>" onfocus="if(this.value=='Last Name')this.value=''; ">
+				 <p class="red" id="txtLname_1_error">Name is required</p>
+              <input type="text" tabindex="3" class="txtDef" id="txtLname_1" name="txtLname_1" >
             </div>
           </li>
           <li class="clearfix">
             <div class="width50">
               <label class="txtBlack txtBebas" for="txtStreet">Street Address <strong class="txtRed">*</strong></label>
-              <?php if($empty_street_error) { ?>
-				    <p class="red">Name is required</p>
-			    <?php }?>
-              <input type="text" tabindex="4" class="txtDef" id="txtStreet" name="txtStreet" value="<?php if(isset($_POST['txtStreet']) && $_POST['txtStreet'] != ''){ echo $_POST['txtStreet']; } else { echo ''; } ?>" onfocus="if(this.value=='Street Address')this.value=''; ">
+			  <p class="red" id="txtStreet_1_error">Name is required</p>
+              <input type="text" tabindex="4" class="txtDef" id="txtStreet_1" name="txtStreet_1" >
             </div>
             <div class="width50">
               <label class="txtBlack txtBebas" for="txtStreet2">Street Address 2</label>
-              <input type="text" tabindex="5" class="txtDef" id="txtStreet2" name="txtStreet2"  value="<?php if(isset($_POST['txtStreet2']) && $_POST['txtStreet2'] != ''){ echo $_POST['txtStreet2']; } else { echo ''; } ?>" onfocus="if(this.value=='Street Address 2')this.value=''; ">
+              <input type="text" tabindex="5" class="txtDef" id="txtStreet2_1" name="txtStreet2_1"  >
             </div>
           </li>
           <li class="clearfix">
             <div class="width50">
               <label class="txtBlack txtBebas" for="txtCity">City <strong class="txtRed">*</strong></label>
-              <?php if($empty_city_error) { ?>
-				    <p class="red">Name is required</p>
-			    <?php }?>
-              <input type="text" tabindex="6" class="txtDef" id="txtCity" name="txtCity" value="<?php if(isset($_POST['txtCity']) && $_POST['txtCity'] != ''){ echo $_POST['txtCity']; } else { echo ''; } ?>" onfocus="if(this.value=='City')this.value=''; ">
+              <p class="red" id="txtCity_1_error">Name is required</p>
+              <input type="text" tabindex="6" class="txtDef" id="txtCity_1" name="txtCity_1" >
             </div>
             <div id="divSelState" class="width50">
               <label class="txtBlack txtBebas" for="selState-button">State <strong class="txtRed">*</strong></label>
-              <?php if($empty_state_error) { ?>
-				    <p class="red">Name is required</p>
-			    <?php }?>
-              <select name="state">
+              <p class="red" id="state_1_error">Name is required</p>
+              <select name="state" id="state_1">
                 <option value="Duabi">Duabi</option>
                 <option value="Abu Dahabi">Abu Dahabi</option>
               </select>
@@ -341,51 +153,33 @@
           </li>
           <li class="clearfix clear" id="liTxtZip">
             <label class="txtBlack txtBebas" for="txtZipCode">Zip Code<strong class="txtRed">*</strong></label>
-            <?php if($empty_zipo_error) { ?>
-				    <p class="red">Name is required</p>
-			    <?php }?>
-            <input type="text" tabindex="9" class="txtDef" id="txtZipCode" name="txtZipCode" value="<?php if(isset($_POST['txtZipCode']) && $_POST['txtZipCode'] != ''){ echo $_POST['txtZipCode']; } else { echo ''; } ?>" onfocus="if(this.value=='Zip Code')this.value=''; ">
-          </li>
-          <li class="clearfix clear" id="liTxtZip">
-            <label class="txtBlack txtBebas" for="txtZipCode">Country<strong class="txtRed">*</strong></label>
-            <?php if($empty_zipo_error) { ?>
-				    <p class="red">Name is required</p>
-			    <?php }?>
-                <select name="txtCountry">
-                <option value="UAE">UAE</option>
-                <option value="Qater">Qater</option>
-              </select>
-            
+            <p class="red" id="txtZipCode_1_error">Name is required</p>
+            <input type="text" tabindex="9" class="txtDef" id="txtZipCode_1" name="txtZipCode_1" >
           </li>
           <li style="margin-top: 9px;" class="clearfix">
             <div class="width50">
-
               <label class="txtBlack txtBebas" for="txtPhoneArea">Phone <strong class="txtRed">*</strong></label>
+              <p class="red" id="txtPhoneArea_1_error">Name is required</p>
+              <p class="red" id="txtPhonePrefix_1_error">Name is required</p>
+              <p class="red" id="txtPhoneSuffix_1_error">Name is required</p>
 
-                <?php if($empty_phone2_error) { ?>
-				    <p class="red">Name is required</p>
-			    <?php }?>
-              <input type="text" class="txtDef txt3" tabindex="11" id="txtPhoneArea" maxlength="3" name="txtPhoneArea" value="<?php if(isset($_POST['txtPhoneArea']) && $_POST['txtPhoneArea'] != ''){ echo $_POST['txtPhoneArea']; } else { echo ''; } ?>" onfocus="if(this.value=='Phone')this.value=''; ">
-              <input type="text" class="txtDef txt3" tabindex="12" id="txtPhonePrefix" maxlength="3" name="txtPhonePrefix" value="<?php if(isset($_POST['txtPhonePrefix']) && $_POST['txtPhonePrefix'] != ''){ echo $_POST['txtPhonePrefix']; } else { echo ''; } ?>" onfocus="if(this.value=='')this.value=''; ">
-              <input type="text" class="txtDef txt4" tabindex="13" id="txtPhoneSuffix" maxlength="4" name="txtPhoneSuffix" value="<?php if(isset($_POST['txtPhoneSuffix']) && $_POST['txtPhoneSuffix'] != ''){ echo $_POST['txtPhoneArea']; } else { echo ''; } ?>" onfocus="if(this.value=='Phone')this.value=''; ">
+              <input type="text" class="txtDef txt3" tabindex="11" id="txtPhoneArea_1" maxlength="3" name="txtPhoneArea" >
+              <input type="text" class="txtDef txt3" tabindex="12" id="txtPhonePrefix_1" maxlength="3" name="txtPhonePrefix" >
+              <input type="text" class="txtDef txt4" tabindex="13" id="txtPhoneSuffix_1" maxlength="4" name="txtPhoneSuffix" >
             </div>
             <div class="width50">
               <label class="txtBlack txtBebas" for="txtEmail">Email <strong class="txtRed">*</strong></label>
-              <?php if($empty_email_error) { ?>
-    <p class="red">E-mail is required</p>
-    <?php } elseif($_POST && !$valid_email) { ?>
-    <p class="red">Valid E-mail Address is required</p>
-    <?php }?>
-              <input type="text" class="txtDef" tabindex="14" id="txtEmail" name="contact_email" value="<?php if(isset($_POST['txtPhoneSuffix']) && $_POST['txtPhoneSuffix'] != ''){ echo $_POST['txtPhoneArea']; } else { echo ''; } ?>" onfocus="if(this.value=='Phone')this.value=''; ">
+              <p class="red" id="txtEmail_1_error">Name is required</p>
+              <input type="text" class="txtDef" tabindex="14" id="txtEmail_1" name="contact_email" >
             </div>
           </li>
           <li class="clear">
             <label class="txtBlack txtBebas" for="txtMessage">Message</label>
-             <textarea name="contact_content"  class="bigTxtArea" cols="" rows=""><?php if(isset($_POST['contact_content']) && $_POST['contact_content'] != ''){ echo $_POST['contact_content']; } else { echo ''; } ?>
+             <textarea name="contact_content" id="contact_content_1" class="bigTxtArea" cols="" rows="">
 </textarea>
           </li>
           <li class="clearfix">
-          	<button type="button" class="lnkBlkWhtArw" style="float:right;" onclick="document.contact_frm2.submit();" >
+          	<button type="button" class="lnkBlkWhtArw" style="float:right;" onclick="onlineOrder('_1');" >
             	<span>submit</span>
             </button>
             </li>
@@ -393,358 +187,117 @@
       </form>
     </div>
     </div>
-    <div id="from3" class="frombox">
-    <h3 id="contactHeading" class="txtRed txtBebas">Media and PR</h3>
-    <p class="txtBold">Providing exceptional service is our priority; feedback is always welcomed. If your inquiry is time-sensitive, please call us Monday-Friday 8:00 am to 4:30 pm EST at 888.442.1932.</p>
-    <p class="txtBold">Fields marked with <strong class="txtRed">*</strong> are required.</p>
-    <div class="tab-1">
-      <form method="post" action="" name="contact_frm3" id="contact_frm3">
-        <?php
-		 echo Mage::getStoreConfig('trans_email/ident_general/email');
-					if($_POST) {
-						if($_POST['txtOrderNumber'] == '')
-							$empty_order_error = true;
-						if($_POST['txtFname'] == '')
-							$empty_nameF_error = true;
-						if($_POST['txtLname'] == '')
-							$empty_nameL_error = true;							
-						if($_POST['txtStreet'] == '')
-							$empty_street_error = true;
-						if($_POST['txtCity'] == '')
-							$empty_city_error = true;
-						if($_POST['state'] == '')
-							$empty_state_error = true;
-						if($_POST['txtZipCode'] == '')
-							$empty_zipo_error = true;
-						if($_POST['txtPhoneArea'] == '')
-							$empty_phone_error = true;							
-						if($_POST['txtPhonePrefix'] == '')
-							$empty_phone1_error = true;
-						if($_POST['txtPhoneSuffix'] == '')
-							$empty_phone2_error = true;																					
-							
-						if($_POST['contact_email'] == '')
-							$empty_email_error = true;
+   
+   <script language="javascript">
+   function onlineOrder(id){
 
-						if($_POST['contact_email'] != '') {
-							$expression = '[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}';
-							if (eregi($expression, $_POST['contact_email'])) {
-								$valid_email = true;
-							}
- 
-						}
-						if(!$empty_order_error && !$empty_nameF_error && !$empty_nameL_error && !$empty_city_error && !$empty_state_error && !$empty_zipo_error && !$empty_phone_error && !$empty_phone_error1 && $valid_email && !$empty_phone2_error) {
-							$admin_email	 = 'frenklen2004@gmail.com';
-							$subject		 = 'Media and PR';
-							$headers		 = 'MIME-Version: 1.0' . "\r\n";
-							$headers		.= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
-							$headers		.= 'To:'.$admin_email. "\r\n";
-							$headers		.= 'From:'.$_POST['contact_email']."\r\n";
-							$txt_Message	 = "Order Number : ".$_POST['txtOrderNumber']." . <br>
-												First Name : ".$_POST['txtFname']." . <br>
-												Last Name : ".$_POST['txtLname']." . <br>
-												Street Address : ".$_POST['txtStreet']." . <br>
-												Street Address 2 : ".$_POST['txtStreet2']." . <br>
-												City : ".$_POST['txtCity']." . <br>
-												State  : ".$_POST['state']." . <br>
-												Zip Code : ".$_POST['txtZipCode']." . <br>
-												Phone : ".$_POST['txtPhoneArea']." . <br>
-												Phone : ".$_POST['txtPhonePrefix']." . <br>
-												Phone : ".$_POST['txtPhoneSuffix']." . <br>
-											    Email : ".$_POST['contact_email']." . <br>
-											    Message : ".$_POST['contact_content']." . <br>";
-							$message = $txt_Message;
-							$to = $admin_email;
-							mail($to, $subject, $message, $headers);
-							$mail_success = true;
-						}
-					}
-					?>
-        <?php if($mail_success) { ?>
-        <p class="yellow">Your email has been sent! We will contact you shortly</p>
+	   var txtOrderNumber = jQuery('#txtOrderNumber'+id).val();
+	   
+	   if(txtOrderNumber==''){
+		 jQuery('#txtOrderNumber'+id+'_error').show();
+	   }else{
+		   jQuery('#txtOrderNumber'+id+'_error').hide();
+	   }
 
-        <?php }?>
-        <ul class="contactFields">
-          <li id="liOrderNum">
-            <label class="txtBlack txtBebas" for="txtOrderNumber">Order Number <strong class="txtRed">*</strong></label>
-                <?php if($empty_order_error) { ?>
-				    <p class="red">Name is required</p>
-			    <?php }?>
-            <input type="text"  class="txtDef" id="txtOrderNumber" name="txtOrderNumber" value="<?php if(isset($_POST['txtOrderNumber']) && $_POST['txtOrderNumber'] != ''){ echo $_POST['txtOrderNumber']; } else { echo ''; } ?>" onfocus="if(this.value=='Order Number')this.value=''; " />
-             </li>
-          <li style="display: none;" id="liBusinessName">
-            <label class="txtBlack txtBebas" for="txtBusinessName">Business Name <strong class="txtRed">*</strong></label>
-            <span class="frmError" id="lblBusNameErr"></span>
-            <input type="text" class="txtDef" id="txtBusinessName" name="txtBusinessName">
-          </li>
-          <li class="clearfix">
-            <div class="width50">
-              <label class="txtBlack txtBebas" for="txtFname">First Name <strong class="txtRed">*</strong></label>
-             <?php if($empty_nameF_error) { ?>
-				    <p class="red">Name is required</p>
-			    <?php }?>
-              <input type="text" tabindex="2" class="txtDef" id="txtFname" name="txtFname" value="<?php if(isset($_POST['txtFname']) && $_POST['txtFname'] != ''){ echo $_POST['txtFname']; } else { echo ''; } ?>" onfocus="if(this.value=='First Name')this.value=''; ">
-            </div>
-            <div class="width50">
-              <label class="txtBlack txtBebas" for="txtLname">Last Name <strong class="txtRed">*</strong></label>
-              <?php if($empty_nameL_error) { ?>
-				    <p class="red">Name is required</p>
-			    <?php }?>
-              <input type="text" tabindex="3" class="txtDef" id="txtLname" name="txtLname" value="<?php if(isset($_POST['txtLname']) && $_POST['txtLname'] != ''){ echo $_POST['txtLname']; } else { echo ''; } ?>" onfocus="if(this.value=='Last Name')this.value=''; ">
-            </div>
-          </li>
-          <li class="clearfix">
-            <div class="width50">
-              <label class="txtBlack txtBebas" for="txtStreet">Street Address <strong class="txtRed">*</strong></label>
-              <?php if($empty_street_error) { ?>
-				    <p class="red">Name is required</p>
-			    <?php }?>
-              <input type="text" tabindex="4" class="txtDef" id="txtStreet" name="txtStreet" value="<?php if(isset($_POST['txtStreet']) && $_POST['txtStreet'] != ''){ echo $_POST['txtStreet']; } else { echo ''; } ?>" onfocus="if(this.value=='Street Address')this.value=''; ">
-            </div>
-            <div class="width50">
-              <label class="txtBlack txtBebas" for="txtStreet2">Street Address 2</label>
-              <input type="text" tabindex="5" class="txtDef" id="txtStreet2" name="txtStreet2"  value="<?php if(isset($_POST['txtStreet2']) && $_POST['txtStreet2'] != ''){ echo $_POST['txtStreet2']; } else { echo ''; } ?>" onfocus="if(this.value=='Street Address 2')this.value=''; ">
-            </div>
-          </li>
-          <li class="clearfix">
-            <div class="width50">
-              <label class="txtBlack txtBebas" for="txtCity">City <strong class="txtRed">*</strong></label>
-              <?php if($empty_city_error) { ?>
-				    <p class="red">Name is required</p>
-			    <?php }?>
-              <input type="text" tabindex="6" class="txtDef" id="txtCity" name="txtCity" value="<?php if(isset($_POST['txtCity']) && $_POST['txtCity'] != ''){ echo $_POST['txtCity']; } else { echo ''; } ?>" onfocus="if(this.value=='City')this.value=''; ">
-            </div>
-            <div id="divSelState" class="width50">
-              <label class="txtBlack txtBebas" for="selState-button">State <strong class="txtRed">*</strong></label>
-              <?php if($empty_state_error) { ?>
-				    <p class="red">Name is required</p>
-			    <?php }?>
-              <select name="state">
-                <option value="Duabi">Duabi</option>
-                <option value="Abu Dahabi">Abu Dahabi</option>
-              </select>
-            </div>
-          </li>
-          <li class="clearfix clear" id="liTxtZip">
-            <label class="txtBlack txtBebas" for="txtZipCode">Zip Code<strong class="txtRed">*</strong></label>
-            <?php if($empty_zipo_error) { ?>
-				    <p class="red">Name is required</p>
-			    <?php }?>
-            <input type="text" tabindex="9" class="txtDef" id="txtZipCode" name="txtZipCode" value="<?php if(isset($_POST['txtZipCode']) && $_POST['txtZipCode'] != ''){ echo $_POST['txtZipCode']; } else { echo ''; } ?>" onfocus="if(this.value=='Zip Code')this.value=''; ">
-          </li>
-          <li style="margin-top: 9px;" class="clearfix">
-            <div class="width50">
 
-              <label class="txtBlack txtBebas" for="txtPhoneArea">Phone <strong class="txtRed">*</strong></label>
-              <?php if($empty_phone_error) { ?>
-				    <p class="red">Name is required</p>
-			    <?php }?>
+	   var txtFname = jQuery('#txtFname'+id).val();
+	   if(txtFname==''){
+		   jQuery('#txtFname'+id+'_error').show();
+	   }else{
+		   jQuery('#txtFname'+id+'_error').hide();
+	   } 
+	  
+	   
+	   var txtLname = jQuery('#txtLname'+id).val();
+	   if(txtLname==''){
+		   jQuery('#txtLname'+id+'_error').show();
+	   }else{
+		   jQuery('#txtLname'+id+'_error').hide();
+	   }
 
-              <input type="text" class="txtDef txt3" tabindex="11" id="txtPhoneArea" maxlength="3" name="txtPhoneArea" value="<?php if(isset($_POST['txtPhoneArea']) && $_POST['txtPhoneArea'] != ''){ echo $_POST['txtPhoneArea']; } else { echo ''; } ?>" onfocus="if(this.value=='Phone')this.value=''; ">
-              <input type="text" class="txtDef txt3" tabindex="12" id="txtPhonePrefix" maxlength="3" name="txtPhonePrefix" value="<?php if(isset($_POST['txtPhonePrefix']) && $_POST['txtPhonePrefix'] != ''){ echo $_POST['txtPhonePrefix']; } else { echo ''; } ?>" onfocus="if(this.value=='')this.value=''; ">
-              <input type="text" class="txtDef txt4" tabindex="13" id="txtPhoneSuffix" maxlength="4" name="txtPhoneSuffix" value="<?php if(isset($_POST['txtPhoneSuffix']) && $_POST['txtPhoneSuffix'] != ''){ echo $_POST['txtPhoneArea']; } else { echo ''; } ?>" onfocus="if(this.value=='Phone')this.value=''; ">
-            </div>
-            <div class="width50">
-              <label class="txtBlack txtBebas" for="txtEmail">Email <strong class="txtRed">*</strong></label>
-              <?php if($empty_email_error) { ?>
-    <p class="red">E-mail is required</p>
-    <?php } elseif($_POST && !$valid_email) { ?>
-    <p class="red">Valid E-mail Address is required</p>
-    <?php }?>
-              <input type="text" class="txtDef" tabindex="14" id="txtEmail" name="contact_email" value="<?php if(isset($_POST['txtPhoneSuffix']) && $_POST['txtPhoneSuffix'] != ''){ echo $_POST['txtPhoneArea']; } else { echo ''; } ?>" onfocus="if(this.value=='Phone')this.value=''; ">
-            </div>
-          </li>
-          <li class="clear">
-            <label class="txtBlack txtBebas" for="txtMessage">Message</label>
-             <textarea name="contact_content"  class="bigTxtArea" cols="" rows=""><?php if(isset($_POST['contact_content']) && $_POST['contact_content'] != ''){ echo $_POST['contact_content']; } else { echo ''; } ?>
-</textarea>
-          </li>
-          <li class="clearfix">
-          	<button type="button" class="lnkBlkWhtArw" style="float:right;" onclick="document.contact_frm3.submit();" >
-            	<span>submit</span>
-            </button>
-            </li>
-        </ul>
-      </form>
-    </div>
-    </div>
-    <div id="from4" class="frombox">
-    <h3 id="contactHeading" class="txtRed txtBebas">General Inquiries</h3>
-    <p class="txtBold">Providing exceptional service is our priority; feedback is always welcomed. If your inquiry is time-sensitive, please call us Monday-Friday 8:00 am to 4:30 pm EST at 888.442.1932.</p>
-    <p class="txtBold">Fields marked with <strong class="txtRed">*</strong> are required.</p>
-    <div class="tab-1">
-      <form method="post" action="" name="contact_frm4" id="contact_frm4">
-        <?php
-		 echo Mage::getStoreConfig('trans_email/ident_general/email');
-					if($_POST) {
-						if($_POST['txtOrderNumber'] == '')
-							$empty_order_error = true;
-						if($_POST['txtFname'] == '')
-							$empty_nameF_error = true;
-						if($_POST['txtLname'] == '')
-							$empty_nameL_error = true;							
-						if($_POST['txtStreet'] == '')
-							$empty_street_error = true;
-						if($_POST['txtCity'] == '')
-							$empty_city_error = true;
-						if($_POST['state'] == '')
-							$empty_state_error = true;
-						if($_POST['txtZipCode'] == '')
-							$empty_zipo_error = true;
-						if($_POST['txtPhoneArea'] == '')
-							$empty_phone_error = true;							
-						if($_POST['txtPhonePrefix'] == '')
-							$empty_phone1_error = true;
-						if($_POST['txtPhoneSuffix'] == '')
-							$empty_phone2_error = true;																					
-							
-						if($_POST['contact_email'] == '')
-							$empty_email_error = true;
 
-						if($_POST['contact_email'] != '') {
-							$expression = '[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}';
-							if (eregi($expression, $_POST['contact_email'])) {
-								$valid_email = true;
-							}
- 
-						}
-						if(!$empty_order_error && !$empty_nameF_error && !$empty_nameL_error && !$empty_city_error && !$empty_state_error && !$empty_zipo_error && !$empty_phone_error && !$empty_phone_error1 && $valid_email && !$empty_phone2_error) {
-							$admin_email	 = 'frenklen2004@gmail.com';
-							$subject		 = 'General Inquiries';
-							$headers		 = 'MIME-Version: 1.0' . "\r\n";
-							$headers		.= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
-							$headers		.= 'To:'.$admin_email. "\r\n";
-							$headers		.= 'From:'.$_POST['contact_email']."\r\n";
-							$txt_Message	 = "Order Number : ".$_POST['txtOrderNumber']." . <br>
-												First Name : ".$_POST['txtFname']." . <br>
-												Last Name : ".$_POST['txtLname']." . <br>
-												Street Address : ".$_POST['txtStreet']." . <br>
-												Street Address 2 : ".$_POST['txtStreet2']." . <br>
-												City : ".$_POST['txtCity']." . <br>
-												State  : ".$_POST['state']." . <br>
-												Zip Code : ".$_POST['txtZipCode']." . <br>
-												Phone : ".$_POST['txtPhoneArea']." . <br>
-												Phone : ".$_POST['txtPhonePrefix']." . <br>
-												Phone : ".$_POST['txtPhoneSuffix']." . <br>
-											    Email : ".$_POST['contact_email']." . <br>
-											    Message : ".$_POST['contact_content']." . <br>";
-							$message = $txt_Message;
-							$to = $admin_email;
-							mail($to, $subject, $message, $headers);
-							$mail_success = true;
-						}
-					}
-					?>
-        <?php if($mail_success) { ?>
-        <p class="yellow">Your email has been sent! We will contact you shortly</p>
+	   var txtStreet = jQuery('#txtStreet'+id).val();
+	   if(txtStreet==''){
+		   jQuery('#txtStreet'+id+'_error').show();
+	   }else{
+		   jQuery('#txtStreet'+id+'_error').hide();
+	   }
 
-        <?php }?>
-        <ul class="contactFields">
-          <li id="liOrderNum">
-            <label class="txtBlack txtBebas" for="txtOrderNumber">Order Number <strong class="txtRed">*</strong></label>
-                <?php if($empty_order_error) { ?>
-				    <p class="red">Name is required</p>
-			    <?php }?>
-            <input type="text"  class="txtDef" id="txtOrderNumber" name="txtOrderNumber" value="<?php if(isset($_POST['txtOrderNumber']) && $_POST['txtOrderNumber'] != ''){ echo $_POST['txtOrderNumber']; } else { echo ''; } ?>" onfocus="if(this.value=='Order Number')this.value=''; " />
-             </li>
-          <li style="display: none;" id="liBusinessName">
-            <label class="txtBlack txtBebas" for="txtBusinessName">Business Name <strong class="txtRed">*</strong></label>
-            <span class="frmError" id="lblBusNameErr"></span>
-            <input type="text" class="txtDef" id="txtBusinessName" name="txtBusinessName">
-          </li>
-          <li class="clearfix">
-            <div class="width50">
-              <label class="txtBlack txtBebas" for="txtFname">First Name <strong class="txtRed">*</strong></label>
-             <?php if($empty_nameF_error) { ?>
-				    <p class="red">Name is required</p>
-			    <?php }?>
-              <input type="text" tabindex="2" class="txtDef" id="txtFname" name="txtFname" value="<?php if(isset($_POST['txtFname']) && $_POST['txtFname'] != ''){ echo $_POST['txtFname']; } else { echo ''; } ?>" onfocus="if(this.value=='First Name')this.value=''; ">
-            </div>
-            <div class="width50">
-              <label class="txtBlack txtBebas" for="txtLname">Last Name <strong class="txtRed">*</strong></label>
-              <?php if($empty_nameL_error) { ?>
-				    <p class="red">Name is required</p>
-			    <?php }?>
-              <input type="text" tabindex="3" class="txtDef" id="txtLname" name="txtLname" value="<?php if(isset($_POST['txtLname']) && $_POST['txtLname'] != ''){ echo $_POST['txtLname']; } else { echo ''; } ?>" onfocus="if(this.value=='Last Name')this.value=''; ">
-            </div>
-          </li>
-          <li class="clearfix">
-            <div class="width50">
-              <label class="txtBlack txtBebas" for="txtStreet">Street Address <strong class="txtRed">*</strong></label>
-              <?php if($empty_street_error) { ?>
-				    <p class="red">Name is required</p>
-			    <?php }?>
-              <input type="text" tabindex="4" class="txtDef" id="txtStreet" name="txtStreet" value="<?php if(isset($_POST['txtStreet']) && $_POST['txtStreet'] != ''){ echo $_POST['txtStreet']; } else { echo ''; } ?>" onfocus="if(this.value=='Street Address')this.value=''; ">
-            </div>
-            <div class="width50">
-              <label class="txtBlack txtBebas" for="txtStreet2">Street Address 2</label>
-              <input type="text" tabindex="5" class="txtDef" id="txtStreet2" name="txtStreet2"  value="<?php if(isset($_POST['txtStreet2']) && $_POST['txtStreet2'] != ''){ echo $_POST['txtStreet2']; } else { echo ''; } ?>" onfocus="if(this.value=='Street Address 2')this.value=''; ">
-            </div>
-          </li>
-          <li class="clearfix">
-            <div class="width50">
-              <label class="txtBlack txtBebas" for="txtCity">City <strong class="txtRed">*</strong></label>
-              <?php if($empty_city_error) { ?>
-				    <p class="red">Name is required</p>
-			    <?php }?>
-              <input type="text" tabindex="6" class="txtDef" id="txtCity" name="txtCity" value="<?php if(isset($_POST['txtCity']) && $_POST['txtCity'] != ''){ echo $_POST['txtCity']; } else { echo ''; } ?>" onfocus="if(this.value=='City')this.value=''; ">
-            </div>
-            <div id="divSelState" class="width50">
-              <label class="txtBlack txtBebas" for="selState-button">State <strong class="txtRed">*</strong></label>
-              <?php if($empty_state_error) { ?>
-				    <p class="red">Name is required</p>
-			    <?php }?>
-              <select name="state">
-                <option value="Duabi">Duabi</option>
-                <option value="Abu Dahabi">Abu Dahabi</option>
-              </select>
-            </div>
-          </li>
-          <li class="clearfix clear" id="liTxtZip">
-            <label class="txtBlack txtBebas" for="txtZipCode">Zip Code<strong class="txtRed">*</strong></label>
-            <?php if($empty_zipo_error) { ?>
-				    <p class="red">Name is required</p>
-			    <?php }?>
-            <input type="text" tabindex="9" class="txtDef" id="txtZipCode" name="txtZipCode" value="<?php if(isset($_POST['txtZipCode']) && $_POST['txtZipCode'] != ''){ echo $_POST['txtZipCode']; } else { echo ''; } ?>" onfocus="if(this.value=='Zip Code')this.value=''; ">
-          </li>
-          <li style="margin-top: 9px;" class="clearfix">
-            <div class="width50">
+	   var txtStreet2 = jQuery('#txtStreet2'+id).val();
+	   if(txtStreet2==''){
+		   jQuery('#txtStreet2'+id+'_error').show();
+	   }else{
+		   jQuery('#txtStreet2'+id+'_error').hide();
+	   }
 
-              <label class="txtBlack txtBebas" for="txtPhoneArea">Phone <strong class="txtRed">*</strong></label>
-              <?php if($empty_phone_error) { ?>
-				    <p class="red">Name is required</p>
-			    <?php }?>
+	   var txtCity = jQuery('#txtCity'+id).val();
+	   if(txtCity==''){
+		   jQuery('#txtCity'+id+'_error').show();
+	   }else{
+		   jQuery('#txtCity'+id+'_error').hide();
+	   }
 
-              <input type="text" class="txtDef txt3" tabindex="11" id="txtPhoneArea" maxlength="3" name="txtPhoneArea" value="<?php if(isset($_POST['txtPhoneArea']) && $_POST['txtPhoneArea'] != ''){ echo $_POST['txtPhoneArea']; } else { echo ''; } ?>" onfocus="if(this.value=='Phone')this.value=''; ">
-              <input type="text" class="txtDef txt3" tabindex="12" id="txtPhonePrefix" maxlength="3" name="txtPhonePrefix" value="<?php if(isset($_POST['txtPhonePrefix']) && $_POST['txtPhonePrefix'] != ''){ echo $_POST['txtPhonePrefix']; } else { echo ''; } ?>" onfocus="if(this.value=='')this.value=''; ">
-              <input type="text" class="txtDef txt4" tabindex="13" id="txtPhoneSuffix" maxlength="4" name="txtPhoneSuffix" value="<?php if(isset($_POST['txtPhoneSuffix']) && $_POST['txtPhoneSuffix'] != ''){ echo $_POST['txtPhoneArea']; } else { echo ''; } ?>" onfocus="if(this.value=='Phone')this.value=''; ">
-            </div>
-            <div class="width50">
-              <label class="txtBlack txtBebas" for="txtEmail">Email <strong class="txtRed">*</strong></label>
-              <?php if($empty_email_error) { ?>
-    <p class="red">E-mail is required</p>
-    <?php } elseif($_POST && !$valid_email) { ?>
-    <p class="red">Valid E-mail Address is required</p>
-    <?php }?>
-              <input type="text" class="txtDef" tabindex="14" id="txtEmail" name="contact_email" value="<?php if(isset($_POST['txtPhoneSuffix']) && $_POST['txtPhoneSuffix'] != ''){ echo $_POST['txtPhoneArea']; } else { echo ''; } ?>" onfocus="if(this.value=='Phone')this.value=''; ">
-            </div>
-          </li>
-          <li class="clear">
-            <label class="txtBlack txtBebas" for="txtMessage">Message</label>
-             <textarea name="contact_content"  class="bigTxtArea" cols="" rows=""><?php if(isset($_POST['contact_content']) && $_POST['contact_content'] != ''){ echo $_POST['contact_content']; } else { echo ''; } ?>
-</textarea>
-          </li>
-          <li class="clearfix">
-          	<button type="button" class="lnkBlkWhtArw" style="float:right;" onclick="document.contact_frm4.submit();" >
-            	<span>submit</span>
-            </button>
-            </li>
-        </ul>
-      </form>
-    </div>
-    </div>
+	   var state = jQuery('#state'+id).val();
+	   if(state==''){
+		   jQuery('#state'+id+'_error').show();
+	   }else{
+		   jQuery('#state'+id+'_error').hide();
+	   }
 
-    
+	   var txtZipCode = jQuery('#txtZipCode'+id).val();
+	   if(txtZipCode==''){
+		   jQuery('#txtZipCode'+id+'_error').show();
+	   }else{
+		   jQuery('#txtZipCode'+id+'_error').hide();
+	   }
+
+	   var txtPhoneArea = jQuery('#txtPhoneArea'+id).val()+"-"+jQuery('#txtPhonePrefix'+id).val()+"-"+jQuery('#txtPhoneSuffix'+id).val();
+	   if(txtPhoneArea==''){
+		   jQuery('#txtPhoneArea'+id+'_error').show();
+	   }else{
+		   jQuery('#txtPhoneArea'+id+'_error').hide();
+	   }
+
+
+	   var txtEmail = jQuery('#txtEmail'+id).val();
+	   if(txtEmail==''){
+		   jQuery('#txtEmail'+id+'_error').show();
+	   }else{
+		   jQuery('#txtEmail'+id+'_error').hide();
+	   }
+	   
+	   var contactContent = jQuery('#contact_content'+id).val();
+
+	    var form_data ={
+				txtOrderNumber:txtOrderNumber,
+				txtFname:txtFname,
+				txtLname:txtLname,
+				txtStreet:txtStreet,
+				txtStreet2:txtStreet2,
+				txtCity:txtCity,
+				state:state,
+				txtZipCode:txtZipCode,
+				txtPhoneArea:txtPhoneArea,
+				txtEmail:txtEmail,
+				contactContent:contactContent
+		   }
+	   
+	  
+	   jQuery.ajax({
+			url:"http://localhost/zippo-beta/index.php/OnlineOrder/Email",
+		   data:form_data,
+		   type:'POST',
+		   dataType:'json',
+		   success: function(msg){
+			   
+			   
+			   }
+		   
+		   });
+	   
+	   
+	   }
+   </script>
     
   </div>
 </div>

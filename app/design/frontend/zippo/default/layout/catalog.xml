@@ -74,10 +74,10 @@ Category default layout
         <label>Catalog Category (Non-Anchor)</label>
         <reference name="left_first">
             <block type="catalog/navigation" name="catalog.leftnav" after="currency" template="catalog/navigation/left.phtml">
-                <block type="core/text_list" name="catalog.leftnav.state.renderers" as="state_renderers" />
+             <block type="core/text_list" name="catalog.leftnav.state.renderers" as="state_renderers" />
             </block>
         </reference>
-		        <reference name="root">
+		<reference name="root">
             <action method="setTemplate"><template>page/1column.phtml</template></action>
         </reference>
         <reference name="head">
@@ -132,13 +132,19 @@ Category layered navigation layout
             <action method="addItem"><type>skin_js</type><name>js/jquery.jscrollpane.min.js</name></action>
         </reference>
         <reference name="left_first">
-            <block type="catalog/layer_view" name="catalog.leftnav" after="currency" template="catalog/layer/view.phtml">
-                <block type="core/text_list" name="catalog.leftnav.state.renderers" as="state_renderers" />
-            </block>
+
+        </reference>
+		<reference name="root">
+            <action method="setTemplate"><template>page/1column.phtml</template></action>
         </reference>
         <reference name="content">
+		    
+			<block type="catalog/layer_view" name="catalog.leftnav" after="currency" template="catalog/layer/view.phtml">
+                <block type="core/text_list" name="catalog.leftnav.state.renderers" as="state_renderers" />
+            </block>
             <block type="catalog/category_view" name="category.products" template="catalog/category/view.phtml">
                 <block type="catalog/product_list" name="product_list" template="catalog/product/list.phtml">
+				
                     <block type="core/text_list" name="product_list.name.after" as="name.after" />
                     <block type="core/text_list" name="product_list.after" as="after" />
                     <!-- <action method="addReviewSummaryTemplate"><type>default</type><template>review/helper/su.phtml</template></action> -->
