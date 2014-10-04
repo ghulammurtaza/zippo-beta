@@ -53,12 +53,11 @@
 
     <header id="hdrSite" class="hdrSite clearfix">
         <h2 class="logo">
-            <a href="<?php echo $this->getUrl('') ?>" rel="nofollow">Zippo</a>
+            <a href="<?php echo $this->getUrl('') ?>" rel="nofollow"><?php echo $this->__('Zippo')?></a>
         </h2>
-        <div class="navCartExpanded clearfix" id="expandedCart">
-            <div class="inner clearfix">
+        <div class="navCartExpanded clearfix header-minicart" id="expandedCart">
+            <div class="inner clearfix">               
                 <?php echo $this->getChildHtml('minicart_head'); ?>
-
             </div><!-- eo .inner -->
         </div><!-- eo #expandedCart -->
         <section class="globalNav clearfix">

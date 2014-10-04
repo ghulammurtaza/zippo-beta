@@ -64,10 +64,13 @@ $childern = $catModel->load($categoryId)->getChildrenCategories();
                                                     <div class="jProductDescription prodLongDesc">
                                                         <?php echo $_helper->productAttribute($product, nl2br($product->getShortDescription()), 'short_description') ?>
                                                     </div>
-                                                    <img src="<?php echo $this->getSkinUrl('img/prod_made_USA.gif', array('_secure' => true)) ?>" alt="Made in the USA" width="125" height="30">
+                                                     <?php if ($product->getCountryOfManufacture() == 'US'): ?>
+                                                                    <img src="<?php echo $this->getSkinUrl('img/prod_made_USA.gif', array('_secure' => true)) ?>" alt="<?php echo $this->__('Made in the USA')?>" width="125" height="30">
+                                                    <?php endif; ?>  
+                                                    
                                                     <div class="prodCart">
-                                                        <label for="txtProdQty"><?php echo $this->__('Qty.') ?></label> <input type="text" name="txtProdQty" id="txtProdQty" class="txtProdQty" placeholder="1" size="1">
-                                                        <input type="button" class="btnAddCart" onclick="setLocation('<?php echo $this->getAddToCartUrl($product) ?>')" value="<?php echo $this->__('Add To Cart')?>">
+                                                        <label for="txtProdQty"><?php echo $this->__('Qty.') ?></label> <input type="text" name="txtProdQty" id="txtProdQty<?php echo $product->getId()?>" class="txtProdQty" placeholder="1" size="1">
+                                                        <input type="button" class="btnAddCart" onclick="addtocart('<?php echo $product->getId()?>','<?php echo $this->getAddToCartUrl($product) ?>?options=cart')" value="<?php echo $this->__('Add To Cart')?>">
                                                     </div>
                                                 </div>
                                             </div><!-- eo .inner -->
@@ -84,3 +87,11 @@ $childern = $catModel->load($categoryId)->getChildrenCategories();
     </section>
     <section class="listKickersRight"> <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('bestseller')->toHtml(); ?> </section>
 </section>
+ <script type="text/javascript">
+        function addtocart(id, url){
+        qty = jQuery('#txtProdQty'+id).val();
+        url = url + '&qty='+qty;
+        setLocation(url);
+        return false;
+    }
+        </script>

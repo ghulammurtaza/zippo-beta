@@ -40,11 +40,11 @@
 ?>
 
 <div id="cartExpanded"  class="navCartInner <?php if($_cartQty <= 0): ?> no-count<?php endif; ?>">
-    Cart&nbsp;<span id="expCartQty" class="count txtRed">(<?php echo $_cartQty; ?>)</span>
+   <?php echo $this->__('Cart')?>&nbsp;<span id="expCartQty" class="count txtRed">(<?php echo $_cartQty; ?>)</span>
 </div>
 
-<div  class="smiple <?php if($_cartQty <= 0): ?> no-count<?php endif; ?>">
-    Cart&nbsp;<span id="expCartQty" class="count txtRed">(<?php echo $_cartQty; ?>)</span>
+<div  class="smiple header-minicart <?php if($_cartQty <= 0): ?> no-count<?php endif; ?>">
+    <?php echo $this->__('Cart')?>&nbsp;<span id="expCartQtySimple" class="count txtRed">(<?php echo $_cartQty; ?>)</span>
 </div>
 
 

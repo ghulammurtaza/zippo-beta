@@ -105,49 +105,6 @@ $_helper = $this->helper('catalog/output');
                         </li>
                      <?php endforeach; ?>                    
                 </ul>
-                <div class="listSubNav clearfix">                    
-                    <div class="listInfo">
-                        <span class="listNumItems"> <?php echo($currentCategory->getProductCount()); ?> <?php echo $this->__('Items')?></span> | <a href="<?php echo $this->getUrl('') ?>lighters.html" class="txtRed"><?php echo $this->__('View All')?></a>
-                    </div>
-                    <ul class="listFilters clearfix">
-                        <li class="filterHolder" id="fltrFinishes">
-                            <select class="filter" name="selFinishes" id="selFinishes">
-                                <option value="" selected="selected">Finishes & Colors</option>
-                                <option value="finish1">Finish & Color #1</option>
-                                <option value="finish2">Finish & Color #2</option>
-                                <option value="finish3">Finish & Color #3</option>
-                                <option value="finish4">Finish & Color #4</option>
-                            </select>
-                        </li>
-                        <li class="filterHolder" id="fltrTheme">
-                            <select class="filter" name="selThemes" id="selThemes">
-                                <option value="" selected="selected">Themes</option>
-                                <option value="theme1">Theme #1</option>
-                                <option value="theme2">Theme #2</option>
-                                <option value="theme3">Theme #3</option>
-                                <option value="theme4">Theme #4</option>
-                            </select>
-                        </li>
-                        <li class="filterHolder" id="fltrPrice">
-                            <select class="filter" name="selPrice" id="selPrice">
-                                <option value="" selected="selected">Prices</option>
-                                <option value="price1">$1 - $20</option>
-                                <option value="price2">$21 - $40</option>
-                                <option value="price3">$41 - $60</option>
-                                <option value="price4">$60 +</option>
-                            </select>
-                        </li>
-                        <li class="filterHolder" id="fltrOption">
-                            <select class="filter" name="selOptions" id="selOptions">
-                                <option value="" selected="selected">Other Options</option>
-                                <option value="option1">Other Option #1</option>
-                                <option value="option2">Other Option #2</option>
-                                <option value="option3">Other Option #3</option>
-                                <option value="option4">Other Option #4</option>
-                            </select>
-                        </li>
-                    </ul>
-                </div>
             </div><!-- eo .listTop -->
             <div class="listSlider clearfix">
                 <!-- eo .listProdPopUps -->
@@ -294,10 +251,12 @@ $_helper = $this->helper('catalog/output');
                                                             <div class="jProductDescription prodLongDesc">
             <?php echo $_helper->productAttribute($_product, nl2br($_product->getShortDescription()), 'short_description') ?>
                                                             </div>
-                                                            <img src="<?php echo $this->getSkinUrl('img/prod_made_USA.gif', array('_secure' => true)) ?>" alt="Made in the USA" width="125" height="30">
+                                                            <?php if ($_product->getCountryOfManufacture() == 'US'): ?>
+                                                                    <img src="<?php echo $this->getSkinUrl('img/prod_made_USA.gif', array('_secure' => true)) ?>" alt="Made in the USA" width="125" height="30">
+                                                            <?php endif; ?>                                                            
                                                             <div class="prodCart">
-                                                                <label for="txtProdQty"><?php echo $this->__('Qty.') ?></label> <input type="text" name="txtProdQty" id="txtProdQty" class="txtProdQty" placeholder="1" size="1">
-                                                                <input type="button" class="btnAddCart" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')" value="Add To Cart">
+                                                                <label for="txtProdQty"><?php echo $this->__('Qty.') ?></label> <input type="text" name="txtProdQty" id="txtProdQty<?php echo $_product->getId()?>" class="txtProdQty" placeholder="1" size="1">
+                                                                <input type="button" class="btnAddCart" onclick="addtocart('<?php echo $_product->getId()?>','<?php echo $this->getAddToCartUrl($_product) ?>?options=cart')" value="Add To Cart">
                                                             </div>
                                                         </div>
                                                     </div><!-- eo .inner -->
@@ -347,4 +306,11 @@ foreach ($_afterChildren as $_afterChildName):
     <?php echo $_afterChild->toHtml(); ?>
 <?php endforeach; ?>
 
-
+    <script type="text/javascript">
+        function addtocart(id, url){
+        qty = jQuery('#txtProdQty'+id).val();
+        url = url + '&qty='+qty;
+        setLocation(url);
+        return false;
+    }
+    </script>

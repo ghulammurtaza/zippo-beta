@@ -43,11 +43,7 @@
                     <host><![CDATA[localhost]]></host>
                     <username><![CDATA[root]]></username>
                     <password><![CDATA[]]></password>
-<<<<<<< HEAD
-                    <dbname><![CDATA[zippo-live]]></dbname>
-=======
                     <dbname><![CDATA[zippo]]></dbname>
->>>>>>> fd1b50376958e117ad92e68eacf97f217bf9d689
                     <initStatements><![CDATA[SET NAMES utf8]]></initStatements>
                     <model><![CDATA[mysql4]]></model>
                     <type><![CDATA[pdo_mysql]]></type>
