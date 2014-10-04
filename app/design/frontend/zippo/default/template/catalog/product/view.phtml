@@ -201,16 +201,7 @@
             </div>
         </div>
     </section>
-    <!-- eo .listHolder -->
-    <section class="listKickersRight">
-        <section class="listKickerAdTop">
-
-            <div class="innerKicker"> <a href="<?php echo $this->getUrl('') ?>outdoors.html" title="ad name"><img src="<?php echo $this->getSkinUrl('img/1_7_C.png', array('_secure' => true)) ?>" alt="ad name" width="224" height="270" /></a> </div>
-        </section>
-        <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('bestseller')->toHtml(); ?> 
-        <!-- eo .listKickerSlide -->
-
-        <!-- eo .kickerPromo --> 
+        <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('bestseller')->toHtml(); ?>        
     </section>
     <!-- eo .listKickersRight --> 
 </section>

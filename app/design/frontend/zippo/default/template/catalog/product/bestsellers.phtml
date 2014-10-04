@@ -13,10 +13,8 @@ $products = Mage::getResourceModel('reports/product_collection')
                 ->setOrder('ordered_qty', 'desc')
                 ->getSelect()->limit(10)->query();
 ?>
-<?php if (count($products) > 0):
-?>
-
-
+<section class="listKickersRight">
+<?php if (count($products) > 0):?>
     <section class="bestSellKicker" style="margin-top:0;">
         <div class="inner clearfix">
             <h3 class="bestSellHdr txtBebas">
@@ -36,11 +34,11 @@ $products = Mage::getResourceModel('reports/product_collection')
                     </ul>
                     <div class="sliderLinks clearfix">
                 <a id="btnBsProdInfo" href="<?php echo $product->getProductUrl()?>" title="product info"></a>
-                <a id="btnBsAddCart" href="#" onclick="setLocation('<?php echo Mage::getUrl('checkout/cart/add/product/'.$product->getId())?>')"title="add to cart"></a>
+                <a id="btnBsAddCart" href="#" onclick="setLocation('<?php echo (string)Mage::helper('checkout/cart')->getAddUrl($product) ?>?options=cart')"title="add to cart"></a>
             </div>
                 </div>
             </div>            
         </div>
     </section>
-
-<?php endif;
+<?php endif;?>
+</section>

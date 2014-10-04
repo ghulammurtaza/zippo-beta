@@ -85,7 +85,7 @@ $childern = $catModel->load($categoryId)->getChildrenCategories();
             <?php endforeach; ?>
         </div>
     </section>
-    <section class="listKickersRight"> <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('bestseller')->toHtml(); ?> </section>
+    <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('bestseller')->toHtml(); ?>
 </section>
  <script type="text/javascript">
         function addtocart(id, url){
