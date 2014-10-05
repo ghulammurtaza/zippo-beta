@@ -20,71 +20,86 @@ class OnlineOrder_Email_IndexController extends Mage_Core_Controller_Front_Actio
 	  
     }
 	 public function onlineOrderAction(){
-		 echo 'sdfasd'; exit;
-		 
-		 
-		 echo Mage::getStoreConfig('trans_email/ident_general/email');
-					if($_POST) {
-						if($_POST['txtOrderNumber'] == '')
-							$empty_order_error = true;
-						if($_POST['txtFname'] == '')
-							$empty_nameF_error = true;
-						if($_POST['txtLname'] == '')
-							$empty_nameL_error = true;							
-						if($_POST['txtStreet'] == '')
-							$empty_street_error = true;
-						if($_POST['txtCity'] == '')
-							$empty_city_error = true;
-						if($_POST['state'] == '')
-							$empty_state_error = true;
-						if($_POST['txtZipCode'] == '')
-							$empty_zipo_error = true;
-						if($_POST['txtPhoneArea'] == '')
-							$empty_phone_error = true;							
-						if($_POST['txtPhonePrefix'] == '')
-							$empty_phone1_error = true;
-						if($_POST['txtPhoneSuffix'] == '')
-							$empty_phone2_error = true;																					
-							
-						if($_POST['contact_email'] == '')
-							$empty_email_error = true;
 
-						if($_POST['contact_email'] != '') {
-							$expression = '[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}';
-							if (eregi($expression, $_POST['contact_email'])) {
-								$valid_email = true;
-							}
- 
-						}
-						if(!$empty_order_error && !$empty_nameF_error && !$empty_nameL_error && !$empty_city_error && !$empty_state_error && !$empty_zipo_error && !$empty_phone_error && !$empty_phone_error1 && $valid_email && !$empty_phone2_error) {
+				
+
+				if($data['error']==''){
+							Mage::getStoreConfig('trans_email/ident_general/email');
 							$admin_email	 = 'frenklen2004@gmail.com';
-							$subject		 ='ONLINE ORDERS ';
+							//$subject		 =' ONLINE ORDERS ';
+							
+							if($_POST['form_type']=='one'){
+								$subject		 ='Online orders';
+								$txt_Message	 = "Order Number : ".$_POST['txtOrderNumber']." . <br>
+													First Name : ".$_POST['txtFname']." . <br>
+													Last Name : ".$_POST['txtLname']." . <br>
+													Street Address : ".$_POST['txtStreet']." . <br>
+													Street Address 2 : ".$_POST['txtStreet2']." . <br>
+													City : ".$_POST['txtCity']." . <br>
+													State  : ".$_POST['state']." . <br>
+													Zip Code : ".$_POST['txtZipCode']." . <br>
+													Phone : ".$_POST['txtPhoneArea']." . <br>
+													Email : ".$_POST['txtEmail']." . <br>
+													Message : ".$_POST['contactContent']." . <br>";
+								
+								
+							}else if($_POST['form_type']=='two'){
+								 $subject		 ='New Retailer Inquiries ';
+								$txt_Message	 = "Business Name : ".$_POST['businessName']." . <br>
+													First Name : ".$_POST['txtFname']." . <br>
+													Last Name : ".$_POST['txtLname']." . <br>
+													Street Address : ".$_POST['txtStreet']." . <br>
+													Street Address 2 : ".$_POST['txtStreet2']." . <br>
+													City : ".$_POST['txtCity']." . <br>
+													State  : ".$_POST['state']." . <br>
+													Country  : ".$_POST['country']." . <br>
+													Zip Code : ".$_POST['txtZipCode']." . <br>
+													Phone : ".$_POST['txtPhoneArea']." . <br>
+													Email : ".$_POST['txtEmail']." . <br>
+													Message : ".$_POST['contactContent']." . <br>";
+
+							}else if($_POST['form_type']=='three'){
+								 $subject		 =' Media and PR ';
+								$txt_Message	 = "First Name : ".$_POST['txtFname']." . <br>
+													Last Name : ".$_POST['txtLname']." . <br>
+													Street Address : ".$_POST['txtStreet']." . <br>
+													Street Address 2 : ".$_POST['txtStreet2']." . <br>
+													City : ".$_POST['txtCity']." . <br>
+													State  : ".$_POST['state']." . <br>
+													Zip Code : ".$_POST['txtZipCode']." . <br>
+													Phone : ".$_POST['txtPhoneArea']." . <br>
+													Email : ".$_POST['txtEmail']." . <br>
+													Message : ".$_POST['contactContent']." . <br>";
+													
+							}else if($_POST['form_type']=='four'){ 	
+								$subject		 ='General Inquiries'; 
+								$txt_Message	 = "First Name : ".$_POST['txtFname']." . <br>
+													Last Name : ".$_POST['txtLname']." . <br>
+													Street Address : ".$_POST['txtStreet']." . <br>
+													Street Address 2 : ".$_POST['txtStreet2']." . <br>
+													City : ".$_POST['txtCity']." . <br>
+													State  : ".$_POST['state']." . <br>
+													Country  : ".$_POST['country']." . <br>
+													Zip Code : ".$_POST['txtZipCode']." . <br>
+													Phone : ".$_POST['txtPhoneArea']." . <br>
+													Email : ".$_POST['txtEmail']." . <br>
+													Message : ".$_POST['contactContent']." . <br>";										                            }
+
 							$headers		 = 'MIME-Version: 1.0' . "\r\n";
 							$headers		.= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
 							$headers		.= 'To:'.$admin_email. "\r\n";
 							$headers		.= 'From:'.$_POST['contact_email']."\r\n";
-							$txt_Message	 = "Order Number : ".$_POST['txtOrderNumber']." . <br>
-												First Name : ".$_POST['txtFname']." . <br>
-												Last Name : ".$_POST['txtLname']." . <br>
-												Street Address : ".$_POST['txtStreet']." . <br>
-												Street Address 2 : ".$_POST['txtStreet2']." . <br>
-												City : ".$_POST['txtCity']." . <br>
-												State  : ".$_POST['state']." . <br>
-												Zip Code : ".$_POST['txtZipCode']." . <br>
-												Phone : ".$_POST['txtPhoneArea']." . <br>
-												Phone : ".$_POST['txtPhonePrefix']." . <br>
-												Phone : ".$_POST['txtPhoneSuffix']." . <br>
-											    Email : ".$_POST['contact_email']." . <br>
-											    Message : ".$_POST['contact_content']." . <br>";
+
 							$message = $txt_Message;
 							$to = $admin_email;
-							mail($to, $subject, $message, $headers);
-							$mail_success = true;
+						if(mail($to, $subject, $message, $headers)){
+							$data['mail_success'] = 'yes';
+						}else{
+							$data['mail_success'] = 'no';
 						}
+						 echo json_encode($data);return;
+					}else{	
+						echo json_encode($data);	return;					
 					}
-					
-		 echo json_encode($data);
-		 }
-	
-	
+		}//end of function
 }
