@@ -4,18 +4,34 @@
 	jQuery("#contactOptions li.first").click(function(e) {
 		jQuery(".frombox").hide();
 		jQuery("#from1").show();
+	   jQuery('input').val("");	
+	   jQuery('textarea').val("");	
+	   jQuery("#yes_msg").hide();
+	   jQuery(".contactFields .red").hide();
     });
 	jQuery("#contactOptions li.two").click(function(e) {
 		jQuery(".frombox").hide();
 		jQuery("#from2").show();
+	   jQuery('input').val("");	
+	   jQuery('textarea').val("");	
+	   jQuery(".contactFields .red").hide();
+	   jQuery("#yes_msg").hide();
     });
 	jQuery("#contactOptions li.three").click(function(e) {
 		jQuery(".frombox").hide();
 		jQuery("#from3").show();
+	   jQuery('input').val("");	
+	   jQuery('textarea').val("");	
+	   jQuery(".contactFields .red").hide();
+	   jQuery("#yes_msg").hide();
     });
 	jQuery("#contactOptions li.four").click(function(e) {
 		jQuery(".frombox").hide();
 		jQuery("#from4").show();
+	   jQuery('input').val("");	
+	   jQuery('textarea').val("");	
+	   jQuery(".contactFields .red").hide();
+	   jQuery("#yes_msg").hide();
     });
     
 });
@@ -35,77 +51,14 @@
 </ul>
 <div id="contactForms" class="contactForms">
   <div id="dvOnlineOrders" class="oneform">
-  	<div id="from1" class="frombox">
+  
+    <div id="from1" class="frombox">
     <h3 id="contactHeading" class="txtRed txtBebas">ONLINE ORDERS</h3>
     <p class="txtBold">Providing exceptional service is our priority; feedback is always welcomed. If your inquiry is time-sensitive, please call us Monday-Friday 8:00 am to 4:30 pm EST at 888.442.1932.</p>
     <p class="txtBold">Fields marked with <strong class="txtRed">*</strong> are required.</p>
     <div class="tab-1">
       <form method="post" action="" name="contact_frm" id="contact_frm1">
-        <?php
-		 echo Mage::getStoreConfig('trans_email/ident_general/email');
-					if($_POST) {
-						if($_POST['txtOrderNumber'] == '')
-							$empty_order_error = true;
-						if($_POST['txtFname'] == '')
-							$empty_nameF_error = true;
-						if($_POST['txtLname'] == '')
-							$empty_nameL_error = true;							
-						if($_POST['txtStreet'] == '')
-							$empty_street_error = true;
-						if($_POST['txtCity'] == '')
-							$empty_city_error = true;
-						if($_POST['state'] == '')
-							$empty_state_error = true;
-						if($_POST['txtZipCode'] == '')
-							$empty_zipo_error = true;
-						if($_POST['txtPhoneArea'] == '')
-							$empty_phone_error = true;							
-						if($_POST['txtPhonePrefix'] == '')
-							$empty_phone1_error = true;
-						if($_POST['txtPhoneSuffix'] == '')
-							$empty_phone2_error = true;																					
-							
-						if($_POST['contact_email'] == '')
-							$empty_email_error = true;
-
-						if($_POST['contact_email'] != '') {
-							$expression = '[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}';
-							if (eregi($expression, $_POST['contact_email'])) {
-								$valid_email = true;
-							}
- 
-						}
-						if(!$empty_order_error && !$empty_nameF_error && !$empty_nameL_error && !$empty_city_error && !$empty_state_error && !$empty_zipo_error && !$empty_phone_error && !$empty_phone_error1 && $valid_email && !$empty_phone2_error) {
-							$admin_email	 = 'frenklen2004@gmail.com';
-							$subject		 ='ONLINE ORDERS ';
-							$headers		 = 'MIME-Version: 1.0' . "\r\n";
-							$headers		.= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
-							$headers		.= 'To:'.$admin_email. "\r\n";
-							$headers		.= 'From:'.$_POST['contact_email']."\r\n";
-							$txt_Message	 = "Order Number : ".$_POST['txtOrderNumber']." . <br>
-												First Name : ".$_POST['txtFname']." . <br>
-												Last Name : ".$_POST['txtLname']." . <br>
-												Street Address : ".$_POST['txtStreet']." . <br>
-												Street Address 2 : ".$_POST['txtStreet2']." . <br>
-												City : ".$_POST['txtCity']." . <br>
-												State  : ".$_POST['state']." . <br>
-												Zip Code : ".$_POST['txtZipCode']." . <br>
-												Phone : ".$_POST['txtPhoneArea']." . <br>
-												Phone : ".$_POST['txtPhonePrefix']." . <br>
-												Phone : ".$_POST['txtPhoneSuffix']." . <br>
-											    Email : ".$_POST['contact_email']." . <br>
-											    Message : ".$_POST['contact_content']." . <br>";
-							$message = $txt_Message;
-							$to = $admin_email;
-							mail($to, $subject, $message, $headers);
-							$mail_success = true;
-						}
-					}
-					?>
-        <?php if($mail_success) { ?>
-        <p class="yellow">Your email has been sent! We will contact you shortly</p>
-
-        <?php }?>
+    
         <ul class="contactFields">
           <li id="liOrderNum">
             <label class="txtBlack txtBebas" for="txtOrderNumber">Order Number <strong class="txtRed">*</strong></label>
@@ -187,6 +140,290 @@
       </form>
     </div>
     </div>
+    <div id="from2" class="frombox">
+    <h3 id="contactHeading" class="txtRed txtBebas">New Retailer Inquiries</h3>
+    <p class="txtBold">Providing exceptional service is our priority; feedback is always welcomed. If your inquiry is time-sensitive, please call us Monday-Friday 8:00 am to 4:30 pm EST at 888.442.1932.</p>
+    <p class="txtBold">Fields marked with <strong class="txtRed">*</strong> are required.</p>
+    <div class="tab-1">
+
+      <form method="post" action="" name="contact_frm" id="contact_frm2">
+       
+        <ul class="contactFields">
+          <li id="liOrderNum">
+            <label class="txtBlack txtBebas" for="txtOrderNumber">Business Name  <strong class="txtRed">*</strong></label>
+				    <p class="red" id="businessName_2_error">Business is required</p>
+            <input type="text"  class="txtDef" id="businessName_2" name="txtOrderNumber_2" value=""  />
+             </li>
+          
+          <li class="clearfix">
+            <div class="width50">
+              <label class="txtBlack txtBebas" for="txtFname">First Name <strong class="txtRed">*</strong></label>
+              <p class="red" id="txtFname_2_error">First Name is required</p>
+              <input type="text" tabindex="2" class="txtDef" id="txtFname_2" name="txtFname_2" >
+            </div>
+            <div class="width50">
+              <label class="txtBlack txtBebas" for="txtLname">Last Name <strong class="txtRed">*</strong></label>
+				 <p class="red" id="txtLname_2_error">Last Name is required</p>
+              <input type="text" tabindex="3" class="txtDef" id="txtLname_2" name="txtLname_2" >
+            </div>
+          </li>
+          <li class="clearfix">
+            <div class="width50">
+              <label class="txtBlack txtBebas" for="txtStreet">Street Address <strong class="txtRed">*</strong></label>
+			  <p class="red" id="txtStreet_2_error">Street Address is required</p>
+              <input type="text" tabindex="4" class="txtDef" id="txtStreet_2" name="txtStreet_2" >
+            </div>
+            <div class="width50">
+              <label class="txtBlack txtBebas" for="txtStreet2">Street Address 2</label>
+              <input type="text" tabindex="5" class="txtDef" id="txtStreet2_2" name="txtStreet2_2"  >
+            </div>
+          </li>
+          <li class="clearfix">
+            <div class="width50">
+              <label class="txtBlack txtBebas" for="txtCity">City <strong class="txtRed">*</strong></label>
+              <p class="red" id="txtCity_2_error">City is required</p>
+              <input type="text" tabindex="6" class="txtDef" id="txtCity_2" name="txtCity_2" >
+            </div>
+            <div id="divSelState" class="width50">
+              <label class="txtBlack txtBebas" for="selState-button">State <strong class="txtRed">*</strong></label>
+              <p class="red" id="state_2_error">State is required</p>
+              <select name="state" id="state_2">
+                <option value="Duabi">Duabi</option>
+                <option value="Abu Dahabi">Abu Dahabi</option>
+              </select>
+            </div>
+            
+          </li>
+          <li class="clearfix clear" id="liTxtZip">
+            <label class="txtBlack txtBebas" for="txtZipCode">Zip Code<strong class="txtRed">*</strong></label>
+            <p class="red" id="txtZipCode_2_error">Zip Code is required</p>
+            <input type="text" tabindex="9" class="txtDef" id="txtZipCode_2" name="txtZipCode_2" >
+          </li>
+          <li>
+          <div id="divSelState" class="width50">
+              <label class="txtBlack txtBebas" for="selState-button">Country  <strong class="txtRed">*</strong></label>
+              <p class="red" id="state_2_error">Country  is required</p>
+              <select name="country" id="country_2">
+                <option value="UAE">UAE</option>
+                <option value="USA">USA</option>
+                <option value="Pakistan">Pakistan</option>
+              </select>
+            </div>
+            <div style="clear: both;"></div>
+          </li>
+          <li style="margin-top: 9px;" class="clearfix">
+            <div class="width50">
+              <label class="txtBlack txtBebas" for="txtPhoneArea">Phone <strong class="txtRed">*</strong></label>
+              <p class="red" id="txtPhoneArea_2_error">Phone is required</p>
+              <p class="red" id="txtPhonePrefix_2_error">Phone is required</p>
+              <p class="red" id="txtPhoneSuffix_2_error">Phone is required</p>
+
+              <input type="text" class="txtDef txt3" tabindex="11" id="txtPhoneArea_2" maxlength="3" name="txtPhoneArea" >
+              <input type="text" class="txtDef txt3" tabindex="12" id="txtPhonePrefix_2" maxlength="3" name="txtPhonePrefix" >
+              <input type="text" class="txtDef txt4" tabindex="13" id="txtPhoneSuffix_2" maxlength="4" name="txtPhoneSuffix" >
+            </div>
+            <div class="width50">
+              <label class="txtBlack txtBebas" for="txtEmail">Email <strong class="txtRed">*</strong></label>
+              <p class="red" id="txtEmail_2_error">Email is required</p>
+              <input type="text" class="txtDef" tabindex="14" id="txtEmail_2" name="contact_email" >
+            </div>
+          </li>
+          <li class="clear">
+            <label class="txtBlack txtBebas" for="txtMessage">Message</label>
+             <textarea name="contact_content" id="contact_content_2" class="bigTxtArea" cols="" rows="">
+</textarea>
+          </li>
+          <li class="clearfix">
+          	<button type="button" class="lnkBlkWhtArw" style="float:right;" onclick="onlineOrder('_2');" >
+            	<span>submit</span>
+            </button>
+            </li>
+        </ul>
+      </form>
+    </div>
+    </div>
+    <div id="from3" class="frombox">
+    <h3 id="contactHeading" class="txtRed txtBebas">Media and PR</h3>
+    <p class="txtBold">Providing exceptional service is our priority; feedback is always welcomed. If your inquiry is time-sensitive, please call us Monday-Friday 8:00 am to 4:30 pm EST at 888.442.1932.</p>
+    <p class="txtBold">Fields marked with <strong class="txtRed">*</strong> are required.</p>
+    <div class="tab-1">
+      <form method="post" action="" name="contact_frm" id="contact_frm2">
+
+        <ul class="contactFields">
+         
+          <li class="clearfix">
+            <div class="width50">
+              <label class="txtBlack txtBebas" for="txtFname">First Name <strong class="txtRed">*</strong></label>
+              <p class="red" id="txtFname_3_error">Name is required</p>
+              <input type="text" tabindex="2" class="txtDef" id="txtFname_3" name="txtFname_3" >
+            </div>
+            <div class="width50">
+              <label class="txtBlack txtBebas" for="txtLname">Last Name <strong class="txtRed">*</strong></label>
+				 <p class="red" id="txtLname_3_error">Name is required</p>
+              <input type="text" tabindex="3" class="txtDef" id="txtLname_3" name="txtLname_3" >
+            </div>
+          </li>
+          <li class="clearfix">
+            <div class="width50">
+              <label class="txtBlack txtBebas" for="txtStreet">Street Address <strong class="txtRed">*</strong></label>
+			  <p class="red" id="txtStreet_3_error">Name is required</p>
+              <input type="text" tabindex="4" class="txtDef" id="txtStreet_3" name="txtStreet_3" >
+            </div>
+            <div class="width50">
+              <label class="txtBlack txtBebas" for="txtStreet2">Street Address 2</label>
+              <input type="text" tabindex="5" class="txtDef" id="txtStreet2_3" name="txtStreet2_3"  >
+            </div>
+          </li>
+          <li class="clearfix">
+            <div class="width50">
+              <label class="txtBlack txtBebas" for="txtCity">City <strong class="txtRed">*</strong></label>
+              <p class="red" id="txtCity_3_error">Name is required</p>
+              <input type="text" tabindex="6" class="txtDef" id="txtCity_3" name="txtCity_3" >
+            </div>
+            <div id="divSelState" class="width50">
+              <label class="txtBlack txtBebas" for="selState-button">State <strong class="txtRed">*</strong></label>
+              <p class="red" id="state_3_error">Name is required</p>
+              <select name="state" id="state_3">
+                <option value="Duabi">Duabi</option>
+                <option value="Abu Dahabi">Abu Dahabi</option>
+              </select>
+            </div>
+          </li>
+          <li class="clearfix clear" id="liTxtZip">
+            <label class="txtBlack txtBebas" for="txtZipCode">Zip Code<strong class="txtRed">*</strong></label>
+            <p class="red" id="txtZipCode_3_error">Name is required</p>
+            <input type="text" tabindex="9" class="txtDef" id="txtZipCode_3" name="txtZipCode_3" >
+          </li>
+          <li style="margin-top: 9px;" class="clearfix">
+            <div class="width50">
+              <label class="txtBlack txtBebas" for="txtPhoneArea">Phone <strong class="txtRed">*</strong></label>
+              <p class="red" id="txtPhoneArea_3_error">Name is required</p>
+              <p class="red" id="txtPhonePrefix_3_error">Name is required</p>
+              <p class="red" id="txtPhoneSuffix_3_error">Name is required</p>
+
+              <input type="text" class="txtDef txt3" tabindex="11" id="txtPhoneArea_3" maxlength="3" name="txtPhoneArea" >
+              <input type="text" class="txtDef txt3" tabindex="12" id="txtPhonePrefix_3" maxlength="3" name="txtPhonePrefix" >
+              <input type="text" class="txtDef txt4" tabindex="13" id="txtPhoneSuffix_3" maxlength="4" name="txtPhoneSuffix" >
+            </div>
+            <div class="width50">
+              <label class="txtBlack txtBebas" for="txtEmail">Email <strong class="txtRed">*</strong></label>
+              <p class="red" id="txtEmail_3_error">Name is required</p>
+              <input type="text" class="txtDef" tabindex="14" id="txtEmail_3" name="contact_email" >
+            </div>
+          </li>
+          <li class="clear">
+            <label class="txtBlack txtBebas" for="txtMessage">Message</label>
+             <textarea name="contact_content" id="contact_content_3" class="bigTxtArea" cols="" rows="">
+</textarea>
+          </li>
+          <li class="clearfix">
+          	<button type="button" class="lnkBlkWhtArw" style="float:right;" onclick="onlineOrder('_3');" >
+            	<span>submit</span>
+            </button>
+            </li>
+        </ul>
+      </form>
+    </div>
+    </div>
+    <div id="from4" class="frombox">
+    <h3 id="contactHeading" class="txtRed txtBebas">New Retailer Inquiries</h3>
+    <p class="txtBold">Providing exceptional service is our priority; feedback is always welcomed. If your inquiry is time-sensitive, please call us Monday-Friday 8:00 am to 4:30 pm EST at 888.442.1932.</p>
+    <p class="txtBold">Fields marked with <strong class="txtRed">*</strong> are required.</p>
+    <div class="tab-1">
+      <form method="post" action="" name="contact_frm" id="contact_frm2">
+  
+        <ul class="contactFields">
+          
+          
+          <li class="clearfix">
+            <div class="width50">
+              <label class="txtBlack txtBebas" for="txtFname">First Name <strong class="txtRed">*</strong></label>
+              <p class="red" id="txtFname_4_error">Name is required</p>
+              <input type="text" tabindex="2" class="txtDef" id="txtFname_4" name="txtFname_4" >
+            </div>
+            <div class="width50">
+              <label class="txtBlack txtBebas" for="txtLname">Last Name <strong class="txtRed">*</strong></label>
+				 <p class="red" id="txtLname_4_error">Name is required</p>
+              <input type="text" tabindex="3" class="txtDef" id="txtLname_4" name="txtLname_4" >
+            </div>
+          </li>
+          <li class="clearfix">
+            <div class="width50">
+              <label class="txtBlack txtBebas" for="txtStreet">Street Address <strong class="txtRed">*</strong></label>
+			  <p class="red" id="txtStreet_4_error">Name is required</p>
+              <input type="text" tabindex="4" class="txtDef" id="txtStreet_4" name="txtStreet_4" >
+            </div>
+            <div class="width50">
+              <label class="txtBlack txtBebas" for="txtStreet2">Street Address 2</label>
+              <input type="text" tabindex="5" class="txtDef" id="txtStreet2_4" name="txtStreet2_4"  >
+            </div>
+          </li>
+          <li class="clearfix">
+            <div class="width50">
+              <label class="txtBlack txtBebas" for="txtCity">City <strong class="txtRed">*</strong></label>
+              <p class="red" id="txtCity_4_error">City is required</p>
+              <input type="text" tabindex="6" class="txtDef" id="txtCity_4" name="txtCity_4" >
+            </div>
+            <div id="divSelState" class="width50">
+              <label class="txtBlack txtBebas" for="selState-button">State <strong class="txtRed">*</strong></label>
+              <p class="red" id="state_4_error">State is required</p>
+              <select name="state" id="state_4">
+                <option value="Duabi">Duabi</option>
+                <option value="Abu Dahabi">Abu Dahabi</option>
+              </select>
+            </div>
+            
+          </li>
+          <li class="clearfix clear" id="liTxtZip">
+            <label class="txtBlack txtBebas" for="txtZipCode">Zip Code<strong class="txtRed">*</strong></label>
+            <p class="red" id="txtZipCode_4_error">Name is required</p>
+            <input type="text" tabindex="9" class="txtDef" id="txtZipCode_4" name="txtZipCode_4" >
+          </li>
+          <li>
+          <div id="divSelState" class="width50">
+              <label class="txtBlack txtBebas" for="selState-button">Country  <strong class="txtRed">*</strong></label>
+              <p class="red" id="state_4_error">Country  is required</p>
+              <select name="country" id="country_4">
+                <option value="UAE">UAE</option>
+                <option value="USA">USA</option>
+                <option value="Pakistan">Pakistan</option>
+              </select>
+            </div>
+            <div style="clear: both;"></div>
+          </li>
+          <li style="margin-top: 9px;" class="clearfix">
+            <div class="width50">
+              <label class="txtBlack txtBebas" for="txtPhoneArea">Phone <strong class="txtRed">*</strong></label>
+              <p class="red" id="txtPhoneArea_4_error">Name is required</p>
+              <p class="red" id="txtPhonePrefix_4_error">Name is required</p>
+              <p class="red" id="txtPhoneSuffix_4_error">Name is required</p>
+
+              <input type="text" class="txtDef txt3" tabindex="11" id="txtPhoneArea_4" maxlength="3" name="txtPhoneArea" >
+              <input type="text" class="txtDef txt3" tabindex="12" id="txtPhonePrefix_4" maxlength="3" name="txtPhonePrefix" >
+              <input type="text" class="txtDef txt4" tabindex="13" id="txtPhoneSuffix_4" maxlength="4" name="txtPhoneSuffix" >
+            </div>
+            <div class="width50">
+              <label class="txtBlack txtBebas" for="txtEmail">Email <strong class="txtRed">*</strong></label>
+              <p class="red" id="txtEmail_4_error">Name is required</p>
+              <input type="text" class="txtDef" tabindex="14" id="txtEmail_4" name="contact_email" >
+            </div>
+          </li>
+          <li class="clear">
+            <label class="txtBlack txtBebas" for="txtMessage">Message</label>
+             <textarea name="contact_content" id="contact_content_4" class="bigTxtArea" cols="" rows="">
+</textarea>
+          </li>
+          <li class="clearfix">
+          	<button type="button" class="lnkBlkWhtArw" style="float:right;" onclick="onlineOrder('_4');" >
+            	<span>submit</span>
+            </button>
+            </li>
+        </ul>
+      </form>
+    </div>
+    </div>
+    	    <div id="yes_msg"></div>
+    
    
    <script language="javascript">
    function onlineOrder(id){
@@ -198,9 +435,18 @@
 	   }else{
 		   jQuery('#txtOrderNumber'+id+'_error').hide();
 	   }
+	
+	   var businessName = jQuery('#businessName'+id).val();
+
+	   if(businessName==''){
+		 jQuery('#businessName'+id+'_error').show();
+	   }else{
+		   jQuery('#businessName'+id+'_error').hide();
+	   }
 
 
 	   var txtFname = jQuery('#txtFname'+id).val();
+	   
 	   if(txtFname==''){
 		   jQuery('#txtFname'+id+'_error').show();
 	   }else{
@@ -244,6 +490,13 @@
 		   jQuery('#state'+id+'_error').hide();
 	   }
 
+	   var country = jQuery('#country'+id).val();
+	   if(country==''){
+		   jQuery('#country'+id+'_error').show();
+	   }else{
+		   jQuery('#country'+id+'_error').hide();
+	   }	   
+
 	   var txtZipCode = jQuery('#txtZipCode'+id).val();
 	   if(txtZipCode==''){
 		   jQuery('#txtZipCode'+id+'_error').show();
@@ -251,50 +504,108 @@
 		   jQuery('#txtZipCode'+id+'_error').hide();
 	   }
 
-	   var txtPhoneArea = jQuery('#txtPhoneArea'+id).val()+"-"+jQuery('#txtPhonePrefix'+id).val()+"-"+jQuery('#txtPhoneSuffix'+id).val();
-	   if(txtPhoneArea==''){
+	   var txtPhoneArea = jQuery('#txtPhoneArea'+id).val()+""+jQuery('#txtPhonePrefix'+id).val()+""+jQuery('#txtPhoneSuffix'+id).val();
+
+	   if(phoneNumber(txtPhoneArea) == false){
 		   jQuery('#txtPhoneArea'+id+'_error').show();
 	   }else{
 		   jQuery('#txtPhoneArea'+id+'_error').hide();
 	   }
-
-
+		
+		 var txtEmail = jQuery('#txtEmail'+id).val();
+		 var email = txtEmail;
+	
+		if(IsEmail(email)==false){
+                jQuery('#txtEmail'+id+'_error').show();
+                return false;
+		}
+		else{
+		   jQuery('#txtEmail'+id+'_error').hide();
+	   }
+		var txtEmail = email;
+		/*
 	   var txtEmail = jQuery('#txtEmail'+id).val();
 	   if(txtEmail==''){
 		   jQuery('#txtEmail'+id+'_error').show();
 	   }else{
 		   jQuery('#txtEmail'+id+'_error').hide();
 	   }
-	   
+	   */
 	   var contactContent = jQuery('#contact_content'+id).val();
-
+	   
+		if(id=='_1'){
+			var form_name='one';	
+			}
+		else if(id=='_2'){
+			var form_name='two';		
+			}
+		else if(id=='_3'){
+			var form_name='three';		
+		}
+		else if(id=='_4'){
+			var form_name='four';		
+		}
 	    var form_data ={
 				txtOrderNumber:txtOrderNumber,
+				businessName:businessName,
 				txtFname:txtFname,
 				txtLname:txtLname,
 				txtStreet:txtStreet,
 				txtStreet2:txtStreet2,
 				txtCity:txtCity,
 				state:state,
+				country:country,
 				txtZipCode:txtZipCode,
 				txtPhoneArea:txtPhoneArea,
 				txtEmail:txtEmail,
-				contactContent:contactContent
+				contactContent:contactContent,
+				form_type:form_name
 		   }
 	   
 	  
 	   jQuery.ajax({
-			url:"http://localhost/zippo-beta/index.php/OnlineOrder/Email",
+			url:"<?php echo $this->getUrl('') ?>email/index/onlineOrder",
 		   data:form_data,
 		   type:'POST',
 		   dataType:'json',
 		   success: function(msg){
-			   
+			   if(msg['error']){
+				   jQuery('#error_msg').html(msg['error']);
+				}
+				else if(msg['mail_success']='yes'){
+				   jQuery('#yes_msg').html('email has been sent ');
+				   jQuery('input').val("");	
+				   jQuery('textarea').val("");	
+				}
+				else if(msg['mail_success']='no'){
+				jQuery('#yes_msg').html('<div>email not sent</div>');
+				}
 			   
 			   }
 		   
 		   });
 	   
+	   
+	   
+	   
+	   function IsEmail(email) {
+			var regex = /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+			if(!regex.test(email)) {
+			   return false;
+			}else{
+			   return true;
+			}
+		}
+		function phoneNumber(txtPhoneArea){
+
+			var number = /^[0-9]+$/;
+			if(!number.test(txtPhoneArea)) {
+			   return false;
+			}else{
+			   return true;
+			}
+		}
+		   
 	   
 	   }
    </script>

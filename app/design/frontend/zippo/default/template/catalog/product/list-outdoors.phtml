@@ -46,37 +46,7 @@ $childern = $catModel->load($categoryId)->getChildrenCategories();
                         <ul class="prodListSm clearfix   listPageProds" style="width: <?php echo $_collectionSize * 126 ?>px;">
                             <?php foreach ($collection as $product): ?>
                                 <li><a class="prodLink" title="<?php echo $product->getName() ?>" href="<?php echo $product->getProductUrl() ?>"><img width="94" alt="<?php echo $product->getName() ?>" src="<?php echo $this->helper('catalog/image')->init($product, 'small_image')->resize(200) ?>"><?php if (Mage::helper('zippo')->isNew($product)): ?><span class="newTag"></span><?php endif; ?></a>
-                                    <div class="listProdPopUps">
-
-                                        <div class="productListingPopup clearfix">
-                                            <div class="inner clearfix">
-                                                <div class="prodHero"><img id="product-collection-image-<?php echo $product->getId(); ?>"
-                                                                           src="<?php echo $this->helper('catalog/image')->init($product, 'small_image')->resize(162, 230); ?>"
-                                                                           alt="<?php echo $this->stripTags($this->getImageLabel($product, 'small_image'), null, true) ?>" /></div>
-                                                <div class="popRight">
-                                                    <h2 class="jProductName txtRed"><?php echo $_helper->productAttribute($product, $product->getName(), 'name') ?></h2>
-                                                    <h3 class="jProductPrice"><?php echo $this->getPriceHtml($product, true) ?>
-                                                        <?php if ($product->getRatingSummary()): ?>
-                                                            <?php echo $this->getReviewsSummaryHtml($product, 'short') ?>
-                                                        <?php endif; ?></h3>
-
-                                                    <h3 class="jProductSKU"> <?php echo nl2br($product->getSku()) ?> <?php echo $this->getChildHtml('product_type_availability'); ?> </h3>
-                                                    <div class="jProductDescription prodLongDesc">
-                                                        <?php echo $_helper->productAttribute($product, nl2br($product->getShortDescription()), 'short_description') ?>
-                                                    </div>
-                                                     <?php if ($product->getCountryOfManufacture() == 'US'): ?>
-                                                                    <img src="<?php echo $this->getSkinUrl('img/prod_made_USA.gif', array('_secure' => true)) ?>" alt="<?php echo $this->__('Made in the USA')?>" width="125" height="30">
-                                                    <?php endif; ?>  
-                                                    
-                                                    <div class="prodCart">
-                                                        <label for="txtProdQty"><?php echo $this->__('Qty.') ?></label> <input type="text" name="txtProdQty" id="txtProdQty<?php echo $product->getId()?>" class="txtProdQty" placeholder="1" size="1">
-                                                        <input type="button" class="btnAddCart" onclick="addtocart('<?php echo $product->getId()?>','<?php echo $this->getAddToCartUrl($product) ?>?options=cart')" value="<?php echo $this->__('Add To Cart')?>">
-                                                    </div>
-                                                </div>
-                                            </div><!-- eo .inner -->
-                                            <a href="<?php echo $product->getProductUrl() ?>" title="<?php echo $this->stripTags($product->getName(), null, true) ?>" class="btnProdClickreviews"><?php echo $this->__('Click for more info!')?></a>
-                                        </div>           
-                                    </div>        
+                                            
                                 </li>
                             <?php endforeach ?>
                         </ul>

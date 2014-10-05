@@ -105,6 +105,24 @@ $_helper = $this->helper('catalog/output');
                         </li>
                      <?php endforeach; ?>                    
                 </ul>
+                <div class="listSubNav clearfix">
+                        	<ul class="listSubCat clearfix">
+                            	<li>
+                                	<a class="active txtRed" href="ProductListing.html">Traditions</a><span>|</span>
+                                </li>
+                            	<li>
+                                	<a href="ProductListing.html">Slim</a><span>|</span>
+                                </li>
+                            	<li>
+                                	<a href="ProductListing.html">Shop All</a>
+                                </li>
+                            </ul>
+                            <div class="listInfo">
+                            	<span class="listNumItems"> <?php echo($_productCollection->count()); ?> Items</span> | <a href="<?php echo $this->getUrl('') ?>lighters.html" class="txtRed">View All</a>
+                            </div>
+                               <ul style="height:10px; overflow:hidden;" class="listFilters clearfix">
+                               </ul>
+                        </div>
             </div><!-- eo .listTop -->
             <div class="listSlider clearfix">
                 <!-- eo .listProdPopUps -->

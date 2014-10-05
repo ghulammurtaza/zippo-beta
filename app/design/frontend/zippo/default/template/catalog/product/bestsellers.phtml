@@ -28,7 +28,7 @@ $products = Mage::getResourceModel('reports/product_collection')
                         <?php foreach ($products as $_product):?>
                         <?php $product = Mage::getModel('catalog/product');
 						$product->load($_product['entity_id']);?>
-                         <li class="bsSlideItem"><img src="<?php echo $this->helper('catalog/image')->init($product, 'small_image')->resize(100)?>" alt="<?php echo $product->getName()?>" /></li>
+                         <li class="bsSlideItem"><img src="<?php echo $this->helper('catalog/image')->init($product, 'small_image')->resize(162,230)?>" alt="<?php echo $product->getName()?>" /></li>
                         
                              <?php endforeach;?>
                     </ul>

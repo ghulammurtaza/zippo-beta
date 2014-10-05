@@ -29,19 +29,27 @@
     $isVisibleProduct = $_item->getProduct()->isVisibleInSiteVisibility();
     $canApplyMsrp = Mage::helper('catalog')->canApplyMsrp($_item->getProduct(), Mage_Catalog_Model_Product_Attribute_Source_Msrp_Type::TYPE_BEFORE_ORDER_CONFIRM);
 ?>
-<li class="item" xmlns="http://www.w3.org/1999/html">
-    <?php if ($this->hasProductUrl()): ?>
-        <a href="<?php echo $this->getProductUrl()?>" title="<?php echo $this->escapeHtml($this->getProductName()) ?>" class="product-image"><img src="<?php echo $this->getProductThumbnail()->resize(50, 50)->setWatermarkSize('30x10'); ?>" width="50" height="50" alt="<?php echo $this->escapeHtml($this->getProductName()) ?>" /></a>
+<li class="liCartItem" xmlns="http://www.w3.org/1999/html">
+
+
+<div class="linkCartProd">
+        <?php if ($this->hasProductUrl()): ?>
+        <a href="<?php echo $this->getProductUrl()?>" title="<?php echo $this->escapeHtml($this->getProductName()) ?>" class="product-image"><img src="<?php echo $this->getProductThumbnail()->resize(28, 42)->setWatermarkSize('30x10'); ?>" width="28" height="42" alt="<?php echo $this->escapeHtml($this->getProductName()) ?>" /></a>
     <?php else: ?>
-        <span class="product-image"><img src="<?php echo $this->getProductThumbnail()->resize(50, 50)->setWatermarkSize('30x10'); ?>" width="50" height="50" alt="<?php echo $this->escapeHtml($this->getProductName()) ?>" /></span>
+        <span class="product-image"><img src="<?php echo $this->getProductThumbnail()->resize(28, 42)->setWatermarkSize('30x10'); ?>" width="28" height="42" alt="<?php echo $this->escapeHtml($this->getProductName()) ?>" /></span>
     <?php endif; ?>
-    <div class="product-details">
-        <p class="product-name"><?php if ($this->hasProductUrl()): ?><a href="<?php echo $this->getProductUrl() ?>"><?php endif; ?><?php echo $this->escapeHtml($this->getProductName()) ?><?php if ($this->hasProductUrl()): ?></a><?php endif; ?></p>
+        </div>
+    <div class="cartItemDesc">
+        <span class="cartProdName">
+		<?php if ($this->hasProductUrl()): ?>
+        
+			<?php endif; ?><?php echo $this->escapeHtml($this->getProductName()) ?><?php if ($this->hasProductUrl()): ?>
+        <?php endif; ?></span>
 
         <table class="info-wrapper">
             <tbody>
                 <tr>
-                    <th><?php echo $this->__('Price'); ?></th>
+
                     <td>
                         <?php if ($canApplyMsrp): ?>
 
@@ -122,16 +130,15 @@
 
                         <?php endif; //Can apply MSRP ?>
                     </td>
-                </tr>
-                <tr class="qty-wrapper">
-                    <th><?php echo $this->__('Qty'); ?></th>
+                
+    
                     <td>
                         <input
                             id="qinput-<?php echo $_item->getId(); ?>"
                             data-link="<?php echo $this->getAjaxUpdateUrl() ?>"
                             data-item-id="<?php echo $_item->getId(); ?>"
                             class="qty cart-item-quantity" name=""
-                            value="<?php echo $this->getQty()?>"
+                            value="(<?php echo $this->getQty()?>)"
                             <?php if ($this->isOnCheckoutPage()) echo 'disabled'; ?>
                             />
 
@@ -148,15 +155,12 @@
         </table>
 
         <?php if ($isVisibleProduct): ?>
-        <a href="<?php echo $this->getConfigureUrl() ?>" title="<?php echo $this->__('Edit item') ?>" class="btn-edit">
-            <?php echo $this->__('Edit item')?>
-        </a>
-            |
+        
             <?php if (!$this->isOnCheckoutPage()): ?>
                 <a href="<?php echo $this->getAjaxDeleteUrl() ?>" title="<?php echo $this->__('Remove This Item') ?>"
                    data-confirm="<?php echo $this->__('Are you sure you would like to remove this item from the shopping cart?') ?>"
-                   class="remove">
-                    <?php echo $this->__('Remove Item') ?>
+                   class="remove cartItemDelete">
+                    <?php echo $this->__('x') ?>
                 </a>
             <?php else: ?>
                 <span><?php echo $this->__('Remove Item') ?></span>
