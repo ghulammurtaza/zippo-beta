@@ -234,7 +234,7 @@ body:not(.customer-account) .block:first-child .block-title {
 	margin-bottom: 7px;
 }
 .block-content {
-	margin-top: 5px;
+
 }
 .block-content.unpad {
 	padding: 0;
@@ -616,10 +616,10 @@ a.button:hover {
 }
 .col3-layout .col-wrapper .col-main {
 	float: right;
-	width: 73.68421%;
+	width: 498px;
 }
 .col3-layout .col-wrapper .col-left {
-	width: 26.31579%;
+	width:234px;
 }
  @media only screen and (max-width: 1000px) {
 .col3-layout .col-right {
@@ -3219,7 +3219,7 @@ h2.product-name a:hover, h3.product-name a:hover, h4.product-name a:hover, h5.pr
 .block-layered-nav .block-content > dl > dt {
 	margin: 0;
 	margin-bottom: 10px;
-	color: #636363;
+	
 	font-family: "Raleway", "Helvetica Neue", Verdana, Arial, sans-serif;
 	font-size: 14px;
 	font-weight: bold;
@@ -3234,12 +3234,10 @@ h2.product-name a:hover, h3.product-name a:hover, h4.product-name a:hover, h5.pr
 	user-select: none;
 	font-weight: normal;
 	margin-bottom: 0px;
-	padding: 7px 10px 7px 24px;
-	border-width: 1px;
-	border-style: solid;
-	border-color: #cccccc;
+
+
 	position: relative;
-	background-color: #f4f4f4;
+
 	display: block;
 }
 .block-layered-nav .block-content > dl > dt:after {
@@ -3257,11 +3255,7 @@ h2.product-name a:hover, h3.product-name a:hover, h4.product-name a:hover, h5.pr
 	margin-top: -3px;
 }
 .block-layered-nav .block-content > dl > dd {
-	padding: 10px;
-	margin: 0;
-	border-width: 0 1px;
-	border-style: solid;
-	border-color: #cccccc;
+
 }
 .block-layered-nav .block-content > dl > dd:last-child {
 	border-width: 0 1px 1px 1px;
@@ -9095,7 +9089,8 @@ body {
 	margin-top: 0;
 }
 .kickerPromo h3, .kickerHelp h3, .kickerCheckout h3,
-.block-progress .block-title {
+.block-progress .block-title,
+.block-layered-nav .block-title {
 	background: url('img/sprite_kicker_promo.png') no-repeat 0 0;
 	font-size: 18px;
 	line-height: 38px;
@@ -9113,7 +9108,8 @@ body {
 	padding: 4px 0 0;
 }
 .kickerHelpBtm,
-.block-progress .block-content {
+.block-progress .block-content,
+.block-layered-nav .block-content {
 	background: url('img/sprite_kicker_promo.png') no-repeat -896px bottom;
 	top: 0;
 	z-index: 30;
@@ -11648,16 +11644,26 @@ a.ftrPrivacy span {
 }
 .products-grid--max-4-col > li{
 	position:relative;
+	overflow:hidden;
+	transition: all 0.4s ease 5s;
+}
+.products-grid--max-4-col > li:hover{
+	overflow:visible;
+	
 }
 .listProdPopUps{
-	display:none;
+	opacity:0;
+	transition: all 0.4s ease 5s;
 	position:absolute;
 	top:-50%;
 	left:81%;
+
 	z-index:100000;
 }
 .products-grid--max-4-col > li:hover .listProdPopUps{
-	display:block;
+	opacity:1;
+
+
 }
 .productListingPopup{
 	position:static;
@@ -11735,7 +11741,7 @@ border-radius:15px;
 	position:static !important;
 }
 
-.cms-contact-us .leftInnerNav a.contact-us,
+.cms-customer .leftInnerNav a.contact-us,
 .cms-store-information .leftInnerNav a.store-information,
 .cms-product-intructions .leftInnerNav a.product-intructions,
 .cms-safety-data .leftInnerNav a.safety-data,
@@ -11743,11 +11749,31 @@ border-radius:15px;
 	color: #df101d;
 }
 
+.cms-contact-us .genTopNav .customer,
+.cms-store-information  .genTopNav .customer,
+.cms-product-intructions .genTopNav .customer,
+.cms-product-intructions .genTopNav .customer,
+.cms-safety-data .genTopNav .customer,
+.cms-customer .genTopNav .customer,
 
+.cms-customer .genTopNav .customer {
+    background: none repeat scroll 0 0 #df101d;
+}
+
+
+
+.cms-about-us .leftInnerNav a.date-history,
 .cms-current-news .leftInnerNav a.current-news,
 .cms-then-and-now .leftInnerNav a.then-and-now,
 .cms-date-codes .leftInnerNav a.date-codes{
 	color: #df101d;
+}
+
+.cms-current-news .genTopNav .about,
+.cms-then-and-now  .genTopNav .about,
+.cms-date-codes  .genTopNav .about,
+.cms-about-us .genTopNav .about {
+    background: none repeat scroll 0 0 #df101d;
 }
 
 
@@ -11767,8 +11793,18 @@ border-radius:15px;
 
 
 
+.cms-terms-and-conditions .leftInnerNav a.terms,
+.cms-privacy-policy .leftInnerNav a.privacy,
+.cms-brand-protection .leftInnerNav a.protection,
+.cms-acution-website-sales .leftInnerNav a.sales,
+.cms-product-patents .leftInnerNav a.prodcuts {
+	color: #df101d;
+}
 
-
+.listTopNav > li img{
+	width:auto !important;
+	height:auto !important;
+}
 
 
 
@@ -11853,7 +11889,7 @@ border-radius:15px;
 	display:none;
 }
 .cart-table .product-cart-actions .qty{
-	width:24px;
+	width:36px;
 }
 .cartTotals{
 	text-align:right;
@@ -12069,13 +12105,6 @@ border-radius:15px;
 	z-index:100000000;
 	
 }
-.jspScrollable,
-.jspContainer,
-.prodListSm ,
-.multiSlide,
-.horizontal-only{
-	overflow:visible !important;
-}
 
 .col-main .category-image{
 	display:none;
@@ -12187,4 +12216,96 @@ border-radius:15px;
 }
 .listFilters li{
 	display:none;
+}
+
+.block-layered-nav .block-title{   color: #717070;
+    font-size: 18px;
+    height: 40px;
+	font-weight:normal;
+    line-height: 40px;
+}
+.block-layered-nav .block-content{
+	padding:10px 15px 15px;
+}
+.block-layered-nav .block-title  strong{
+	display:block;
+	line-height:42px;
+	color:#717070;
+	font-weight:normal;
+	font: 18px/46px 'BebasRegular',Impact,Helvetica,Arial,sans-serif;
+	
+}
+.block-layered-nav a{
+	color:#333;
+	padding-right:0px !important;
+	padding-left:0px !important;
+}
+.block-layered-nav .btn-remove{
+	background:#333 !important;
+	color:#FFF !important;
+	border:none !important;
+}
+.block-layered-nav{
+	margin-bottom:0px !important;
+	margin-top:25px;
+}
+.block-layered-nav .currently ol,
+.block-layered-nav .block-content > dl > dt{
+	padding-left:0px;
+}
+.header-minicart .block-subtitle{
+	display:none;
+}
+
+.header-minicart .info-wrapper .qty,
+.header-minicart .info-wrapper .price{
+	font-size:12px;
+	background:none;
+	border:none;
+	color:#fff;
+	font-weight:bold;
+}
+.header-minicart  .cartProdName{
+	font-size:13px;
+}
+.header-minicart .info-wrapper .quantity-button{
+	display:none !important;
+}
+#expandedCart{
+	padding:12px 18px 0;
+}
+#expandedCart .inner{
+	margin-left:0px;
+	margin-right:0px;
+	margin-top:0px;
+}
+/*
+.jspScrollable,
+.jspContainer,
+.prodListSm ,
+.multiSlide,
+.horizontal-only{
+	overflow:visible !important;
+}
+*/
+
+
+.nav-2 a:hover ,
+.nav-2.active a {
+    color: #87ad74 !important;
+}
+body.category-outdoors {
+	background: #929290 url('../img/bg_zippo_outdoor.jpg') no-repeat center top fixed;
+	-moz-background-size: cover;
+	background-size: cover;
+}
+#Growler{
+    top: 70px !important;
+    width: 100% !important;
+	display:none !important;	
+}
+
+#yes_msg{
+	font-size:13px;
+	color:#060;
 }
