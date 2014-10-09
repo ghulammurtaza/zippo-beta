@@ -83,7 +83,29 @@ class OnlineOrder_Email_IndexController extends Mage_Core_Controller_Front_Actio
 													Zip Code : ".$_POST['txtZipCode']." . <br>
 													Phone : ".$_POST['txtPhoneArea']." . <br>
 													Email : ".$_POST['txtEmail']." . <br>
-													Message : ".$_POST['contactContent']." . <br>";										                            }
+													Message : ".$_POST['contactContent']." . <br>";										
+													
+								}
+								if($_POST['form_type']=='five'){
+
+									$admin_email	 =  $_POST['friendEmail'];
+									$subject		 = 'Look at this on Zippo.com!';
+									$txt_Message = '<html><body>';
+									$txt_Message .= "<table border='0' cellpadding='0'  cellspacing='0' style='border:0; margin:0; padding:0'>";
+									$txt_Message .= "<tr><td><img src='https://ci6.googleusercontent.com/proxy/rcRK8T1mCqKMqRRoxK7rZcn6eqfcY3EwvlP6wBEWl-WC5G-jzlTvW9rIHg_iKgl3iILcMngk2XBVgvCpXczXBtk1WHFRbg=s0-d-e1-ft#http://www.zippo.com/images/email/zippo_logo.gif' alt='PHP Gang' /></td></tr>";
+									$txt_Message .= "<tr><td colspan=2>Dear ".$_POST['friendName'].",<br /> </td></tr>";
+									$txt_Message .= "<tr><td colspan=2>Your friend, Me, has sent you one of their favorite products to view from Zippo.com.</td></tr>";
+									$txt_Message .= "<tr><td colspan=2>My Say</td></tr>";
+									$txt_Message .= "<tr><td colspan=2>".$_POST['friendMessage']."</td></tr>";																 
+									$txt_Message .= "<tr><td colspan=2><a href=".$_POST['loc'].">".$_POST['proNameEmail']."</a></td></tr>";
+									$txt_Message .= "<tr><td colspan=2> <br /><br /><br /><br />©2011 Zippo Manufacturing Company. All Rights Reserved.<br />  		
+													 Must be at least 18 years of age to purchase Zippo lighters.<br />
+													Zippo Manufacturing Company<br />33 Barbour Street <br />
+													Bradford, Pennsylvania 16701<br />Zippo.com<br />Terms & Conditions</td></tr>";
+									$txt_Message .= "<tr><td colspan=2>Your friend, Me, has sent you one of their favorite products to view from Zippo.com.</td></tr>";
+									$txt_Message .= "</table>";
+									$txt_Message .= "</body></html>";
+								}
 
 							$headers		 = 'MIME-Version: 1.0' . "\r\n";
 							$headers		.= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
