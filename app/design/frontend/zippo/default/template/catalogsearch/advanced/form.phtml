@@ -31,12 +31,40 @@
  * @see Mage_CatalogSearch_Block_Advanced_Form
  */
 ?>
+    <script type="text/javascript">
+        jQuery(function() {
+            jQuery("select").selectbox();
+        });
+    </script>
 <?php $maxQueryLength= $this->helper('catalogsearch')->getMaxQueryLength();?>
 <script type="text/javascript">
 	jQuery(function () {
 		jQuery("select").selectbox();
 	});
 </script>
+                    <?php
+    $category = Mage::getModel('catalog/category');
+    if(is_object(Mage::registry('current_category'))){
+        $currentCategoryPath=Mage::registry('current_category')->getPathIds();
+    }else{
+        $currentCategoryPath = array();
+    }
+    $category->load(Mage::app()->getStore()->getRootCategoryId());
+    $childrenString = $category->getChildren();
+    $children = explode(',',$childrenString);
+    $categoryOptions='';
+    foreach($children as $c){
+        if($this->getRequest()->getParam('cat')==""){
+            $selected = (in_array($c, $currentCategoryPath))?'SELECTED':'';
+        }else{
+            $selected = ($this->getRequest()->getParam('cat')==$c)?'SELECTED':'';
+    }
+    $categoryOptions.= '<option value="' . $c . '" ' . $selected . '>' . $category->load($c)->getName() . '</option>' . "\n";
+    }
+    ?>
+         
+                        <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+<form action="<?php echo $this->getSearchPostUrl() ?>" method="get" id="form-validate">
 <section class="row clearfix">
             	<section class="searchHolder clearfix">
                 	<div class="searchTop clearfix" style="position:relative;">
@@ -54,42 +82,136 @@
                         </div>
                     </div><!-- eo .searchTop -->
                     <!-- eo .searchFilters -->
-                    <section id="searchProducts" class="searchProducts clearfix" style="height:500px; padding:20px;">
-                    	<h1>Under Construction</h1>
+                    <div class="searchFilterHolder">
+                    	<div class="searchBox">
+                        	<label for="txtSearchTerm">Keywords</label><input type="text" name="txtSearchTerm" id="txtSearchTerm" value="Enter Keywords" class="txtSearchTerm inactive" />
+                        </div>
+                        <ul class="searchFilters clearfix">
+                            <li class="filterHolder" id="fltrCategories">
+                                   <select name="cat" id="cat">
+                                        <option value="">All Categories</option>
+                                        <?php echo $categoryOptions ?>
+                                    </select>
+                             </li>
+                            <li class="filterHolder" id="fltrTypes">
+                                <select class="filter" name="selTypes" id="selTypes">
+                                	<option value="" selected="selected">All Types</option>
+                                    <option value="cat1">Type #1</option>
+                                    <option value="cat2">Type #2</option>
+                                    <option value="cat3">Type #3</option>
+                                    <option value="cat4">Type #4</option>
+                                </select>
+                            </li>
+                        </ul>
+                        <ul class="searchFilters clear clearfix">
+                            <li class="filterHolder" id="fltrFinishes">
+                                <select class="filter" name="selFinishes" id="selFinishes">
+                                    <option value="" selected="selected">Finishes & Colors</option>
+                                    <option value="finish1">Finish & Color #1</option>
+                                    <option value="finish2">Finish & Color #2</option>
+                                    <option value="finish3">Finish & Color #3</option>
+                                    <option value="finish4">Finish & Color #4</option>
+                                </select>
+                            </li>
+                            <li class="filterHolder" id="fltrTheme">
+                                <select class="filter" name="selThemes" id="selThemes">
+                                    <option value="" selected="selected">Themes</option>
+                                    <option value="theme1">Theme #1</option>
+                                    <option value="theme2">Theme #2</option>
+                                    <option value="theme3">Theme #3</option>
+                                    <option value="theme4">Theme #4</option>
+                                </select>
+                            </li>
+                            <li class="filterHolder" id="fltrPrice">
+                                <select class="filter" name="selPrice" id="selPrice">
+                                    <option value="" selected="selected">Prices</option>
+                                    <option value="price1">$1 - $20</option>
+                                    <option value="price2">$21 - $40</option>
+                                    <option value="price3">$41 - $60</option>
+                                    <option value="price4">$60 +</option>
+                                </select>
+                            </li>
+                            
+                        </ul>
+                        <input type="button" id="btnSrchSubmit" class="btnSrchSubmit" value="Submit" />
+                    </div>
+                    <section id="searchProducts" class="searchProducts clearfix" style="padding:20px;">
+                    
+                    
+                    
+          
+                   
+                   
+                    
+
+
+
+
+    <div class="fieldset advanced-search" style="display:none;">
+        <h2 class="legend"><?php echo $this->__('Search Settings') ?></h2>
+        <ul class="form-list" id="advanced-search-list">
+            <?php foreach ($this->getSearchableAttributes() as $_attribute): ?>
+            <?php $_code = $_attribute->getAttributeCode() ?>
+            <li>
+                <label for="<?php echo $_code ?>"><?php echo $this->getAttributeLabel($_attribute) ?></label>
+                <?php switch($this->getAttributeInputType($_attribute)):
+                    case 'number': ?>
+                    <div class="input-range">
+                        <input type="text" pattern="\d*" name="<?php echo $_code ?>[from]" value="<?php echo $this->escapeHtml($this->getAttributeValue($_attribute, 'from')) ?>" id="<?php echo $_code ?>" title="<?php echo $this->escapeHtml($this->getAttributeLabel($_attribute)) ?>" class="input-text validate-number" maxlength="<?php echo $maxQueryLength;?>" />
+                        <span class="separator">-</span>
+                        <input type="text" pattern="\d*" name="<?php echo $_code ?>[to]" value="<?php echo $this->escapeHtml($this->getAttributeValue($_attribute, 'to')) ?>" id="<?php echo $_code ?>_to" title="<?php echo $this->escapeHtml($this->getAttributeLabel($_attribute)) ?>" class="input-text validate-number" maxlength="<?php echo $maxQueryLength;?>" />
+                    </div>
+                    <?php break;
+                    case 'price': ?>
+                    <div class="input-range">
+                        <input name="<?php echo $_code ?>[from]" value="<?php echo $this->escapeHtml($this->getAttributeValue($_attribute, 'from')) ?>" id="<?php echo $_code ?>" title="<?php echo $this->escapeHtml($this->getAttributeLabel($_attribute)) ?>"  class="input-text validate-number" type="text" pattern="\d*" maxlength="<?php echo $maxQueryLength;?>" />
+                        <span class="separator">-</span>
+                        <input name="<?php echo $_code ?>[to]" value="<?php echo $this->escapeHtml($this->getAttributeValue($_attribute, 'to')) ?>" id="<?php echo $_code ?>_to" title="<?php echo $this->escapeHtml($this->getAttributeLabel($_attribute)) ?>"  class="input-text validate-number" type="text" pattern="\d*" maxlength="<?php echo $maxQueryLength;?>" />
+                        <small>(<?php echo $this->getCurrency($_attribute); ?>)</small>
+                    </div>
+                    <?php break;
+                    case 'select': ?>
+                        <div class="input-box">
+                            <?php echo $this->getAttributeSelectElement($_attribute) ?>
+                        </div>
+                    <?php break;
+                    case 'yesno': ?>
+                        <?php echo $this->getAttributeYesNoElement($_attribute) ?>
+                    <?php break;
+                    case 'date': ?>
+                    <div class="input-range">
+                        <?php echo $this->getDateInput($_attribute, 'from') ?>
+                        <span class="separator">-</span>
+                        <?php echo $this->getDateInput($_attribute, 'to') ?>
+                    </div>
+                    <?php break;
+                    default: ?>
+                    <div class="input-box">
+                        <input type="text" name="<?php echo $_code ?>" id="<?php echo $_code ?>" value="<?php echo $this->escapeHtml($this->getAttributeValue($_attribute)) ?>" title="<?php echo $this->escapeHtml($this->getAttributeLabel($_attribute)) ?>"  class="input-text <?php echo $this->getAttributeValidationClass($_attribute) ?>" maxlength="<?php echo $maxQueryLength;?>" />
+                    </div>
+                <?php endswitch; ?>
+            </li>
+            <?php endforeach; ?>
+        </ul>
+
+        <script type="text/javascript">decorateList('advanced-search-list')</script>
+        <div class="buttons-set">
+        <button type="submit" title="<?php echo $this->__('Search') ?>" class="button"><span><span><?php echo $this->__('Search') ?></span></span></button>
+    </div>
+    </div>
+    
+    
+
                     </section><!-- eo .searchProducts -->
                 </section><!-- eo .searchHolder -->
-                <section class="listKickersRight">
-    <section class="listKickerAdTop">
-    
-      <div class="innerKicker"> <a href="<?php echo $this->getUrl('') ?>outdoors.html" title="ad name"><img src="<?php echo $this->getSkinUrl('img/1_7_C.png', array('_secure'=>true)) ?>" alt="ad name" width="224" height="270" /></a> </div>
-    </section>
-    <!-- eo .listKickerAdTop -->
-    <section class="bestSellKicker">
-      <div class="inner clearfix">
-        <h3 class="bestSellHdr txtBebas"> best sellers </h3>
-        <div class="bsSlider">
-          <div class="bsFaker"></div>
-          <strong class="shortDesc"></strong>
-          <div class="bsSlideWrap clearfix" id="bsKickSlide">
-            <ul id="bestSellersList slider5">
-              <li class="bsSlideItem"><img src="<?php echo $this->getSkinUrl('img/bsSlider1.jpg', array('_secure'=>true)) ?>" alt="First rugged yet refined classic" /></li>
-              <li class="bsSlideItem"><img src="<?php echo $this->getSkinUrl('img/bsSlider1.jpg', array('_secure'=>true)) ?>" alt="2nd rugged yet refined classic" /></li>
-              <li class="bsSlideItem"><img src="<?php echo $this->getSkinUrl('img/bsSlider1.jpg', array('_secure'=>true)) ?>" alt="3rd rugged yet refined classic" /></li>
-            </ul>
-            <!--<div class="bsSlideItem onDeck prevItem"><img src="assets/img/bsSlider1.jpg" alt="product name" width="107" height="146" /></div>--> 
-            <!--<div class="bsSlideItem onDeck nextItem"><img src="assets/img/bsSlider1.jpg" alt="product name" width="107" height="146" /></div>--> 
-          </div>
-        </div>
-        <div class="sliderLinks clearfix"> <a id="btnBsProdInfo" href="ProductDetail.html" title="product info"></a> <a id="btnBsAddCart" href="#" title="add to cart"></a> </div>
-      </div>
-    </section>
-    <!-- eo .listKickerSlide -->
-    
-    <!-- eo .kickerPromo --> 
-  </section><!-- eo .listKickersRight -->
+                </form>
+<script type="text/javascript">
+//<![CDATA[
+    var dataForm = new VarienForm('form-validate', true);
+//]]>
+</script>
+                
+                 <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('bestseller')->toHtml(); ?><!-- eo .listKickersRight -->
             </section>
 
 
-<div class="page-title">
-    <h1></h1>
-</div>
