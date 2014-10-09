@@ -12440,3 +12440,9 @@ body.category-outdoors {
 #bsNavPrev, #bsNavNext {
     margin: -13px 0 0;
 }
+.searchFilters{
+	padding:5px 7px;
+}
+.btnSrchSubmit{
+	text-indent:8px;
+}
