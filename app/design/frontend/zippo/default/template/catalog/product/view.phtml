@@ -51,88 +51,83 @@
     });
 
 </script>
-
 <style>
-    .product-view .add-to-cart{
-        float:right;
-    }</style>
+.product-view .add-to-cart {
+	float: right;
+}
+p.red {
+	display: none;
+}
+</style>
 
 <div id="messages_product_view"><?php echo $this->getMessagesBlock()->getGroupedHtml() ?></div>
 <section class="row">
-
-    <section class="productHolder clearfix">
-        <div class="productBtm clearfix">
-            <div class="inner clearfix">
-
-                <ul class="prodLeftTop clearfix">
-                    <li class="btnProdPrint"><a href="#" title="print"></a></li>
-                </ul>
-                <div class="prodImages clearfix">
-                    <div class="prodHero" id="prodHero"><?php echo $this->getChildHtml('media') ?></div>
-                    <!-- eo .prodAltViews -->
-                </div>
-
-                <div class="prodInfo clearfix">
-                    <h2 class="prodName txtRed"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></h2>
-                    <h5 class="prodDetailPrice"><?php echo $this->getPriceHtml($_product); ?> <?php echo $this->getChildHtml('bundle_prices') ?> <?php echo $this->getTierPriceHtml() ?></h5>
-                    <h3 class="prodItemNum txtOrange"><?php echo nl2br($_product->getSku()) ?></h3>
-                    <div class="prodLongDesc">
-
-                        <?php
+  <section class="productHolder clearfix">
+    <div class="productBtm clearfix">
+      <div class="inner clearfix">
+        <div class="prodImages clearfix">
+          <?php if ($_category = $_product->getCategory()): ?>
+          <a onclick="history.back();" class="txtRed"  title="<?php echo $this->__('Back to Results') ?>"  style="display: block; padding: 0 0 6px; position:relative; top:-10px; cursor:pointer;"  > <?php echo $this->__('← Back to Results') ?> </a>
+          <?php endif;?>
+          <div class="prodHero" id="prodHero"><?php echo $this->getChildHtml('media') ?></div>
+          <!-- eo .prodAltViews --> 
+        </div>
+        <div class="prodInfo clearfix">
+          <h2 class="prodName txtRed"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></h2>
+          <h5 class="prodDetailPrice"><?php echo $this->getPriceHtml($_product); ?> <?php echo $this->getChildHtml('bundle_prices') ?> <?php echo $this->getTierPriceHtml() ?></h5>
+          <h3 class="prodItemNum txtOrange"><?php echo nl2br($_product->getSku()) ?></h3>
+          <div class="prodLongDesc">
+            <?php
                         echo $_product->getDescription();
                         ?>
-                    </div>
-                    <?php if ($_product->getCountryOfManufacture() == 'US'): ?>
-                        <ul class="prodShoutOuts">
-                            <li><img src="<?php echo $this->getSkinUrl('img/prod_made_USA.gif', array('_secure' => true)) ?>" alt="Made in the USA" width="125" height="30" /></li>
-                        </ul>
-                    <?php endif; ?>
+          </div>
+          <?php if ($_product->getCountryOfManufacture() == 'US'): ?>
+          <ul class="prodShoutOuts">
+            <li><img src="<?php echo $this->getSkinUrl('img/prod_made_USA.gif', array('_secure' => true)) ?>" alt="Made in the USA" width="125" height="30" /></li>
+          </ul>
+          <?php endif; ?>
+        </div>
+        <div class="product-view">
+          <div class="product-essential">
+            <form action="<?php echo $this->getSubmitUrl($_product) ?>" method="post" id="product_addtocart_form"<?php if ($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?>>
+              <?php echo $this->getBlockHtml('formkey') ?>
+              <div class="no-display">
+                <input type="hidden" name="product" value="<?php echo $_product->getId() ?>" />
+                <input type="hidden" name="related_product" id="related-products-field" value="" />
+              </div>
+              <div class="product-shop">
+                <div class="extra-info">
+                  <?php //echo $this->getReviewsSummaryHtml($_product, 'default', false) ?>
                 </div>
-
-
-                <div class="product-view">
-                    <div class="product-essential">
-                        <form action="<?php echo $this->getSubmitUrl($_product) ?>" method="post" id="product_addtocart_form"<?php if ($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?>>
-                            <?php echo $this->getBlockHtml('formkey') ?>
-                            <div class="no-display">
-                                <input type="hidden" name="product" value="<?php echo $_product->getId() ?>" />
-                                <input type="hidden" name="related_product" id="related-products-field" value="" />
-                            </div>
-
-                            <div class="product-shop">
-
-
-                                <div class="extra-info"> <?php //echo $this->getReviewsSummaryHtml($_product, 'default', false) ?> 
-                                </div>
-                                <?php echo $this->getChildHtml('alert_urls') ?>
-
-                                <?php echo $this->getChildHtml('other'); ?>
-                                <?php if ($_product->isSaleable() && $this->hasOptions()): ?>
-                                    <?php echo $this->getChildChildHtml('container1', '', true, true) ?>
-                                <?php endif; ?>
-                            </div>
-                            <div class="add-to-cart-wrapper"> <?php //echo $this->getChildHtml('product_type_data')  ?> <?php echo $this->getChildHtml('extrahint') ?>
-                                <?php if (!$this->hasOptions()): ?>
-                                    <div class="add-to-box">
-                                        <?php if ($_product->isSaleable()): ?>
-                                            <?php echo $this->getChildHtml('addtocart') ?>
-                                            <?php if ($this->helper('wishlist')->isAllow() || $_compareUrl = $this->helper('catalog/product_compare')->getAddUrl($_product)): ?>
-                                                <span class="or"><?php echo $this->__('OR') ?></span>
-                                            <?php endif; ?>
-                                        <?php endif; ?>
-                                        <?php echo $this->getChildHtml('addto') ?> <?php echo $this->getChildHtml('sharing') ?> </div>
-                                        <?php echo $this->getChildHtml('extra_buttons') ?>
-                                <?php elseif (!$_product->isSaleable()): ?>
-                                    <div class="add-to-box"> <?php echo $this->getChildHtml('addto') ?> <?php echo $this->getChildHtml('sharing') ?> </div>
-                                <?php endif; ?>
-                            </div>
-                            <?php //echo $this->getChildHtml('related_products')  ?>
-                            <div class="clearer"></div>
-                            <?php if ($_product->isSaleable() && $this->hasOptions()): ?>
-                                <?php echo $this->getChildChildHtml('container2', '', true, true) ?>
-                            <?php endif; ?>
-                        </form>
-                        <script type="text/javascript">
+                <?php echo $this->getChildHtml('alert_urls') ?> <?php echo $this->getChildHtml('other'); ?>
+                <?php if ($_product->isSaleable() && $this->hasOptions()): ?>
+                <?php echo $this->getChildChildHtml('container1', '', true, true) ?>
+                <?php endif; ?>
+              </div>
+              <div class="add-to-cart-wrapper">
+                <?php //echo $this->getChildHtml('product_type_data')  ?>
+                <?php echo $this->getChildHtml('extrahint') ?>
+                <?php if (!$this->hasOptions()): ?>
+                <div class="add-to-box">
+                  <?php if ($_product->isSaleable()): ?>
+                  <?php echo $this->getChildHtml('addtocart') ?>
+                  <?php if ($this->helper('wishlist')->isAllow() || $_compareUrl = $this->helper('catalog/product_compare')->getAddUrl($_product)): ?>
+                  <span class="or"><?php echo $this->__('OR') ?></span>
+                  <?php endif; ?>
+                  <?php endif; ?>
+                  <?php echo $this->getChildHtml('addto') ?> <?php echo $this->getChildHtml('sharing') ?> </div>
+                <?php echo $this->getChildHtml('extra_buttons') ?>
+                <?php elseif (!$_product->isSaleable()): ?>
+                <div class="add-to-box"> <?php echo $this->getChildHtml('addto') ?> <?php echo $this->getChildHtml('sharing') ?> </div>
+                <?php endif; ?>
+              </div>
+              <?php //echo $this->getChildHtml('related_products')  ?>
+              <div class="clearer"></div>
+              <?php if ($_product->isSaleable() && $this->hasOptions()): ?>
+              <?php echo $this->getChildChildHtml('container2', '', true, true) ?>
+              <?php endif; ?>
+            </form>
+            <script type="text/javascript">
                             //<![CDATA[
                             var productAddToCartForm = new VarienForm('product_addtocart_form');
                             productAddToCartForm.submit = function(button, url) {
@@ -183,25 +178,226 @@
                             }.bind(productAddToCartForm);
                             //]]>
                         </script> 
-                    </div>
-
-
-                    <div class="soMed clearfix">
-                        <div class="fbWrapper">
-                            <script>
+          </div>
+          <div class="soMed clearfix">
+            <div class="fbWrapper"> 
+              <script>
                                 var fbString = '<fb:like href="' + window.location + '" send="false" width="317" show_faces="false" font=""></fb:like>';
                             </script>
-                            <div id="fb-root"></div><script src="http://connect.facebook.net/en_US/all.js#appId=52978951512&amp;xfbml=1"></script>
-                            <script>document.write(fbString);</script>
-                        </div>
-                        <a href="http://twitter.com/share" class="twitter-share-button prodTweet" data-count="none">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
-                    </div>
-                    <?php //echo $this->getChildHtml('upsell_products')  ?> <?php echo $this->getChildHtml('product_additional_data') ?> </div>
-                    <?php echo $this->getChildHtml('related_products') ?>
+              <div id="fb-root"></div>
+              <script src="http://connect.facebook.net/en_US/all.js#appId=52978951512&amp;xfbml=1"></script> 
+              <script>document.write(fbString);</script> 
             </div>
-        </div>
-    </section>
-        <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('bestseller')->toHtml(); ?>        
-    </section>
-    <!-- eo .listKickersRight --> 
+            <a href="http://twitter.com/share" class="twitter-share-button prodTweet" data-count="none">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script> 
+          </div>
+          <?php //echo $this->getChildHtml('upsell_products')  ?>
+          <?php echo $this->getChildHtml('product_additional_data') ?> </div>
+        <?php echo $this->getChildHtml('related_products') ?> </div>
+    </div>
+  </section>
+  <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('bestseller')->toHtml(); ?> </section>
+<!-- eo .listKickersRight -->
 </section>
+<script>
+    jQuery(document).ready(function(e) {
+        jQuery(".btnEmailFriend").removeAttr("href");
+	
+		jQuery(".btnEmailFriend").click(function(e) {
+			jQuery("#emailFriend").show();
+			jQuery("#friendModal").show();
+        });
+		jQuery("#tafCancel").click(function(e) {
+			jQuery("#emailFriend").hide();
+			jQuery("#friendModal").hide();
+			
+        });
+		
+		jQuery(".okayButton a").click(function(e) {
+			jQuery("#emailFriend").hide();
+			jQuery("#friendModal").hide();
+			
+        });
+		jQuery(".productHolder .product-view  .btnAddCart").click(function(e) {
+	
+		jQuery(".product-view .add-to-cart").append("<span class='loader-cart'></span>");
+		setTimeout(function(){
+			jQuery(".product-view .add-to-cart .loader-cart").remove();
+		 }, 4000);
+		
+    });
+		
+    });
+    
+    </script>
+<section id="friendModal" class="confimModal modalWindow ui-dialog-content ui-widget-content" style=" min-height: 136px; height: auto; top:10%; left:50%; margin-left:-280px; display:none;">
+  <div class="modalInner">
+    <div class="modalContent clearfix">
+      <header class="redBg txtBebas txtWhite">email a friend</header>
+
+      <script>
+	
+	function media(){
+		
+		var loc = window.location.href;
+		
+		
+		var friendEmail = jQuery("#friend-email").val();
+		   
+		   var email = friendEmail;
+		   
+		   if(IsEmail(email)==false){
+               jQuery('#friend-email_error').show();
+			   validationCheck = 0;
+			}
+			else{
+			    jQuery('#friend-email_error').hide();
+			  validationCheck = 1;
+		   }
+			var friendEmail = email;
+		   
+		   		
+		var friendName = jQuery("#friend-name").val();
+		   if(friendName==''){
+				jQuery('#friend-name_error').show();
+				 validationCheck1 = 0;
+
+		   }else{
+			 jQuery('#friend-name_error').hide();
+				 validationCheck1 = 1;
+		   }
+
+
+		var friendName2 = jQuery("#friend-name2").val();
+		   if(friendName2==''){
+				jQuery('#friend-name2_error').show();
+				 validationCheck2 = 0;
+		   }else{
+			  jQuery('#friend-name2_error').hide();
+			 validationCheck2 = 1;
+		   }
+
+		   
+
+		var friendMessage = jQuery("#friend-message").val();
+		   if(friendMessage==''){
+				jQuery('#friend-message_error').show();
+
+		   }else{
+			   jQuery('#friend-name2_error').hide();
+
+		   }
+		   
+		   
+
+	   function IsEmail(email) {
+			var regex = /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+			if(!regex.test(email)) {
+			   return false;
+			}else{
+			   return true;
+			}
+		}
+	 jQuery("#message .proEmail").html(proNameEmail);
+	   var proNameEmail = jQuery(".prodInfo  .prodName ").html();
+	   jQuery("#message .usrName").html(friendName);
+
+		var form_name='five';
+		var form_data ={
+			friendName:friendName,
+			friendName2:friendName2,
+			friendEmail:friendEmail,
+			loc:loc,
+			proNameEmail:proNameEmail,
+			friendMessage:friendMessage,
+			form_type:form_name
+		// friendMessage:friendMessage + "Please check this" +productlink,			
+	   }
+
+	  
+	   if( validationCheck == 1 && validationCheck1 == 1 && validationCheck2 == 1 ){
+		 jQuery.ajax({
+			url:"<?php echo $this->getUrl('') ?>email/index/onlineOrder",
+		   data:form_data,
+		   type:'POST',
+		   dataType:'json',
+		   success: function(msg){
+			   if(msg['error']){
+				   jQuery('#error_msg').html(msg['error']);
+				}
+				else if(msg['mail_success']='yes'){
+				   jQuery('#tafForm').hide();
+				   jQuery('.tafCancel').hide();
+				   jQuery('#message').show();	
+				   jQuery('.okayButton').show();	
+				}
+				else if(msg['mail_success']='no'){
+				jQuery('#yes_msg').html('<div>email not sent</div>');
+				}
+			   
+			   }
+		   
+		   });
+	
+	
+		 
+		}
+	}
+	
+</script>
+<style>
+#tafForm .red{
+	font-size:11px;
+	margin:0px !important;
+	color:red;
+	padding:0px !important;
+}
+</style>
+<div id="message" style="display:none;">
+                                <p style="background: none repeat scroll 0% 0% rgb(255, 255, 255);" id="tafMsgGood" class="txtBold">
+                                        <span class="proEmail"></span> has been sent to <strong><span class="usrName"></span></strong>!</p>
+                                <p style="background: #fff; display: none;" id="tafMsgBad" class="txtBold txtRed">
+                                    <!-- show if failure -->
+                                </p>
+                            </div>
+                            
+      <div id="tafForm">
+      <p id="tafIntro" class="txtBold">Please enter the information below to send this product
+        to a friend. </p>
+      <form method="post" action="" name="contact_frm" id="contact_frm">
+        <div style="float: left; width: 200px;">
+         <p class="red" id="friend-email_error">Enter email address</p>
+          <label class="txtBebas txtBlack">To Email Address</label><br>
+          <input value="" type="text" class="txtDef" tabindex="14" id="friend-email" >
+        </div>
+        <div style="float: left; width: 200px;">
+         <p class="red" id="friend-name_error">Enter your friend name</p>
+          <label class="txtBebas txtBlack clear">To Name</label><br>
+          <input style="display: block; margin: 0 12px 12px 0;" type="text" tabindex="2" class="txtDef" id="friend-name" name="txtFname" value="" >
+        </div>
+        <div style="clear: both; float: left; width: 200px;">
+         <p class="red" id="friend-name2_error">Enter your name</p>
+          <label class="txtBebas txtBlack clear">From Name</label><br>
+          <!---->
+          <input style="display: block; margin: 0 12px 12px 0;" type="text" tabindex="3" class="txtDef" id="friend-name2" name="txtLname" value="" >
+        </div>
+        <div style="float: left; width: 200px;">
+          <label class="txtBebas txtBlack clear">Message</label><br>
+          <textarea  id="friend-message" style="display: block; margin: 0 12px 12px 0; width: 200px;"  name="contact_content"  class="bigTxtArea" cols="" rows=""></textarea>
+          <div class="clear clr" style="clear:both;"></div>
+          <button type="button" class="lnkBlkWhtArw" onclick="media();"> <span>submit</span> </button>
+        </div>
+        <!--<a style="clear: both; margin: 0 0 0 200px;" class="lnkBlkWhtArw" id="btnTellFriend" href="#">
+                                   Submit</a>--></form>  
+        </div>
+     
+      <div class="modalConfirmBtns tafCancel clearfix"><a id="tafCancel" class="delNo" href="#">Cancel</a> </div>
+      <div class="modalConfirmBtns okayButton clearfix" style="display:none;"><a id="tafCancel" class="delNo" href="#">OKAY</a>
+                            </div>
+      <!-- eo .modalConfirmBtns --> 
+    </div>
+    <!-- eo .modalContent --> 
+  </div>
+  <!-- eo .modalInner --> 
+</section>
+<div id="emailFriend" class="ui-widget-overlay" style="width: 100%; height: 100%; position:fixed; left:0px; top:0; z-index: 1001; display:none;"></div>
+

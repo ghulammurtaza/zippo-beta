@@ -33,7 +33,11 @@
 /* @var $this Mage_Catalog_Block_Product_List */
 ?>
 
-
+<style>
+html, body {
+    height: auto ;
+}
+</style>
 <?php
 $_productCollection = $this->getLoadedProductCollection();
 $_helper = $this->helper('catalog/output');
@@ -86,9 +90,9 @@ $_helper = $this->helper('catalog/output');
             <div class="listTop clearfix">
                 <ul class="listTopNav">
                      <?php foreach ($categoryCollection as $category): ?>
-                        <li>
+                        <li class="<?php echo $category->getName() ?>-item">
                             <img src="<?php echo $category->getImageUrl() ?>" alt="<?php echo $category->getName() ?>" width="114" height="134" />
-                            <a href="<?php echo $category->getUrl() ?>" class="active" title="<?php echo $category->getName() ?>"><?php echo $category->getName() ?></a>
+                            <a href="<?php echo $category->getUrl() ?>" class="<?php echo $category->getName() ?>" title="<?php echo $category->getName() ?>"><?php echo $category->getName() ?></a>
                             <?php $subCategoryCollection = $catModel->getCollection()
                                                         ->addAttributeToSelect('*')
                                                         ->addIdFilter($category->getChildren())
@@ -214,7 +218,7 @@ $_helper = $this->helper('catalog/output');
                                         <?php if ($i++ % $_columnCount == 0): ?>
                                         <ul class="products-grid listLighters  products-grid--max-<?php echo $_columnCount; ?>-col">
                                                 <?php endif ?>
-                                        <li class="<?php if (($i - 1) % $_columnCount == 0): ?> first<?php elseif ($i % $_columnCount == 0): ?> reverse<?php endif; ?>">
+                                        <li class="<?php if (($i - 1) % $_columnCount == 0): ?> first <?php elseif ($i + -2): ?> reverse <?php elseif ($i % $_columnCount == 0): ?> reverse<?php endif; ?> ">
                                             <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="prodLink">
             <?php $_imgSize = 210; ?>
                                                 <img id="product-collection-image-<?php echo $_product->getId(); ?>"

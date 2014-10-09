@@ -28,17 +28,23 @@ $products = Mage::getResourceModel('reports/product_collection')
                         <?php foreach ($products as $_product):?>
                         <?php $product = Mage::getModel('catalog/product');
 						$product->load($_product['entity_id']);?>
-                         <li class="bsSlideItem"><img src="<?php echo $this->helper('catalog/image')->init($product, 'small_image')->resize(162,230)?>" alt="<?php echo $product->getName()?>" /></li>
+                         <li class="bsSlideItem"><img src="<?php echo $this->helper('catalog/image')->init($product, 'small_image')->resize(162,230)?>" alt="<?php echo $product->getName()?>" />
+                         	<div class="proname">
+                            <a class="proname-link" href="<?php echo $product->getProductUrl()?>">&nbsp;</a>
+                            <a style="cursor:pointer;" class="proname-link" onclick="setLocation('<?php echo (string)Mage::helper('checkout/cart')->getAddUrl($product) ?>?options=cart')"></a>
+                            </div>
+                         </li>
                         
                              <?php endforeach;?>
                     </ul>
                     <div class="sliderLinks clearfix">
-                <a id="btnBsProdInfo" href="<?php echo $product->getProductUrl()?>" title="product info"></a>
-                <a id="btnBsAddCart" href="#" onclick="setLocation('<?php echo (string)Mage::helper('checkout/cart')->getAddUrl($product) ?>?options=cart')"title="add to cart"></a>
+                <a id="btnBsProdInfo" title="product info"></a>
+                <a id="btnBsAddCart" title="add to cart"></a>
             </div>
                 </div>
             </div>            
         </div>
+        
     </section>
 <?php endif;?>
 </section>
