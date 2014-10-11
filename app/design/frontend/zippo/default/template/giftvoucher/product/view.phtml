@@ -267,30 +267,11 @@ $_formData = $this->getFormConfigData();
             </script>
         <?php //endif  ?>
         </li>
-        <li class="clearfix">
-        butto
-        </li>
-    
-    </ul>
-    
-        <div style="display:none;">
+       <li class="clearfix">
        
-            <?php
-
-            if (Mage::app()->getRequest()->getControllerName() == 'cart') {
-                if ($_formData->getNotifySuccess())
-                    $checkboxNotify = true;
-                else
-                    $checkboxNotify = false;
-            } else
-                $checkboxNotify = true;
-            ?>
-            <input type="checkbox" value="1" name="notify_success" id="notify_success" <?php if ($checkboxNotify) echo 'checked' ?> />
-            
-            <label for="notify_success"><?php echo $this->__('Get notification email when your friend receives Gift Card') ?></label>
-        
-        </div>
-<?php if ($this->enableScheduleSend()): ?>
+       
+       
+       <?php if ($this->enableScheduleSend()): ?>
     <?php echo $this->getLayout()->createBlock('core/html_calendar')->setTemplate('page/js/calendar.phtml')->toHtml() ?>
         <p class = "giftcard-date-box"style="width: 200px; float: left">
                 <label for="day_to_send"><?php echo $this->__('Day to send') ?></label><br />
@@ -348,8 +329,48 @@ $_formData = $this->getFormConfigData();
     $templates = Mage::getBlockSingleton('giftvoucher/product_view')->getAvailableTemplate();
     if(count($templates)):
     ?>
-    <button type="button" title="Preview template" id="giftcard-preview-button-add" class="button btn-cart" onclick="getPreview()" style="float: right"><span style="background-image: url(<?php echo $this->getSkinUrl() . 'images/giftvoucher/preview-icon.png' ?>); background-repeat: no-repeat;background-size: contain; padding-left: 20px;"><span><?php echo $this->__('Preview Gift Card') ?></span></span></button>
+    <button type="button" title="Preview template" id="giftcard-preview-button-add" style="background: #df101d; float: left; font-size: 14px; padding: 2px 4px 3px; border:none;" class="txtBebas txtWhite" onclick="getPreview()" style="float: right"><span style="background-image: url(<?php echo $this->getSkinUrl() . 'images/giftvoucher/preview-icon.png' ?>); background-repeat: no-repeat;background-size: contain; padding-left: 20px;"><span><?php echo $this->__('Preview Gift Card') ?></span></span></button>
     <?php endif; ?>
+       
+       
+       
+       
+       
+       
+       
+       
+       
+                                                <div class="frmBtns"><a title="clear form" style="background: #000; float: left; font-size: 14px; margin: 8px 12px 0 4px; padding: 2px 4px 3px;" class="clear txtBebas txtWhite" href="#">Clear</a> <a title="add to cart" style="background: #000; float: left; font-size: 14px; margin: 8px 0 0; padding: 2px 4px 3px;" class="txtBebas txtWhite" id="btnAddCart" href="#">Add to Cart</a> </div>
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            </li>
+    
+    </ul>
+    
+        <div style="display:none;">
+       
+            <?php
+
+            if (Mage::app()->getRequest()->getControllerName() == 'cart') {
+                if ($_formData->getNotifySuccess())
+                    $checkboxNotify = true;
+                else
+                    $checkboxNotify = false;
+            } else
+                $checkboxNotify = true;
+            ?>
+            <input type="checkbox" value="1" name="notify_success" id="notify_success" <?php if ($checkboxNotify) echo 'checked' ?> />
+            
+            <label for="notify_success"><?php echo $this->__('Get notification email when your friend receives Gift Card') ?></label>
+        
+        </div>
+
     <div style="clear: both"></div>
     </div>
     <p></p>
