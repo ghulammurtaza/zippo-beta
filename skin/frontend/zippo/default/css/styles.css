@@ -5567,6 +5567,7 @@ body:not(.opc-has-progressed-from-login) .opc.opc-firststep-login .section#opc-l
 #checkout-step-review .opc-block-progress .block-content .changelink {
 	display: none;
 }
+
  @media only screen and (max-width: 479px) {
 #checkout-review-table thead > tr > th {
 	display: none;
@@ -6244,6 +6245,7 @@ body.customer-account .sidebar .block-reorder ol#cart-sidebar-reorder p.product-
 	font-weight: 600;
 	font-style: italic;
 }
+
 #my-orders-table .option-value {
 	margin-left: 20px;
 }
@@ -6606,6 +6608,7 @@ div.paypal-logo span > img {
 }
 #customer-reviews .fieldset {
 	padding-top: 25px;
+
 	width: 470px;
 }
 #customer-reviews .fieldset h4 {
@@ -8643,6 +8646,7 @@ body {
 	font-size: 18px;
 	margin: 4px 0 0 10px;
 }
+
 .suppSubNav {
 	float: right;
 	font-size: 18px;
@@ -8855,6 +8859,7 @@ body {
 	margin-right: 1px;
 	text-align: center;
 	text-decoration: none;
+
 	width: 155px;
 }
 .searchTabs a.active {
@@ -9897,6 +9902,7 @@ input.txt4 {
 .acctCreate .width50, .currInfo {
 	margin: 12px 0 0;
 }
+
 .acctCreate .frmBtns a {
 	float: right;
 	margin: 9px 0 0 9px;
@@ -11496,7 +11502,7 @@ a.ftrPrivacy span {
 .slider4 .homeCallout {
 	width: 926px;
 	margin: auto;
-	padding-top: 200px;
+	padding-top: 160px;
 }
 .slider4 .homeCallout h3 {
 	color: #FFF;
@@ -12445,4 +12451,175 @@ body.category-outdoors {
 }
 .btnSrchSubmit{
 	text-indent:8px;
+}
+
+
+.home-blocks {
+	width: 926px;
+	position:relative;
+	z-index:111111;
+	top:320px;
+}
+.left-block {
+	float: left;
+	width: 220px;
+	overflow: hidden;
+	border-radius: 10px;
+	background: url(images/border-bg.png);
+}
+.home-block-content {
+	padding: 15px;
+	background: url(images/home-bg.png);
+	margin: 10px;
+	color:#FFF;
+	font-size:13px;
+	height: 150px;
+	height:250px;
+	position:relative;
+}
+.midle-block {
+	float: left;
+	margin: 0 15px;
+	width: 454px;
+	border-radius: 10px;
+	overflow: hidden;
+	background: url(images/border-bg.png);
+}
+.right-block {
+	overflow: hidden;
+	float: right;
+	width: 220px;
+	border-radius: 10px;
+	background: url(images/border-bg.png);
+}
+.home-block-content h3{
+	background: url(images/h-arw.png) no-repeat center left;
+	padding-left:15px;
+	font-family:Arial, Helvetica, sans-serif;
+    white-space: nowrap;
+	font-size:16px;
+	margin-bottom:10px;
+	text-transform:uppercase;
+}
+.home-block-content .more-link{
+	border:#545454 solid 2px;
+	border-radius:15px  0 0 15px;
+	height:26px;
+	padding:0 20px;
+	line-height:21px;	
+	background:#202020;
+}
+.home-block-content .more-link a{
+	background: url(images/h-more.png) no-repeat center right;
+	display:inline-block;
+	padding-right:20px;
+	color:#ff0000;
+}
+.home-block-content .image{
+	background: url(../img/2ykopfjc.png) no-repeat center right;
+	position:absolute;
+	right:0px;
+	bottom:0px;
+	height:50px;
+	width:50px;	
+}
+.left-block .home-block-content .image{
+	background: url(../img/prodListingSm32.png) no-repeat center right;
+	right:0px;
+	height:123px;
+	width:94px;
+	bottom:40px;	
+}
+
+.midle-block .home-block-content .image{
+	background: url(../img/2ykopfjc.png) no-repeat center right;
+	right:0px;
+	height:211px;
+	width:365px;	
+}
+.right-block .home-block-content .image{
+	background: url(../img/prodListingSm3.png) no-repeat center right;
+	right:0px;
+	height:123px;
+	width:94px;
+	bottom:40px;	
+}
+.home-block-text{
+	height:175px;
+	font-size:11px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-weight:bold;
+	padding-left:15px;
+}
+
+.clear .clr, {
+ clear:both;
+}
+.ftrInner {
+	position:relative !important;
+}
+.product-gift-card .product-view .product-shop,
+.product-gift-card .product-view .add-to-cart-wrapper, 
+.product-gift-card .product-view .block-related{
+	float:none;
+	width:100%;
+	clear:both;
+}
+.product-gift-card .price-box,
+#giftcard-template-upload-images,
+.giftvoucher-product-info > p,
+#giftcard-template-show-images,
+#giftcard-product-media,
+#giftcard-template-left
+.product-gift-card .prodName,
+.product-gift-card .prodLongDesc,
+.product-gift-card .txtOrange,
+.product-gift-card .prodDetailPrice{
+	display:none !important;
+}
+#giftvoucher-receiver{
+	display:block !important;
+}
+
+
+.product-test-gift .product-view .add-to-cart-wrapper, 
+.product-test-gift .product-view .block-related{
+	float:none;
+	width:100%;
+	clear:both;
+}
+.product-test-gift .price-box,
+#giftcard-template-upload-images,
+.giftvoucher-product-info > p,
+#giftcard-template-show-images,
+#giftcard-product-media,
+#giftcard-template-left
+.product-test-gift .prodName,
+.product-test-gift .prodLongDesc,
+.product-test-gift .txtOrange,
+.product-test-gift .prodDetailPrice{
+	display:none !important;
+}
+#giftvoucher-receiver{
+	display:block !important;
+}
+.gcForm li input {
+    background: none repeat scroll 0 0 #fff;
+    border: 1px solid #000;
+    color: #000;
+    height: 29px;
+    line-height: 29px;
+    margin: 0 0 9px;
+    padding: 0 3px;
+    width: 180px;
+}
+.gcForm label{
+	  font-family: 'BebasRegular',Impact,Helvetica,Arial,sans-serif;
+    font-weight: normal;
+    text-transform: uppercase;
+    word-spacing: 0.25em;
+}
+
+.gcForm li br{
+	display:none;
 }
