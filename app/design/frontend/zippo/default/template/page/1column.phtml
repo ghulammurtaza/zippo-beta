@@ -42,6 +42,7 @@
 <?php echo $this->getChildHtml('head') ?>
 </head>
 <body<?php echo $this->getBodyClass()?' class="'.$this->getBodyClass().' zhome"':'' ?>  id="zhome">
+<div class="wrapper">
 <?php echo $this->getChildHtml('after_body_start') ?>
 
     <?php echo $this->getChildHtml('global_notices') ?>
@@ -62,6 +63,7 @@
         <?php echo $this->getChildHtml('before_body_end') ?>
 
 <?php echo $this->getAbsoluteFooter() ?>
+</div>
 </body>
 </html>
 
