@@ -54,7 +54,7 @@ var ajaxcart = {
                                         }
 
                                         //update all blocks here
-                                        _this.updateBlocks(res.update_blocks);
+                                       // _this.updateBlocks(res.update_blocks);
 
                                     } else {
                                         if(typeof res.messages != 'undefined') {
