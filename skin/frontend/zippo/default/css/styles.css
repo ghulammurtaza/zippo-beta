@@ -12611,7 +12611,11 @@ body.category-outdoors {
     line-height: 29px;
     margin: 0 0 9px;
     padding: 0 3px;
-    width: 180px;
+	font-family:Arial, Helvetica, sans-serif !important;
+    width: 180px !important;
+}
+.gcForm{
+	padding-top:20px;
 }
 .gcForm label{
 	  font-family: 'BebasRegular',Impact,Helvetica,Arial,sans-serif;
@@ -12619,7 +12623,15 @@ body.category-outdoors {
     text-transform: uppercase;
     word-spacing: 0.25em;
 }
-
-.gcForm li br{
+.gcForm li .bigTxtArea{
+	width:383px !important;
+	margin:0px;
+	font-family:Arial, Helvetica, sans-serif !important;
+}
+.gcForm li br,
+.giftcard-date-box{
+	display:none;
+}
+.gcForm li.width100 small{
 	display:none;
 }
