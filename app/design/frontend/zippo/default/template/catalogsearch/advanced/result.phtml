@@ -19,16 +19,9 @@
  * needs please refer to http://www.magentocommerce.com for more information.
  *
  * @category    design
- * @package     rwd_default
+ * @package     base_default
  * @copyright   Copyright (c) 2014 Magento Inc. (http://www.magentocommerce.com)
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
- */
-?>
-<?php
-/**
- * Catalog advanced search form
- *
- * @see Mage_CatalogSearch_Block_Advanced_Form
  */
 ?>
 <script type="text/javascript">
@@ -36,11 +29,16 @@
         jQuery("select").selectbox();
     });
 </script>
-
-<?php
-echo $this->getMessagesBlock()->getGroupedHtml();
+<?php 
+  
+$form = new Mage_CatalogSearch_Block_Advanced_Form();
+echo $this->getMessagesBlock()->getGroupedHtml() ;
 $currencySymbol = Mage::app()->getLocale()->currency($currency_code)->getSymbol();
-
+$selectedCategory = $this->getRequest()->getQuery('category');
+$selectedTheme = $this->getRequest()->getQuery('themes');
+$selectedFnc = $this->getRequest()->getQuery('finishesncolors');
+$selectedPrice = $this->getRequest()->getQuery('selPrice');
+$searchText = $this->getRequest()->getQuery('txtSearchTerm');
 ?>
 <form action="<?php echo $this->getSearchPostUrl() ?>" method="get" id="form-validate">
     <section class="row clearfix">
@@ -62,26 +60,26 @@ $currencySymbol = Mage::app()->getLocale()->currency($currency_code)->getSymbol(
             <!-- eo .searchFilters -->
             <div class="searchFilterHolder">
                 <div class="searchBox">
-                    <label for="txtSearchTerm">Keywords</label><input type="text" name="txtSearchTerm" id="txtSearchTerm" placeholder="Enter Keywords" class="txtSearchTerm inactive" />
+                    <label for="txtSearchTerm">Keywords</label><input type="text" name="txtSearchTerm" id="txtSearchTerm" placeholder="Enter Keywords" class="txtSearchTerm inactive" value="<?php echo $searchText?>"/>
                 </div>
                 <ul class="searchFilters clearfix">
                     <li class="filterHolder" id="fltrCategories">
                         <select name="category" id="category_search_field">
                             <option value=""><?php echo $this->__('-- Any Category --') ?></option>
-                            <?php foreach ($this->getStoreCategories() as $_category): ?>
+                            <?php foreach ($form->getStoreCategories() as $_category): ?>
                                 <?php if ($_category->hasChildren()): ?>
                                     <option class="parent-cat" value="<?php echo $_category->getId(); ?>"><?php echo $_category->getName(); ?></option>
                                     <?php
                                     foreach ($_category->getChildren() as $subcategory):
                                         if ($subcategory->getIsActive()) :
                                             ?>
-                                            <option value="<?php echo $subcategory->getId(); ?>"<?php echo ($this->getRequest()->getQuery('category') == $subcategory->getId() ? ' selected="selected"' : "") ?>><?php echo $subcategory->getName(); ?></option>
+                                            <option value="<?php echo $subcategory->getId(); ?>"<?php echo ($selectedCategory == $subcategory->getId() ? ' selected="selected"' : "") ?>><?php echo $subcategory->getName(); ?></option>
                                             <?php
                                         endif;
                                     endforeach;
                                     ?>
                                 <?php elseif ($_category->getIsActive()): ?>
-                                    <option value="<?php echo $_category->getId(); ?>"><?php echo $_category->getName(); ?></option>
+                                    <option value="<?php echo $_category->getId(); ?>" <?php echo ($selectedCategory == $_category->getId() ? ' selected="selected"' : "") ?>><?php echo $_category->getName(); ?></option>
                                 <?php endif; ?>
                             <?php endforeach ?>
 
@@ -101,7 +99,7 @@ $currencySymbol = Mage::app()->getLocale()->currency($currency_code)->getSymbol(
                         <select class="filter" name="themes" id="themes">
                             <option value="" selected="selected">Themes</option>                            
                             <?php foreach ($themeOptions as $themeOption): ?>
-                                <option value="<?php echo $themeOption['option_id'] ?>"><?php echo $themeOption['value'] ?></option>
+                                <option value="<?php echo $themeOption['option_id'] ?>" <?php echo ($selectedTheme == $themeOption['option_id'] ? ' selected="selected"' : "") ?> ><?php echo $themeOption['value'] ?></option>
                             <?php endforeach; ?>
                         </select>
                     </li>   
@@ -117,32 +115,34 @@ $currencySymbol = Mage::app()->getLocale()->currency($currency_code)->getSymbol(
                         <select class="filter" name="finishesncolors" id="finishesncolors">
                             <option value="" selected="">Finish & Color</option>
                             <?php foreach ($fncOptions as $fncOption): ?>
-                               <option value="<?php echo $fncOption['option_id'] ?>"><?php echo $fncOption['value'] ?></option>
+                               <option value="<?php echo $fncOption['option_id'] ?>" <?php echo ($selectedFnc == $fncOption['option_id'] ? ' selected="selected"' : "") ?>><?php echo $fncOption['value'] ?></option>
                             <?php endforeach; ?>
                         </select>
                     </li>
                     <li class="filterHolder" id="fltrPrice">
                         <select class="filter" name="selPrice" id="selPrice">
                             <option value="" selected="selected">Prices</option>
-                            <option value="1"><?php echo $currencySymbol ?>14 - <?php echo $currencySymbol ?>25</option>
-                            <option value="2"><?php echo $currencySymbol ?>26 - <?php echo $currencySymbol ?>50</option>
-                            <option value="3"><?php echo $currencySymbol ?>51 - <?php echo $currencySymbol ?>75</option>
-                            <option value="4"><?php echo $currencySymbol ?>76 +</option>
+                            <option value="1" <?php echo ($selectedPrice == 1 ? ' selected="selected"' : "") ?>><?php echo $currencySymbol ?>14 - <?php echo $currencySymbol ?>25</option>
+                            <option value="2" <?php echo ($selectedPrice == 2 ? ' selected="selected"' : "") ?>><?php echo $currencySymbol ?>26 - <?php echo $currencySymbol ?>50</option>
+                            <option value="3" <?php echo ($selectedPrice == 3 ? ' selected="selected"' : "") ?>><?php echo $currencySymbol ?>51 - <?php echo $currencySymbol ?>75</option>
+                            <option value="4" <?php echo ($selectedPrice == 4 ? ' selected="selected"' : "") ?>><?php echo $currencySymbol ?>76 +</option>
                         </select>                       
                     </li>                    
                 </ul>
                 <div style="display:none">
                     <input type="text" maxlength="128" class="input-text validate-number" title="Price" id="price" value="" name="price[from]"> 
                     <input type="text" maxlength="128" class="input-text validate-number" title="Price" id="price_to" value="" name="price[to]">
-                    <input type="text" maxlength="128" class="input-text " title="Name" value="" id="name" name="name">                    
+                    <input type="text" maxlength="128" class="input-text " title="Name" value="" id="name" name="name">
                 </div>
                 <input type="submit" id="btnSrchSubmit" class="btnSrchSubmit" value="Submit" />
             </div>
 
         </section><!-- eo .searchHolder -->
 </form>
+
+    <?php echo $this->getProductListHtml() ?>
+
 <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('bestseller')->toHtml(); ?>
-</section>
 <script>
     jQuery("#selPrice").change(function() {
         var option = jQuery(this).val();
