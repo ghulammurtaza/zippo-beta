@@ -12362,11 +12362,41 @@ body.category-outdoors {
 }
 
 
+.btnProdClickreviews{
+	display:none;
+}
+
 #listLighters .popupActive .listProdPopUps{
-	display:block !important;
+display:block !important;
+opacity:0;
+	
+}
+#listLighters .popupActive:hover .listProdPopUps{
+-webkit-animation: myfirst 1s; /* Chrome, Safari, Opera */
+animation: myfirst 1s;
+opacity:1;
+	
+}
+#listLighters .popupActive:hover .listProdPopUps .btnProdClickreviews{
+	display:block;
 	
 }
 
+/* Chrome, Safari, Opera */
+@-webkit-keyframes myfirst {
+    0%   {opacity: 0; }
+    25%  {opacity: 0; }
+    50%  {opacity: 0; }
+    100% {opacity: 1; }
+}
+
+/* Standard syntax */
+@keyframes myfirst {
+    0%   {opacity: 0; }
+    25%  {opacity: 0;}
+    50%  {opacity: 0; }
+    100% {opacity: 1;}
+}
 
 .products-grid--max-4-col > li.popupActive:hover{
 	overflow:visible;
@@ -12565,18 +12595,7 @@ body.category-outdoors {
 	width:100%;
 	clear:both;
 }
-.product-gift-card .price-box,
-#giftcard-template-upload-images,
-.giftvoucher-product-info > p,
-#giftcard-template-show-images,
-#giftcard-product-media,
-#giftcard-template-left
-.product-gift-card .prodName,
-.product-gift-card .prodLongDesc,
-.product-gift-card .txtOrange,
-.product-gift-card .prodDetailPrice{
-	display:none !important;
-}
+
 #giftvoucher-receiver{
 	display:block !important;
 }
@@ -12588,18 +12607,7 @@ body.category-outdoors {
 	width:100%;
 	clear:both;
 }
-.product-test-gift .price-box,
-#giftcard-template-upload-images,
-.giftvoucher-product-info > p,
-#giftcard-template-show-images,
-#giftcard-product-media,
-#giftcard-template-left
-.product-test-gift .prodName,
-.product-test-gift .prodLongDesc,
-.product-test-gift .txtOrange,
-.product-test-gift .prodDetailPrice{
-	display:none !important;
-}
+
 #giftvoucher-receiver{
 	display:block !important;
 }
@@ -12615,7 +12623,7 @@ body.category-outdoors {
     width: 180px !important;
 }
 .gcForm{
-	padding-top:20px;
+	padding-top:0px;
 }
 .gcForm label{
 	  font-family: 'BebasRegular',Impact,Helvetica,Arial,sans-serif;
@@ -12626,6 +12634,7 @@ body.category-outdoors {
 .gcForm li .bigTxtArea{
 	width:383px !important;
 	margin:0px;
+	clear:both;
 	font-family:Arial, Helvetica, sans-serif !important;
 }
 .gcForm li br,
@@ -12634,4 +12643,92 @@ body.category-outdoors {
 }
 .gcForm li.width100 small{
 	display:none;
+}
+
+.loader-cart {
+    left: 48%;
+    top: 73%;
+    z-index: 1000;
+}
+.giftcard-template-content-left{
+	width:221px !important;
+	height:139px !important;
+}
+.giftcard-template-content{
+	background:none !important;
+}
+#giftcard-template-upload-images,
+.giftcard-logo,
+#giftcard-template-show-images{
+	display:none;
+}
+.product-gift-card .btnsShare ,
+.product-gift-card .qty-wrapper{
+	display:none;
+}
+
+#giftcard-product-media{
+	display:none;
+}
+.gcChoice .radio,
+.product-gift-card .price-box{
+	display:none;
+}
+.gcChoice label{
+	float:left;
+	margin-left:20px;
+	margin-right:10px;
+}
+.product-gift-card .add-to-cart-wrapper{
+	padding-left:0px !important;
+}
+.product-gift-card .prodImages .txtRed{
+	display:none;
+}
+#bg-fade{
+	position:fixed !important;
+}
+#giftcard-template-left{
+	background:#FFF;
+}
+.giftcard-template-content-left, .giftcard-change-image{
+	float:right;
+}
+#giftcard-template-left .giftcard-template-content{
+	float:left;
+}
+.product-gift-card .add-to-cart-buttons {
+	visibility:hidden;
+}
+.product-gift-card .prodImages  .txtRed{
+	display:none !important;
+}
+.gcChoice .lblImage{
+	position:relative;
+	cursor:pointer;
+}
+.gcChoice .lblImage:after{
+	content:"";
+	position:absolute;
+	top:0px;
+	left:100%;
+	margin-left:5px;
+	display:block;
+	float:left;
+	height:16px;
+	width:15px;
+	background: url(../img/card-normal.png) no-repeat center  center;
+}
+.gcChoice .lblImage:hover:after,
+.gcChoice.active .lblImage:after{
+	background: url(../img/card-active.png) no-repeat center  center;
+}
+
+
+.frmBtns{
+	position:relative;
+	}
+.product-view .frmBtns .loader-cart {
+    left: 154px;
+    top: 34px;
 }

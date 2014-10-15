@@ -32,7 +32,12 @@ jQuery(function()
 
 function test (){
     jQuery(".products-grid > li a").mouseover(function(e) {
-       jQuery(this).parents(".products-grid > li").addClass("popupActive");
+		var thisBox = jQuery(this).parents(".products-grid > li");
+		setTimeout(function(){
+    	   jQuery(thisBox).addClass("popupActive");
+				return false;
+		 }, 1000);	   
+	   
     });
 	jQuery(".listProdPopUps").mouseleave(function(e) {
 		 jQuery(".products-grid > li").removeClass("popupActive");
