@@ -34,9 +34,9 @@
 ?>
 
 <style>
-html, body {
-    height: auto ;
-}
+    html, body {
+        height: auto ;
+    }
 </style>
 <?php
 $_productCollection = $this->getLoadedProductCollection();
@@ -87,47 +87,51 @@ $_helper = $this->helper('catalog/output');
     ?>
     <section class="row">
         <section class="listHolder listLighters clearfix" id="listLighters">
-            <div class="listTop clearfix">
-                <ul class="listTopNav">
-                     <?php foreach ($categoryCollection as $category): ?>
-                        <li class="<?php echo $category->getName() ?>-item">
-                            <img src="<?php echo $category->getImageUrl() ?>" alt="<?php echo $category->getName() ?>" width="114" height="134" />
-                            <a href="<?php echo $category->getUrl() ?>" class="<?php echo $category->getName() ?>" title="<?php echo $category->getName() ?>"><?php echo $category->getName() ?></a>
-                            <?php $subCategoryCollection = $catModel->getCollection()
-                                                        ->addAttributeToSelect('*')
-                                                        ->addIdFilter($category->getChildren())
-                                                        ->addIsActiveFilter();
-                            if ($subCategoryCollection->count() > 0): ?>
-                                <ul class="listSubCat" >
-                                    <?php foreach ($subCategoryCollection as $subCategory): ?>
-                                    <li>
-                                        <a href="<?php echo $subCategory->getUrl() ?>" <?php ($currentCategory->getId() == $subCategory->getId()) ? 'class="active rexText"':''?>><?php echo $subCategory->getName() ?></a><span>|</span>
-                                    </li>
-                                    <?php endforeach;?>
-                                </ul>
-                            <?php endif;?>
-                        </li>
-                     <?php endforeach; ?>                    
-                </ul>
-                <div class="listSubNav clearfix">
-                        	<ul class="listSubCat clearfix">
-                            	<li>
-                                	<a class="active txtRed" href="ProductListing.html">Traditions</a><span>|</span>
-                                </li>
-                            	<li>
-                                	<a href="ProductListing.html">Slim</a><span>|</span>
-                                </li>
-                            	<li>
-                                	<a href="ProductListing.html">Shop All</a>
-                                </li>
-                            </ul>
-                            <div class="listInfo">
-                            	<span class="listNumItems"> <?php echo($_productCollection->count()); ?> Items</span> | <a href="<?php echo $this->getUrl('') ?>lighters.html" class="txtRed">View All</a>
-                            </div>
-                               <ul style="height:10px; overflow:hidden;" class="listFilters clearfix">
-                               </ul>
+            <?php if (Mage::app()->getRequest()->getControllerName() == 'category'): ?>
+                <div class="listTop clearfix">
+                    <ul class="listTopNav">
+                        <?php foreach ($categoryCollection as $category): ?>
+                            <li class="<?php echo $category->getName() ?>-item">
+                                <img src="<?php echo $category->getImageUrl() ?>" alt="<?php echo $category->getName() ?>" width="114" height="134" />
+                                <a href="<?php echo $category->getUrl() ?>" class="<?php echo $category->getName() ?>" title="<?php echo $category->getName() ?>"><?php echo $category->getName() ?></a>
+                                <?php
+                                $subCategoryCollection = $catModel->getCollection()
+                                        ->addAttributeToSelect('*')
+                                        ->addIdFilter($category->getChildren())
+                                        ->addIsActiveFilter();
+                                if ($subCategoryCollection->count() > 0):
+                                    ?>
+                                    <ul class="listSubCat" >
+                <?php foreach ($subCategoryCollection as $subCategory): ?>
+                                            <li>
+                                                <a href="<?php echo $subCategory->getUrl() ?>" <?php ($currentCategory->getId() == $subCategory->getId()) ? 'class="active rexText"' : '' ?>><?php echo $subCategory->getName() ?></a><span>|</span>
+                                            </li>
+                                    <?php endforeach; ?>
+                                    </ul>
+                            <?php endif; ?>
+                            </li>
+        <?php endforeach; ?>                    
+                    </ul>
+                    <div class="listSubNav clearfix">
+                        <ul class="listSubCat clearfix">
+                            <li>
+                                <a class="active txtRed" href="ProductListing.html">Traditions</a><span>|</span>
+                            </li>
+                            <li>
+                                <a href="ProductListing.html">Slim</a><span>|</span>
+                            </li>
+                            <li>
+                                <a href="ProductListing.html">Shop All</a>
+                            </li>
+                        </ul>
+                        <div class="listInfo">
+                            <span class="listNumItems"> <?php echo($_productCollection->count()); ?> Items</span> | <a href="<?php echo $this->getUrl('') ?>lighters.html" class="txtRed">View All</a>
                         </div>
-            </div><!-- eo .listTop -->
+                        <ul style="height:10px; overflow:hidden;" class="listFilters clearfix">
+                        </ul>
+                    </div>
+                </div><!-- eo .listTop -->
+    <?php endif; ?>
             <div class="listSlider clearfix">
                 <!-- eo .listProdPopUps -->
                 <div class="listProdHolder clearfix">
@@ -137,7 +141,7 @@ $_helper = $this->helper('catalog/output');
                         <div class="category-products">
                             <div style="display:none"><?php echo $this->getToolbarHtml() ?></div>
                             <?php // List mode ?>
-                            <?php if ($this->getMode() != 'grid'): ?>
+                                <?php if ($this->getMode() != 'grid'): ?>
                                     <?php $_iterator = 0; ?>
                                 <ol class="products-list" id="products-list">
                                         <?php foreach ($_productCollection as $_product): ?>
@@ -155,7 +159,7 @@ $_helper = $this->helper('catalog/output');
                                                      src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->keepFrame(false)->resize($_imgSize); ?>"
                                                      alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" />
                                             </a>
-            <?php // Product description  ?>
+            <?php // Product description   ?>
                                             <div class="product-shop">
                                                 <div class="f-fix">
                                                     <div class="product-primary">
@@ -171,11 +175,11 @@ $_helper = $this->helper('catalog/output');
                                                             $_nameAfterChild = $this->getChild('name.after')->getChild($_nameAfterChildName);
                                                             $_nameAfterChild->setProduct($_product);
                                                             ?>
-                                                            <?php echo $_nameAfterChild->toHtml(); ?>
-            <?php endforeach; ?>
+                <?php echo $_nameAfterChild->toHtml(); ?>
+                                                        <?php endforeach; ?>
                                                     </div>
                                                     <div class="product-secondary">
-            <?php echo $this->getPriceHtml($_product, true) ?>
+                                                        <?php echo $this->getPriceHtml($_product, true) ?>
                                                     </div>
                                                     <div class="product-secondary">
                                                         <?php if ($_product->isSaleable() && !$_product->canConfigure()): ?>
@@ -214,8 +218,9 @@ $_helper = $this->helper('catalog/output');
                                 <?php $_collectionSize = $_productCollection->count() ?>
                                 <?php $_columnCount = $this->getColumnCount(); ?>
                                 <?php $i = 0;
-                                foreach ($_productCollection as $_product): ?>
-                                        <?php if ($i++ % $_columnCount == 0): ?>
+                                foreach ($_productCollection as $_product):
+                                    ?>
+            <?php if ($i++ % $_columnCount == 0): ?>
                                         <ul class="products-grid listLighters  products-grid--max-<?php echo $_columnCount; ?>-col">
                                                 <?php endif ?>
                                         <li class="<?php if (($i - 1) % $_columnCount == 0): ?> first <?php elseif ($i + -2): ?> reverse <?php elseif ($i % $_columnCount == 0): ?> reverse<?php endif; ?> ">
@@ -236,7 +241,7 @@ $_helper = $this->helper('catalog/output');
                                                 <?php endforeach; ?>
 
                                                 <?php echo $this->getPriceHtml($_product, true) ?>
-                                                <?php if ($_product->getRatingSummary()): ?>
+            <?php if ($_product->getRatingSummary()): ?>
                 <?php echo $this->getReviewsSummaryHtml($_product, 'short') ?>
             <?php endif; ?>
 
@@ -264,21 +269,21 @@ $_helper = $this->helper('catalog/output');
                                                                 <?php endforeach; ?>
 
                                                                 <?php echo $this->getPriceHtml($_product, true) ?>
-                                                                <?php if ($_product->getRatingSummary()): ?>
+            <?php if ($_product->getRatingSummary()): ?>
                 <?php echo $this->getReviewsSummaryHtml($_product, 'short') ?>
             <?php endif; ?></h3>
 
 
                                                             <h3 class="jProductSKU"> <?php echo nl2br($_product->getSku()) ?> <?php echo $this->getChildHtml('product_type_availability'); ?> </h3>
                                                             <div class="jProductDescription prodLongDesc">
-            <?php echo $_helper->productAttribute($_product, nl2br($_product->getShortDescription()), 'short_description') ?>
+                                                            <?php echo $_helper->productAttribute($_product, nl2br($_product->getShortDescription()), 'short_description') ?>
                                                             </div>
-                                                            <?php if ($_product->getCountryOfManufacture() == 'US'): ?>
-                                                                    <img src="<?php echo $this->getSkinUrl('img/prod_made_USA.gif', array('_secure' => true)) ?>" alt="Made in the USA" width="125" height="30">
-                                                            <?php endif; ?>                                                            
+            <?php if ($_product->getCountryOfManufacture() == 'US'): ?>
+                                                                <img src="<?php echo $this->getSkinUrl('img/prod_made_USA.gif', array('_secure' => true)) ?>" alt="Made in the USA" width="125" height="30">
+            <?php endif; ?>                                                            
                                                             <div class="prodCart">
-                                                                <label for="txtProdQty"><?php echo $this->__('Qty.') ?></label> <input type="text" name="txtProdQty" id="txtProdQty<?php echo $_product->getId()?>" class="txtProdQty" placeholder="1" size="1">
-                                                                <input type="button" class="btnAddCart" onclick="addtocart('<?php echo $_product->getId()?>','<?php echo $this->getAddToCartUrl($_product) ?>?options=cart')" value="Add To Cart">
+                                                                <label for="txtProdQty"><?php echo $this->__('Qty.') ?></label> <input type="text" name="txtProdQty" id="txtProdQty<?php echo $_product->getId() ?>" class="txtProdQty" placeholder="1" size="1">
+                                                                <input type="button" class="btnAddCart" onclick="addtocart('<?php echo $_product->getId() ?>', '<?php echo $this->getAddToCartUrl($_product) ?>?options=cart')" value="Add To Cart">
                                                             </div>
                                                         </div>
                                                     </div><!-- eo .inner -->
@@ -295,9 +300,9 @@ $_helper = $this->helper('catalog/output');
                                 <?php endforeach ?>
                                 </ul>
                                 <script type="text/javascript">decorateGeneric($$('ul.products-grid'), ['odd', 'even', 'first', 'last'])</script>
-                                <?php endif; ?>
+    <?php endif; ?>
                             <div class="toolbar-bottom">
-    <?php //echo $this->getToolbarHtml()  ?>
+    <?php //echo $this->getToolbarHtml()   ?>
                             </div>
 
                         </div>
@@ -325,11 +330,11 @@ foreach ($_afterChildren as $_afterChildName):
     <?php echo $_afterChild->toHtml(); ?>
 <?php endforeach; ?>
 
-    <script type="text/javascript">
-        function addtocart(id, url){
-        qty = jQuery('#txtProdQty'+id).val();
-        url = url + '&qty='+qty;
+<script type="text/javascript">
+    function addtocart(id, url) {
+        qty = jQuery('#txtProdQty' + id).val();
+        url = url + '&qty=' + qty;
         setLocation(url);
         return false;
     }
-    </script>
+</script>
