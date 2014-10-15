@@ -288,7 +288,13 @@ class Mage_CatalogSearch_Model_Advanced extends Mage_Core_Model_Abstract
      */
     public function getSearchCriterias()
     {
-        return $this->_searchCriterias;
+        $search = $this->_searchCriterias;
+        /* display category filtering criteria */
+        if(isset($_GET['category']) && is_numeric($_GET['category'])) {
+            $category = Mage::getModel('catalog/category')->load($_GET['category']);
+            $search[] = array('name'=>'Category','value'=>$category->getName());
+        }
+        return $search;
     }
 
     /**
@@ -298,14 +304,16 @@ class Mage_CatalogSearch_Model_Advanced extends Mage_Core_Model_Abstract
      */
     public function getProductCollection(){
         if (is_null($this->_productCollection)) {
-            $collection = $this->_engine->getAdvancedResultCollection();
-            $this->prepareProductCollection($collection);
-            if (!$collection) {
-                return $collection;
-            }
-            $this->_productCollection = $collection;
+            $this->_productCollection = Mage::getResourceModel('catalogsearch/advanced_collection')
+                ->addAttributeToSelect(Mage::getSingleton('catalog/config')->getProductAttributes())
+                ->addMinimalPrice()
+                ->addStoreFilter();
+                Mage::getSingleton('catalog/product_status')->addVisibleFilterToCollection($this->_productCollection);
+                Mage::getSingleton('catalog/product_visibility')->addVisibleInSearchFilterToCollection($this->_productCollection);
+            /* include category filtering */
+            if(isset($_GET['category']) && is_numeric($_GET['category'])) $this->_productCollection->addCategoryFilter(Mage::getModel('catalog/category')->load($_GET['category']),true);
         }
-
+ 
         return $this->_productCollection;
     }
 
