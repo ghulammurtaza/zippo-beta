@@ -70,7 +70,18 @@ p.red {
         <h2 class="wholeHdr txtBebas">EGIFT CARDS </h2>
         <nav class="leftInnerNav txtBebas"> <a class="active" href="http://www.zippo.com/giftcards">Purchase</a> <a href="http://www.zippo.com/giftcards/checkbalance.aspx">Check Balance</a> <a href="http://www.zippo.com/giftcards/terms.aspx">Terms &amp; Conditions</a> </nav>
         <section id="giftCardContent" class="wholeContent">
-           <div class="product-view">
+           
+           
+           <div class="inner clearfix">
+        <div class="prodImages clearfix">
+          <?php if ($_category = $_product->getCategory()): ?>
+          <a onclick="history.back();" class="txtRed"  title="<?php echo $this->__('Back to Results') ?>"  style="display: block; padding: 0 0 6px; position:relative; top:-10px; cursor:pointer;"  > <?php echo $this->__('← Back to Results') ?> </a>
+          <?php endif;?>
+          <div class="prodHero" id="prodHero"><?php echo $this->getChildHtml('media') ?></div>
+          <!-- eo .prodAltViews --> 
+        </div>
+        
+        <div class="product-view">
           <div class="product-essential">
             <form action="<?php echo $this->getSubmitUrl($_product) ?>" method="post" id="product_addtocart_form"<?php if ($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?>>
               <?php echo $this->getBlockHtml('formkey') ?>
@@ -87,9 +98,7 @@ p.red {
                 <?php echo $this->getChildChildHtml('container1', '', true, true) ?>
                 <?php endif; ?>
               </div>
-              <div class="add-to-cart-wrapper">
-                <?php echo $this->getChildHtml('product_type_data')  ?>
-                <?php echo $this->getChildHtml('extrahint') ?>
+              <div class="add-to-cart-wrapper"> <?php echo $this->getChildHtml('product_type_data')  ?> <?php echo $this->getChildHtml('extrahint') ?>
                 <?php if (!$this->hasOptions()): ?>
                 <div class="add-to-box">
                   <?php if ($_product->isSaleable()): ?>
@@ -165,7 +174,8 @@ p.red {
           
           <?php //echo $this->getChildHtml('upsell_products')  ?>
           <?php echo $this->getChildHtml('product_additional_data') ?> </div>
-        <?php echo $this->getChildHtml('related_products') ?> 
+        <?php echo $this->getChildHtml('related_products') ?> </div>
+      
           <!-- eo .modalWindow -->
           
         <!-- eo .wholeContent --> 
@@ -178,6 +188,8 @@ p.red {
   <!-- eo .listKickersRight --> 
   
 </div>
+<div class="wrapper"></div>
+
 <?php
 } else {
 	

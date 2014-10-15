@@ -9,8 +9,236 @@ $_giftAmount = $this->getGiftAmount($_product);
 $_formData = $this->getFormConfigData();
 // echo $this->getPriceHtml($_product); //Hai.Tran
 ?>
+<script>
+function IsEmail(email) {
+	var regex = /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+	if(!regex.test(email)) {
+	   return false;
+	}else{
+	   return true;
+	}
+}
 
-<div id="giftcard-product-amount-media" style="display: none"></div> 
+
+function checkGift(){
+	
+		    var customerName = jQuery("#customer_name").val();
+		if(customerName == ""){
+			jQuery("#pErrorMsg").show();
+			jQuery("#pErrorMsg").addClass("validated");
+			jQuerystop();
+		}
+		else{
+			jQuery("#pErrorMsg").hide();
+			jQuery("#pErrorMsg").removeClass("validated");
+		}
+
+	 	var recipientName = jQuery("#recipient_name").val();		
+		if(recipientName == ""){
+			jQuery("#pErrorMsg").show();
+			jQuery("#pErrorMsg").addClass("validated");
+			jQuerystop();
+		}
+		else{
+			jQuery("#pErrorMsg").hide();
+			jQuery("#pErrorMsg").removeClass("validated");
+		}
+		
+	 	var recipientEmail = jQuery("#recipient_email").val();		
+   	    var email = recipientEmail;
+		   
+		if(IsEmail(email)==false){
+			jQuery("#pErrorMsg").show();
+			jQuery("#pErrorMsg").addClass("validated");
+			jQuerystop();
+			}
+			else{
+			jQuery("#pErrorMsg").hide();
+			jQuery("#pErrorMsg").removeClass("validated");
+		  }
+
+		
+	 	var recipientEmail2 = jQuery("#recipient_email2").val();		
+
+		if(recipientEmail2 == ""){
+			jQuery("#pErrorMsg").show();
+			jQuery("#pErrorMsg").addClass("validated");
+			jQuerystop();
+		}
+
+		if(recipientEmail2 == recipientEmail){
+			jQuery("#pErrorMsg").hide();
+			jQuery("#pErrorMsg").removeClass("validated");
+		}
+		else{
+			jQuery("#pErrorMsg").show();
+			jQuery("#pErrorMsg").addClass("validated");
+
+			//jQuery("#pErrorMsg").removeClass("validated");
+		}
+		
+		var giftMassage = jQuery(".gcForm #message").val();
+		var giftValueAmount = jQuery("#prodHero2 .giftcard-price-change").text();
+		
+		jQuery("#gcPrevTo").text(customerName);
+		jQuery("#gcPrevFrom").text(recipientName);
+		jQuery("#gcPrevAmount").text(giftValueAmount);
+		jQuery("#gcPrevMsg").text(giftMassage);
+		
+		return (true)
+
+}
+
+
+
+jQuery(document).ready(function(e) {
+	
+
+	jQuery('#giftcard_template_select').val("1").change();
+	getPrveiwBox = jQuery("#giftcard-template-left").html();
+	jQuery("#prodHero2").append(getPrveiwBox);
+	
+	jQuery(".gcImages li").eq(0).click(function(e) {
+		jQuery('#giftcard_template_select').val("1").change();
+		jQuery(".gcImages li").removeClass("active");
+		jQuery(this).addClass("active");
+		jQuery("#prodHero2 div").remove();
+		var getPrveiwBox = jQuery("#giftcard-template-left").html();
+		jQuery("#prodHero2").append(getPrveiwBox);
+		
+    });
+		
+	jQuery(".gcImages li").eq(1).click(function(e) {
+		jQuery('#giftcard_template_select').val("2").change();
+		jQuery(".gcImages li").removeClass("active");
+		jQuery(this).addClass("active");
+		jQuery("#prodHero2 div").remove();
+		var getPrveiwBox = jQuery("#giftcard-template-left").html();
+		jQuery("#prodHero2").append(getPrveiwBox);
+    });
+
+	jQuery(".gcImages li").eq(2).click(function(e) {
+		jQuery('#giftcard_template_select').val("3").change();
+		jQuery(".gcImages li").removeClass("active");
+		jQuery(this).addClass("active");
+ 		jQuery("#prodHero2 div").remove();
+		var getPrveiwBox = jQuery("#giftcard-template-left").html();
+		jQuery("#prodHero2").append(getPrveiwBox);
+    });
+
+
+	jQuery(".gcImages li").eq(3).click(function(e) {
+		jQuery('#giftcard_template_select').val("4").change();
+		jQuery(".gcImages li").removeClass("active");
+		jQuery(this).addClass("active");		
+		jQuery("#prodHero2 div").remove();
+		var getPrveiwBox = jQuery("#giftcard-template-left").html();
+		jQuery("#prodHero2").append(getPrveiwBox);
+    });
+
+
+	jQuery(".gcImages li").eq(4).click(function(e) {
+		jQuery('#giftcard_template_select').val("5").change();
+		jQuery(".gcImages li").removeClass("active");
+		jQuery(this).addClass("active");		
+ 		jQuery("#prodHero2 div").remove();
+		var getPrveiwBox = jQuery("#giftcard-template-left").html();
+		jQuery("#prodHero2").append(getPrveiwBox);
+    });
+
+
+	jQuery(".gcImages li").eq(5).click(function(e) {
+		jQuery('#giftcard_template_select').val("6").change();
+		jQuery(".gcImages li").removeClass("active");
+		jQuery(this).addClass("active");		
+		jQuery("#prodHero2 div").remove();
+		var getPrveiwBox = jQuery("#giftcard-template-left").html();
+		jQuery("#prodHero2").append(getPrveiwBox);
+    });
+
+/*
+	jQuery(".gcImages li").eq(6).click(function(e) {
+		jQuery('#giftcard_template_select').val("7").change()
+    });
+
+
+	jQuery(".gcImages li").eq(7).click(function(e) {
+		jQuery('#giftcard_template_select').val("8").change()
+    });
+
+
+	jQuery(".gcImages li").eq(1).click(function(e) {
+		jQuery('#giftcard_template_select').val("2").change()
+    });
+
+
+	jQuery(".gcImages li").eq(1).click(function(e) {
+		jQuery('#giftcard_template_select').val("2").change()
+    });
+	*/
+
+validationCheck = 0;
+    jQuery(".txtWhiteB").click(function(e) {
+
+		checkGift();
+
+		if(jQuery("#pErrorMsg").hasClass("validated")){
+		}
+		else{
+			jQuery( "#giftPopupBox").show();
+			jQuery( ".ui-widget-overlay").show();
+		}
+
+		
+
+
+	});
+
+	
+	jQuery("#prevOK").click(function(e) {
+        	jQuery( "#giftPopupBox").hide();
+			jQuery( ".ui-widget-overlay").hide();
+    });
+	
+	jQuery("#btnAddCart").click(function(e) {
+		
+     checkGift()
+	 
+	   if(jQuery("#pErrorMsg").hasClass("validated")){
+		   alert("From Name is required");
+		   
+		   //jQuery( ".add-to-cart-buttons .btnAddCart" ).trigger( "click" );
+		}
+		else{
+			jQuery(".productListingPopup .prodCart").stop();
+			jQuery(".gcForm li .frmBtns").append("<span class='loader-cart'></span>");			
+			jQuery( ".add-to-cart-buttons .btnAddCart" ).trigger( "click" );
+			setTimeout(function(){
+			jQuery(".gcForm input").val("");
+			jQuery(".gcForm textarea").val("");	
+			jQuery(".gcForm li .frmBtns .loader-cart").remove();	
+			jQuery("html").animate({scrollTop: 0}, 500);
+			
+			return false;
+		 
+		 }, 4000);
+
+			
+
+		}
+
+	});
+	
+	jQuery(".frmBtns .clear ").click(function(e) {
+      jQuery(".gcForm input").val("");
+	  jQuery(".gcForm textarea").val("");	 
+    });
+
+});
+
+</script>
+
+<div id="giftcard-product-amount-media" style="display: none"></div>
 <input type="hidden" name="price_amount" id="price_amount" value="0" />
 <script type="text/javascript">
     var giftmedia = new Array('giftcard-template-back', 'giftcard-template-top', 'giftcard-template-left');
@@ -21,7 +249,7 @@ $_formData = $this->getFormConfigData();
             if ($(giftmedia[i]))
                 $(giftmedia[i]).down('.giftcard-price-change').innerHTML = value;
     }
-</script>
+</script> 
 <script type="text/javascript">
 //<![CDATA[
     Event.observe(window, 'load', function() {
@@ -34,95 +262,92 @@ $_formData = $this->getFormConfigData();
     });
 //]]>
 </script>
-
-<div class="price-box">
-    <span class="regular-price">
-        <span class="price" id="giftcard-product-price">
-        </span>
-    </span>
-</div>
+<div class="price-box"> <span class="regular-price"> <span class="price" id="giftcard-product-price"> </span> </span> </div>
 <h3 style="font-size: 16px;" class="txtBlack txtBebas">ZIPPO EGIFT CARDS, always the perfect gift! </h3>
-
 <dl class="gcPurchase">
-<dt class="txtBebas gcPurchStepHdr"><span class="txtBlack">1.</span> <span class="txtRed">CHOOSE A CARD</span> </dt>
-                                    <dd class="gcStep1">
-                                        <ul class="gcImages">
-                                        
-                                            <li class="gcChoice clearfix">
-                                                <div class="radio" id="uniform-undefined"><span class="checked"><input type="radio" checked="checked" class="radDef" value="1" name="gcImage" style="opacity: 0;"></span></div>
-                                                <label class="lblImage">
-                                                    <img width="221" height="139" alt="Zippo eGift Card" src="http://images.zippo.com/images/products/1_1025143_TH_1.jpg"></label>
-                                            </li>
-                                            
-                                            <li class="gcChoice clearfix">
-                                                <div class="radio" id="uniform-undefined"><span><input type="radio" class="radDef" value="10" name="gcImage" style="opacity: 0;"></span></div>
-                                                <label class="lblImage">
-                                                    <img width="221" height="139" alt="Zippo eGift Card" src="http://images.zippo.com/images/products/1_1025143_TH_10.jpg"></label>
-                                            </li>
-                                            
-                                            <li class="gcChoice clearfix">
-                                                <div class="radio" id="uniform-undefined"><span><input type="radio" class="radDef" value="2" name="gcImage" style="opacity: 0;"></span></div>
-                                                <label class="lblImage">
-                                                    <img width="221" height="139" alt="Zippo eGift Card" src="http://images.zippo.com/images/products/1_1025143_TH_2.jpg"></label>
-                                            </li>
-                                            
-                                            <li class="gcChoice clearfix">
-                                                <div class="radio" id="uniform-undefined"><span><input type="radio" class="radDef" value="3" name="gcImage" style="opacity: 0;"></span></div>
-                                                <label class="lblImage">
-                                                    <img width="221" height="139" alt="Zippo eGift Card" src="http://images.zippo.com/images/products/1_1025143_TH_3.jpg"></label>
-                                            </li>
-                                            
-                                            <li class="gcChoice clearfix">
-                                                <div class="radio" id="uniform-undefined"><span><input type="radio" class="radDef" value="4" name="gcImage" style="opacity: 0;"></span></div>
-                                                <label class="lblImage">
-                                                    <img width="221" height="139" alt="Zippo eGift Card" src="http://images.zippo.com/images/products/1_1025143_TH_4.jpg"></label>
-                                            </li>
-                                            
-                                            <li class="gcChoice clearfix">
-                                                <div class="radio" id="uniform-undefined"><span><input type="radio" class="radDef" value="5" name="gcImage" style="opacity: 0;"></span></div>
-                                                <label class="lblImage">
-                                                    <img width="221" height="139" alt="Zippo eGift Card" src="http://images.zippo.com/images/products/1_1025143_TH_5.jpg"></label>
-                                            </li>
-                                            
-                                            <li class="gcChoice clearfix">
-                                                <div class="radio" id="uniform-undefined"><span><input type="radio" class="radDef" value="6" name="gcImage" style="opacity: 0;"></span></div>
-                                                <label class="lblImage">
-                                                    <img width="221" height="139" alt="Zippo eGift Card" src="http://images.zippo.com/images/products/1_1025143_TH_6.jpg"></label>
-                                            </li>
-                                            
-                                            <li class="gcChoice clearfix">
-                                                <div class="radio" id="uniform-undefined"><span><input type="radio" class="radDef" value="7" name="gcImage" style="opacity: 0;"></span></div>
-                                                <label class="lblImage">
-                                                    <img width="221" height="139" alt="Zippo eGift Card" src="http://images.zippo.com/images/products/1_1025143_TH_7.jpg"></label>
-                                            </li>
-                                            
-                                            <li class="gcChoice clearfix">
-                                                <div class="radio" id="uniform-undefined"><span><input type="radio" class="radDef" value="8" name="gcImage" style="opacity: 0;"></span></div>
-                                                <label class="lblImage">
-                                                    <img width="221" height="139" alt="Zippo eGift Card" src="http://images.zippo.com/images/products/1_1025143_TH_8.jpg"></label>
-                                            </li>
-                                            
-                                            <li class="gcChoice clearfix">
-                                                <div class="radio" id="uniform-undefined"><span><input type="radio" class="radDef" value="9" name="gcImage" style="opacity: 0;"></span></div>
-                                                <label class="lblImage">
-                                                    <img width="221" height="139" alt="Zippo eGift Card" src="http://images.zippo.com/images/products/1_1025143_TH_9.jpg"></label>
-                                            </li>
-                                            
-                                        </ul>
-                                    </dd>
-                                    <dt class="txtBebas gcPurchStepHdr clear"><span class="txtBlack">2.</span> <span class="txtRed">CHOOSE Amount</span> </dt>
-                                    <dd id="gcStep2" class="gcStep2 txtA7 clearfix">
-                                        <div style="border-right: 1px solid #e9e9e9; float: left; line-height: 32px; margin-right: 18px; width: 123px;">
-                                            <?php if ($_giftAmount['type'] == 'range'): ?>
-        <p>
-            <?php
+  <dt class="txtBebas gcPurchStepHdr"><span class="txtBlack">1.</span> <span class="txtRed">CHOOSE A CARD</span> </dt>
+  <dd class="gcStep1">
+    <ul class="gcImages">
+      <li class="gcChoice active clearfix">
+        <div class="radio" id="uniform-undefined"><span class="checked">
+          <input type="radio" checked="checked" class="radDef" value="1" name="gcImage" style="opacity: 0;">
+          </span></div>
+        <label class="lblImage"> <img width="221" height="139" alt="Zippo eGift Card" src="http://images.zippo.com/images/products/1_1025143_TH_1.jpg"></label>
+      </li>
+      <li class="gcChoice clearfix">
+        <div class="radio" id="uniform-undefined"><span>
+          <input type="radio" class="radDef" value="10" name="gcImage" style="opacity: 0;">
+          </span></div>
+        <label class="lblImage"> <img width="221" height="139" alt="Zippo eGift Card" src="http://images.zippo.com/images/products/1_1025143_TH_2.jpg"></label>
+      </li>
+      <li class="gcChoice clearfix">
+        <div class="radio" id="uniform-undefined"><span>
+          <input type="radio" class="radDef" value="2" name="gcImage" style="opacity: 0;">
+          </span></div>
+        <label class="lblImage"> <img width="221" height="139" alt="Zippo eGift Card" src="http://images.zippo.com/images/products/1_1025143_TH_4.jpg"></label>
+      </li>
+      <li class="gcChoice clearfix">
+        <div class="radio" id="uniform-undefined"><span>
+          <input type="radio" class="radDef" value="3" name="gcImage" style="opacity: 0;">
+          </span></div>
+        <label class="lblImage"> <img width="221" height="139" alt="Zippo eGift Card" src="http://images.zippo.com/images/products/1_1025143_TH_5.jpg"></label>
+      </li>
+      <li class="gcChoice clearfix">
+        <div class="radio" id="uniform-undefined"><span>
+          <input type="radio" class="radDef" value="4" name="gcImage" style="opacity: 0;">
+          </span></div>
+        <label class="lblImage"> <img width="221" height="139" alt="Zippo eGift Card" src="http://images.zippo.com/images/products/1_1025143_TH_7.jpg"></label>
+      </li>
+      
+<!--      <li class="gcChoice clearfix">
+        <div class="radio" id="uniform-undefined"><span>
+          <input type="radio" class="radDef" value="5" name="gcImage" style="opacity: 0;">
+          </span></div>
+        <label class="lblImage"> <img width="221" height="139" alt="Zippo eGift Card" src="http://images.zippo.com/images/products/1_1025143_TH_5.jpg"></label>
+      </li>
+      <li class="gcChoice clearfix">
+        <div class="radio" id="uniform-undefined"><span>
+          <input type="radio" class="radDef" value="6" name="gcImage" style="opacity: 0;">
+          </span></div>
+        <label class="lblImage"> <img width="221" height="139" alt="Zippo eGift Card" src="http://images.zippo.com/images/products/1_1025143_TH_6.jpg"></label>
+      </li>
+      <li class="gcChoice clearfix">
+        <div class="radio" id="uniform-undefined"><span>
+          <input type="radio" class="radDef" value="7" name="gcImage" style="opacity: 0;">
+          </span></div>
+        <label class="lblImage"> <img width="221" height="139" alt="Zippo eGift Card" src="http://images.zippo.com/images/products/1_1025143_TH_7.jpg"></label>
+      </li>
+      <li class="gcChoice clearfix">
+        <div class="radio" id="uniform-undefined"><span>
+          <input type="radio" class="radDef" value="8" name="gcImage" style="opacity: 0;">
+          </span></div>
+        <label class="lblImage"> <img width="221" height="139" alt="Zippo eGift Card" src="http://images.zippo.com/images/products/1_1025143_TH_8.jpg"></label>
+      </li>
+      <li class="gcChoice clearfix">
+        <div class="radio" id="uniform-undefined"><span>
+          <input type="radio" class="radDef" value="9" name="gcImage" style="opacity: 0;">
+          </span></div>
+        <label class="lblImage"> <img width="221" height="139" alt="Zippo eGift Card" src="http://images.zippo.com/images/products/1_1025143_TH_9.jpg"></label>
+      </li>-->
+    </ul>
+  </dd>
+  <dt class="txtBebas gcPurchStepHdr clear"><span class="txtBlack">2.</span> <span class="txtRed">CHOOSE Amount</span> </dt>
+  <dd id="gcStep2" class="gcStep2 txtA7 clearfix">
+    <div style="border-right: 1px solid #e9e9e9; float: left; line-height: 32px; margin-right: 18px; width: 123px;">
+    <?php if ($_giftAmount['type'] == 'range'): ?>
+    <p>
+    <?php
             $includeTax = ( Mage::getStoreConfig('tax/display/type') != 1 );
             $rateTax = Mage::helper('tax')->getPrice($_product, 100, $includeTax) / 100;
             ?>
-            <label for="amount_range"><div style="float: left; width:100px"><?php echo $this->__('Enter value:') ?></div></label>
-            <input id="amount_range" name="amount" class="input-text required-entry validate-greater-than-zero" onchange="validateInputRange(this);" value="<?php echo $_formData->getAmount() ?>" />
-            (<span class="price"><?php echo $_giftAmount['from_txt'] ?></span> -  <span class="price"><?php echo $_giftAmount['to_txt'] ?></span>)
-            <script type="text/javascript">
+    <label for="amount_range">
+      <div style="float: left; width:100px">
+      <?php echo $this->__('Enter value:') ?>
+      </div>
+    </label>
+    <input id="amount_range" name="amount" class="input-text required-entry validate-greater-than-zero" onchange="validateInputRange(this);" value="<?php echo $_formData->getAmount() ?>" />
+    (<span class="price"><?php echo $_giftAmount['from_txt'] ?></span> - <span class="price"><?php echo $_giftAmount['to_txt'] ?></span>) 
+    <script type="text/javascript">
                 //<![CDATA[
                 var rateTax = <?php echo $rateTax ?>;
                 if (!$('amount_range').value)
@@ -151,17 +376,15 @@ $_formData = $this->getFormConfigData();
                 }
                 //]]>
             </script>
-        </p>
+    </p>
     <?php elseif ($_giftAmount['type'] == 'dropdown'): ?>
-       
-            
-            <select id="amount_dropdown" name="amount" class="required-entry select" onchange="changePriceByInputDropdown(this)">
-                <?php $options = array_combine($_giftAmount['options'], $_giftAmount['options_txt']) ?>
-                <?php foreach ($options as $value => $label): ?>
-                    <option value="<?php echo $value ?>" <?php if ($value == $_formData->getAmount()) echo 'selected' ?> ><?php echo $label ?></option>
-                <?php endforeach ?>
-            </select>
-            <script type="text/javascript">
+    <select id="amount_dropdown" name="amount" class="required-entry select" onchange="changePriceByInputDropdown(this)">
+      <?php $options = array_combine($_giftAmount['options'], $_giftAmount['options_txt']) ?>
+      <?php foreach ($options as $value => $label): ?>
+      <option value="<?php echo $value ?>" <?php if ($value == $_formData->getAmount()) echo 'selected' ?> ><?php echo $label ?></option>
+      <?php endforeach ?>
+    </select>
+    <script type="text/javascript">
                 //<![CDATA[
                 function changePriceByInputDropdown(el) {
                     $('giftcard-product-price').innerHTML = formatCurrency(giftAmountChange.prices[el.value], giftCardPriceFomat);
@@ -172,65 +395,57 @@ $_formData = $this->getFormConfigData();
                 changePriceByInputDropdown($('amount_dropdown'));
                 //]]>
             </script>
-       
     <?php elseif ($_giftAmount['type'] == 'static'): ?>
-        
-            <?php echo $this->__('Gift Card value: <span class="regular-price">%s</span>', $_giftAmount['value_txt']) ?>
-            <input type="hidden" name="amount" value="<?php echo $_giftAmount['value'] ?>" />
-            <script type="text/javascript">
+    <?php echo $this->__('Gift Card value: <span class="regular-price">%s</span>', $_giftAmount['value_txt']) ?>
+    <input type="hidden" name="amount" value="<?php echo $_giftAmount['value'] ?>" />
+    <script type="text/javascript">
                 //<![CDATA[
                 $('price_amount').value = giftAmountChange.price;
                 $('giftcard-product-price').innerHTML = formatCurrency(giftAmountChange.price, giftCardPriceFomat);
                 $('giftcard-product-amount-media').innerHTML = '<?php echo $_giftAmount['value_txt'] ?>';
                 //]]>
             </script>
-       
     <?php endif ?>
-                                            </div>
-                                        <!--<div style="float: left; line-height: 32px; width: 150px;">
+    </div>
+    <!--<div style="float: left; line-height: 32px; width: 150px;">
                                             <label style="float: left; margin: 0 8px 0 0;" for="txtGCQty" class="txtBebas">QTY</label>
                                             <input type="text" class="txtDef txt3" name="txtGCQty" id="txtGCQty" />
-                                        </div>-->
-                                    </dd>
-                                    <dt class="txtBebas gcPurchStepHdr"><span class="txtBlack">3.</span> <span class="txtRed">CHOOSE A Recipient</span> </dt>
-                                    <dd class="gcStep3 txtBebas txtBlack clearfix">
-                                        <p id="pErrorMsg" style="display: none; margin: 12px 0;" class="txtRed">Please complete all fields marked '*'</p>
-                                       
-                                       <div class="giftvoucher-product-info">
-    
-    <?php echo $this->getChildHtml('giftcard.product.selecttemplate') ?>
-        
-    <div class="giftvoucher-receiver" id="giftvoucher-receiver" style="<?php if (!$_formData->getSendFriend()) echo 'display:none;' ?>">
-    
-    <ul class="gcForm">
-    	<li>
-
-            <label for="customer_name"><?php echo $this->__('TO') ?></label><br />
+                                        </div>--> 
+  </dd>
+  <dt class="txtBebas gcPurchStepHdr"><span class="txtBlack">3.</span> <span class="txtRed">CHOOSE A Recipient</span> </dt>
+  <dd class="gcStep3 txtBebas txtBlack clearfix">
+    <p id="pErrorMsg" style="display: none; margin: 12px 0;" class="txtRed">Please complete all fields marked '*'</p>
+    <div class="giftvoucher-product-info"><div style="display:none;" ><?php echo $this->getChildHtml('giftcard.product.selecttemplate') ?></div>
+      <div class="giftvoucher-receiver" id="giftvoucher-receiver" style="<?php if (!$_formData->getSendFriend()) echo 'display:none;' ?>">
+        <p id="pErrorMsg" style="margin: 12px 0px 0 !important; display:none;" class="txtRed">Please complete all fields marked '*'</p>
+        <ul class="gcForm">
+          <li>
+            <label for="customer_name"><?php echo $this->__('TO') ?></label>
+            <br />
             <input type="text" class="txtDef" name="customer_name" id="customer_name" value="<?php echo $_formData->getCustomerName() ?>" onchange="changeSenderName(this);" maxlength="30"/>
-    
-        </li>
-
-        <li>
-        <label for="recipient_name"><?php echo $this->__('FROM') ?></label><br />
+          </li>
+          <li>
+            <label for="recipient_name"><?php echo $this->__('FROM') ?></label>
+            <br />
             <input type="text" class="txtDef required-entry" name="recipient_name" id="recipient_name" value="<?php echo $_formData->getRecipientName() ?>"  onchange="changeReceiverName(this);" maxlength="30"/>
-        </li>
-        <li class="clear">
-         <label class = "recipient_email" for="recipient_email"><?php echo $this->__('RECIPIENT EMAIL') ?></label><br />
+          </li>
+          <li class="clear">
+            <label class = "recipient_email" for="recipient_email"><?php echo $this->__('RECIPIENT EMAIL') ?></label>
+            <br />
             <input type="text" class="txtDef required-entry validate-email validate-same-email" name="recipient_email" id="recipient_email" value="<?php echo $_formData->getRecipientEmail() ?>" />
-        
-        </li>
-        <li class="">
-         <label class = "recipient_email" for="recipient_email"><?php echo $this->__('CONFIRM RECIPIENTS EMAIL') ?></label><br />
-            <input type="text" class="txtDef required-entry validate-email validate-same-email" name="recipient_email" id="recipient_email" value="<?php echo $_formData->getRecipientEmail() ?>" />
-        
-        </li>
-        
-        <li class="clear width100">
-
-        <?php //if ($this->enableCustomMessage()):   ?>
-            <label class = "message" for="message"><?php echo $this->__('Gift Message') ?></label><br />
-            <textarea maxlength="<?php echo $this->messageMaxLen(); ?>" name="message" id="message" class="bigTxtArea" onchange="changeRemaining(this);" onkeyup="changeRemaining(this);"><?php echo $_formData->getMessage() ?></textarea><br />
-            <small><?php echo $this->__('Characters Remaining: ') ?><span id="giftvoucher_char_remaining"><?php echo $this->messageMaxLen() ?></span></small>
+          </li>
+          <li class="">
+            <label class = "recipient_email2" for="recipient_email2"><?php echo $this->__('CONFIRM RECIPIENTS EMAIL') ?></label>
+            <br />
+            <input type="text" class="txtDef required-entry validate-email validate-same-email" name="recipient_email" id="recipient_email2" value="<?php echo $_formData->getRecipientEmail() ?>" />
+          </li>
+          <li class="clear width100">
+            <?php //if ($this->enableCustomMessage()):   ?>
+            <label class = "message" for="message"><?php echo $this->__('Gift Message') ?> <span class="txtA7"><span id="giftvoucher_char_remaining">(<?php echo $this->messageMaxLen() ?> <?php echo $this->__('Character Max') ?>)</span></label>
+            <br />
+            <textarea maxlength="<?php echo $this->messageMaxLen(); ?>" name="message" id="message" class="bigTxtArea" onchange="changeRemaining(this);" onkeyup="changeRemaining(this);"><?php echo $_formData->getMessage() ?></textarea>
+            <br />
+            
             <script type="text/javascript">
                 //<![CDATA[
                 var remaining_max = <?php echo $this->messageMaxLen() ?>;
@@ -265,18 +480,16 @@ $_formData = $this->getFormConfigData();
                 });
                 //]]>
             </script>
-        <?php //endif  ?>
-        </li>
-       <li class="clearfix">
-       
-       
-       
-       <?php if ($this->enableScheduleSend()): ?>
-    <?php echo $this->getLayout()->createBlock('core/html_calendar')->setTemplate('page/js/calendar.phtml')->toHtml() ?>
-        <p class = "giftcard-date-box"style="width: 200px; float: left">
-                <label for="day_to_send"><?php echo $this->__('Day to send') ?></label><br />
-                <img src="<?php echo Mage::getBaseUrl('skin') ?>/adminhtml/default/default/images/grid-cal.gif" alt="<?php echo $this->__('Select Date') ?>" class="v-middle" id="calendar-day_to_send" />
-                <input type="text" class="input-text required-entry validate-date validate-date-giftcard" name="day_to_send" id="day_to_send" value="<?php echo $_formData->getDayToSend() ?>" style="float: left; margin-right: 3px"/>
+            <?php //endif  ?>
+          </li>
+          <li class="clearfix">
+            <?php if ($this->enableScheduleSend()): ?>
+            <?php echo $this->getLayout()->createBlock('core/html_calendar')->setTemplate('page/js/calendar.phtml')->toHtml() ?>
+            <p class = "giftcard-date-box"style="width: 200px; float: left">
+              <label for="day_to_send"><?php echo $this->__('Day to send') ?></label>
+              <br />
+              <img src="<?php echo Mage::getBaseUrl('skin') ?>/adminhtml/default/default/images/grid-cal.gif" alt="<?php echo $this->__('Select Date') ?>" class="v-middle" id="calendar-day_to_send" />
+              <input type="text" class="input-text required-entry validate-date validate-date-giftcard" name="day_to_send" id="day_to_send" value="<?php echo $_formData->getDayToSend() ?>" style="float: left; margin-right: 3px"/>
             </p>
             <script type="text/javascript">
                 //<![CDATA[
@@ -324,38 +537,23 @@ $_formData = $this->getFormConfigData();
                     margin-top: 18px;
                 }
             </style>
-<?php endif ?>
-    <?php
+            <?php endif ?>
+            <?php
     $templates = Mage::getBlockSingleton('giftvoucher/product_view')->getAvailableTemplate();
     if(count($templates)):
     ?>
-    <button type="button" title="Preview template" id="giftcard-preview-button-add" style="background: #df101d; float: left; font-size: 14px; padding: 2px 4px 3px; border:none;" class="txtBebas txtWhite" onclick="getPreview()" style="float: right"><span style="background-image: url(<?php echo $this->getSkinUrl() . 'images/giftvoucher/preview-icon.png' ?>); background-repeat: no-repeat;background-size: contain; padding-left: 20px;"><span><?php echo $this->__('Preview Gift Card') ?></span></span></button>
-    <?php endif; ?>
-       
-       
-       
-       
-       
-       
-       
-       
-       
-                                                <div class="frmBtns"><a title="clear form" style="background: #000; float: left; font-size: 14px; margin: 8px 12px 0 4px; padding: 2px 4px 3px;" class="clear txtBebas txtWhite" href="#">Clear</a> <a title="add to cart" style="background: #000; float: left; font-size: 14px; margin: 8px 0 0; padding: 2px 4px 3px;" class="txtBebas txtWhite" id="btnAddCart" href="#">Add to Cart</a> </div>
-                                            
-                                            
-                                            
-                                            
-                                            
-                                            
-                                            
-                                            
-                                            </li>
-    
-    </ul>
-    
+            <button type="button" title="Preview template" id="giftcard-preview-button-add" style="background: #df101d; display:none; float: left; font-size: 14px; padding: 2px 4px 3px; border:none;" class="txtBebas txtWhite txtWhiteB2" style="float: right">
+            <span style="background-image: url(<?php echo $this->getSkinUrl() . 'images/giftvoucher/preview-icon.png' ?>); background-repeat: no-repeat;background-size: contain; padding-left: 20px;"><span><?php echo $this->__('Preview Gift Card') ?></span></span>
+            </button>
+            <button type="button" title="Preview template" id="giftcard-preview-button-add" style="background: #df101d; float: left; font-size: 14px; padding: 2px 4px 3px; border:none;" class="txtBebas txtWhite txtWhiteB"  style="float: right">
+            <span style="background-image: url(<?php echo $this->getSkinUrl() . 'images/giftvoucher/preview-icon.png' ?>); background-repeat: no-repeat;background-size: contain; padding-left: 20px;"><span><?php echo $this->__('Preview Gift Card') ?></span></span>
+            </button>
+            <?php endif; ?>
+            <div class="frmBtns"><a title="clear form" style="background: #000; float: left; font-size: 14px; margin: 8px 12px 0 4px; padding: 2px 4px 3px;" class="clear txtBebas txtWhite" >Clear</a> <a title="add to cart" style="background: #000; float: left; font-size: 14px; margin: 8px 0 0; padding: 2px 4px 3px;" class="txtBebas txtWhite" id="btnAddCart">Add to Cart</a> </div>
+          </li>
+        </ul>
         <div style="display:none;">
-       
-            <?php
+          <?php
 
             if (Mage::app()->getRequest()->getControllerName() == 'cart') {
                 if ($_formData->getNotifySuccess())
@@ -365,22 +563,80 @@ $_formData = $this->getFormConfigData();
             } else
                 $checkboxNotify = true;
             ?>
-            <input type="checkbox" value="1" name="notify_success" id="notify_success" <?php if ($checkboxNotify) echo 'checked' ?> />
-            
-            <label for="notify_success"><?php echo $this->__('Get notification email when your friend receives Gift Card') ?></label>
-        
+          <input type="checkbox" value="1" name="notify_success" id="notify_success" <?php if ($checkboxNotify) echo 'checked' ?> />
+          <label for="notify_success"><?php echo $this->__('Get notification email when your friend receives Gift Card') ?></label>
         </div>
-
-    <div style="clear: both"></div>
+        <div style="clear: both"></div>
+      </div>
+      <p></p>
     </div>
-    <p></p>
+  </dd>
+</dl>
+
+<style>
+#prodHero2{
+	display:inline-block;
+	width:221px;
+	vertical-align:top;
+	height:139px;
+}
+.prevMsgContent ul {
+	vertical-align:top;	
+    display: inline-block;
+    margin: 0 20px 12px 12px;
+}
+#prodHero2 .giftcard-template-content-left{
+	background-size:100% 100% !important;
+}
+#prodHero2 .giftcard-template-content{
+	display:none;
+}
+.gcForm li.width100 small{
+	display:block;
+}
+.gcPrevText{
+	background:none !important;
+}
+.modalInner{
+	color:#333;
+}
+</style>
+<div id="giftPopupBox" style="display:none; position: fixed; left:0px; top:3%; width:100%; z-index:9999999999999999999999;">
+<section id="prevGCModal" class="prevGCModal modalWindow ui-dialog-content ui-widget-content" style="display: block; position:static; width: 560px; margin: auto; min-height: 122px; height: auto;">
+                                <div class="prevGCInner modalInner">
+                                    <div class="modalContent clearfix">
+                                        <header class="redBg txtBebas txtWhite">Preview Your Message</header>
+                                        <div class="prevMsgContent">
+                                            <div class="clearfix">
+                                                <ul class="gcPrevText txtBold">
+                                                    <li style="padding-top: 12px;"><span class="txtRed">To:</span> <span id="gcPrevTo"></span></li>
+                                                    <li><span class="txtRed">From:</span> <span id="gcPrevFrom"></span></li>
+                                                    <li><span class="txtRed">Amount:</span> <span id="gcPrevAmount"></span></li>
+                                                    <li><span class="txtRed">Message:</span><br>
+                                                        <span id="gcPrevMsg"></span></li>
+                                                </ul>
+                                                 <div class="prodHero" id="prodHero2"></div>
+
+                                            </div>
+                                            <!-- eo .gcPrevImg -->
+                                            <h4 style="font-size: 14px;">Redeeming Your Online Gift Card</h4>
+                                            <ul class="ulDisc txtRed">
+                                                <li><span class="txtA7">Your eGift Card can be redeemed on Zippo.com by entering your eGift Card number and pin at checkout.</span> </li>
+                                                <li><span class="txtA7">To check your eGift Card balance any time, go to Zippo.com/giftcards.</span> </li>
+                                                <li><span class="txtA7">Your eGift Card will expire five years from the date the card was issued.</span> </li>
+                                                <li><span class="txtA7">All Zippo eGift Cards are issued in U.S. Funds.</span> </li>
+                                            </ul>
+                                            <p class="txtA7 txtBold">For rules &amp; restrictions, <a class="txtRed" href="/giftcards/terms.aspx">click here</a>. </p>
+                                            <h4 style="font-size: 14px;">Questions?</h4>
+                                            <p class="txtA7 txtBold">Please send us an <a class="txtRed" href="mailto:consumerrelations@zippo.com">email</a> or call us at 1.888.442.1932 Monday through Friday, 8 a.m. to 4:30 p.m. EST </p>
+                                        </div>
+                                        <!-- eo .modalContent -->
+                                        <div style="text-align: center;" class="modalConfirmBtns clearfix"><a style="float: none;" id="prevOK" class="prevOK" href="#">okay</a> </div>
+                                        <!-- eo .modalConfirmBtns -->
+                                    </div>
+                                    <!-- eo .modalContent -->
+                                </div>
+                                <!-- eo .modalInner -->
+                            </section>
 </div>
-                                       
-                                        
-                                    </dd>
-                                </dl>
-
-
-
-
-
+<div class="ui-widget-overlay" style="width: 100%; height: 100%; position:fixed; display:none; z-index: 1001;"></div>

@@ -48,3 +48,25 @@ $products = Mage::getResourceModel('reports/product_collection')
     </section>
 <?php endif;?>
 </section>
+<script>
+
+jQuery(document).ready(function(e) {
+	
+	jQuery("#bestSellersList .proname a + a").click(function(e) {
+		jQuery(".bestSellKicker").stop();
+		jQuery(".bestSellKicker").append("<span class='loader-cart'></span>");
+		setTimeout(function(){
+			jQuery(".bestSellKicker .loader-cart").remove();
+			jQuery("html").clearQueue();
+			jQuery(".bestSellKicker .loader-cart").clearQueue();
+			jQuery("html").animate({scrollTop: 0}, 500);
+			
+			return false;
+		 
+		 }, 5000);
+		
+    });
+    
+});
+
+</script>
