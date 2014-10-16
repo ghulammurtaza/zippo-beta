@@ -36,7 +36,7 @@ function test (){
 		setTimeout(function(){
     	   jQuery(thisBox).addClass("popupActive");
 				return false;
-		 }, 1000);	   
+		 }, 500);	   
 	   
     });
 	jQuery(".listProdPopUps").mouseleave(function(e) {
@@ -47,6 +47,7 @@ function test (){
 		 jQuery(".products-grid > li").removeClass("popupActive");
 		 jQuery(".products-grid > li .listProdPopUps").hide();
     });
+
 	jQuery(".products-grid > li .btnAddCart").click(function(e) {
 		jQuery(".productListingPopup .prodCart").stop();
 		jQuery(".productListingPopup .prodCart").append("<span class='loader-cart'></span>");

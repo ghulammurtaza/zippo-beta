@@ -8431,8 +8431,12 @@ body {
 	color: #fff;
 }
 .listSubCat{
-	display:none;
+/*	display:none;*/
 }
+.category-zipposlim .windproof-item .listSubCat,
+.category-classics .windproof-item .listSubCat,
+.category-classics .windproof-item .listSubCat,
+.category-classics .windproof-item .listSubCat,
 .category-classics .windproof-item .listSubCat,
 .category-windproof .windproof-item .listSubCat,
 .category-lighters .windproof-item .listSubCat{
@@ -8440,7 +8444,7 @@ body {
 	
 }
 .category-classics .windproof-item .listSubCat a{
-	color:#df101d;
+	/*color:#df101d;*/
 }
 .listSubNav {
 	background: #7a7a7a url('img/sprite_lighters_cat.png') no-repeat 0 -27px;
@@ -12381,6 +12385,11 @@ opacity:1;
 	display:block;
 	
 }
+.activePopupNew{
+
+-webkit-animation: myfirst 1s; /* Chrome, Safari, Opera */
+animation: myfirst 1s;
+}
 
 /* Chrome, Safari, Opera */
 @-webkit-keyframes myfirst {
@@ -12731,4 +12740,24 @@ opacity:1;
 .product-view .frmBtns .loader-cart {
     left: 154px;
     top: 34px;
+}
+
+.searhpage{
+	position:relative;
+	margin-top:20px;
+}
+.searhpage .listKickersRight{
+	position:absolute;
+	right:0px;
+	top:0px;
+	margin-top:0 !important;
+}
+.searhpage .listHolder, .searhpage .searchHolder{
+	margin-top:0px;
+}
+.searhpage .listSlider{
+	padding-top:0px;
+}
+.searchTabs{
+	width:auto;
 }

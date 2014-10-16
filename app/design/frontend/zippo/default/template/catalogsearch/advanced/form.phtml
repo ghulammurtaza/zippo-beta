@@ -43,7 +43,7 @@ $currencySymbol = Mage::app()->getLocale()->currency($currency_code)->getSymbol(
 
 ?>
 <form action="<?php echo $this->getSearchPostUrl() ?>" method="get" id="form-validate">
-    <section class="row clearfix">
+    <section class="row clearfix searhpage">
         <section class="searchHolder clearfix">
             <div class="searchTop clearfix" style="position:relative;">
                 <div class="inner clearfix">
@@ -56,7 +56,7 @@ $currencySymbol = Mage::app()->getLocale()->currency($currency_code)->getSymbol(
                 </div>
                 <div class="searchTabs">
                     <a class="active" href="#">Zippo Products</a>
-                    <a href="#">Zippo Info</a>
+ <!--                   <a href="#">Zippo Info</a>-->
                 </div>
             </div><!-- eo .searchTop -->
             <!-- eo .searchFilters -->
@@ -90,7 +90,7 @@ $currencySymbol = Mage::app()->getLocale()->currency($currency_code)->getSymbol(
                 </ul>
                 <ul class="searchFilters clear clearfix">
                     <?php
-                    $themeAttribute = Mage::getModel('eav/entity_attribute')->loadByCode(Mage_Catalog_Model_Product::ENTITY, 'themes');
+                    $themeAttribute = Mage::getModel('eav/entity_attribute')->loadByCode(Mage_Catalog_Model_Product::ENTITY, 'theme_otheroptions');
 
                     /** @var $attribute Mage_Eav_Model_Entity_Attribute */
                     $themeOptions = Mage::getResourceModel('eav/entity_attribute_option_collection')
@@ -98,7 +98,7 @@ $currencySymbol = Mage::app()->getLocale()->currency($currency_code)->getSymbol(
                             ->setStoreFilter(0, false);
                     ?>
                     <li class="filterHolder" id="fltrFinishes">
-                        <select class="filter" name="themes" id="themes">
+                        <select class="filter" name="theme_otheroptions" id="theme_otheroptions">
                             <option value="" selected="selected">Themes</option>                            
                             <?php foreach ($themeOptions as $themeOption): ?>
                                 <option value="<?php echo $themeOption['option_id'] ?>"><?php echo $themeOption['value'] ?></option>
@@ -138,8 +138,17 @@ $currencySymbol = Mage::app()->getLocale()->currency($currency_code)->getSymbol(
                 </div>
                 <input type="submit" id="btnSrchSubmit" class="btnSrchSubmit" value="Submit" />
             </div>
+            
 
         </section><!-- eo .searchHolder -->
+        <section id="searchProducts" class="searchProducts clearfix">
+                        <div class="listProdHolder clearfix"><p class="note-msg" style="text-align: center; padding-top:20px;"></p></div>
+                        <!-- ul class="searchProdList clearfix">
+                            <li class="prodListRow clearfix">
+                                
+                            </li>
+                        </ul -->
+                    </section>
 </form>
 <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('bestseller')->toHtml(); ?>
 </section>

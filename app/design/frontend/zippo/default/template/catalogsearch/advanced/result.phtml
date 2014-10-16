@@ -35,13 +35,13 @@ $form = new Mage_CatalogSearch_Block_Advanced_Form();
 echo $this->getMessagesBlock()->getGroupedHtml() ;
 $currencySymbol = Mage::app()->getLocale()->currency($currency_code)->getSymbol();
 $selectedCategory = $this->getRequest()->getQuery('category');
-$selectedTheme = $this->getRequest()->getQuery('themes');
+$selectedTheme = $this->getRequest()->getQuery('theme_otheroptions');
 $selectedFnc = $this->getRequest()->getQuery('finishesncolors');
 $selectedPrice = $this->getRequest()->getQuery('selPrice');
 $searchText = $this->getRequest()->getQuery('txtSearchTerm');
 ?>
 <form action="<?php echo $this->getSearchPostUrl() ?>" method="get" id="form-validate">
-    <section class="row clearfix">
+    <section class="row clearfix searhpage">
         <section class="searchHolder clearfix">
             <div class="searchTop clearfix" style="position:relative;">
                 <div class="inner clearfix">
@@ -54,8 +54,8 @@ $searchText = $this->getRequest()->getQuery('txtSearchTerm');
                 </div>
                 <div class="searchTabs">
                     <a class="active" href="#">Zippo Products</a>
-                    <a href="#">Zippo Info</a>
-                </div>
+<!--                    <a href="#">Zippo Info</a>
+-->                </div>
             </div><!-- eo .searchTop -->
             <!-- eo .searchFilters -->
             <div class="searchFilterHolder">
@@ -88,7 +88,7 @@ $searchText = $this->getRequest()->getQuery('txtSearchTerm');
                 </ul>
                 <ul class="searchFilters clear clearfix">
                     <?php
-                    $themeAttribute = Mage::getModel('eav/entity_attribute')->loadByCode(Mage_Catalog_Model_Product::ENTITY, 'themes');
+                    $themeAttribute = Mage::getModel('eav/entity_attribute')->loadByCode(Mage_Catalog_Model_Product::ENTITY, 'theme_otheroptions');
 
                     /** @var $attribute Mage_Eav_Model_Entity_Attribute */
                     $themeOptions = Mage::getResourceModel('eav/entity_attribute_option_collection')
@@ -96,8 +96,8 @@ $searchText = $this->getRequest()->getQuery('txtSearchTerm');
                             ->setStoreFilter(0, false);
                     ?>
                     <li class="filterHolder" id="fltrFinishes">
-                        <select class="filter" name="themes" id="themes">
-                            <option value="" selected="selected">Themes</option>                            
+                        <select class="filter" name="theme_otheroptions" id="theme_otheroptions">
+                            <option value="" selected="selected">theme_otheroptions</option>                            
                             <?php foreach ($themeOptions as $themeOption): ?>
                                 <option value="<?php echo $themeOption['option_id'] ?>" <?php echo ($selectedTheme == $themeOption['option_id'] ? ' selected="selected"' : "") ?> ><?php echo $themeOption['value'] ?></option>
                             <?php endforeach; ?>
@@ -136,13 +136,14 @@ $searchText = $this->getRequest()->getQuery('txtSearchTerm');
                 </div>
                 <input type="submit" id="btnSrchSubmit" class="btnSrchSubmit" value="Submit" />
             </div>
-
+ 			<?php echo $this->getProductListHtml() ?>
         </section><!-- eo .searchHolder -->
+        <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('bestseller')->toHtml(); ?>
 </form>
 
-    <?php echo $this->getProductListHtml() ?>
+   
 
-<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('bestseller')->toHtml(); ?>
+
 <script>
     jQuery("#selPrice").change(function() {
         var option = jQuery(this).val();
@@ -182,3 +183,5 @@ $searchText = $this->getRequest()->getQuery('txtSearchTerm');
         }
     }
 </script>
+
+
