@@ -101,7 +101,7 @@ $_helper = $this->helper('catalog/output');
                         <?php foreach ($categoryCollection as $category): ?>
                             <li class="<?php echo $category->getName() ?>-item">
                                 <img src="<?php echo $category->getImageUrl() ?>" alt="<?php echo $category->getName() ?>" width="114" height="134" />
-                                <a href="<?php echo $category->getUrl() ?>" class="<?php echo $category->getName() ?>" title="<?php echo $category->getName() ?>"><?php echo $category->getName() ?></a>
+                                <a href="<?php echo $category->getUrl() ?>" class="<?php echo $category->getName() ?> <?php echo  ($currentCategory->getId() == $category->getId()) ? 'active rexText' : '' ?>" title="<?php echo $category->getName() ?>"><?php echo $category->getName() ?></a>
                                 <?php
                                 $subCategoryCollection = $catModel->getCollection()
                                         ->addAttributeToSelect('*')
@@ -112,7 +112,7 @@ $_helper = $this->helper('catalog/output');
                                     <ul class="listSubCat" >
                 <?php foreach ($subCategoryCollection as $subCategory): ?>
                                             <li>
-                                                <a href="<?php echo $subCategory->getUrl() ?>" <?php ($currentCategory->getId() == $subCategory->getId()) ? 'class="active rexText"' : '' ?>><?php echo $subCategory->getName() ?></a><span>|</span>
+                                                <a href="<?php echo $subCategory->getUrl() ?>" <?php echo ($currentCategory->getId() == $subCategory->getId()) ? 'class="active rexText"' : '' ?>><?php echo $subCategory->getName() ?></a><span>|</span>
                                             </li>
                                     <?php endforeach; ?>
                                     </ul>
@@ -121,17 +121,6 @@ $_helper = $this->helper('catalog/output');
         <?php endforeach; ?>                    
                     </ul>
                     <div class="listSubNav clearfix">
-                        <ul class="listSubCat clearfix">
-                            <li>
-                                <a class="active txtRed" href="ProductListing.html">Traditions</a><span>|</span>
-                            </li>
-                            <li>
-                                <a href="ProductListing.html">Slim</a><span>|</span>
-                            </li>
-                            <li>
-                                <a href="ProductListing.html">Shop All</a>
-                            </li>
-                        </ul>
                         <div class="listInfo">
                             <span class="listNumItems"> <?php echo($_productCollection->count()); ?> Items</span> | <a href="<?php echo $this->getUrl('') ?>lighters.html" class="txtRed">View All</a>
                         </div>
