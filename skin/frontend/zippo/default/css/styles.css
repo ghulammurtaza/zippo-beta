@@ -3266,7 +3266,7 @@ h2.product-name a:hover, h3.product-name a:hover, h4.product-name a:hover, h5.pr
 	margin-top: 10px;
 }
 .block-layered-nav dl dd ol > li > span, .block-layered-nav dl dd ol > li > a {
-	padding: 5px 15px;
+	padding: 5px 0px;
 	text-transform:capitalize;
 	display: block;
 }
@@ -8427,11 +8427,16 @@ body {
 .category-blu .blu, 
 .category-utility .utility, 
 .category-candle .candle, 
-.listTopNav a:hover {
+.listTopNav a:hover,
+.listTopNav > li.active > a {
 	color: #fff;
 }
 .listSubCat{
-/*	display:none;*/
+	display:none;
+}
+.listTopNav > li.active .listSubCat{
+	display: block;
+	
 }
 .category-zipposlim .windproof-item .listSubCat,
 .category-classics .windproof-item .listSubCat,
@@ -12760,4 +12765,36 @@ animation: myfirst 1s;
 }
 .searchTabs{
 	width:auto;
+}
+
+.searchFilterHolder .sbHolder{
+	 background-color: #fff !important;
+     background-image: url("../img/sprite_icons.png") ;
+}
+.searchFilterHolder  .sbOptions a,
+.searchFilterHolder  .sbSelector:link, 
+.searchFilterHolder  .sbSelector:visited, 
+.searchFilterHolder  .sbSelector:hover{
+	color:#333;
+}
+.searchFilterHolder .sbOptions{
+ background-color: #fff !important;
+ border:#000 solid 1px;
+ border-top:none !important;
+ overflow:hidden;
+}
+.searchFilterHolder .sbOptions li{
+	display:block;
+	width:auto;
+}
+.searchFilterHolder .sbOptions a{
+	padding-top:6px;
+	padding-bottom:6px;
+}
+.searchFilterHolder .sbOptions .active a,
+.searchFilterHolder .sbOptions a:hover{
+	background:#ccc;
+}
+.cart-table tr td .item-options{
+	display:none;
 }

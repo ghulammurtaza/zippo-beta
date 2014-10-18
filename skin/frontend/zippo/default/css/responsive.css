@@ -933,6 +933,97 @@ block-related br{
 	margin:auto !important;
 	padding-top:10px;
 }
+.product-gift-card .leftInnerNav {
+	display:none;
+}
+.product-gift-card .wholeContent{
+	border:none;
+	margin:0px;
+	width:auto;
+}
+.product-gift-card .gcChoice label,
+.product-gift-card .wholeContent .inner,
+.product-gift-card .gcPurchase{
+	margin-left:0px;
+	margin-right:0px;
+}
+.product-gift-card .gcChoice{
+	width:auto;
+	margin-right:35px;
+	max-width:221px;
+}
+.giftvoucher-product-info #message,
+.product-gift-card .checkbox + label,.product-gift-card .radio + label{
+	max-width:100%;
+	width:100% !important;
+}
+.giftvoucher-product-info #message{
+	max-width:384px;
+}
+.txtWhiteB{
+	display:none;
+}
+body.product-gift-card .product-gift-card{
+	background:#fff;
+	margin-bottom:0px;
+	
+}
+.gcChoice .lblImage:after{
+	left: auto !important;
+	right:-25px !important;
+}
+h3.txtBlack {
+	clear:both;
+	display:block;
+}
+.home-block-content{
+	background:#333;
+}
+.midle-block .home-block-content .image{
+	width:100%;
+}
+.searchFilterHolder{
+	height:auto;
+	background:#000;
+	padding-bottom:15px;
+}
+.searchBox{
+	position:static;
+	text-align:left;
+	padding-top:10px;
+	padding-bottom:10px;
+	padding-left:6px;
+
+}
+.searchTabs{
+	left:20px;
+}
+.searchBox label{
+	padding-left:10px;
+	padding-bottom:8px;
+}
+.searchFilters li{
+	margin-bottom:15px;
+}
+.searchFilters{
+	padding:0px;
+	margin-top:0px;
+	padding-left:10px;	
+}
+.searchTop{
+	height:100px;
+}
+.searchTop .txtWhite {
+	color:#000 !important;}
+.searchHolder .products-grid{
+	padding-top:25px;
+}
+.nav-primary a{
+	color: #636363;
+}
+.searchProducts, .searchInfo{
+	background:none;
+}
 }
 @media (min-width: 240px) and (max-width: 480px) {
 .listSubCat {
@@ -955,6 +1046,9 @@ block-related br{
 	
 }
 @media (min-width: 768px) and (max-width: 960px) {
+.searchProducts, .searchInfo{
+	background:none;
+}	
 .home-blocks{
 	width:auto;
 	margin:0 35px;
