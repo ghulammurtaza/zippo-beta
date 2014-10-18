@@ -40,9 +40,8 @@
 <?php
 echo $this->getMessagesBlock()->getGroupedHtml();
 $currencySymbol = Mage::app()->getLocale()->currency($currency_code)->getSymbol();
-
 ?>
-<form action="<?php echo $this->getSearchPostUrl() ?>" method="get" id="form-validate">
+<form action="<?php echo $this->getUrl('search') ?>" method="get" id="form-validate">
     <section class="row clearfix searhpage">
         <section class="searchHolder clearfix">
             <div class="searchTop clearfix" style="position:relative;">
@@ -56,7 +55,7 @@ $currencySymbol = Mage::app()->getLocale()->currency($currency_code)->getSymbol(
                 </div>
                 <div class="searchTabs">
                     <a class="active" href="#">Zippo Products</a>
- <!--                   <a href="#">Zippo Info</a>-->
+                    <!--                   <a href="#">Zippo Info</a>-->
                 </div>
             </div><!-- eo .searchTop -->
             <!-- eo .searchFilters -->
@@ -106,7 +105,7 @@ $currencySymbol = Mage::app()->getLocale()->currency($currency_code)->getSymbol(
                         </select>
                     </li>   
                     <?php
-                    $fncAttribute = Mage::getModel('eav/entity_attribute')->loadByCode(Mage_Catalog_Model_Product::ENTITY, 'finishesncolors ');
+                    $fncAttribute = Mage::getModel('eav/entity_attribute')->loadByCode(Mage_Catalog_Model_Product::ENTITY, 'finishesncolors');
 
                     /** @var $attribute Mage_Eav_Model_Entity_Attribute */
                     $fncOptions = Mage::getResourceModel('eav/entity_attribute_option_collection')
@@ -117,7 +116,7 @@ $currencySymbol = Mage::app()->getLocale()->currency($currency_code)->getSymbol(
                         <select class="filter" name="finishesncolors" id="finishesncolors">
                             <option value="" selected="">Finish & Color</option>
                             <?php foreach ($fncOptions as $fncOption): ?>
-                               <option value="<?php echo $fncOption['option_id'] ?>"><?php echo $fncOption['value'] ?></option>
+                                <option value="<?php echo $fncOption['option_id'] ?>"><?php echo $fncOption['value'] ?></option>
                             <?php endforeach; ?>
                         </select>
                     </li>
@@ -136,23 +135,40 @@ $currencySymbol = Mage::app()->getLocale()->currency($currency_code)->getSymbol(
                     <input type="text" maxlength="128" class="input-text validate-number" title="Price" id="price_to" value="" name="price[to]">
                     <input type="text" maxlength="128" class="input-text " title="Name" value="" id="name" name="name">                    
                 </div>
-                <input type="submit" id="btnSrchSubmit" class="btnSrchSubmit" value="Submit" />
+                <input type="button" id="btnSrchSubmit" class="btnSrchSubmit" value="Submit" onclick="postRequest();return false;" />
             </div>
-            
 
+<div id="results"> </div>
         </section><!-- eo .searchHolder -->
-        <section id="searchProducts" class="searchProducts clearfix">
-                        <div class="listProdHolder clearfix"><p class="note-msg" style="text-align: center; padding-top:20px;"></p></div>
-                        <!-- ul class="searchProdList clearfix">
-                            <li class="prodListRow clearfix">
-                                
-                            </li>
-                        </ul -->
-                    </section>
 </form>
+        <section id="searchProducts" class="searchProducts clearfix">
+            <div class="listProdHolder clearfix"><p class="note-msg" style="text-align: center; padding-top:20px;"></p></div>
+            
+        </section>
+
+ 
 <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('bestseller')->toHtml(); ?>
 </section>
+   
 <script>
+    function postRequest() {
+        $j.ajax({
+            url: "<?php echo $this->getUrl('search/index/index') ?>",
+            type: "POST",
+            data: { 
+                   category:  $j("#category_search_field").val(),
+                   searchTerm: $j("#txtSearchTerm").val(),
+                   theme: $j("#theme_otheroptions").val(),
+                   fnc: $j("#finishesncolors").val(),
+                   price: $j("#price").val(),
+                   price_to: $j("#price_to").val()
+               },
+            success: function(data) {
+                $j('#results').html(data);
+            }
+        });
+    }
+
     jQuery("#selPrice").change(function() {
         var option = jQuery(this).val();
         update_price(option);
@@ -168,7 +184,7 @@ $currencySymbol = Mage::app()->getLocale()->currency($currency_code)->getSymbol(
         updateSearchTermText(text);
     });
 
-    function updateSearchTermText(text){
+    function updateSearchTermText(text) {
         jQuery("#name").val(text);
     }
 
