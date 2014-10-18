@@ -138,14 +138,25 @@ $currencySymbol = Mage::app()->getLocale()->currency($currency_code)->getSymbol(
                 <input type="button" id="btnSrchSubmit" class="btnSrchSubmit" value="Submit" onclick="postRequest();return false;" />
             </div>
 
-<div id="results"> </div>
+    <section class="row">
+        <section class="listHolder listLighters clearfix" id="listLighters">            
+            <div class="listSlider clearfix">
+                <!-- eo .listProdPopUps -->
+                <div class="clearfix">
+                    <div class="clearfix" id="lighterHolder" style="background:#FFF;">
+                        <div id="results"> </div>
+
+                    </div>
+
+
+                </div>
+            </div>
+        </section> 
+    </section>
+
         </section><!-- eo .searchHolder -->
 </form>
-        <section id="searchProducts" class="searchProducts clearfix">
-            <div class="listProdHolder clearfix"><p class="note-msg" style="text-align: center; padding-top:20px;"></p></div>
-            
-        </section>
-
+        
  
 <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('bestseller')->toHtml(); ?>
 </section>

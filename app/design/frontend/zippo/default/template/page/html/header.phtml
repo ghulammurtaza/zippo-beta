@@ -30,6 +30,7 @@
 <script>
     jQuery(document).ready(function(e) {
 
+			
         jQuery(".navCart").mouseover(function(e) {
             jQuery("#expandedCart").slideDown();
 			 jQuery("#expandedCart").clearQueue();
@@ -39,6 +40,26 @@
 		
 		
         });
+		
+		if(jQuery(".listSubCat li a").hasClass("active") ){
+			jQuery(".listSubCat li a.active").parents(".listTopNav > li").addClass("active");
+		}
+
+		if(jQuery(".listTopNav > li > a").hasClass("active") ){
+			jQuery(".listTopNav > li > a.active").parents(".listTopNav > li").addClass("active");
+		}
+		
+		//jQuery(".listSubCat .active")
+		
+		if(jQuery(window).width() <= 768){
+				getGift = jQuery("#genTopNav .gift").get();
+		getSearch = jQuery("#genTopNav .search").get();
+		jQuery(".nav-primary").append("<li class='gift'></li>");
+		jQuery(".nav-primary li.gift").append(getGift);
+		
+		jQuery(".nav-primary").append("<li class='search'></li>");
+		jQuery(".nav-primary li.search").append(getSearch);	
+		}
 
 
     });

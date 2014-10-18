@@ -25,16 +25,36 @@
  */
 ?>
 <?php
+
 $_item = $this->getItem();
 $isVisibleProduct = $_item->getProduct()->isVisibleInSiteVisibility();
 $canApplyMsrp = Mage::helper('catalog')->canApplyMsrp($_item->getProduct(), Mage_Catalog_Model_Product_Attribute_Source_Msrp_Type::TYPE_BEFORE_ORDER_CONFIRM);
 ?>
+<?php $_product = $this->getProduct(); ?>
 <tr>
     <td class="product-cart-image">
         <?php if ($this->hasProductUrl()):?>
             <a href="<?php echo $this->getProductUrl() ?>" title="<?php echo $this->escapeHtml($this->getProductName()) ?>" class="product-image">
         <?php endif;?>
-            <img src="<?php echo $this->getProductThumbnail()->resize(91,129); ?>" alt="<?php echo $this->escapeHtml($this->getProductName()) ?>" />
+        
+        <?php if($_product->getTypeId() == 'giftvoucher') {
+			
+			
+	
+?>
+ <img src="<?php echo $this->getProductThumbnail()->resize(150,91); ?>" alt="<?php echo $this->escapeHtml($this->getProductName()) ?>" />
+<?php
+} else {
+	
+	?>
+     <img src="<?php echo $this->getProductThumbnail()->resize(91,129); ?>" alt="<?php echo $this->escapeHtml($this->getProductName()) ?>" />
+    <?php
+	
+	}
+?>
+
+        
+           
         <?php if ($this->hasProductUrl()):?>
             </a>
         <?php endif;?>

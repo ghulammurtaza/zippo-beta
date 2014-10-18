@@ -22,13 +22,7 @@ $_helper = $this->helper('catalog/output');
     </section>
 
 <?php else: ?>
-    <section class="row">
-        <section class="listHolder listLighters clearfix" id="listLighters">            
-            <div class="listSlider clearfix">
-                <!-- eo .listProdPopUps -->
-                <div class="listProdHolder clearfix">
-                    <div class="lighterHolder clearfix" id="lighterHolder">
-                        <div class="category-products">
+    <div class="category-products">
                             <div style="display:none"><?php echo $this->getToolbarHtml() ?></div>
                             <?php // List mode ?>                           
 
@@ -60,12 +54,4 @@ $_helper = $this->helper('catalog/output');
                             </ul>
                             <script type="text/javascript">decorateGeneric($$('ul.products-grid'), ['odd', 'even', 'first', 'last'])</script> 
                         </div>
-
-                    </div>
-
-
-                </div>
-            </div>
-        </section> 
-    </section>
 <?php endif; ?>
