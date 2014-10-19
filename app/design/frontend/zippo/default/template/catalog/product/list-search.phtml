@@ -15,6 +15,7 @@
 <?php
 $_productCollection = $this->getLoadedProductCollection();
 $_helper = $this->helper('catalog/output');
+$obj  = new Mage_Catalog_Block_Product_List();
 ?>
 <?php if (!$_productCollection->count()): ?>
     <section id="searchProducts" class="searchProducts clearfix">
@@ -22,14 +23,11 @@ $_helper = $this->helper('catalog/output');
     </section>
 
 <?php else: ?>
-    <div class="category-products">
-                            <div style="display:none"><?php echo $this->getToolbarHtml() ?></div>
-                            <?php // List mode ?>                           
-
+    <div class="category-products">           
                             <?php $this->setData('column_count', 4); // Grid Mode  ?>
 
                             <?php $_collectionSize = $_productCollection->count() ?>
-                            <?php $_columnCount = $this->getColumnCount(); ?>
+                            <?php $_columnCount = 4;?>
                             <?php
                             $i = 0;
                             foreach ($_productCollection as $_product):
@@ -38,17 +36,14 @@ $_helper = $this->helper('catalog/output');
                                     <ul class="products-grid listLighters  products-grid--max-<?php echo $_columnCount; ?>-col">
                                     <?php endif ?>
                                     <li class="<?php if (($i - 1) % $_columnCount == 0): ?> first <?php elseif ($i + -2): ?> reverse <?php elseif ($i % $_columnCount == 0): ?> reverse<?php endif; ?> ">
-                                        <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="prodLink">
-                                            <?php $_imgSize = 210; ?>
+                                        <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $_product->getName() ?>" class="prodLink">
                                             <img id="product-collection-image-<?php echo $_product->getId(); ?>"
                                                  src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(162, 230); ?>"
                                                  alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" />
                                         </a>
-                                        <div class="prodListPrice">
-                                            <?php echo $this->getPriceHtml($_product, true) ?>
-                                            <?php if ($_product->getRatingSummary()): ?>
-                                                <?php echo $this->getReviewsSummaryHtml($_product, 'short') ?>
-                                            <?php endif; ?>       
+                                        <p><?php echo $_product->getName() ?></p>
+                                        <p><?php echo $_product->getSku() ?></p>                                          
+                                        <?php echo Mage::helper('core')->currency($_product->getPrice()); ?>
                                     </li>
                                 <?php endforeach ?>
                             </ul>

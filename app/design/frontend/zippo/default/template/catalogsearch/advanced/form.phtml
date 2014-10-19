@@ -38,7 +38,7 @@
 </script>
 
 <?php
-echo $this->getMessagesBlock()->getGroupedHtml();
+$catModel = Mage::getModel('catalog/category');
 $currencySymbol = Mage::app()->getLocale()->currency($currency_code)->getSymbol();
 ?>
 <form action="<?php echo $this->getUrl('search') ?>" method="get" id="form-validate">
@@ -65,26 +65,41 @@ $currencySymbol = Mage::app()->getLocale()->currency($currency_code)->getSymbol(
                 </div>
                 <ul class="searchFilters clearfix">
                     <li class="filterHolder" id="fltrCategories">
-                        <select name="category" id="category_search_field">
-                            <option value=""><?php echo $this->__('-- Any Category --') ?></option>
+                        <select name="category" id="category_search_field" required="required">
+                            <option value="0"><?php echo $this->__('-- Any Category --') ?></option>
                             <?php foreach ($this->getStoreCategories() as $_category): ?>
-                                <?php if ($_category->hasChildren()): ?>
-                                    <option class="parent-cat" value="<?php echo $_category->getId(); ?>"><?php echo $_category->getName(); ?></option>
-                                    <?php
-                                    foreach ($_category->getChildren() as $subcategory):
-                                        if ($subcategory->getIsActive()) :
-                                            ?>
-                                            <option value="<?php echo $subcategory->getId(); ?>"<?php echo ($this->getRequest()->getQuery('category') == $subcategory->getId() ? ' selected="selected"' : "") ?>><?php echo $subcategory->getName(); ?></option>
-                                            <?php
+                                <option class="parent-cat" value="<?php echo $_category->getId(); ?>"><?php echo $_category->getName(); ?></option>
+                                <?php
+                                $_category = $catModel->setStoreId(Mage::app()->getStore()->getStoreId())
+                                        ->load($_category->getId());
+                                $subCategoryCollection = $catModel->getCollection()
+                                        ->addAttributeToSelect('*')
+                                        ->addIdFilter($_category->getChildren())
+                                        ->addIsActiveFilter();
+                                if ($subCategoryCollection->count() > 0):
+                                    foreach ($subCategoryCollection as $_subcategory):
+                                        ?>
+                                        <option value="<?php echo $_subcategory->getId(); ?>">&nbsp;<?php echo $_subcategory->getName(); ?></option>
+                                        <?php
+                                        $_subcategory = $catModel->setStoreId(Mage::app()->getStore()->getStoreId())
+                                                ->load($_subcategory->getId());
+                                        $subCategory2Collection = $catModel->getCollection()
+                                                ->addAttributeToSelect('*')
+                                                ->addIdFilter($_subcategory->getChildren())
+                                                ->addIsActiveFilter();
+                                        if ($subCategory2Collection->count() > 0):
+                                            foreach ($subCategory2Collection as $_subcategory2):
+                                                ?>
+                                                <option value="<?php echo $_subcategory2->getId(); ?>">&nbsp;&nbsp;<?php echo $_subcategory2->getName(); ?></option>
+                                                <?php
+                                            endforeach;
                                         endif;
                                     endforeach;
-                                    ?>
-                                <?php elseif ($_category->getIsActive()): ?>
-                                    <option value="<?php echo $_category->getId(); ?>"><?php echo $_category->getName(); ?></option>
-                                <?php endif; ?>
-                            <?php endforeach ?>
-
+                                endif;
+                            endforeach
+                            ?>
                         </select>
+                        <p style="display:none" id="category-error"><?php echo $this->__('Category is required') ?></p>
                     </li>                    
                 </ul>
                 <ul class="searchFilters clear clearfix">
@@ -99,9 +114,9 @@ $currencySymbol = Mage::app()->getLocale()->currency($currency_code)->getSymbol(
                     <li class="filterHolder" id="fltrFinishes">
                         <select class="filter" name="theme_otheroptions" id="theme_otheroptions">
                             <option value="" selected="selected">Themes</option>                            
-                            <?php foreach ($themeOptions as $themeOption): ?>
+<?php foreach ($themeOptions as $themeOption): ?>
                                 <option value="<?php echo $themeOption['option_id'] ?>"><?php echo $themeOption['value'] ?></option>
-                            <?php endforeach; ?>
+                    <?php endforeach; ?>
                         </select>
                     </li>   
                     <?php
@@ -115,9 +130,9 @@ $currencySymbol = Mage::app()->getLocale()->currency($currency_code)->getSymbol(
                     <li class="filterHolder" id="fltrTheme">
                         <select class="filter" name="finishesncolors" id="finishesncolors">
                             <option value="" selected="">Finish & Color</option>
-                            <?php foreach ($fncOptions as $fncOption): ?>
+<?php foreach ($fncOptions as $fncOption): ?>
                                 <option value="<?php echo $fncOption['option_id'] ?>"><?php echo $fncOption['value'] ?></option>
-                            <?php endforeach; ?>
+<?php endforeach; ?>
                         </select>
                     </li>
                     <li class="filterHolder" id="fltrPrice">
@@ -135,49 +150,57 @@ $currencySymbol = Mage::app()->getLocale()->currency($currency_code)->getSymbol(
                     <input type="text" maxlength="128" class="input-text validate-number" title="Price" id="price_to" value="" name="price[to]">
                     <input type="text" maxlength="128" class="input-text " title="Name" value="" id="name" name="name">                    
                 </div>
-                <input type="button" id="btnSrchSubmit" class="btnSrchSubmit" value="Submit" onclick="postRequest();return false;" />
+                <input type="button" id="btnSrchSubmit" class="btnSrchSubmit" value="Submit" onclick="postRequest();
+                        return false;" />
             </div>
 
-    <section class="row">
-        <section class="listHolder listLighters clearfix" id="listLighters">            
-            <div class="listSlider clearfix">
-                <!-- eo .listProdPopUps -->
-                <div class="clearfix">
-                    <div class="clearfix" id="lighterHolder" style="background:#FFF;">
-                        <div id="results"> </div>
+            <section class="row">
+                <section class="listHolder listLighters clearfix" id="listLighters">            
+                    <div class="listSlider clearfix">
+                        <!-- eo .listProdPopUps -->
+                        <div class="clearfix">
+                            <div class="clearfix" id="lighterHolder" style="background:#FFF;">
+                                <div id="results"> </div>
 
+                            </div>
+
+
+                        </div>
                     </div>
-
-
-                </div>
-            </div>
-        </section> 
-    </section>
+                </section> 
+            </section>
 
         </section><!-- eo .searchHolder -->
 </form>
-        
- 
+
+
 <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('bestseller')->toHtml(); ?>
 </section>
-   
+
 <script>
     function postRequest() {
-        $j.ajax({
-            url: "<?php echo $this->getUrl('search/index/index') ?>",
-            type: "POST",
-            data: { 
-                   category:  $j("#category_search_field").val(),
-                   searchTerm: $j("#txtSearchTerm").val(),
-                   theme: $j("#theme_otheroptions").val(),
-                   fnc: $j("#finishesncolors").val(),
-                   price: $j("#price").val(),
-                   price_to: $j("#price_to").val()
-               },
-            success: function(data) {
-                $j('#results').html(data);
-            }
-        });
+        cat = $j("#category_search_field").val();
+        if (cat == 0) {
+            $j("#category-error").show();
+            return false;
+        } else {
+            $j("#category-error").hide();
+            $j.ajax({
+                url: "<?php echo $this->getUrl('search/index/index') ?>",
+                type: "POST",
+                data: {
+                    category: $j("#category_search_field").val(),
+                    searchTerm: $j("#txtSearchTerm").val(),
+                    theme: $j("#theme_otheroptions").val(),
+                    fnc: $j("#finishesncolors").val(),
+                    price: $j("#price").val(),
+                    price_to: $j("#price_to").val()
+                },
+                success: function(data) {
+                    $j('#results').html(data);
+                }
+            });
+        }
     }
 
     jQuery("#selPrice").change(function() {
