@@ -26,12 +26,20 @@ class Zippo_Search_Block_Search extends Mage_Core_Block_Template
                  $collection->addCategoryFilter($category); 
              }
              
-             if ((int)$searchCriteria['theme_otheroptions']){
-                 $collection->addAttributeToFilter('theme_otheroptions', array('eq' => $searchCriteria['theme_otheroptions'])); 
+             if ((int)$searchCriteria['theme']){
+                 $collection->addAttributeToFilter('theme_otheroptions', array('eq' => $searchCriteria['theme'])); 
              }
              
-             if ((int)$searchCriteria['finishesncolors']){
-                 $collection->addAttributeToFilter('finishesncolors',  array('eq' => $searchCriteria['finishesncolors'])); 
+             if ((int)$searchCriteria['fnc']){
+                 $collection->addAttributeToFilter('finishesncolors',  array('eq' => $searchCriteria['fnc'])); 
+             }
+             
+             if ((int)$searchCriteria['price']){
+                 $collection->addAttributeToFilter('price',  array('gteq' => $searchCriteria['price'])); 
+             }
+             
+             if ((int)$searchCriteria['price_to']){
+                 $collection->addAttributeToFilter('price',  array('lteq' => $searchCriteria['price_to'])); 
              }
              
              if ((string)$searchCriteria['searchTerm']){
