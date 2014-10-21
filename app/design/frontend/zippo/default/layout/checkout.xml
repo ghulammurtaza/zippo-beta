@@ -49,7 +49,7 @@ Default layout, loads most of the pages
                     <action method="addItemRender"><type>simple</type><block>checkout/cart_item_renderer</block><template>checkout/cart/minicart/default.phtml</template></action>
                     <action method="addItemRender"><type>grouped</type><block>checkout/cart_item_renderer_grouped</block><template>checkout/cart/minicart/default.phtml</template></action>
                     <action method="addItemRender"><type>configurable</type><block>checkout/cart_item_renderer_configurable</block><template>checkout/cart/minicart/default.phtml</template></action>
-
+                    <action method="addItemRender"><type>giftvoucher</type><block>giftvoucher/cart_item</block><template>checkout/cart/minicart/default.phtml</template></action>
                     <block type="core/text_list" name="cart_sidebar.cart_promotion" as="cart_promotion" translate="label" module="checkout">
                         <label>Mini-cart promotion block</label>
                     </block>
