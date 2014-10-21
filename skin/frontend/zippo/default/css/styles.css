@@ -8537,7 +8537,7 @@ body {
 .listCatHead {
 	font-size: 145px;
 }
-.accessHead {
+.category-accessories .listCatHead {
 	font-size: 112px;
 }
 .listSubHead {
@@ -12797,4 +12797,45 @@ animation: myfirst 1s;
 }
 .cart-table tr td .item-options{
 	display:none;
+}
+
+#category-error{
+	display:none !important;
+}
+
+#results{
+	position:relative;
+}
+#results  .listLighters .prodLink{
+	background:none;
+	padding-bottom:0px;
+}
+#results .products-grid > li:nth-child(3n+1){
+	clear: none;
+}
+#results  .products-grid{
+	overflow:hidden;
+}
+#results  .products-grid > li{
+	float:left;
+	width:20%;
+	margin-right:0 !important;
+	border-bottom:1px solid #e5e5e5;
+	margin-bottom:0px !important;
+	padding-top:12px;
+	top:2px;
+	padding-bottom:20px;
+}
+#results  .products-grid > li img{
+	max-width:90%;
+}
+#results .products-grid{
+	padding-right:14px;
+}
+#results .search-cout {
+    position: absolute;
+    right: 0;
+    top: -14px;
+    width: 459px;
+    z-index: 11111;
 }

@@ -18,8 +18,8 @@ class Zippo_Search_Block_Search extends Mage_Core_Block_Template
         if (is_null($this->_productCollection)) {
              $searchCriteria = Mage::getSingleton('zippo_search/search')->getSearchCriteria();
              $collection = Mage::getResourceModel('catalog/product_collection')
+				 ->addAttributeToSelect('*')
                 ->setStoreId(Mage::app()->getStore()->getStoreId());
-             
              if ((int)$searchCriteria['category']){
                  $category = Mage::getModel('catalog/category')->load($searchCriteria['category']);
                  $collection->addCategoryFilter($category); 

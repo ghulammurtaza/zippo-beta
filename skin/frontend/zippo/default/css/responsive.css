@@ -6,7 +6,15 @@
 	width: 100%;
 	max-width: 100%;
 }
-
+.listTop .txtWhite font,
+.listTop .txtWhite {
+	color: #333;
+}
+#results .products-grid > li{
+	width:162px;
+	margin:auto !important;
+	float:none;
+}
 
 .genTopNav{
 	width:72px;

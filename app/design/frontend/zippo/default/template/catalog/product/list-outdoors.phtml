@@ -44,12 +44,7 @@ jQuery(document).ready(function(e) {
 		jQuery(".pouplist li .listProdPopUps").hide();
 		var getID = jQuery(this).data("id")-1;
 
-		var getdelay = jQuery(".pouplist li").eq(getID).children(".listProdPopUps");
-		timeout = setTimeout(function() {
-			    getdelay.show();
-				}, 5000);
-	
-
+		var getdelay = jQuery(".pouplist li").eq(getID).children(".listProdPopUps").fadeIn(300).addClass("activePopupNew");
 		
 		var position = jQuery(this).offset();
 		jQuery(".pouplist li").eq(getID).children(".listProdPopUps").css( "left", position.left );
@@ -63,13 +58,11 @@ jQuery(document).ready(function(e) {
 	jQuery(".multiSlide").mouseleave(function(e) {
          jQuery(".pouplist li .listProdPopUps").hide();
 		 jQuery(".pouplist li").removeClass("reverse");
-		 	clearTimeout(timeout);
     });
 
 	jQuery(".productListingPopup").mouseleave(function(e) {
         jQuery(".pouplist li .listProdPopUps").hide();
 		 jQuery(".pouplist li").removeClass("reverse");
-		 	clearTimeout(timeout);
     });
 	
 });
