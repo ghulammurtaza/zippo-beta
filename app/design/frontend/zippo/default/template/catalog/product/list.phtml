@@ -221,11 +221,10 @@ $_helper = $this->helper('catalog/output');
                                         <ul class="products-grid listLighters  products-grid--max-<?php echo $_columnCount; ?>-col">
                                                 <?php endif ?>
                                         <li class="<?php if (($i - 1) % $_columnCount == 0): ?> first <?php elseif ($i + -2): ?> reverse <?php elseif ($i % $_columnCount == 0): ?> reverse<?php endif; ?> ">
-                                            <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="prodLink">
-            <?php $_imgSize = 210; ?>
-                                                <img id="product-collection-image-<?php echo $_product->getId(); ?>"
-                                                     src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(162, 230); ?>"
-                                                     alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" />
+                                            <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'image'), null, true) ?>" class="prodLink">
+                                                     <img id="product-collection-image-<?php echo $_product->getId(); ?>"
+                                                     src="<?php echo $this->helper('catalog/image')->init($_product, 'thumbnail')->resize(162, 230); ?>"
+                                                     alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'thumbnail'), null, true) ?>" />
                                             </a>
                                             <div class="prodListPrice">
                                                 <?php
