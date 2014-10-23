@@ -169,7 +169,7 @@ $currencySymbol = Mage::app()->getLocale()->currency($currency_code)->getSymbol(
                     </div>
                 </section> 
             </section>
-
+            <span class="loader-cart" style="display:none"></span>
         </section><!-- eo .searchHolder -->
 </form>
 
@@ -184,6 +184,7 @@ $currencySymbol = Mage::app()->getLocale()->currency($currency_code)->getSymbol(
             $j("#category-error").show();
             return false;
         } else {
+            $j(".loader-cart").show();
             $j("#category-error").hide();
             $j.ajax({
                 url: "<?php echo $this->getUrl('search/index/index') ?>",
@@ -197,6 +198,7 @@ $currencySymbol = Mage::app()->getLocale()->currency($currency_code)->getSymbol(
                     price_to: $j("#price_to").val()
                 },
                 success: function(data) {
+                    $j(".loader-cart").hide();
                     $j('#results').html(data);
                 }
             });
