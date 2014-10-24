@@ -45,7 +45,9 @@
         
 			<?php endif; ?><?php echo $this->escapeHtml($this->getProductName()) ?><?php if ($this->hasProductUrl()): ?>
         <?php endif; ?></span>
-
+        <span>
+            <?php echo $this->escapeHtml($_item->getSku()) ?>
+        </span>
         <table class="info-wrapper">
             <tbody>
                 <tr>
