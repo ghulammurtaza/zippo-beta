@@ -135,8 +135,8 @@ $childern = $catModel->load($categoryId)->getChildrenCategories();
                 <div class="productListingPopup clearfix">
                   <div class="inner clearfix">
                     <div class="prodHero"><img id="product-collection-image-<?php echo $product->getId(); ?>"
-                                                                           src="<?php echo $this->helper('catalog/image')->init($product, 'small_image')->resize(162, 230); ?>"
-                                                                           alt="<?php echo $this->stripTags($this->getImageLabel($product, 'small_image'), null, true) ?>" /></div>
+                                                                           src="<?php echo $this->helper('catalog/image')->init($product, 'thumbnail')->resize(162, 230); ?>"
+                                                                           alt="<?php echo $this->stripTags($this->getImageLabel($product, 'thumbnail'), null, true) ?>" /></div>
                     <div class="popRight">
                       <h2 class="jProductName txtRed"><?php echo $_helper->productAttribute($product, $product->getName(), 'name') ?></h2>
                       <h3 class="jProductPrice"><?php echo $this->getPriceHtml($product, true) ?>
