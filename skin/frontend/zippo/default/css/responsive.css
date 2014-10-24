@@ -8,7 +8,7 @@
 }
 .listTop .txtWhite font,
 .listTop .txtWhite {
-	color: #333;
+	
 }
 #results .products-grid > li{
 	width:162px;
@@ -561,8 +561,11 @@ div, section{
 	background:none;
 }
 .listTop, .searchTop{
-	background:none;
+
 	padding:0px;
+}
+.listOutdoors{
+	background-position:center center !important;
 }
 .listProdHolder, .listProdHolderMulti,
 .listHolder, .searchHolder,
@@ -781,6 +784,7 @@ block-related br{
 	height:auto !important;
 	position:static !important;
 }
+.category-accessories .listCatHead,
 .listCatHead{
 	font-size:40px;
 	margin-bottom:10px;

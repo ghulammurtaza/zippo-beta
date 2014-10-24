@@ -8878,7 +8878,7 @@ body {
 	background: url('img/bg_searchFilters.png') no-repeat left bottom;
 	height: 121px;
 	margin: 0;
-	padding: 0 0 0 3px;
+	padding: 3px 0 0 3px;
 }
 .searchInfoHolder {
 	height: 75px;
@@ -12836,6 +12836,45 @@ animation: myfirst 1s;
     position: absolute;
     right: 0;
     top: -14px;
-    width: 459px;
+    width: 438px;
     z-index: 11111;
+}
+.cart-view{
+	display:none;
+}
+.product-cart-image .cart-view{
+	display: block;
+}
+#header-cart .cartItemDesc .truncated{
+	display:none !important;
+	
+}
+.giftcartView .product-image img{
+	margin-left:4px;
+}
+.checkout-cart-index .listKickersRight{
+	margin-top:12px;
+}
+.searchFilters li#fltrCategories{
+	width:320px;
+}
+.searchFilters li .sbOptions,
+.searchFilters li .sbHolder{
+	width:217px;
+}
+.searchFilters li .sbHolder{  background-position: -594px -244px;}
+.searchFilters li#fltrCategories .sbOptions,
+.searchFilters li#fltrCategories .sbHolder{
+	width:300px;
+}
+.searchFilters li#fltrCategories .sbHolder{ background-position: -515px -244px;}
+
+.searchFilterHolder #txtSearchTerm{
+	height:auto;
+}
+
+.searchFilterHolder .loader-cart {
+    left: 32%;
+    top: 69%;
+    z-index: 1000;
 }
