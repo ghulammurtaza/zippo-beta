@@ -97,7 +97,7 @@ class Daffodil_Advancenewsletter_Block_Grid extends Mage_Adminhtml_Block_Newslet
         
         if(($company=="opt")||($company=="req")):
             $this->addColumn('company', array(
-                'header'    => Mage::helper('newsletter')->__('Company'),
+                'header'    => Mage::helper('newsletter')->__('Category'),
                 'index'     => 'company',
                 'default'   =>    '----'
             ));
@@ -139,7 +139,7 @@ class Daffodil_Advancenewsletter_Block_Grid extends Mage_Adminhtml_Block_Newslet
         
          if(($fax=="opt")||($fax=="req")):
             $this->addColumn('fax', array(
-                'header'    => Mage::helper('newsletter')->__('Fax'),
+                'header'    => Mage::helper('newsletter')->__('Birthday'),
                 'index'     => 'fax',
                 'default'   =>    '----'
             ));

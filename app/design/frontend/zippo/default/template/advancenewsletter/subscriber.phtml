@@ -1,0 +1,250 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+
+<?php
+$prefix = Mage::getStoreConfig('advancenewsletter/all_settings/prefix_show');
+$firstname = Mage::getStoreConfig('advancenewsletter/all_settings/firstname_show');
+$lastname = Mage::getStoreConfig('advancenewsletter/all_settings/lastname_show');
+$confirmmail = Mage::getStoreConfig('advancenewsletter/all_settings/confirmemail_show');
+$company = Mage::getStoreConfig('advancenewsletter/all_settings/company_show');
+$address = Mage::getStoreConfig('advancenewsletter/all_settings/address_show');
+$city = Mage::getStoreConfig('advancenewsletter/all_settings/city_show');
+$state = Mage::getStoreConfig('advancenewsletter/all_settings/state_show');
+$country = Mage::getStoreConfig('advancenewsletter/all_settings/country_show');
+$fax = Mage::getStoreConfig('advancenewsletter/all_settings/fax_show');
+$phoneno = Mage::getStoreConfig('advancenewsletter/all_settings/phoneno_show');
+$zipcode = Mage::getStoreConfig('advancenewsletter/all_settings/zipcode_show');
+$no_of_line = Mage::getStoreConfig('advancenewsletter/all_settings/lines_in_address_show');
+?>
+
+<div class="block block-subscribe">
+    <div class="block-title">
+        <strong><span><?php echo $this->__('Newsletters') ?></span></strong>
+    </div>
+    <form action="<?php echo $this->getFormActionUrl() ?>" method="post" id="newsletter-validate-detail">
+        <div class="block-content">
+            <div class="advance-subscribe-header">
+                <label for="newsletter"><?php echo $this->__('Sign Up for Our Newsletter:') ?></label>
+            </div>
+            <div class="input-box">
+                <label for="email"><em>*</em><?php echo $this->__('Email') ?></label>    
+                <input type="text" name="email" id="advancenewsletter" title="<?php echo $this->__('Email Id') ?>" class="input-text required-entry validate-email" />
+                <?php if ($firstname == "opt"): ?>
+                    <label for="firstname"><?php echo $this->__('First Name') ?></label>
+                    <input type="text" name="firstname" id="advancenewsletter" title="<?php echo $this->__('First name') ?>" class="input-text" />
+                <?php elseif ($firstname == "req"): ?>
+                    <label for="firstname"><em>*</em><?php echo $this->__('First Name') ?></label>
+                    <input type="text" name="firstname" id="advancenewsletter" title="<?php echo $this->__('First name') ?>" class="input-text required-entry" />
+                <?php endif; ?>
+
+                <?php if ($lastname == "opt"): ?>
+                    <label for="lastname"><?php echo $this->__('Last Name') ?></label>
+                    <input type="text" name="lastname" id="advancenewsletter" title="<?php echo $this->__('Last name') ?>" class="input-text" />
+                <?php elseif ($lastname == "req"): ?>
+                    <label for="lastname"><em>*</em><?php echo $this->__('Last Name') ?></label>
+                    <input type="text" name="lastname" id="advancenewsletter" title="<?php echo $this->__('Last name') ?>" class="input-text required-entry" />
+                <?php endif; ?>
+
+                <?php if ($city == "opt"): ?>
+                    <label for="city"><?php echo $this->__('City') ?></label>
+                    <input type="text" name="city" id="advancenewsletter" title="<?php echo $this->__('City') ?>" class="input-text" />
+                <?php elseif ($city == "req"): ?>
+                    <label for="city"><em>*</em><?php echo $this->__('City') ?></label>
+                    <input type="text" name="city" id="advancenewsletter" title="<?php echo $this->__('City') ?>" class="input-text required-entry" />
+                <?php endif; ?>
+
+
+                <label for="state"><?php echo $this->__('State/Province') ?></label>
+                <select name="state-dropdown"  id="region_id" onchange="updateRegion()" title="<?php echo $this->__('State/Province') ?>" >
+                    <option value=""><?php echo $this->__('Please select state/province') ?></option>
+                    <option value="AK">AK - Alaska</option>
+                    <option value="AL">AL - Alabama</option>
+                    <option value="AR">AR - Arkansas</option>
+                    <option value="AZ">AZ - Arizona</option>
+                    <option value="CA">CA - California</option>
+                    <option value="CO">CO - Colorado</option>
+                    <option value="CT">CT - Connecticut</option>
+                    <option value="DE">DE - Delaware</option>
+                    <option value="FL">FL - Florida</option>
+                    <option value="GA">GA - Georgia</option>
+                    <option value="HI">HI - Hawaii</option>
+                    <option value="IA">IA - Iowa</option>
+                    <option value="ID">ID - Idaho</option>
+                    <option value="IL">IL - Illinois</option>
+                    <option value="IN">IN - Indiana</option>
+                    <option value="KS">KS - Kansas</option>
+                    <option value="KY">KY - Kentucky</option>
+                    <option value="LA">LA - Louisiana</option>
+                    <option value="MA">MA - Massachusetts</option>
+                    <option value="MD">MD - Maryland</option>
+                    <option value="ME">ME - Maine</option>
+                    <option value="MI">MI - Michigan</option>
+                    <option value="MN">MN - Minnesota</option>
+                    <option value="MO">MO - Missouri</option>
+                    <option value="MS">MS - Mississippi </option>
+                    <option value="MT">MT - Montana</option>
+                    <option value="NC">NC - North Carolina</option>
+                    <option value="ND">ND - North Dakota</option>
+                    <option value="NE">NE - Nebraska</option>
+                    <option value="NH">NH - New Hampshire</option>
+                    <option value="NJ">NJ - New Jersey</option>
+                    <option value="NM">NM - New Mexico</option>
+                    <option value="NV">NV - Nevada</option>
+                    <option value="NY">NY - New York</option>
+                    <option value="OH">OH - Ohio</option>
+                    <option value="OK">OK - Oklahoma</option>
+                    <option value="OR">OR - Oregon</option>
+                    <option value="PA">PA - Pennsylvania</option>
+                    <option value="RI">RI - Rhode Island</option>
+                    <option value="SC">SC - South Carolina</option>
+                    <option value="SD">SD - South Dakota</option>
+                    <option value="TN">TN - Tennessee</option>
+                    <option value="TX">TX - Texas</option>
+                    <option value="UT">UT - Utah</option>
+                    <option value="VA">VA - Virginia</option>
+                    <option value="VT">VT - Vermont</option>
+                    <option value="WA">WA - Washington</option>
+                    <option value="WI">WI - Wisconsin</option>
+                    <option value="WV">WV - West Virginia</option>
+                    <option value="WY">WY - Wyoming</option>
+
+                </select>
+                <input type="hidden" id="hidden-id" name="hidden-name" value="abc" />
+                <?php if ($zipcode == "opt"): ?>
+                    <label for="zipcode"><?php echo $this->__('Zip/Postal Code') ?></label>
+                    <input type="text" name="zipcode" id="advancenewsletter" title="<?php echo $this->__('Zip/Postal Code') ?>" class="input-text" />
+                <?php elseif ($zipcode == "req"): ?>
+                    <label for="zipcode"><em>*</em><?php echo $this->__('Zip/Postal Code') ?></label>
+                    <input type="text" name="zipcode" id="advancenewsletter" title="<?php echo $this->__('Zip/Postal Code') ?>" class="input-text required-entry" />
+                <?php endif; ?>  
+                    <select class="month" id="month" name="month" onchange="updateDob()">
+                        <option value=""><?php echo $this->__('Month') ?></option>
+                        <option value="1"><?php echo $this->__('January') ?></option>
+                        <option value="2"><?php echo $this->__('February') ?></option>
+                        <option value="3"><?php echo $this->__('March') ?></option>
+                        <option value="4"><?php echo $this->__('April') ?></option>
+                        <option value="5"><?php echo $this->__('May') ?></option>
+                        <option value="6"><?php echo $this->__('June') ?></option>
+                        <option value="7"><?php echo $this->__('July') ?></option>
+                        <option value="8"><?php echo $this->__('August') ?></option>
+                        <option value="9"><?php echo $this->__('September') ?></option>
+                        <option value="10"><?php echo $this->__('October') ?></option>
+                        <option value="11"><?php echo $this->__('November') ?></option>
+                        <option value="12"><?php echo $this->__('December') ?></option>
+                </select>
+                    <select id="day" name="day" onchange="updateDob()">
+                        <option value=""><?php echo $this->__('Date') ?></option>
+                        <?php for($i=1;$i<=31;$i++):?>
+                            <option value="<?php echo $i?>"><?php echo $i ?></option>
+                        <?php endfor;?>
+                    </select>
+                    <select id="year" name="year" onchange="updateDob()">
+                        <option value=""><?php echo $this->__('Year') ?></option>
+                        <?php for($i=Date('Y');$i>=Date('Y')-114;$i--):?>
+                            <option value="<?php echo $i?>"><?php echo $i ?></option>
+                        <?php endfor;?>
+                    </select>
+                    <div style="display:none">
+                    <?php if ($fax == "opt"): ?>
+                        <label for="fax"><?php echo $this->__('Fax') ?></label>
+                        <input type="text"  name="fax" id="fax" title="<?php echo $this->__('Fax') ?>" class="input-text" />
+                    <?php elseif ($fax == "req"): ?>
+                        <label for="fax"><em>*</em><?php echo $this->__('Fax') ?></label>
+                        <input type="text" name="fax" id="fax" title="<?php echo $this->__('Fax') ?>" class="input-text required-entry" />
+                    <?php endif; ?>
+                </div>
+
+                <?php if ($prefix): ?>
+                    <label for="salutation"><?php echo $this->__('Prefix') ?></label>
+                    <select name="salutation" id="prefix">
+                        <option value="Male"><?php echo $this->__('Male') ?></option>
+                        <option value="Female"><?php echo $this->__('Female') ?></option>
+                    </select>
+                <?php endif; ?>
+
+
+
+                <?php if ($confirmmail): ?>
+                    <label for="confirmemail"><em>*</em><?php echo $this->__('Confirm Email') ?></label>    
+                    <input type="text" name="email" id="advancenewsletter" title="<?php echo $this->__('Confirm Email Id') ?>" class="input-text required-entry validate-cemail" />
+                <?php endif; ?>
+                    <div style="display:none">
+                <?php if ($company == "opt"): ?>
+                    <label for="company"><?php echo $this->__('Company') ?></label>
+                    <input type="text" name="company" id="advancenewsletter" title="<?php echo $this->__('Company') ?>" class="input-text" />
+                <?php elseif ($company == "req"): ?>
+                    <label for="company"><em>*</em><?php echo $this->__('Company') ?></label>
+                    <input type="text" name="company" id="advancenewsletter" title="<?php echo $this->__('Company') ?>" class="input-text required-entry" />
+                <?php endif; ?>
+                    </div>
+                <?php if ($address == "opt"): ?>
+                    <label for="address"><?php echo $this->__('Address') ?></label>
+                    <input type="text" name="address" id="advancenewsletter" title="<?php echo $this->__('Address') ?>" class="input-text" />
+                <?php elseif ($address == "req"): ?>
+                    <label for="address"><em>*</em><?php echo $this->__('Address') ?></label>
+                    <input type="text" name="address" id="advancenewsletter" title="<?php echo $this->__('Address') ?>" class="input-text required-entry" />   
+                <?php endif; ?>
+
+
+
+                <?php if ($phoneno == "opt"): ?>
+                    <label for="phoneno"><?php echo $this->__('Phone Number') ?></label>
+                    <input type="text" name="phoneno" id="advancenewsletter" title="<?php echo $this->__('Phone Number') ?>" class="input-text validate-number" />
+                <?php elseif ($phoneno == "req"): ?>
+                    <label for="phoneno"><em>*</em><?php echo $this->__('Phone Number') ?></label>
+                    <input type="text" name="phoneno" id="advancenewsletter" title="<?php echo $this->__('Phone Number') ?>" class="input-text required-entry validate-number" />
+                <?php endif; ?>
+
+            </div>
+
+            <div class="advancenewsletter-actions">
+                <button type="submit" title="<?php echo $this->__('Subscribe') ?>" class="button"><span><span><?php echo $this->__('Subscribe') ?></span></span></button>
+            </div>
+        </div>
+    </form>
+    <script type="text/javascript">
+        function updateRegion() {            
+            var regionName = document.getElementById("region_id").value;
+           document.getElementById("hidden-id").value = regionName;
+        }
+        
+        function updateDob() {
+            var month =  document.getElementById("month").value;
+            var day =  document.getElementById("day").value;
+            var year =  document.getElementById("year").value;
+            var dob = month + '/' + day + '/' + year;
+            alert(dob)
+            document.getElementById("fax").value = dob;
+        }
+        //<![CDATA[
+        var newsletterSubscriberFormDetail = new VarienForm('newsletter-validate-detail');
+        //]]>        
+    </script>
+</div>
+
+
+

@@ -94,7 +94,7 @@ class Daffodil_Advancenewsletter_SubscriberController extends Mage_Newsletter_Su
                 $session->addException($e, $this->__('There was a problem with the subscription.'));
             }
         }
-        $this->_redirectReferer();
+        $this->_redirect('mailingsuccess');
     }
 
     /**
