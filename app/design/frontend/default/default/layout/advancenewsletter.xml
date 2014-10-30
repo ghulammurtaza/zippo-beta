@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+     <default>
+        <reference name="head">
+            <action method="addCss"><stylesheet>css/advancenewsletter.css</stylesheet></action>
+            <action method="addJs"><script>advancenewsletter/validation.js</script></action>
+        </reference>
+        <reference name="left.newsletter">   
+                <action method="setTemplate" ifconfig="advancenewsletter/all_settings/enabled"><template>advancenewsletter/subscriber.phtml</template></action>
+        </reference>
+     </default>
+</layout>

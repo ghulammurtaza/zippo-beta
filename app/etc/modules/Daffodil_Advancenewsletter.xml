@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<config>
+  <modules>
+    <Daffodil_Advancenewsletter>
+      <active>true</active>
+      <codePool>local</codePool>
+      <version>0.1.0</version>
+    </Daffodil_Advancenewsletter>
+  </modules>
+</config>
+
