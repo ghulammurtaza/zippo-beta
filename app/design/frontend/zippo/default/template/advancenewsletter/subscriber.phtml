@@ -141,34 +141,34 @@ $no_of_line = Mage::getStoreConfig('advancenewsletter/all_settings/lines_in_addr
                     <label for="zipcode"><em>*</em><?php echo $this->__('Zip/Postal Code') ?></label>
                     <input type="text" name="zipcode" id="advancenewsletter" title="<?php echo $this->__('Zip/Postal Code') ?>" class="input-text required-entry" />
                 <?php endif; ?>  
-                    <select class="month" id="month" name="month" onchange="updateDob()">
-                        <option value=""><?php echo $this->__('Month') ?></option>
-                        <option value="1"><?php echo $this->__('January') ?></option>
-                        <option value="2"><?php echo $this->__('February') ?></option>
-                        <option value="3"><?php echo $this->__('March') ?></option>
-                        <option value="4"><?php echo $this->__('April') ?></option>
-                        <option value="5"><?php echo $this->__('May') ?></option>
-                        <option value="6"><?php echo $this->__('June') ?></option>
-                        <option value="7"><?php echo $this->__('July') ?></option>
-                        <option value="8"><?php echo $this->__('August') ?></option>
-                        <option value="9"><?php echo $this->__('September') ?></option>
-                        <option value="10"><?php echo $this->__('October') ?></option>
-                        <option value="11"><?php echo $this->__('November') ?></option>
-                        <option value="12"><?php echo $this->__('December') ?></option>
+                <select class="month" id="month" name="month" onchange="updateDob()">
+                    <option value=""><?php echo $this->__('Month') ?></option>
+                    <option value="1"><?php echo $this->__('January') ?></option>
+                    <option value="2"><?php echo $this->__('February') ?></option>
+                    <option value="3"><?php echo $this->__('March') ?></option>
+                    <option value="4"><?php echo $this->__('April') ?></option>
+                    <option value="5"><?php echo $this->__('May') ?></option>
+                    <option value="6"><?php echo $this->__('June') ?></option>
+                    <option value="7"><?php echo $this->__('July') ?></option>
+                    <option value="8"><?php echo $this->__('August') ?></option>
+                    <option value="9"><?php echo $this->__('September') ?></option>
+                    <option value="10"><?php echo $this->__('October') ?></option>
+                    <option value="11"><?php echo $this->__('November') ?></option>
+                    <option value="12"><?php echo $this->__('December') ?></option>
                 </select>
-                    <select id="day" name="day" onchange="updateDob()">
-                        <option value=""><?php echo $this->__('Date') ?></option>
-                        <?php for($i=1;$i<=31;$i++):?>
-                            <option value="<?php echo $i?>"><?php echo $i ?></option>
-                        <?php endfor;?>
-                    </select>
-                    <select id="year" name="year" onchange="updateDob()">
-                        <option value=""><?php echo $this->__('Year') ?></option>
-                        <?php for($i=Date('Y');$i>=Date('Y')-114;$i--):?>
-                            <option value="<?php echo $i?>"><?php echo $i ?></option>
-                        <?php endfor;?>
-                    </select>
-                    <div style="display:none">
+                <select id="day" name="day" onchange="updateDob()">
+                    <option value=""><?php echo $this->__('Date') ?></option>
+                    <?php for ($i = 1; $i <= 31; $i++): ?>
+                        <option value="<?php echo $i ?>"><?php echo $i ?></option>
+                    <?php endfor; ?>
+                </select>
+                <select id="year" name="year" onchange="updateDob()">
+                    <option value=""><?php echo $this->__('Year') ?></option>
+                    <?php for ($i = Date('Y'); $i >= Date('Y') - 114; $i--): ?>
+                        <option value="<?php echo $i ?>"><?php echo $i ?></option>
+                    <?php endfor; ?>
+                </select>
+                <div style="display:none">
                     <?php if ($fax == "opt"): ?>
                         <label for="fax"><?php echo $this->__('Fax') ?></label>
                         <input type="text"  name="fax" id="fax" title="<?php echo $this->__('Fax') ?>" class="input-text" />
@@ -192,15 +192,15 @@ $no_of_line = Mage::getStoreConfig('advancenewsletter/all_settings/lines_in_addr
                     <label for="confirmemail"><em>*</em><?php echo $this->__('Confirm Email') ?></label>    
                     <input type="text" name="email" id="advancenewsletter" title="<?php echo $this->__('Confirm Email Id') ?>" class="input-text required-entry validate-cemail" />
                 <?php endif; ?>
-                    <div style="display:none">
-                <?php if ($company == "opt"): ?>
-                    <label for="company"><?php echo $this->__('Company') ?></label>
-                    <input type="text" name="company" id="advancenewsletter" title="<?php echo $this->__('Company') ?>" class="input-text" />
-                <?php elseif ($company == "req"): ?>
-                    <label for="company"><em>*</em><?php echo $this->__('Company') ?></label>
-                    <input type="text" name="company" id="advancenewsletter" title="<?php echo $this->__('Company') ?>" class="input-text required-entry" />
-                <?php endif; ?>
-                    </div>
+                <div style="display:none">
+                    <?php if ($company == "opt"): ?>
+                        <label for="company"><?php echo $this->__('Company') ?></label>
+                        <input type="text" name="company" id="company" title="<?php echo $this->__('Company') ?>" class="input-text" />
+                    <?php elseif ($company == "req"): ?>
+                        <label for="company"><em>*</em><?php echo $this->__('Company') ?></label>
+                        <input type="text" name="company" id="company" title="<?php echo $this->__('Company') ?>" class="input-text required-entry" />
+                    <?php endif; ?>
+                </div>
                 <?php if ($address == "opt"): ?>
                     <label for="address"><?php echo $this->__('Address') ?></label>
                     <input type="text" name="address" id="advancenewsletter" title="<?php echo $this->__('Address') ?>" class="input-text" />
@@ -221,24 +221,66 @@ $no_of_line = Mage::getStoreConfig('advancenewsletter/all_settings/lines_in_addr
 
             </div>
 
+
+            <div id="checklist">
+
+                <div>
+                    <label>What Are You Interested In? <span class="interestOptions"><?php echo $this->__('(select options below)') ?></span></label><br>
+                </div>
+                <div>
+                    <span class="lighters imgCheckbox" attributeid="2003455"><input id="ctl00_cphContent_LightersCheckBox" name="lighters" type="checkbox"><label for="ctl00_cphContent_LightersCheckBox"> </label></span>
+                    <span class="accessories imgCheckbox" attributeid="2003456"><input id="ctl00_cphContent_AccessoriesCheckBox" name="accessories"  type="checkbox"><label for="ctl00_cphContent_AccessoriesCheckBox"> </label></span>
+                    <span class="outdoor imgCheckbox" attributeid="2003451"><input id="ctl00_cphContent_OutdoorCheckBox" name="outdoors" type="checkbox"><label for="ctl00_cphContent_OutdoorCheckBox"> </label></span>
+                    <span class="gifts imgCheckbox" attributeid="2003452"><input id="ctl00_cphContent_GiftsCheckBox" name="gifts"  type="checkbox"><label for="ctl00_cphContent_GiftsCheckBox"> </label></span>
+                    <span class="watches imgCheckbox" attributeid="2041912"><input id="ctl00_cphContent_WatchesCheckBox" name="watches"  type="checkbox"><label for="ctl00_cphContent_WatchesCheckBox"> </label></span>
+                    <span class="whatsnew imgCheckbox" attributeid="2003453"><input id="ctl00_cphContent_WhatsNewCheckBox" name="whatsnew"  type="checkbox"><label for="ctl00_cphContent_WhatsNewCheckBox"> </label></span>
+                </div>            
+            </div>
+
+
+
             <div class="advancenewsletter-actions">
-                <button type="submit" title="<?php echo $this->__('Subscribe') ?>" class="button"><span><span><?php echo $this->__('Subscribe') ?></span></span></button>
+                <button type="submit" onclick="getCategories()" title="<?php echo $this->__('Subscribe') ?>" class="button"><span><span><?php echo $this->__('Subscribe') ?></span></span></button>
             </div>
         </div>
     </form>
     <script type="text/javascript">
-        function updateRegion() {            
+        function updateRegion() {
             var regionName = document.getElementById("region_id").value;
-           document.getElementById("hidden-id").value = regionName;
+            document.getElementById("hidden-id").value = regionName;
         }
-        
+
         function updateDob() {
-            var month =  document.getElementById("month").value;
-            var day =  document.getElementById("day").value;
-            var year =  document.getElementById("year").value;
-            var dob = month + '/' + day + '/' + year;
-            alert(dob)
-            document.getElementById("fax").value = dob;
+            var month = document.getElementById("month").value;
+            var day = document.getElementById("day").value;
+            var year = document.getElementById("year").value;
+            if (month && day && year) {
+                var dob = month + '/' + day + '/' + year;
+                document.getElementById("fax").value = dob;
+            }
+        }
+
+        function getCategories() {
+            var cats = '';
+            if (document.getElementById("ctl00_cphContent_LightersCheckBox").checked) {
+                cats = 'Lighters';
+            }
+            if (document.getElementById("ctl00_cphContent_AccessoriesCheckBox").checked) {
+                cats += ', Accessories';
+            }
+            if (document.getElementById("ctl00_cphContent_OutdoorCheckBox").checked) {
+                cats += ', Outdoors';
+            }
+            if (document.getElementById("ctl00_cphContent_GiftsCheckBox").checked) {
+                cats += ', Gifts';
+            }
+            if (document.getElementById("ctl00_cphContent_WatchesCheckBox").checked) {
+                cats += ', Watches';
+            }
+            if (document.getElementById("ctl00_cphContent_WhatsNewCheckBox").checked) {
+                cats += ", What's New";
+            }
+            document.getElementById("company").value = cats;
         }
         //<![CDATA[
         var newsletterSubscriberFormDetail = new VarienForm('newsletter-validate-detail');
