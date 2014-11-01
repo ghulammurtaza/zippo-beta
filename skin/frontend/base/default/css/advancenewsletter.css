@@ -1,37 +1,198 @@
-#region_id
-{
-     width: 172px;
-     margin-bottom: 5px;
+* {
+    box-sizing: border-box;
 }
-#country
-{
-       width: 172px;
-       margin-bottom: 5px;
+body {
+    background: none repeat scroll 0 0 #fff;
+    color: #a7a7a7;
+    font: 12px Arial,Helvetica,sans-serif;
+    margin: 0;
+    padding: 0;
 }
-#advancenewsletter
-{
-     display: block;
-     margin-bottom: 5px;
-     width: 163px;
+#container {
+    margin: 0 10px;
 }
-.advance-subscribe-header
-{
-  font-size: 13px;
-  margin-bottom: 13px;
+a {
+    color: #a7a7a7;
+    text-decoration: underline;
 }
-.advancenewsletter-actions
-{
-     margin: 18px 0 10px;
-     text-align: center;
+hr {
+    border-top: 1px solid #e9e9e9;
+    clear: both;
 }
-#prefix
-{
-        width: 172px;
-     margin-bottom: 5px;
-      display: block;
+br {
+    clear: both;
 }
-.input-box em
-{
-      color: red;
-    margin: 0 3px;
+.italic {
+    font-style: italic;
+}
+.interestOptions {
+    color: red;
+    font: italic 12px Arial,Helvetica,sans-serif;
+    text-transform: lowercase;
+}
+h1, .whatsnext {
+    font-size: 18px;
+}
+h1, label, .whatsnext {
+    color: #000;
+    font-family: 'BebasRegular',Impact,Helvetica,Arial,sans-serif;
+    font-weight: normal;
+    text-transform: uppercase;
+    word-spacing: 0.25em;
+}
+#inputFields {
+    float: left;
+    font-size: 13px;
+    margin: 10px 0 30px;
+}
+#subscriberInfo > div {
+    margin: 0 0 15px;
+}
+#subscriberInfo > div:last-child {
+}
+#subscriberInfo {
+    border-right: 1px solid #e9e9e9;
+    float: left;
+    padding-right: 20px;
+    width: 49%;
+}
+#checklist {
+    float: left;
+    padding-left: 20px;
+    width: 51%;
+}
+#buttons {
+    float: left;
+    margin-top: 25px;
+}
+.alpha, .omega {
+    display: inline-block;
+}
+.alpha {
+    padding-right: 15px;
+}
+.omega {
+    padding-left: 15px;
+}
+.birthdateAlpha {
+    display: inline-block;
+    padding-right: 8px;
+}
+.genderOmega {
+    display: inline-block;
+    padding-left: 8px;
+}
+label {
+    float: left;
+    padding: 2px 10px 3px 0;
+}
+input[type="image"], input[type="submit"], button, a > img {
+    margin-right: 20px;
+}
+input[type="text"] {
+    border: 1px solid #000;
+    border-radius: 2px;
+    height: 28px;
+    padding: 4px;
+    width: 100%;
+}
+.whatsnext {
+    display: inline-block;
+    line-height: 22px;
+    margin-right: 25px;
+    vertical-align: top;
+}
+.col {
+    float: left;
+    width: 50%;
+}
+select {
+    border: 1px solid #000;
+    border-radius: 2px;
+    height: 28px;
+    margin-right: 5px;
+    padding: 4px;
+    width: 100%;
+}
+select.month {
+    width: 103px;
+}
+select.date {
+    width: 62px;
+}
+select.year {
+    width: 65px;
+}
+select.gender {
+    width: 125px;
+}
+.inline-error {
+    background: url("/images/exclamation.png") no-repeat scroll 3px center #f6f6f6;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    color: #c22;
+    float: left;
+    font-size: 10px;
+    line-height: 18px;
+    margin: 4px 8px 0;
+    padding: 3px 8px 4px 24px;
+}
+.imgCheckbox > input {
+    display: none;
+}
+.imgCheckbox > input + label, .imgCheckbox > input:checked + label {
+    display: inline-block;
+    height: 66px;
+    line-height: 66px;
+    margin: 8px 8px 0 0;
+    vertical-align: middle;
+    width: 196px;
+}
+.lighters > label:hover, .lighters > input:checked + label {
+    background: url("../images/chk-lighters-on.jpg") repeat scroll 0 0 rgba(0, 0, 0, 0);
+}
+.lighters > input + label {
+    background: url("../images/chk-lighters-off.jpg") repeat scroll 0 0 rgba(0, 0, 0, 0);
+    border: medium none;
+    float: left;
+}
+.accessories > label:hover, .accessories > input:checked + label {
+    background: url("../images/chk-accessories-on.jpg") repeat scroll 0 0 rgba(0, 0, 0, 0);
+}
+.accessories > input + label {
+    background: url("../images/chk-accessories-off.jpg") repeat scroll 0 0 rgba(0, 0, 0, 0);
+    border: medium none;
+    float: left;
+}
+.outdoor > label:hover, .outdoor > input:checked + label {
+    background: url("../images/chk-outdoor-on.jpg") repeat scroll 0 0 rgba(0, 0, 0, 0);
+}
+.outdoor > input + label {
+    background: url("../images/chk-outdoor-off.jpg") repeat scroll 0 0 rgba(0, 0, 0, 0);
+    border: medium none;
+    float: left;
+}
+.gifts > label:hover, .gifts > input:checked + label {
+    background: url("../images/chk-gifts-on.jpg") repeat scroll 0 0 rgba(0, 0, 0, 0);
+}
+.gifts > input + label {
+    background: url("../images/chk-gifts-off.jpg") repeat scroll 0 0 rgba(0, 0, 0, 0);
+    border: medium none;
+    float: left;
+}
+.watches > label:hover, .watches > input:checked + label {
+    background: url("../images/chk-watches-on.jpg") repeat scroll 0 0 rgba(0, 0, 0, 0);
+}
+.watches > input + label {
+    background: url("../images/chk-watches-off.jpg") repeat scroll 0 0 rgba(0, 0, 0, 0);
+    border: medium none;
+    float: left;
+}
+.whatsnew > label:hover, .whatsnew > input:checked + label {
+    background: url("../images/chk-whatsnew-on.jpg") repeat scroll 0 0 rgba(0, 0, 0, 0);
+}
+.whatsnew > input + label {
+    background: url("../images/chk-whatsnew-off.jpg") repeat scroll 0 0 rgba(0, 0, 0, 0);
+    border: medium none;
+    float: left;
 }
