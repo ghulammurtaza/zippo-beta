@@ -31,6 +31,7 @@ $obj  = new Mage_Catalog_Block_Product_List();
                             <?php
                             $i = 0;
                             foreach ($_productCollection as $_product):
+                                if (!($_product->isSaleable())){continue;}
                                 ?>
                                 <?php if ($i++ % $_columnCount == 0): ?>
                                     <ul class="products-grid listLighters  products-grid--max-<?php echo $_columnCount; ?>-col">
