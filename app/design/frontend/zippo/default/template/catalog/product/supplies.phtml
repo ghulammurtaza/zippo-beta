@@ -5,16 +5,23 @@ function test (){
 		jQuery(".productListingPopup .prodCart").append("<span class='loader-cart'></span>");
 		setTimeout(function(){
 			jQuery(".productListingPopup .prodCart span").remove();
+			jQuery(".productListingPopup .inner").append("<div class='addedincart'>successfully added to your cart</div>");
 			jQuery("html").clearQueue();
 			jQuery(".productListingPopup .prodCart").clearQueue();
-     	 	jQuery(".pouplist li .listProdPopUps").hide();
-			jQuery("html").animate({scrollTop: 0}, 500);
+			//jQuery("html").animate({scrollTop: 0}, 500);
 			
 			return false;
 		 
 		 }, 4000);
 		
+		setTimeout(function(){
+		jQuery(".pouplist li .listProdPopUps").hide();
+		jQuery(".productListingPopup .addedincart").remove();
+		return false;
+		}, 6000);
+
     });
+
 
 
 	
@@ -27,11 +34,82 @@ jQuery(document).ready(function(e) {
 </script>
 
 <script>
+(function($) {
+    $.event.special.mousestop = {
+        setup: function(data) {
+            $(this).data('mousestop', _data(data))
+                   .bind('mouseenter.mousestop', _mouseenter)
+                   .bind('mouseleave.mousestop', _mouseleave)
+                   .bind('mousemove.mousestop', _mousemove);
+        },
+        teardown: function() {
+            $(this).removeData('mousestop')
+                   .unbind('.mousestop');
+        }
+    };
+
+    function _mouseenter() {
+        var _self = this,
+            data = $(this).data('mousestop');
+
+        this.movement = true;
+
+        if(data.timeToStop) {
+            this.timeToStopTimer = window.setTimeout(function() {
+                _self.movement = false;
+                window.clearTimeout(_self.timer);
+            }, data.timeToStop);
+        }
+    }
+
+    function _mouseleave() {
+        window.clearTimeout(this.timer);
+        window.clearTimeout(this.timeToStopTimer);
+    }
+    
+    function _mousemove() {
+        var $el = $(this),
+            data = $el.data('mousestop');
+
+        if(this.movement) {
+            window.clearTimeout(this.timer);
+            this.timer = window.setTimeout(function() {
+                $el.trigger('mousestop');
+            }, data.delay);
+        }
+    }
+
+    function _data(data) {
+        if($.isNumeric(data)) {
+            data = {delay: data};
+        }
+        else if(typeof data !== 'object') {
+            data = {};
+        }
+
+        return $.extend({}, $.fn.mousestop.defaults, data);
+    }
+
+    $.fn.mousestop = function(data, fn) {
+        if (typeof data === 'function') { fn = data; }
+        return arguments.length > 0 ? this.bind('mousestop', data, fn) : this.trigger('mousestop');
+    };
+
+    $.fn.mousestop.defaults = {
+        delay: 300,
+        timeToStop: null
+    };
+})(jQuery);
+
+
+
 jQuery(document).ready(function(e) {
 	getScreen = jQuery(window).width();
 	
 	var getlast = getScreen * 54 / 100 ;
-	jQuery(".multiSlide .prodListSm li").mouseover(function(e) {
+	
+	jQuery(".multiSlide .prodListSm li").mousestop(300, function() {
+		
 		jQuery(".pouplist li").children(".listProdPopUps").clearQueue();
 		jQuery(".pouplist li").children(".listProdPopUps").hide();
 		jQuery(".pouplist li").children(".listProdPopUps").removeClass("activePopupNew");
@@ -53,7 +131,11 @@ jQuery(document).ready(function(e) {
 		if(position.left > getlast){
 		  jQuery(".pouplist li").eq(getID).addClass("reverse");
 	    }
+	
 	});
+
+	
+	jQuery(".multiSlide .prodListSm li").mouseover(function(e) {});
 
 	jQuery(".multiSlide").mouseleave(function(e) {
          jQuery(".pouplist li .listProdPopUps").hide();

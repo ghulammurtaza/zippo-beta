@@ -41,26 +41,39 @@ $zipcode = Mage::getStoreConfig('advancenewsletter/all_settings/zipcode_show');
 $no_of_line = Mage::getStoreConfig('advancenewsletter/all_settings/lines_in_address_show');
 ?>
 
-<div class="block block-subscribe">
-    <div class="block-title">
-        <strong><span><?php echo $this->__('Newsletters') ?></span></strong>
-    </div>
-    <form action="<?php echo $this->getFormActionUrl() ?>" method="post" id="newsletter-validate-detail">
-        <div class="block-content">
-            <div class="advance-subscribe-header">
-                <label for="newsletter"><?php echo $this->__('Sign Up for Our Newsletter:') ?></label>
-            </div>
-            <div class="input-box">
+<div class="newsletter">
+
+<form action="<?php echo $this->getFormActionUrl() ?>" method="post" id="newsletter-validate-detail">
+
+            
+
+    
+
+        <div id="bodyCopy">
+            <h1><?php echo $this->__('Be In The Know') ?></h1>
+            <p>Sign up for our email to receive exclusive offers, new products, events, and more.</p>
+        </div>
+        <div id="inputFields">
+        <div id="subscriberInfo">
+        
+      
+
+           
+                <div>
                 <label for="email"><em>*</em><?php echo $this->__('Email') ?></label>    
                 <input type="text" name="email" id="advancenewsletter" title="<?php echo $this->__('Email Id') ?>" class="input-text required-entry validate-email" />
+                </div>
+                <div class="col alpha">
                 <?php if ($firstname == "opt"): ?>
                     <label for="firstname"><?php echo $this->__('First Name') ?></label>
                     <input type="text" name="firstname" id="advancenewsletter" title="<?php echo $this->__('First name') ?>" class="input-text" />
                 <?php elseif ($firstname == "req"): ?>
+    
                     <label for="firstname"><em>*</em><?php echo $this->__('First Name') ?></label>
                     <input type="text" name="firstname" id="advancenewsletter" title="<?php echo $this->__('First name') ?>" class="input-text required-entry" />
                 <?php endif; ?>
-
+</div>
+ <div class="col omega">
                 <?php if ($lastname == "opt"): ?>
                     <label for="lastname"><?php echo $this->__('Last Name') ?></label>
                     <input type="text" name="lastname" id="advancenewsletter" title="<?php echo $this->__('Last name') ?>" class="input-text" />
@@ -68,6 +81,10 @@ $no_of_line = Mage::getStoreConfig('advancenewsletter/all_settings/lines_in_addr
                     <label for="lastname"><em>*</em><?php echo $this->__('Last Name') ?></label>
                     <input type="text" name="lastname" id="advancenewsletter" title="<?php echo $this->__('Last name') ?>" class="input-text required-entry" />
                 <?php endif; ?>
+</div>
+<hr>
+
+ <div class="col alpha">
 
                 <?php if ($city == "opt"): ?>
                     <label for="city"><?php echo $this->__('City') ?></label>
@@ -76,9 +93,11 @@ $no_of_line = Mage::getStoreConfig('advancenewsletter/all_settings/lines_in_addr
                     <label for="city"><em>*</em><?php echo $this->__('City') ?></label>
                     <input type="text" name="city" id="advancenewsletter" title="<?php echo $this->__('City') ?>" class="input-text required-entry" />
                 <?php endif; ?>
+</div>
 
+ <div class="col omega">
 
-                <label for="state"><?php echo $this->__('State/Province') ?></label>
+                <label for="state"><?php echo $this->__('State') ?></label>
                 <select name="state-dropdown"  id="region_id" onchange="updateRegion()" title="<?php echo $this->__('State/Province') ?>" >
                     <option value=""><?php echo $this->__('Please select state/province') ?></option>
                     <option value="AK">AK - Alaska</option>
@@ -134,14 +153,25 @@ $no_of_line = Mage::getStoreConfig('advancenewsletter/all_settings/lines_in_addr
 
                 </select>
                 <input type="hidden" id="hidden-id" name="hidden-name" value="abc" />
+</div>
+<hr>
+               
+                <div class="col alpha"> 
+                
                 <?php if ($zipcode == "opt"): ?>
-                    <label for="zipcode"><?php echo $this->__('Zip/Postal Code') ?></label>
+                    <label for="zipcode"><?php echo $this->__('Zip Code') ?></label>
                     <input type="text" name="zipcode" id="advancenewsletter" title="<?php echo $this->__('Zip/Postal Code') ?>" class="input-text" />
                 <?php elseif ($zipcode == "req"): ?>
-                    <label for="zipcode"><em>*</em><?php echo $this->__('Zip/Postal Code') ?></label>
+                    <label for="zipcode"><em>*</em><?php echo $this->__('Zip Code') ?></label>
                     <input type="text" name="zipcode" id="advancenewsletter" title="<?php echo $this->__('Zip/Postal Code') ?>" class="input-text required-entry" />
                 <?php endif; ?>  
-                <select class="month" id="month" name="month" onchange="updateDob()">
+                </div>
+                <hr>
+                 <div>
+                
+                 <div class="dob">
+                  <label for="salutation"><?php echo $this->__('Birthday') ?></label>
+                 	<div class="dob-1"><select class="month" id="month" name="month" onchange="updateDob()">
                     <option value=""><?php echo $this->__('Month') ?></option>
                     <option value="1"><?php echo $this->__('January') ?></option>
                     <option value="2"><?php echo $this->__('February') ?></option>
@@ -155,19 +185,24 @@ $no_of_line = Mage::getStoreConfig('advancenewsletter/all_settings/lines_in_addr
                     <option value="10"><?php echo $this->__('October') ?></option>
                     <option value="11"><?php echo $this->__('November') ?></option>
                     <option value="12"><?php echo $this->__('December') ?></option>
-                </select>
-                <select id="day" name="day" onchange="updateDob()">
+                </select></div>
+                    <div class="dob-2"><select id="day" name="day" onchange="updateDob()">
                     <option value=""><?php echo $this->__('Date') ?></option>
                     <?php for ($i = 1; $i <= 31; $i++): ?>
                         <option value="<?php echo $i ?>"><?php echo $i ?></option>
                     <?php endfor; ?>
-                </select>
-                <select id="year" name="year" onchange="updateDob()">
+                </select></div>
+                    <div class="dob-3"><select id="year" name="year" onchange="updateDob()">
                     <option value=""><?php echo $this->__('Year') ?></option>
                     <?php for ($i = Date('Y'); $i >= Date('Y') - 114; $i--): ?>
                         <option value="<?php echo $i ?>"><?php echo $i ?></option>
                     <?php endfor; ?>
-                </select>
+                </select></div>
+                <div style=" clear:both;"></div>
+                 </div>
+                
+                
+                
                 <div style="display:none">
                     <?php if ($fax == "opt"): ?>
                         <label for="fax"><?php echo $this->__('Fax') ?></label>
@@ -177,9 +212,11 @@ $no_of_line = Mage::getStoreConfig('advancenewsletter/all_settings/lines_in_addr
                         <input type="text" name="fax" id="fax" title="<?php echo $this->__('Fax') ?>" class="input-text required-entry" />
                     <?php endif; ?>
                 </div>
-
+<div style=" clear:both;"></div>
+</div>
+ <div class="col alpha">
                 <?php if ($prefix): ?>
-                    <label for="salutation"><?php echo $this->__('Prefix') ?></label>
+                    <label for="salutation"><?php echo $this->__('Gender') ?></label>
                     <select name="salutation" id="prefix">
                         <option value="Male"><?php echo $this->__('Male') ?></option>
                         <option value="Female"><?php echo $this->__('Female') ?></option>
@@ -187,7 +224,8 @@ $no_of_line = Mage::getStoreConfig('advancenewsletter/all_settings/lines_in_addr
                 <?php endif; ?>
 
 
-
+</div>
+ <div class="col omega" style="display:none;">
                 <?php if ($confirmmail): ?>
                     <label for="confirmemail"><em>*</em><?php echo $this->__('Confirm Email') ?></label>    
                     <input type="text" name="email" id="advancenewsletter" title="<?php echo $this->__('Confirm Email Id') ?>" class="input-text required-entry validate-cemail" />
@@ -208,7 +246,8 @@ $no_of_line = Mage::getStoreConfig('advancenewsletter/all_settings/lines_in_addr
                     <label for="address"><em>*</em><?php echo $this->__('Address') ?></label>
                     <input type="text" name="address" id="advancenewsletter" title="<?php echo $this->__('Address') ?>" class="input-text required-entry" />   
                 <?php endif; ?>
-
+</div>
+ <div class="col omega" style="display:none;">
 
 
                 <?php if ($phoneno == "opt"): ?>
@@ -222,11 +261,20 @@ $no_of_line = Mage::getStoreConfig('advancenewsletter/all_settings/lines_in_addr
             </div>
 
 
-            <div id="checklist">
+            
 
+
+
+            
+        </div>
+    
+       
+            
+            <div id="checklist">
                 <div>
-                    <label>What Are You Interested In? <span class="interestOptions"><?php echo $this->__('(select options below)') ?></span></label><br>
-                </div>
+                    <label>What Are You Interested In? <span class="interestOptions">(select options below)</span></label><br>				
+
+                
                 <div>
                     <span class="lighters imgCheckbox" attributeid="2003455"><input id="ctl00_cphContent_LightersCheckBox" name="lighters" type="checkbox"><label for="ctl00_cphContent_LightersCheckBox"> </label></span>
                     <span class="accessories imgCheckbox" attributeid="2003456"><input id="ctl00_cphContent_AccessoriesCheckBox" name="accessories"  type="checkbox"><label for="ctl00_cphContent_AccessoriesCheckBox"> </label></span>
@@ -235,15 +283,33 @@ $no_of_line = Mage::getStoreConfig('advancenewsletter/all_settings/lines_in_addr
                     <span class="watches imgCheckbox" attributeid="2041912"><input id="ctl00_cphContent_WatchesCheckBox" name="watches"  type="checkbox"><label for="ctl00_cphContent_WatchesCheckBox"> </label></span>
                     <span class="whatsnew imgCheckbox" attributeid="2003453"><input id="ctl00_cphContent_WhatsNewCheckBox" name="whatsnew"  type="checkbox"><label for="ctl00_cphContent_WhatsNewCheckBox"> </label></span>
                 </div>            
-            </div>
-
-
-
-            <div class="advancenewsletter-actions">
-                <button type="submit" onclick="getCategories()" title="<?php echo $this->__('Subscribe') ?>" class="button"><span><span><?php echo $this->__('Subscribe') ?></span></span></button>
+          
+                </div>
+                
             </div>
         </div>
-    </form>
+        <div id="disclaimer">
+            <p>
+                By providing this information, you are opting to receive email communications from Zippo.<br>
+                We believe in respecting your privacy. View our privacy policy <a target="_blank" href="http://www.zippo.com/privacy.aspx">here</a>.
+            </p>
+            <p>
+                *Zippo emails are for USA customers only. Sorry for any inconvenience to our international customers.
+            </p>
+        </div>
+        
+        <div class="acctCreate" id="buttons" style=" border:none; margin-top:0px;">
+        
+ <button type="submit" style="float:left;" onclick="getCategories()" title="<?php echo $this->__('Subscribe') ?>" class="button"><?php echo $this->__('Subscribe') ?></button>
+ <button title="<?php echo $this->__('Unsubscribe') ?>" style="float:left;" class="button"><?php echo $this->__('Unsubscribe') ?></button>
+
+        </div>
+
+
+   
+
+</form>
+    
     <script type="text/javascript">
         function updateRegion() {
             var regionName = document.getElementById("region_id").value;
@@ -286,7 +352,7 @@ $no_of_line = Mage::getStoreConfig('advancenewsletter/all_settings/lines_in_addr
         var newsletterSubscriberFormDetail = new VarienForm('newsletter-validate-detail');
         //]]>        
     </script>
+
+
+
 </div>
-
-
-
