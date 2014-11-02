@@ -51,7 +51,7 @@ $obj  = new Mage_Catalog_Block_Product_List();
                                         <p><?php echo $_product->getSku() ?></p>                                          
                                         <?php echo Mage::helper('core')->currency($_product->getPrice()); ?>
                                         
-                                        
+                                        <?php $block = new Mage_Catalog_Block_Product_List()?>
                                          <div class="listProdPopUps">
                                                 <div class="productListingPopup clearfix">
                                                     <div class="inner clearfix">
@@ -76,7 +76,7 @@ $obj  = new Mage_Catalog_Block_Product_List();
                                                             <?php endif; ?>                                                            
                                                             <div class="prodCart">
                                                                 <label for="txtProdQty"><?php echo $this->__('Qty.') ?></label> <input type="text" name="txtProdQty" id="txtProdQty<?php echo $_product->getId() ?>" class="txtProdQty" placeholder="1" size="1">
-                                                                <input type="button" class="btnAddCart" onclick="addtocart('<?php echo $_product->getId() ?>', '<?php echo $this->getAddToCartUrl($_product) ?>?options=cart')" value="Add To Cart">
+                                                                <input type="button" class="btnAddCart" onclick="addtocart('<?php echo $_product->getId() ?>', '<?php echo $block->getAddToCartUrl($_product) ?>?options=cart')" value="Add To Cart">
                                                             </div>
                                                         </div>
                                                     </div><!-- eo .inner -->

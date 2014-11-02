@@ -200,6 +200,10 @@ $currencySymbol = Mage::app()->getLocale()->currency($currency_code)->getSymbol(
                 success: function(data) {
                     $j(".loader-cart").hide();
                     $j('#results').html(data);
+                    $j('.products-grid > li').mousestop(300, function() {
+                        $j(this).addClass("popupActive");
+                        popUp();
+                    });
                 }
             });
         }
