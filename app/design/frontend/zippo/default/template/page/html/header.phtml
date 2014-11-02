@@ -66,7 +66,11 @@
 
 </script>
 
-
+    <script type="text/javascript">
+        jQuery(function() {
+            jQuery("select").selectbox();
+        });
+    </script>
 
 <div id="container" class="container clearfix">
 
@@ -90,10 +94,17 @@
             </section>
             <nav id="genTopNav" class="genTopNav clearfix">
                 <?php //echo $this->getChildHtml('topLinks') ?>
-                <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('top-links')->toHtml() ?>
+                <?php //echo $this->getLayout()->createBlock('cms/block')->setBlockId('top-links')->toHtml() ?>
+                <div>
+                <a class="home" href="<?php echo Mage::getUrl("home")?>"><?php echo $this->__('Home') ?></a> 
+                <a class="customer" href="<?php echo $this->getUrl('') ?>customer"><?php echo $this->__('Customer Care') ?></a> 
+                <a class="about" href="<?php echo $this->getUrl('') ?>about-us"><?php echo $this->__('About Us') ?></a> 
+                <a class="account" href="<?php echo $this->getUrl('') ?>customer/account/login/"><?php echo $this->__('My Account') ?></a> 
+                <a class="gift" href="<?php echo $this->getUrl('') ?>gift-card.html"><?php echo $this->__('Gift Card') ?></a> 
+                <a class="search" href="<?php echo $this->getUrl('') ?>catalogsearch/advanced/"><?php echo $this->__('Search') ?></a> 
+                <a class="email" href="<?php echo $this->getUrl('') ?>mailinglist"><?php echo $this->__('Email Signup') ?></a> 
+                <a class="stores" href="<?php echo $this->getUrl('') ?>stores"><?php echo $this->__('Stores') ?></a></div>
                 <?php echo $this->getChildHtml('store_language') ?>
-       
-
             </nav>
             <nav id="catTopNav" class="catTopNav clearfix">
                 <?php echo $this->getChildHtml('topMenu') ?>

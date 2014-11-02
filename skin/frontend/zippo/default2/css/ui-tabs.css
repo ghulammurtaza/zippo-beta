@@ -1,0 +1,38 @@
+/*tabs css*/
+.ui-tabs-nav, .repairTabsUl{
+	border-bottom: 3px solid #abaaaa;
+	position: relative;
+	z-index: 1;
+}
+.ui-state-default, .repairTabsUl li{
+	background: #fff url('img/bg_ui-tab-default.png') no-repeat 0 0;
+	font-size: 16px;
+	height: 44px;
+	float: left;
+	margin: 0 0 -3px;
+	position: relative;
+	text-align: center;
+	width: 134px;
+	z-index: 10;
+}
+.ui-state-default a, .repairTabsUl a{
+	color: #868585;
+	display: block;
+	padding: 11px 0 0;
+	text-decoration: none;
+}
+.ui-tabs-selected, .repairTabsUl li.ui-tabs-selected{
+	background: #fff url('img/bg_ui-tab-default.png') no-repeat 0 -44px;
+}
+.ui-tabs-selected a, .repairTabsUl li.ui-tabs-selected a{
+	color: #df101d;
+}
+.ui-tabs-hide, .repLtPanel{
+	display: none;
+}
+.repLtPanel.active{
+	display: block;
+}
+.ui-tabs-panel{
+	padding: 24px 12px;
+}

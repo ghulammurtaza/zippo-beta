@@ -29,16 +29,58 @@
     $isVisibleProduct = $_item->getProduct()->isVisibleInSiteVisibility();
     $canApplyMsrp = Mage::helper('catalog')->canApplyMsrp($_item->getProduct(), Mage_Catalog_Model_Product_Attribute_Source_Msrp_Type::TYPE_BEFORE_ORDER_CONFIRM);
 ?>
+<?php $_helper = $this->helper('catalog/output'); ?>
+<?php $_product = $this->getProduct(); ?>
+
 <li class="liCartItem" xmlns="http://www.w3.org/1999/html">
+     
+     
+        
+                <?php if($_product->getTypeId() == 'giftvoucher') {
+			
+			
+	
+?>
+ 
+ <div class="linkCartProd giftcartView">
 
-
-<div class="linkCartProd">
+        <?php if ($this->hasProductUrl()): ?>
+        
+        
+        <a href="<?php echo $this->getProductUrl()?>" title="<?php echo $this->escapeHtml($this->getProductName()) ?>" class="product-image"><img src="<?php echo $this->getProductThumbnail()->resize(150, 80)->setWatermarkSize('30x10'); ?>" width="42" height="42" alt="<?php echo $this->escapeHtml($this->getProductName()) ?>" /></a>
+        
+    <?php else: ?>
+       
+        
+        <span class="product-image"><img src="<?php echo $this->getProductThumbnail()->resize(150, 80)->setWatermarkSize('30x10'); ?>" width="42" height="42" alt="<?php echo $this->escapeHtml($this->getProductName()) ?>" /></span>
+    <?php endif; ?>
+        </div>
+        
+        
+        
+ 
+ 
+<?php
+} else {
+	
+	?>
+     
+     <div class="linkCartProd">
         <?php if ($this->hasProductUrl()): ?>
         <a href="<?php echo $this->getProductUrl()?>" title="<?php echo $this->escapeHtml($this->getProductName()) ?>" class="product-image"><img src="<?php echo $this->getProductThumbnail()->resize(28, 42)->setWatermarkSize('30x10'); ?>" width="28" height="42" alt="<?php echo $this->escapeHtml($this->getProductName()) ?>" /></a>
     <?php else: ?>
         <span class="product-image"><img src="<?php echo $this->getProductThumbnail()->resize(28, 42)->setWatermarkSize('30x10'); ?>" width="28" height="42" alt="<?php echo $this->escapeHtml($this->getProductName()) ?>" /></span>
     <?php endif; ?>
         </div>
+        
+     
+     
+    <?php
+	
+	}
+?>
+     
+        
     <div class="cartItemDesc">
         <span class="cartProdName">
 		<?php if ($this->hasProductUrl()): ?>

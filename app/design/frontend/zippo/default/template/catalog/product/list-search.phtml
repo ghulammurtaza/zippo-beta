@@ -23,7 +23,9 @@ $obj  = new Mage_Catalog_Block_Product_List();
     </section>
 
 <?php else: ?>
-    <div class="category-products">           
+
+    <div class="category-products">   
+     <ul class="products-grid listLighters  products-grid--max-<?php echo $_columnCount; ?>-col">        
                             <?php $this->setData('column_count', 4); // Grid Mode  ?>
 
                             <?php $_collectionSize = $_productCollection->count() ?>
@@ -34,7 +36,7 @@ $obj  = new Mage_Catalog_Block_Product_List();
                                 if (!($_product->isSaleable())){continue;}
                                 ?>
                                 <?php if ($i++ % $_columnCount == 0): ?>
-                                    <ul class="products-grid listLighters  products-grid--max-<?php echo $_columnCount; ?>-col">
+                                   
                                     <?php endif ?>
                                     <li class="<?php if (($i - 1) % $_columnCount == 0): ?> first <?php elseif ($i + -2): ?> reverse <?php elseif ($i % $_columnCount == 0): ?> reverse<?php endif; ?> ">
                                         <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $_product->getName() ?>" class="prodLink">
@@ -45,7 +47,7 @@ $obj  = new Mage_Catalog_Block_Product_List();
                                                         <span class="newTag"></span>
                                                     <?php endif; ?>
                                         </a>
-                                        <p><?php echo $_product->getName() ?></p>
+                                        <p><strong><?php echo $_product->getName() ?></strong></p>
                                         <p><?php echo $_product->getSku() ?></p>                                          
                                         <?php echo Mage::helper('core')->currency($_product->getPrice()); ?>
                                         
@@ -91,5 +93,12 @@ $obj  = new Mage_Catalog_Block_Product_List();
                                     <?php endif ?>
                                 <?php endforeach ?>
                             <script type="text/javascript">decorateGeneric($$('ul.products-grid'), ['odd', 'even', 'first', 'last'])</script> 
-                        </div>
+                        
 <?php endif; ?>
+
+
+</ul>
+</div>
+<div class="search-cout">
+
+Your search returned <?php  echo $i  ?> results</div>

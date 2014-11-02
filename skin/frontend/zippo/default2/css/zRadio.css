@@ -1,0 +1,197 @@
+/*
+	Zippo zRadio stylesheet
+	Created by Virid
+	Summer 2011
+*/
+/* reset */
+html {margin:0;padding:0;border:0;}
+body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, code, del, dfn, em, img, q, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, dialog, figure, footer, header, hgroup, nav, section {margin:0;padding:0;border:0;vertical-align:baseline;}
+article, aside, details, figcaption, figure, dialog, footer, header, hgroup, menu, nav, section {display:block;}
+table {border-collapse:separate;border-spacing:0;}
+caption, th, td {text-align:left;font-weight:normal;float:none !important;}
+table, th, td {vertical-align:middle;}
+blockquote:before, blockquote:after, q:before, q:after {content:'';}
+blockquote, q {quotes:"" "";}
+a img {border:none;}
+ul,li{list-style: none outside none;}
+:focus {outline:0;}
+.clearfix:after, .container:after, .row:after {content:"\0020";display:block;height:0;clear:both;visibility:hidden;overflow:hidden;}
+.clearfix, .container, .row {display:block;}
+.clear {clear:both;}
+/* eo reset */
+@font-face {
+    font-family: 'BebasRegular';
+    src: url('BEBAS___-webfont.eot');
+    src: url('BEBAS___-webfont.eot?#iefix') format('embedded-opentype'),
+         url('BEBAS___-webfont.woff') format('woff'),
+         url('BEBAS___-webfont.ttf') format('truetype'),
+         url('BEBAS___-webfont.svg#BebasRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+.txtBebas{
+	font-family: 'BebasRegular', Impact, Helvetica, Arial, sans-serif;
+	font-weight: normal;
+	text-transform: uppercase;
+	word-spacing: .25em;
+}
+.txtRed{
+	color: #df101d;
+}
+.txtOrange{
+	color: #ff8b18;	
+}
+.txtWhite{
+	color: #fff;	
+}
+.txtA7{
+	color: #a7a7a7;
+}
+.txtBlack{
+	color: #000;
+}
+.txtBold{
+	font-weight: bold;
+}
+div,section{
+	position: relative;
+}
+body{
+	background: #272727;
+	font: 12px/1.17 Helvetica, Arial, sans-serif;
+	text-align: center;
+	z-index: 1;
+}
+a{
+	text-decoration: none;
+}
+.container{
+	margin: 0 auto;
+	overflow: hidden;
+	text-align: left;
+	width: 372px;
+}
+.content{
+	padding: 16px;
+}
+.hdrZRadio{
+	margin: 0 0 12px;
+}
+.zPlaying{
+	background: url('img/sprite_zRadio.png') no-repeat 0 0;
+	height: 110px;
+	margin: 0;
+	width: 353px;
+}
+.spacer{
+	padding: 12px;
+}
+.thePlayer{
+	border: 6px solid #464646;
+	-moz-border-radius: 6px;
+	-webkit-border-radius: 6px;
+	border-radius: 6px;
+	float: left;
+	height: 72px;
+	margin: 0 12px 0 0;
+	width: 72px;
+}
+.thePlayer img{
+	display: block !important;
+	height: 72px !important;
+	width: 72px !important;
+}
+.playingTitle{
+	background: url('img/sprite_zRadio.png') no-repeat right -110px;
+	font-size: 14px;
+	font-weight: normal;
+	height: 24px;
+	line-height: 24px;
+	padding: 0 3px;
+}
+.zPlaylist{
+	background: url('img/sprite_zRadio.png') no-repeat 0 -134px;
+	color: #fff;
+	font-size: 14px;
+	margin: 12px 0 0 4px;
+	padding: 0;
+	width: 349px;
+	z-index: 1;
+}
+.scrollMe{
+	height: 263px;
+	overflow: auto;
+	width: 100%;
+	z-index: 1;
+}
+.thePlayList{
+	list-style: decimal inside;
+	margin: 0 12px 6px 4px;
+	padding: 12px 0 0 4px;
+	width: 324px;
+	z-index: 1;
+}
+.zPlaylist li{
+	list-style: decimal inside;
+	margin: 0;
+	padding: 2px 0 2px 2px;
+}
+.oddRow{
+	background: #1c1c1c;
+}
+.zPlayerCtrls{
+	float: left;
+	width: 230px;
+}
+.zPlaylist a{
+	color: #fff;
+	text-decoration: none;
+}
+.jp-playlist-current{
+	background: url('img/sprite_zRadio.png') no-repeat 0 -397px;
+	color: #272727;
+}
+.jp-playlist-current a{
+	color: #272727;
+}
+.zRadioPromo{
+	clear: both;
+	margin: 12px 0 12px 6px;
+	height: 133px;
+	width: 340px;
+}
+.zRadioPromo h3{
+	font-size: 16px;
+	padding: 12px 12px 6px;
+}
+.zRadioPromo p{
+	padding: 0 12px 12px;
+}
+.lnkRedPromo{
+	background: url('img/sprite_icons.png') no-repeat right -422px;
+	color: #fff;
+	display: block;
+	float: right;
+	font-size: 15px;
+	height: 26px;
+	line-height: 24px;
+	margin: 0 12px 0 0;
+	padding: 0 19px 0 5px;
+	text-decoration: none;
+	z-index: 100;
+}
+/*
+Couldn't resist, could you?
+__________.__                      
+\____    /|__|_____ ______   ____  
+  /     / |  \____ \\____ \ /  _ \ 
+ /     /_ |  |  |_> >  |_> >  <_> )
+/_______ \|__|   __/|   __/ \____/ 
+        \/   |__|   |__|           
+       __________             .___.__        
+_______\______   \_____     __| _/|__| ____  
+\___   /|       _/\__  \   / __ | |  |/  _ \ 
+ /    / |    |   \ / __ \_/ /_/ | |  (  <_> )
+/_____ \|____|_  /(____  /\____ | |__|\____/ 
+      \/       \/      \/      \/            
+*/
