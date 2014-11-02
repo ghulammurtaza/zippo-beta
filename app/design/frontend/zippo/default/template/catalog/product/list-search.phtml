@@ -105,26 +105,26 @@ $obj = new Mage_Catalog_Block_Product_List();
     Your search returned <?php echo $i ?> results</div>
 
 <script>
-    $j(document).ready(function() {
-
-        /* Every time the window is scrolled ... */
-        $j(window).scroll(function() {
-            $j('li.search-products').each(function() {
-                var bottom_of_object = $j(this).position().top + $j(this).outerHeight();
-                var bottom_of_window = $j(window).scrollTop() + $j(window).height();
-
-                /* If the object is completely visible in the window, fade it it */
-                if (bottom_of_window > bottom_of_object) {
-                    $j('#search-loader').show();
-                    $j(this).animate({'opacity': '1'}, 100);
-                    setTimeout(function() {
-                        $j('#search-loader').hide();
-                        return false;
-                    }, 400);
-                } else {
-                    $j(this).animate({'opacity': '0'}, 100);
-                }
-            });
-        });
-    });
+//    $j(document).ready(function() {
+//
+//        /* Every time the window is scrolled ... */
+//        $j(window).scroll(function() {
+//            $j('li.search-products').each(function() {
+//                var bottom_of_object = $j(this).position().top + $j(this).outerHeight();
+//                var bottom_of_window = $j(window).scrollTop() + $j(window).height();
+//
+//                /* If the object is completely visible in the window, fade it it */
+//                if (bottom_of_window > bottom_of_object) {
+//                    $j('#search-loader').show();
+//                    $j(this).animate({'opacity': '1'}, 100);
+//                    setTimeout(function() {
+//                        $j('#search-loader').hide();
+//                        return false;
+//                    }, 400);
+//                } else {
+//                    $j(this).animate({'opacity': '0'}, 100);
+//                }
+//            });
+//        });
+//    });
 </script>
