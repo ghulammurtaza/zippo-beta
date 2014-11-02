@@ -130,7 +130,8 @@ $childern = $catModel->load($categoryId)->getChildrenCategories();
                 <div class="multiSlide">
                     <div class="scroll-pane-os horizontal-only"  style="width:624px; height:250px;">
                         <ul class="prodListSm clearfix   listPageProds" style="width: <?php echo $_collectionSize * 126 ?>px;">
-                            <?php foreach ($collection as $product): ?>
+                            <?php foreach ($collection as $product): 
+                            if (!($product->isSaleable())){continue;}?>
                                 <?php $i ++ ?>
                                 <li data-id="<?php echo $i ?>"><a class="prodLink" title="<?php echo $product->getName() ?>" href="<?php echo $product->getProductUrl() ?>"><img width="94" alt="<?php echo $product->getName() ?>" src="<?php echo $this->helper('catalog/image')->init($product, 'small_image')->resize(200) ?>">
                                         <?php if (Mage::helper('zippo')->isNew($product)): ?>
