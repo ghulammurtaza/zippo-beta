@@ -30,7 +30,7 @@ jQuery(function()
     );
 });
 
-function test (){
+function popUp (){
 
 	jQuery(".listProdPopUps").mouseleave(function(e) {
 		 jQuery(".products-grid > li").removeClass("popupActive");
@@ -148,7 +148,7 @@ jQuery(document).ready(function(e) {
 		
   jQuery('.products-grid > li').mousestop(300, function() {
 		jQuery(this).addClass("popupActive");
-		test();
+		popUp();
 		
 });
   // 
@@ -156,6 +156,13 @@ jQuery(document).ready(function(e) {
 jQuery(window).scroll(function(e) {
    jQuery('.products-grid > li').mousestop(300, function() {
 		jQuery(this).addClass("popupActive");
-		test();
+		popUp();
 });
 });
+
+function addtocart(id, url) {
+        qty = jQuery('#txtProdQty' + id).val();
+        url = url + '&qty=' + qty;
+        setLocation(url);
+        return false;
+    }
