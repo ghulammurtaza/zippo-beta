@@ -46,8 +46,12 @@ class Zippo_Search_Block_Search extends Mage_Core_Block_Template
                  $collection->addAttributeToFilter(
                     array(
                         array('attribute'=> 'name','like' => $searchCriteria['searchTerm']),
-                        array('attribute'=> 'short_description','like' => $searchCriteria['searchTerm']),
-                        array('attribute'=> 'description','like' => $searchCriteria['searchTerm']),
+                        array('attribute'=> 'sku','like' => $searchCriteria['searchTerm']),
+                        array('attribute'=> 'model','like' => $searchCriteria['searchTerm']),
+                        array('attribute'=> 'licensed','like' => $searchCriteria['searchTerm']), 
+                        array('attribute'=> 'meta_description','like' => $searchCriteria['searchTerm']),
+                        array('attribute'=> 'meta_keyword','like' => $searchCriteria['searchTerm']),
+                        array('attribute'=> 'meta_title','like' => $searchCriteria['searchTerm']),
                     )
                 );
              }
