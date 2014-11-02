@@ -113,13 +113,13 @@ $obj = new Mage_Catalog_Block_Product_List();
                 /* If the object is completely visible in the window, fade it it */
                 if (bottom_of_window > bottom_of_object) {
                     $j('#search-loader').show();
-                    $j(this).animate({'opacity': '1'}, 100);
+                    $j(this).animate({'opacity': '1'}, 300);
                     setTimeout(function() {
                         $j('#search-loader').hide();
                         return false;
                     }, 400);
                 } else {
-                    $j(this).animate({'opacity': '0'}, 100);
+                    $j(this).animate({'opacity': '0'}, 300);
                 }
             });
         });
