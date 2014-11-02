@@ -341,12 +341,3 @@ foreach ($_afterChildren as $_afterChildName):
     ?>
     <?php echo $_afterChild->toHtml(); ?>
 <?php endforeach; ?>
-
-<script type="text/javascript">
-    function addtocart(id, url) {
-        qty = jQuery('#txtProdQty' + id).val();
-        url = url + '&qty=' + qty;
-        setLocation(url);
-        return false;
-    }
-</script>
