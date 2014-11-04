@@ -8,5 +8,10 @@ class Zippo_Search_IndexController extends Mage_Core_Controller_Front_Action
         $this->loadLayout();
         $this->renderLayout();
     }
+	public function cmsAction() {
+        Mage::getSingleton('zippo_search/search')->setCmsSearchKey($this->getRequest()->getPost('cmssearch'));
+        $this->loadLayout();
+        $this->renderLayout();
+    }
 
 }
