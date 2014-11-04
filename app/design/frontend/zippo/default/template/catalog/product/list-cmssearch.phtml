@@ -1,0 +1,54 @@
+<?php
+/**
+ * Product list template
+ *
+ * @see Mage_Catalog_Block_Product_List
+ */
+/* @var $this Mage_Catalog_Block_Product_List */
+?>
+
+<style>
+    html, body {
+        height: auto ;
+    }
+</style>
+<?php
+$cmspages = $this->getCmsCollection();
+?>
+<?php if (count($cmspages)): ?>
+    <ul>
+        <?php foreach ($cmspages as $_page): ?>
+        <li>
+            <a href="<?php echo $this->getUrl($_page['identifier']) ?>" title="<?php echo $_page['title'] ?>" class="prodLink">
+                <?php echo substr($_page['content'], 0, 200)?>
+            </a>
+        </li>
+        <?php endforeach; ?>
+    </ul>
+<?php endif; ?>
+Your search returned <?php echo count($cmspages) ?> results</div>
+
+<script>
+    $j(document).ready(function() {
+
+        /* Every time the window is scrolled ... */
+        $j(window).scroll(function() {
+            $j('li.search-cms').each(function() {
+                var bottom_of_object = $j(this).position().top + $j(this).outerHeight();
+                var bottom_of_window = $j(window).scrollTop() + $j(window).height();
+
+                /* If the object is completely visible in the window, fade it it */
+                if (bottom_of_window > bottom_of_object) {
+                    $j('#search-loader').show();
+                    $j(this).animate({'opacity': '1'}, 300);
+                    setTimeout(function() {
+                        $j('#search-loader').hide();
+                        return false;
+                    }, 400);
+                } else {
+                    $j(this).animate({'opacity': '0'}, 300);
+                }
+            });
+        });
+    });
+</script>
