@@ -54,7 +54,7 @@ $currencySymbol = Mage::app()->getLocale()->currency($currency_code)->getSymbol(
                     </p>
                 </div>
                 <div class="searchTabs">
-                    <a class="active" href="#">Zippo Products</a>
+                    <a class="active" href="#">Zippo Products</a>                   
                     <!--                   <a href="#">Zippo Info</a>-->
                 </div>
             </div><!-- eo .searchTop -->
@@ -170,6 +170,7 @@ $currencySymbol = Mage::app()->getLocale()->currency($currency_code)->getSymbol(
                 </section> 
             </section>
             <span class="loader-cart" style="display:none"></span>
+            <input type="text" name="cmssearch" id="cmssearch">  <input type="button" id="btnSrchSubmit" class="btnSrchSubmit" value="Submit" onclick="postCmsRequest();return false;" />
         </section><!-- eo .searchHolder -->
 </form>
 
@@ -178,6 +179,24 @@ $currencySymbol = Mage::app()->getLocale()->currency($currency_code)->getSymbol(
 </section>
 
 <script>
+    function postCmsRequest(){
+       $j(".loader-cart").show();
+       $j.ajax({
+                url: "<?php echo $this->getUrl('search/index/cms') ?>",
+                type: "POST",
+                data: {
+                    cmssearch: $j("#cmssearch").val()
+                },
+                success: function(data) {
+                    $j(".loader-cart").hide();
+                    $j('#results').html(data);
+                }
+            });
+       
+       
+       
+       
+    }
     function postRequest() {
         cat = $j("#category_search_field").val();
         if (cat == 0) {
