@@ -20,7 +20,7 @@ $cmspages = $this->getCmsCollection();
         <?php foreach ($cmspages as $_page): ?>
         <li>
             <a href="<?php echo $this->getUrl($_page['identifier']) ?>" title="<?php echo $_page['title'] ?>" class="prodLink">
-                <?php echo substr($_page['content'], 0, 200)?>
+                <?php echo strip_tags(substr($_page['content'], 0, 1000))?>
             </a>
         </li>
         <?php endforeach; ?>
