@@ -47,11 +47,11 @@ function popUp (){
 	
 		
 		jQuery(".productListingPopup .prodCart").append("<span class='loader-cart'></span>");
-		var appndMsg = jQuery(this).parents(".inner")
+		//var appndMsg = jQuery(".productListingPopup .succcessMsg");
 		setTimeout(function(){
 			
 			jQuery(".productListingPopup .prodCart span").remove();
-			appndMsg.append("<div class='addedincart'>successfully added to your cart</div>");
+			jQuery(".productListingPopup .succcessMsg").append("<div class='addedincart'>successfully added to your cart</div>");
 
 
 			//jQuery("html").animate({scrollTop: 0}, 500);

@@ -8825,6 +8825,11 @@ body {
 }
 .jProductSKU {
 	margin: 5px 0;
+	
+}
+.popRight .jProductPrice,
+.popRight .jProductSKU {
+	text-align:right;
 }
 .productListingPopup .btnProdClickreviews {
 	bottom: 16px;
@@ -11680,7 +11685,7 @@ a.ftrPrivacy span {
 
 }
 .main-container {
-	padding: 10px 0px !important;
+	padding: 10px 0px 50px !important;
 }
 .products-grid--max-4-col > li{
 	width:162px;
@@ -12834,12 +12839,13 @@ animation: myfirst 1s;
 #results .products-grid > li:nth-child(3n+1){
 	clear: none;
 }
-#results  .products-grid{
-	overflow:hidden;
+#results{
+	min-height:250px;
+
 }
 #results  .products-grid > li{
 	float:left;
-	width:20%;
+	width:24.5%;
 	margin-right:0 !important;
 	border-bottom:1px solid #e5e5e5;
 	margin-bottom:0px !important;
@@ -12977,4 +12983,74 @@ animation: myfirst 1s;
 .form-language .sbHolder{
 	background:none !important;
 	border-radius:0;
+}
+.sidebar a,
+#checkoutSteps a{
+	color:#000;
+}
+
+
+.newsletter .sbOptions a:link,.newsletter  .sbOptions a:visited{
+	color:#333;
+}
+
+
+#checkoutSteps .sbHolder{
+	 background-color: #fff !important;
+     background-image: url("../img/sprite_icons.png") ;
+	  border:#000 solid 1px !important;
+	  width:188px;
+	   background-position: -622px -245px; 
+}
+#checkoutSteps  .sbOptions a,
+#checkoutSteps  .sbSelector:link, 
+#checkoutSteps  .sbSelector:visited, 
+#checkoutSteps  .sbSelector:hover{
+	color:#333;
+}
+#checkoutSteps .sbOptions{
+ background-color: #fff !important;
+ border:#000 solid 1px;
+ border-top:none !important;
+ overflow:hidden;
+ width:100%;
+ margin-top:25px;
+ max-height:250px !important;
+ overflow: auto;
+}
+#checkoutSteps .sbOptions li{
+	display:block;
+	width:auto;
+}
+#checkoutSteps .sbOptions a{
+	padding-top:6px;
+	padding-bottom:6px;
+}
+#checkoutSteps .sbOptions .active a,
+#checkoutSteps .sbOptions a:hover{
+	background:#ccc;
+}
+#shopping-cart-table .lnkBackToProd{
+	display:none;
+}
+#advice-required-entry-advancenewsletter{
+	display: block !important;
+	opacity:1 !important;
+	}
+.succcessMsg div{
+	display:none;
+}
+.succcessMsg div:first-child{
+	display:block;
+}
+.cmsResult{
+	text-align:left;
+	padding:0 20px;
+}
+.cmsResult a{
+	color:#333;
+}
+.searchHolder  .sbOptions{
+	height:200px;
+	overflow:auto;
 }
