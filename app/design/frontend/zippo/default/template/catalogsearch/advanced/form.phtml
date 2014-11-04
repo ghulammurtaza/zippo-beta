@@ -34,9 +34,39 @@
 <script type="text/javascript">
     jQuery(function() {
         jQuery("select").selectbox();
+		jQuery(".cmsSaarchTab").click(function(e) {
+            jQuery(".proSearchTab").removeClass("active");
+			jQuery(".cmsSaarchTab").addClass("active");
+			jQuery("#cmsSearch").show();
+			jQuery("#proSearch").hide();
+        });;
+		jQuery(".proSearchTab").click(function(e) {
+            jQuery(".cmsSaarchTab").removeClass("active");
+			jQuery(".proSearchTab").addClass("active");
+			jQuery("#proSearch").show();
+			jQuery("#cmsSearch").hide();
+        });;
+
     });
 </script>
-
+<style>
+.searchHolder  .loader-cart{
+	position:static;
+	display:inline-block;
+	width:100%;
+	text-align:center;
+	margin-bottom:20px;
+	background-position:center center;
+}
+#results{
+	text-align:center;
+}
+#results ul,
+#results .search-cout{
+	text-align:left;
+	
+}
+</style>
 <?php
 $catModel = Mage::getModel('catalog/category');
 $currencySymbol = Mage::app()->getLocale()->currency($currency_code)->getSymbol();
@@ -54,12 +84,24 @@ $currencySymbol = Mage::app()->getLocale()->currency($currency_code)->getSymbol(
                     </p>
                 </div>
                 <div class="searchTabs">
-                    <a class="active" href="#">Zippo Products</a>                   
-                    <!--                   <a href="#">Zippo Info</a>-->
+                    <a class="active proSearchTab" class="active" href="#">Zippo Products</a>                   
+                    <a class="cmsSaarchTab" href="#">Zippo Info</a>
                 </div>
             </div><!-- eo .searchTop -->
             <!-- eo .searchFilters -->
-            <div class="searchFilterHolder">
+            <div id="cmsSearch" class="searchFilterHolder" style="display:none; height:72px;">
+                <div class="searchBox" style=" left:20px; right:auto;">
+                    <label for="txtSearchTerm">Keywords</label>
+                   
+                     <input type="text" class="txtSearchTerm inactive" name="cmssearch" id="cmssearch">  
+                </div>
+                
+                
+                
+                <input style=" margin-left:360px;" type="button" id="btnSrchSubmit" class="btnSrchSubmit" value="Submit" onclick="postCmsRequest();return false;" />
+            </div>
+           
+            <div id="proSearch" class="searchFilterHolder" style="display: block;">
                 <div class="searchBox">
                     <label for="txtSearchTerm">Keywords</label><input type="text" name="txtSearchTerm" id="txtSearchTerm" placeholder="Enter Keywords" class="txtSearchTerm inactive" />
                 </div>
@@ -160,7 +202,8 @@ $currencySymbol = Mage::app()->getLocale()->currency($currency_code)->getSymbol(
                         <!-- eo .listProdPopUps -->
                         <div class="clearfix">
                             <div class="clearfix" id="lighterHolder" style="background:#FFF;">
-                                <div id="results"> </div>
+                             <span class="loader-cart" style="display:none"></span>
+                                <div id="results"></div>
 
                             </div>
 
@@ -169,8 +212,8 @@ $currencySymbol = Mage::app()->getLocale()->currency($currency_code)->getSymbol(
                     </div>
                 </section> 
             </section>
-            <span class="loader-cart" style="display:none"></span>
-            <input type="text" name="cmssearch" id="cmssearch">  <input type="button" id="btnSrchSubmit" class="btnSrchSubmit" value="Submit" onclick="postCmsRequest();return false;" />
+            
+           
         </section><!-- eo .searchHolder -->
 </form>
 
@@ -180,8 +223,16 @@ $currencySymbol = Mage::app()->getLocale()->currency($currency_code)->getSymbol(
 
 <script>
     function postCmsRequest(){
-       $j(".loader-cart").show();
-       $j.ajax({
+		cms = $j("#cmssearch").val();
+       
+	   if (cms == false) {
+		   	alert("enter keyword")
+            return false;
+		
+        } 
+		else{
+			$j(".loader-cart").show();
+			  $j.ajax({
                 url: "<?php echo $this->getUrl('search/index/cms') ?>",
                 type: "POST",
                 data: {
@@ -192,6 +243,9 @@ $currencySymbol = Mage::app()->getLocale()->currency($currency_code)->getSymbol(
                     $j('#results').html(data);
                 }
             });
+		}
+	   
+
        
        
        

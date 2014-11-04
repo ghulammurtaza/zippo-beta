@@ -268,7 +268,9 @@ $_helper = $this->helper('catalog/output');
                                                     <div class="inner clearfix">
                                                         <div class="prodHero"><img id="product-collection-image-<?php echo $_product->getId(); ?>"
                                                                                    src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(162, 230); ?>"
-                                                                                   alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" /></div>
+                                                                                   alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" />
+                                                                                   <div class="succcessMsg"></div>
+                                                                                   </div>
                                                         <div class="popRight">
                                                             <h2 class="jProductName txtRed"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></h2>
                                                             <h3 class="jProductPrice"><?php

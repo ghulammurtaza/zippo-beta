@@ -31,6 +31,27 @@
  * @var $this Mage_Checkout_Block_Cart
  */
 ?>
+<script>
+jQuery(document).ready(function(e) {
+	
+	jQuery(".cart-table tr td .btn-remove").click(function(e) {
+   
+		
+				setTimeout(function(){
+			
+			     location.reload();
+
+			//jQuery("html").animate({scrollTop: 0}, 500);
+			return false;
+		 
+		 }, 1000);
+		 
+    });
+
+	
+});	
+
+</script>
 <?php $_priceDisplay = ($this->helper('tax')->displayCartBothPrices()) ? 'display-both-prices' : 'display-single-price'; ?>
 
 <section class="row">

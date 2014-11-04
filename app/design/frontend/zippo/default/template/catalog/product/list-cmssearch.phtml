@@ -15,18 +15,19 @@
 <?php
 $cmspages = $this->getCmsCollection();
 ?>
+<div class="search-cout">Your search returned <?php echo count($cmspages) ?> results</div>
 <?php if (count($cmspages)): ?>
-    <ul>
+    <div class="cmsResult">
         <?php foreach ($cmspages as $_page): ?>
-        <li>
-            <a href="<?php echo $this->getUrl($_page['identifier']) ?>" title="<?php echo $_page['title'] ?>" class="prodLink">
+        <div class="cmsResult-itmes prodListRow">
+            <a href="<?php echo $this->getUrl($_page['identifier']) ?>" title="<?php echo $_page['title'] ?>" >
                 <?php echo strip_tags(html_entity_decode(substr($_page['content'], 0, 1000)))?>
             </a>
-        </li>
+        </div>
         <?php endforeach; ?>
-    </ul>
+    </div>
 <?php endif; ?>
-Your search returned <?php echo count($cmspages) ?> results</div>
+</div>
 
 <script>
     $j(document).ready(function() {

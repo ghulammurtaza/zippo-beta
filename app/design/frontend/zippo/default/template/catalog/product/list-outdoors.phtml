@@ -1,78 +1,153 @@
 <script>
-    function test() {
-        jQuery(".pouplist li .btnAddCart").click(function(e) {
-            jQuery(".productListingPopup .prodCart").stop();
-            jQuery(".productListingPopup .prodCart").append("<span class='loader-cart'></span>");
-            setTimeout(function() {
-                jQuery(".productListingPopup .prodCart span").remove();
-                jQuery("html").clearQueue();
-                jQuery(".productListingPopup .prodCart").clearQueue();
-                jQuery(".pouplist li .listProdPopUps").hide();
-                jQuery("html").animate({scrollTop: 0}, 500);
+function test (){
+	jQuery(".pouplist li .btnAddCart").click(function(e) {
+		jQuery(".productListingPopup .prodCart").stop();
+		jQuery(".productListingPopup .prodCart").append("<span class='loader-cart'></span>");
+		setTimeout(function(){
+			jQuery(".productListingPopup .prodCart span").remove();
+			jQuery(".productListingPopup .inner").append("<div class='addedincart'>successfully added to your cart</div>");
+			jQuery("html").clearQueue();
+			jQuery(".productListingPopup .prodCart").clearQueue();
+			//jQuery("html").animate({scrollTop: 0}, 500);
+			
+			return false;
+		 
+		 }, 4000);
+		
+		setTimeout(function(){
+		jQuery(".pouplist li .listProdPopUps").hide();
+		jQuery(".productListingPopup .addedincart").remove();
+		return false;
+		}, 6000);
 
-                return false;
-
-            }, 4000);
-
-        });
-
-
-
-    }
-
-    jQuery(document).ready(function(e) {
-        test();
     });
+
+
+
+	
+}
+
+jQuery(document).ready(function(e) {
+  test(); 
+});
 
 </script>
 
 <script>
-    jQuery(document).ready(function(e) {
-        getScreen = jQuery(window).width();
+(function($) {
+    $.event.special.mousestop = {
+        setup: function(data) {
+            $(this).data('mousestop', _data(data))
+                   .bind('mouseenter.mousestop', _mouseenter)
+                   .bind('mouseleave.mousestop', _mouseleave)
+                   .bind('mousemove.mousestop', _mousemove);
+        },
+        teardown: function() {
+            $(this).removeData('mousestop')
+                   .unbind('.mousestop');
+        }
+    };
 
-        var getlast = getScreen * 54 / 100;
-        jQuery(".multiSlide .prodListSm li").mouseover(function(e) {
-            jQuery(".pouplist li").children(".listProdPopUps").clearQueue();
-            jQuery(".pouplist li").children(".listProdPopUps").hide();
-            jQuery(".pouplist li").children(".listProdPopUps").removeClass("activePopupNew");
-            jQuery(eTop).stop();
-            var eTop = jQuery(this).offset().top; //get the offset top of the element
-            console.log(eTop - jQuery(window).scrollTop());
-            var eTopFinal = eTop - jQuery(window).scrollTop();
-            jQuery(eTopFinal).clearQueue();
+    function _mouseenter() {
+        var _self = this,
+            data = $(this).data('mousestop');
 
-            jQuery(".pouplist li .listProdPopUps").hide();
-            var getID = jQuery(this).data("id") - 1;
+        this.movement = true;
 
-            var getdelay = jQuery(".pouplist li").eq(getID).children(".listProdPopUps");
-            timeout = setTimeout(function() {
-                getdelay.show();
-            }, 5000);
+        if(data.timeToStop) {
+            this.timeToStopTimer = window.setTimeout(function() {
+                _self.movement = false;
+                window.clearTimeout(_self.timer);
+            }, data.timeToStop);
+        }
+    }
+
+    function _mouseleave() {
+        window.clearTimeout(this.timer);
+        window.clearTimeout(this.timeToStopTimer);
+    }
+    
+    function _mousemove() {
+        var $el = $(this),
+            data = $el.data('mousestop');
+
+        if(this.movement) {
+            window.clearTimeout(this.timer);
+            this.timer = window.setTimeout(function() {
+                $el.trigger('mousestop');
+            }, data.delay);
+        }
+    }
+
+    function _data(data) {
+        if($.isNumeric(data)) {
+            data = {delay: data};
+        }
+        else if(typeof data !== 'object') {
+            data = {};
+        }
+
+        return $.extend({}, $.fn.mousestop.defaults, data);
+    }
+
+    $.fn.mousestop = function(data, fn) {
+        if (typeof data === 'function') { fn = data; }
+        return arguments.length > 0 ? this.bind('mousestop', data, fn) : this.trigger('mousestop');
+    };
+
+    $.fn.mousestop.defaults = {
+        delay: 300,
+        timeToStop: null
+    };
+})(jQuery);
 
 
 
-            var position = jQuery(this).offset();
-            jQuery(".pouplist li").eq(getID).children(".listProdPopUps").css("left", position.left);
-            jQuery(".pouplist li").eq(getID).children(".listProdPopUps").css("top", eTopFinal);
+jQuery(document).ready(function(e) {
+	getScreen = jQuery(window).width();
+	
+	var getlast = getScreen * 54 / 100 ;
+	
+	jQuery(".multiSlide .prodListSm li").mousestop(300, function() {
+		
+		jQuery(".pouplist li").children(".listProdPopUps").clearQueue();
+		jQuery(".pouplist li").children(".listProdPopUps").hide();
+		jQuery(".pouplist li").children(".listProdPopUps").removeClass("activePopupNew");
+		jQuery(eTop).stop();
+		var eTop = jQuery(this).offset().top; //get the offset top of the element
+		console.log(eTop - jQuery(window).scrollTop());
+		var eTopFinal = eTop - jQuery(window).scrollTop();
+		jQuery(eTopFinal).clearQueue();
+		
+		jQuery(".pouplist li .listProdPopUps").hide();
+		var getID = jQuery(this).data("id")-1;
 
-            if (position.left > getlast) {
-                jQuery(".pouplist li").eq(getID).addClass("reverse");
-            }
-        });
+		var getdelay = jQuery(".pouplist li").eq(getID).children(".listProdPopUps").fadeIn(300).addClass("activePopupNew");
+		
+		var position = jQuery(this).offset();
+		jQuery(".pouplist li").eq(getID).children(".listProdPopUps").css( "left", position.left );
+		jQuery(".pouplist li").eq(getID).children(".listProdPopUps").css( "top", eTopFinal );
 
-        jQuery(".multiSlide").mouseleave(function(e) {
-            jQuery(".pouplist li .listProdPopUps").hide();
-            jQuery(".pouplist li").removeClass("reverse");
-            clearTimeout(timeout);
-        });
+		if(position.left > getlast){
+		  jQuery(".pouplist li").eq(getID).addClass("reverse");
+	    }
+	
+	});
 
-        jQuery(".productListingPopup").mouseleave(function(e) {
-            jQuery(".pouplist li .listProdPopUps").hide();
-            jQuery(".pouplist li").removeClass("reverse");
-            clearTimeout(timeout);
-        });
+	
+	jQuery(".multiSlide .prodListSm li").mouseover(function(e) {});
 
+	jQuery(".multiSlide").mouseleave(function(e) {
+         jQuery(".pouplist li .listProdPopUps").hide();
+		 jQuery(".pouplist li").removeClass("reverse");
     });
+
+	jQuery(".productListingPopup").mouseleave(function(e) {
+        jQuery(".pouplist li .listProdPopUps").hide();
+		 jQuery(".pouplist li").removeClass("reverse");
+    });
+	
+});
 
 </script>
 <style type="text/css" id="page-css">
