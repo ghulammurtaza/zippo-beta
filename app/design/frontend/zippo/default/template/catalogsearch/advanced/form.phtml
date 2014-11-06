@@ -253,7 +253,8 @@ $currencySymbol = Mage::app()->getLocale()->currency($currency_code)->getSymbol(
     }
     function postRequest() {
         cat = $j("#category_search_field").val();
-        if (cat == 0) {
+        srctxt = $j("#txtSearchTerm").val();
+        if (cat == 0 && 0 === srctxt.length) {
             $j("#category-error").show();
             return false;
         } else {

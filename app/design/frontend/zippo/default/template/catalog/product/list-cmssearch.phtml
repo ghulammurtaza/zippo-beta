@@ -19,16 +19,31 @@ $cmspages = $this->getCmsCollection();
 <?php if (count($cmspages)): ?>
     <div class="cmsResult">
         <?php foreach ($cmspages as $_page): ?>
-        <div class="cmsResult-itmes prodListRow">
-            <a href="<?php echo $this->getUrl($_page['identifier']) ?>" title="<?php echo $_page['title'] ?>" >
-                <?php echo strip_tags(html_entity_decode(substr($_page['content'], 0, 1000)))?>
-            </a>
-        </div>
+            <div class="cmsResult-itmes prodListRow">
+                <a href="<?php echo $this->getUrl($_page['identifier']) ?>" title="<?php echo $_page['title'] ?>" >
+                    <?php echo getHTMLByID($_page['content']);?>
+                </a>
+            </div>
         <?php endforeach; ?>
     </div>
 <?php endif; ?>
 </div>
+<?php
 
+function getHTMLByID($html) {
+    $doc = new DOMDocument();
+    libxml_use_internal_errors(true);
+    $doc->loadHtml($html); // $some_html should contain your html string  
+    $xpath = new DOMXPath($doc);
+    $result = $xpath->query('//*[@id="searchListText"]');
+    if (!empty($result)) {
+        foreach ($result as $link) {
+            return $link->nodeValue;
+        }
+    }
+    return FALSE;
+}
+?>
 <script>
     $j(document).ready(function() {
 
