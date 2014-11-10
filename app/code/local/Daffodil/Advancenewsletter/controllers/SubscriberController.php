@@ -80,7 +80,7 @@ class Daffodil_Advancenewsletter_SubscriberController extends Mage_Newsletter_Su
                 }
 
                 if (is_object($subscriber) && $subscriber->getEmail() != '' && $status == Mage_Newsletter_Model_Subscriber::STATUS_SUBSCRIBED) {
-                    $session->addError($this->__('This email address is already assigned to another user.'));
+                    $session->addError($this->__('This email address is already subscribed.'));
                     $this->_redirectReferer();
                     return;
                 }
