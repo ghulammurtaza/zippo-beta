@@ -217,7 +217,7 @@ p.red {
                         echo $_product->getDescription();
                         ?>
           </div>
-          <?php if($_product->getNameAndFlame()):?>
+          <?php if($_product->getNameAndFlame() != 'no_selection'):?>
           <img id="product-collection-image-<?php echo $_product->getId(); ?>"
                                                      src="<?php echo $this->helper('catalog/image')->init($_product, 'name_and_flame')->keepFrame(false)->resize(162, 230); ?>"
                                                      alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'name_and_flame'), null, true) ?>" />
