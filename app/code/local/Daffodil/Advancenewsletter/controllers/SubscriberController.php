@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Magento
  *
@@ -23,7 +24,6 @@
  * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
  * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
-
 /**
  * Newsletter subscribe controller
  *
@@ -32,26 +32,57 @@
  * @author      Magento Core Team <core@magentocommerce.com>
  */
 require_once("Mage/Newsletter/controllers/SubscriberController.php");
-class Daffodil_Advancenewsletter_SubscriberController extends Mage_Newsletter_SubscriberController
-{
+
+class Daffodil_Advancenewsletter_SubscriberController extends Mage_Newsletter_SubscriberController {
+
     /**
-      * New subscription action
-      */
-    public function newAction()
-    {
+     * New subscription action
+     */
+    public function newAction() {
         if ($this->getRequest()->isPost() && $this->getRequest()->getPost('email')) {
-            $session            = Mage::getSingleton('core/session');
-            $customerSession    = Mage::getSingleton('customer/session');
-            $email              = (string) $this->getRequest()->getPost('email');
+            $session = Mage::getSingleton('core/session');
+            $customerSession = Mage::getSingleton('customer/session');
+            $email = (string) $this->getRequest()->getPost('email');
 
             try {
                 if (!Zend_Validate::is($email, 'EmailAddress')) {
                     Mage::throwException($this->__('Please enter a valid email address.'));
                 }
 
-                if (Mage::getStoreConfig(Mage_Newsletter_Model_Subscriber::XML_PATH_ALLOW_GUEST_SUBSCRIBE_FLAG) != 1 && 
-                    !$customerSession->isLoggedIn()) {
+                $subscriber = Mage::getModel('newsletter/subscriber')->loadByEmail($email);               
+                $status = $subscriber->getSubscriberStatus();
+//exit;
+                if ($this->getRequest()->getPost('unsub') == 1) {
+                    if (is_object($subscriber) && $subscriber->getEmail() != '') {
+                        try {    
+                            Mage::getModel('newsletter/subscriber')->load($subscriber->getId())
+                                    ->unsubscribe();
+                            $session->addSuccess($this->__('You have been unsubscribed.'));
+                            $this->_redirect('mailingsuccess');
+                             return;
+                        } catch (Mage_Core_Exception $e) {
+                            $session->addException($e, $e->getMessage());
+                        }
+                         $this->_redirectReferer();
+                         return;
+                    } else {
+                        $session->addError($this->__('This email address does not exist.'));
+                        $this->_redirectReferer();
+                        return;
+                    }
+                }
+
+
+
+                if (Mage::getStoreConfig(Mage_Newsletter_Model_Subscriber::XML_PATH_ALLOW_GUEST_SUBSCRIBE_FLAG) != 1 &&
+                        !$customerSession->isLoggedIn()) {
                     Mage::throwException($this->__('Sorry, but administrator denied subscription for guests. Please <a href="%s">register</a>.', Mage::helper('customer')->getRegisterUrl()));
+                }
+
+                if (is_object($subscriber) && $subscriber->getEmail() != '' && $status == Mage_Newsletter_Model_Subscriber::STATUS_SUBSCRIBED) {
+                    $session->addError($this->__('This email address is already assigned to another user.'));
+                    $this->_redirectReferer();
+                    return;
                 }
 
                 $ownerId = Mage::getModel('customer/customer')
@@ -60,38 +91,37 @@ class Daffodil_Advancenewsletter_SubscriberController extends Mage_Newsletter_Su
                         ->getId();
                 if ($ownerId !== null && $ownerId != $customerSession->getId()) {
                     Mage::throwException($this->__('This email address is already assigned to another user.'));
+                    $this->_redirectReferer();
                 }
 
-                $status = Mage::getModel('newsletter/subscriber')->subscribe($email);
-                if ($status == Mage_Newsletter_Model_Subscriber::STATUS_NOT_ACTIVE) {
+               $status = Mage::getModel('newsletter/subscriber')->subscribe($email); 
+               if ($status == Mage_Newsletter_Model_Subscriber::STATUS_NOT_ACTIVE) {
                     $session->addSuccess($this->__('Confirmation request has been sent.'));
-                }
-                else {
+                } else {
+                    $subscriber->setStatus(Mage_Newsletter_Model_Subscriber::STATUS_SUBSCRIBED);
                     $session->addSuccess($this->__('Thank you for your subscription.'));
                 }
-            
-                 $subscriber = Mage::getModel('newsletter/subscriber')->loadByEmail($email);
-                 $subscriber->setSalutation((string) $this->getRequest()->getPost('salutation'));
-                 $subscriber->setFirstname((string) $this->getRequest()->getPost('firstname'));
-                 $subscriber->setLastname((string) $this->getRequest()->getPost('lastname'));
-                 $subscriber->setCompany((string) $this->getRequest()->getPost('company'));
-                 $subscriber->setAddress((string) $this->getRequest()->getPost('address'));
-                 $subscriber->setCountry((string) $this->getRequest()->getPost('country_id'));
-                 $subscriber->setCity((string) $this->getRequest()->getPost('city'));
-                 $subscriber->setState((string) $this->getRequest()->getPost('hidden-name'));
-                 $subscriber->setPhoneno((string) $this->getRequest()->getPost('phoneno'));
-                 $subscriber->setFax((string) $this->getRequest()->getPost('fax'));
-                 $subscriber->setZipcode((string) $this->getRequest()->getPost('zipcode'));
+
+
+                $subscriber->setSalutation((string) $this->getRequest()->getPost('salutation'));
+                $subscriber->setFirstname((string) $this->getRequest()->getPost('firstname'));
+                $subscriber->setLastname((string) $this->getRequest()->getPost('lastname'));
+                $subscriber->setCompany((string) $this->getRequest()->getPost('company'));
+                $subscriber->setAddress((string) $this->getRequest()->getPost('address'));
+                $subscriber->setCountry((string) $this->getRequest()->getPost('country_id'));
+                $subscriber->setCity((string) $this->getRequest()->getPost('city'));
+                $subscriber->setState((string) $this->getRequest()->getPost('hidden-name'));
+                $subscriber->setPhoneno((string) $this->getRequest()->getPost('phoneno'));
+                $subscriber->setFax((string) $this->getRequest()->getPost('fax'));
+                $subscriber->setZipcode((string) $this->getRequest()->getPost('zipcode'));
                 //don't forget to save the subscriber!
                 $subscriber->save();
-
-                
-            }
-            catch (Mage_Core_Exception $e) {
+            } catch (Mage_Core_Exception $e) {
                 $session->addException($e, $this->__('There was a problem with the subscription: %s', $e->getMessage()));
-            }
-            catch (Exception $e) {
+                $this->_redirectReferer();
+            } catch (Exception $e) {
                 $session->addException($e, $this->__('There was a problem with the subscription.'));
+                $this->_redirectReferer();
             }
         }
         $this->_redirect('mailingsuccess');
@@ -100,17 +130,16 @@ class Daffodil_Advancenewsletter_SubscriberController extends Mage_Newsletter_Su
     /**
      * Subscription confirm action
      */
-    public function confirmAction()
-    {
-        $id    = (int) $this->getRequest()->getParam('id');
-        $code  = (string) $this->getRequest()->getParam('code');
+    public function confirmAction() {
+        $id = (int) $this->getRequest()->getParam('id');
+        $code = (string) $this->getRequest()->getParam('code');
 
         if ($id && $code) {
             $subscriber = Mage::getModel('newsletter/subscriber')->load($id);
             $session = Mage::getSingleton('core/session');
 
-            if($subscriber->getId() && $subscriber->getCode()) {
-                if($subscriber->confirm($code)) {
+            if ($subscriber->getId() && $subscriber->getCode()) {
+                if ($subscriber->confirm($code)) {
                     $session->addSuccess($this->__('Your subscription has been confirmed.'));
                 } else {
                     $session->addError($this->__('Invalid subscription confirmation code.'));
@@ -126,26 +155,24 @@ class Daffodil_Advancenewsletter_SubscriberController extends Mage_Newsletter_Su
     /**
      * Unsubscribe newsletter
      */
-    public function unsubscribeAction()
-    {
-        $id    = (int) $this->getRequest()->getParam('id');
-        $code  = (string) $this->getRequest()->getParam('code');
+    public function unsubscribeAction() {
+        $id = (int) $this->getRequest()->getParam('id');
+        $code = (string) $this->getRequest()->getParam('code');
 
         if ($id && $code) {
             $session = Mage::getSingleton('core/session');
             try {
                 Mage::getModel('newsletter/subscriber')->load($id)
-                    ->setCheckCode($code)
-                    ->unsubscribe();
+                        ->setCheckCode($code)
+                        ->unsubscribe();
                 $session->addSuccess($this->__('You have been unsubscribed.'));
-            }
-            catch (Mage_Core_Exception $e) {
+            } catch (Mage_Core_Exception $e) {
                 $session->addException($e, $e->getMessage());
-            }
-            catch (Exception $e) {
+            } catch (Exception $e) {
                 $session->addException($e, $this->__('There was a problem with the un-subscription.'));
             }
         }
         $this->_redirectReferer();
     }
+
 }
