@@ -11,5 +11,16 @@
                 <class>Zippo_Custom_Helper</class>
             </zippo>
         </helpers>  
-    </global>    
+    </global> 
+    <frontend>
+        <routers>
+            <custom>
+                <use>standard</use>
+                <args>
+                    <module>Zippo_Custom</module>
+                    <frontName>zippo</frontName>
+                </args>
+            </custom>
+        </routers>
+    </frontend>   
 </config>
