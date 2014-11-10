@@ -39,7 +39,7 @@ function getHTMLByID($html) {
     $result = $xpath->query('//*[@id="searchListText"]');
     if (!empty($result)) {
         foreach ($result as $link) {
-            return $link->nodeValue;
+            return substr($link->nodeValue, 0, 300);
         }
     }
     return FALSE;
