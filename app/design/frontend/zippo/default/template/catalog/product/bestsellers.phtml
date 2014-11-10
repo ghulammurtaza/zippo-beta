@@ -34,8 +34,7 @@ $products = Mage::getResourceModel('reports/product_collection')
                             <a style="cursor:pointer;" class="proname-link" onclick="setLocation('<?php echo (string)Mage::helper('checkout/cart')->getAddUrl($product) ?>?options=cart')"></a>
                             </div>
                          </li>
-                        
-                             <?php endforeach;?>
+                         <?php endforeach;?>
                     </ul>
                     <div class="sliderLinks clearfix">
                 <a id="btnBsProdInfo" title="product info"></a>
