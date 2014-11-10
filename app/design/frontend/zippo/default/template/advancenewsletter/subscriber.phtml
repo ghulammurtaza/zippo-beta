@@ -43,7 +43,7 @@ $no_of_line = Mage::getStoreConfig('advancenewsletter/all_settings/lines_in_addr
 
 <div class="newsletter">
 
-<form action="<?php echo $this->getFormActionUrl() ?>" method="post" id="newsletter-validate-detail">
+    <form action="<?php echo $this->getFormActionUrl() ?>" method="post" id="newsletter-validate-detail" name="newsletter-form">
 
             
 
@@ -299,9 +299,10 @@ $no_of_line = Mage::getStoreConfig('advancenewsletter/all_settings/lines_in_addr
         </div>
         
         <div class="acctCreate" id="buttons" style=" border:none; margin-top:0px;">
-        
+            <input type="hidden" name="unsub" id="unsub" value="0" />
  <button type="submit" style="float:left;" onclick="getCategories()" title="<?php echo $this->__('Subscribe') ?>" class="button"><?php echo $this->__('Subscribe') ?></button>
- <button title="<?php echo $this->__('Unsubscribe') ?>" style="float:left;" class="button"><?php echo $this->__('Unsubscribe') ?></button>
+ <button type="submit" style="float:left;" onclick="setUnsub();" title="<?php echo $this->__('Subscribe') ?>" class="button"><?php echo $this->__('Unsubscribe') ?></button>
+ 
 
         </div>
 
@@ -311,6 +312,9 @@ $no_of_line = Mage::getStoreConfig('advancenewsletter/all_settings/lines_in_addr
 </form>
     
     <script type="text/javascript">
+        function setUnsub(){
+            $j('#unsub').val(1);
+        }
         function updateRegion() {
             var regionName = document.getElementById("region_id").value;
             document.getElementById("hidden-id").value = regionName;
