@@ -31,7 +31,7 @@ class Zippo_Search_Block_Search extends Mage_Core_Block_Template
              }
              
              if ((int)$searchCriteria['fnc']){
-                 $collection->addAttributeToFilter('finishesncolors',  array('eq' => $searchCriteria['fnc'])); 
+                 $collection->addAttributeToFilter('finishes_colors',  array('eq' => $searchCriteria['fnc'])); 
              }
              
              if ((int)$searchCriteria['price']){

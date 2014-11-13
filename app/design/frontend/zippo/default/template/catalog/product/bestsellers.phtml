@@ -3,86 +3,88 @@ $visibility = array(
     Mage_Catalog_Model_Product_Visibility::VISIBILITY_BOTH,
     Mage_Catalog_Model_Product_Visibility::VISIBILITY_IN_CATALOG
 );
-$currentCategory = Mage::registry('current_category');
 $storeId = Mage::app()->getStore()->getId();
-$collection = Mage::getResourceModel('reports/product_collection')
-        ->addOrderedQty()
-        ->addAttributeToFilter('visibility', $visibility);
+$currentCategory = Mage::registry('current_category');
 if ($currentCategory && $currentCategory->getId() > 0) {
-    $collection->addCategoryFilter(Mage::getModel('catalog/category')->load($currentCategory->getId()));
+    $products = Mage::getResourceModel('reports/product_collection')
+                    ->addOrderedQty()
+                    ->addAttributeToFilter('visibility', $visibility)
+                    ->addCategoryFilter(Mage::getModel('catalog/category')->load($currentCategory->getId()))
+                    ->addAttributeToSelect('*')
+                    ->setStoreId($storeId)
+                    ->addStoreFilter($storeId)
+                    ->setOrder('ordered_qty', 'desc')
+                    ->getSelect()->limit(10)->query();
+} else {
+    $products = Mage::getResourceModel('reports/product_collection')
+                    ->addOrderedQty()
+                    ->addAttributeToFilter('visibility', $visibility)
+                    ->addAttributeToSelect('*')
+                    ->setStoreId($storeId)
+                    ->addStoreFilter($storeId)
+                    ->setOrder('ordered_qty', 'desc')
+                    ->getSelect()->limit(10)->query();
 }
 
-$products = $collection->addAttributeToSelect('*')
-                ->setStoreId($storeId)
-                ->addStoreFilter($storeId)
-                ->setOrder('ordered_qty', 'desc')
-                ->getSelect()->limit(10)->query();
-$isData = false;
-foreach ($products as $productdata) {
-    if ($productdata['entity_id']>0){
-        $isData = true;
-        break;
+if (count($products) > 0) {
+    foreach ($products as $productdata) {
+        $_bestsellers[] = Mage::getModel('catalog/product')->load($productdata['entity_id'])->addData($productdata);
     }
 }
 ?>
-<?php if ($isData):?>
-<section class="listKickersRight">
-    <?php if (count($products) > 0): ?>
-        <section class="bestSellKicker" style="margin-top:0;">
-            <div class="inner clearfix">
-                <h3 class="bestSellHdr txtBebas">
-                    best sellers
-                </h3>
-                <div class="bsSlider">
-                    <div class="bsFaker"></div>
-                    <strong class="shortDesc"></strong>
-                    <div class="bsSlideWrap clearfix" id="bsKickSlide">
-                        <ul id="bestSellersList">
-                            <?php foreach ($products as $_product): ?>
-                                <?php
-                                $product = Mage::getModel('catalog/product');
-                                $product->load($_product['entity_id']);
-                                ?>
-                                <li class="bsSlideItem"><img src="<?php echo $this->helper('catalog/image')->init($product, 'small_image')->resize(162, 230) ?>" alt="<?php echo $product->getName() ?>" />
-                                    <div class="proname">
-                                        <a class="proname-link" href="<?php echo $product->getProductUrl() ?>">&nbsp;</a>
-                                        <a style="cursor:pointer;" class="proname-link" onclick="setLocation('<?php echo (string) Mage::helper('checkout/cart')->getAddUrl($product) ?>?options=cart')"></a>
-                                    </div>
-                                </li>
-
-                            <?php endforeach; ?>
-                        </ul>
-                        <div class="sliderLinks clearfix">
-                            <a id="btnBsProdInfo" title="product info"></a>
-                            <a id="btnBsAddCart" title="add to cart"></a>
+<?php if (count($_bestsellers) > 0): ?>
+    <section class="listKickersRight">
+        <?php if (count($_bestsellers) > 0): ?>
+            <section class="bestSellKicker" style="margin-top:0;">
+                <div class="inner clearfix">
+                    <h3 class="bestSellHdr txtBebas">
+                        best sellers
+                    </h3>
+                    <div class="bsSlider">
+                        <div class="bsFaker"></div>
+                        <strong class="shortDesc"></strong>
+                        <div class="bsSlideWrap clearfix" id="bsKickSlide">
+                            <ul id="bestSellersList">
+                                <?php foreach ($_bestsellers as $product): ?>
+                                    <li class="bsSlideItem"><img src="<?php echo $this->helper('catalog/image')->init($product, 'small_image')->resize(162, 230) ?>" alt="<?php echo $product->getName() ?>" />
+                                        <div class="proname">
+                                            <a class="proname-link" href="<?php echo $product->getProductUrl() ?>">&nbsp;</a>
+                                            <a style="cursor:pointer;" class="proname-link" onclick="setLocation('<?php echo (string) Mage::helper('checkout/cart')->getAddUrl($product) ?>?options=cart')"></a>
+                                        </div>
+                                    </li>
+                                <?php endforeach; ?>
+                            </ul>
+                            <div class="sliderLinks clearfix">
+                                <a id="btnBsProdInfo" title="product info"></a>
+                                <a id="btnBsAddCart" title="add to cart"></a>
+                            </div>
                         </div>
-                    </div>
-                </div>            
-            </div>
+                    </div>            
+                </div>
 
-        </section>
-    <?php endif; ?>
-</section>
-<script>
+            </section>
+        <?php endif; ?>
+    </section>
+    <script>
 
-    jQuery(document).ready(function(e) {
+        jQuery(document).ready(function(e) {
 
-        jQuery("#bestSellersList .proname a + a").click(function(e) {
-            jQuery(".bestSellKicker").stop();
-            jQuery(".bestSellKicker").append("<span class='loader-cart'></span>");
-            setTimeout(function() {
-                jQuery(".bestSellKicker .loader-cart").remove();
-                jQuery("html").clearQueue();
-                jQuery(".bestSellKicker .loader-cart").clearQueue();
-                jQuery("html").animate({scrollTop: 0}, 500);
+            jQuery("#bestSellersList .proname a + a").click(function(e) {
+                jQuery(".bestSellKicker").stop();
+                jQuery(".bestSellKicker").append("<span class='loader-cart'></span>");
+                setTimeout(function() {
+                    jQuery(".bestSellKicker .loader-cart").remove();
+                    jQuery("html").clearQueue();
+                    jQuery(".bestSellKicker .loader-cart").clearQueue();
+                    jQuery("html").animate({scrollTop: 0}, 500);
 
-                return false;
+                    return false;
 
-            }, 5000);
+                }, 5000);
+
+            });
 
         });
 
-    });
-
-</script>
-<?php endif;?>
+    </script>
+<?php endif; ?>
