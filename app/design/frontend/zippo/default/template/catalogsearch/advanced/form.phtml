@@ -162,7 +162,7 @@ $currencySymbol = Mage::app()->getLocale()->currency($currency_code)->getSymbol(
                         </select>
                     </li>   
                     <?php
-                    $fncAttribute = Mage::getModel('eav/entity_attribute')->loadByCode(Mage_Catalog_Model_Product::ENTITY, 'finishesncolors');
+                    $fncAttribute = Mage::getModel('eav/entity_attribute')->loadByCode(Mage_Catalog_Model_Product::ENTITY, 'finishes_colors');
 
                     /** @var $attribute Mage_Eav_Model_Entity_Attribute */
                     $fncOptions = Mage::getResourceModel('eav/entity_attribute_option_collection')

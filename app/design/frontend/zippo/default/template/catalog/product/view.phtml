@@ -217,7 +217,12 @@ p.red {
                         echo $_product->getDescription();
                         ?>
           </div>
-                                                       <?php if ($_product->getCountryOfManufacture() == 'US'): ?>
+          <div class="nameandflame" style="text-align:right;">
+           <?php if($_product->getNameAndFlame() != 'no_selection' && ($_product->getNameAndFlame() != '')):?>
+          <img id="product-collection-image-<?php echo $_product->getId(); ?>"
+                                                     src="<?php echo $this->helper('catalog/image')->init($_product, 'name_and_flame')->keepFrame(false)->resize(162, 230); ?>"
+                                                     alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'name_and_flame'), null, true) ?>" />
+          <?php endif; ?> </div>                                                        <?php if ($_product->getCountryOfManufacture() == 'US'): ?>
           <ul class="prodShoutOuts">
             <li><img src="<?php echo $this->getSkinUrl('img/prod_made_USA.gif', array('_secure' => true)) ?>" alt="Made in the USA" width="125" height="30" /></li>
           </ul>
@@ -227,7 +232,18 @@ p.red {
           
           
         
-            
+             <?php 
+			 $attribute =  $_product->getData('name_and_flame');
+if ($attribute)
+{
+	?>
+    <img style="height:45px" id="product-collection-image-<?php echo $_product->getId(); ?>"
+                                                     src="<?php echo $this->helper('catalog/image')->init($_product, 'name_and_flame')->keepFrame(false)->resize($_imgSize); ?>" /> 
+    <?php
+	
+    //echo $attribute_value = $attribute ->getFrontend()->getValue($_product);
+}
+			  ?>
              
              
                                                      </div>
