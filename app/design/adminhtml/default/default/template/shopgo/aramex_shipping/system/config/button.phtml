@@ -1,0 +1,47 @@
+<script type="text/javascript">//<![CDATA[
+var aramex = {
+    passChanged: 0,
+    pinChanged: 0,
+    elmClassPrefix: '',
+    checkSender: 'system',
+    supplierId: '<?php echo $this->getData('id') ?>'
+}
+
+document.observe("dom:loaded", function() {
+    if ($(document.body).hasClassName('adminhtml-system-config-edit')) {
+        aramex.elmClassPrefix = 'carriers_aramex_';
+    } else if ($(document.body).hasClassName('aramexshipping-adminhtml-aramex-edit')) {
+        aramex.checkSender = 'supplier';
+    }
+    $(aramex.elmClassPrefix + 'password').observe('change', function(event) {
+        aramex.passChanged = 1;
+    });
+});
+
+function checkAramexAccount() {
+    var _params = {
+        username: $(aramex.elmClassPrefix + 'username').value,
+        password: $(aramex.elmClassPrefix + 'password').value,
+        account_country_code: $(aramex.elmClassPrefix + 'account_country_code').value,
+        account_entity: $(aramex.elmClassPrefix + 'account_entity').value,
+        account_number: $(aramex.elmClassPrefix + 'account_number').value,
+        account_pin: $(aramex.elmClassPrefix + 'account_pin').value,
+        sender: aramex.checkSender,
+        pass_changed: aramex.passChanged,
+        pin_changed: aramex.pinChanged
+    };
+    if (aramex.checkSender == 'supplier') {
+        _params.id = aramex.supplierId;
+    }
+    new Ajax.Request('<?php echo $this->getAjaxCheckUrl() ?>', {
+        parameters: _params,
+        onSuccess: function(transport) {
+            if (transport.responseText) {
+                alert(transport.responseText);
+            }
+        }
+    });
+}
+//]]></script>
+
+<?php echo $this->getButtonHtml() ?>

@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <aramexshipping_adminhtml_aramex_index>
+        <reference name="content">
+            <block type="aramexshipping/adminhtml_shipping" name="aramexshipping" />
+        </reference>
+    </aramexshipping_adminhtml_aramex_index>
+</layout>
