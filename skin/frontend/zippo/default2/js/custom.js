@@ -30,7 +30,7 @@ jQuery(function()
     );
 });
 
-function test (){
+function popUp (){
 
 	jQuery(".listProdPopUps").mouseleave(function(e) {
 		 jQuery(".products-grid > li").removeClass("popupActive");
@@ -47,11 +47,11 @@ function test (){
 	
 		
 		jQuery(".productListingPopup .prodCart").append("<span class='loader-cart'></span>");
-		var appndMsg = jQuery(this).parents(".inner")
+		//var appndMsg = jQuery(".productListingPopup .succcessMsg");
 		setTimeout(function(){
 			
 			jQuery(".productListingPopup .prodCart span").remove();
-			appndMsg.append("<div class='addedincart'>successfully added to your cart</div>");
+			jQuery(".productListingPopup .succcessMsg").append("<div class='addedincart'>successfully added to your cart</div>");
 
 
 			//jQuery("html").animate({scrollTop: 0}, 500);
@@ -146,16 +146,23 @@ jQuery(".productListingPopup .inner").clearQueue();
 
 jQuery(document).ready(function(e) {
 		
-  jQuery('.products-grid > li').mousestop(1000, function() {
+  jQuery('.products-grid > li').mousestop(300, function() {
 		jQuery(this).addClass("popupActive");
-		test();
+		popUp();
 		
 });
   // 
 });
 jQuery(window).scroll(function(e) {
-   jQuery('.products-grid > li').mousestop(1000, function() {
+   jQuery('.products-grid > li').mousestop(300, function() {
 		jQuery(this).addClass("popupActive");
-		test();
+		popUp();
 });
 });
+
+function addtocart(id, url) {
+        qty = jQuery('#txtProdQty' + id).val();
+        url = url + '&qty=' + qty;
+        setLocation(url);
+        return false;
+    }

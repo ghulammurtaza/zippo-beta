@@ -12778,8 +12778,8 @@ animation: myfirst 1s;
 	margin-top:20px;
 }
 .searhpage .listKickersRight{
-	position:absolute;
-	right:0px;
+/*	position:absolute;
+*/	right:0px;
 	top:0px;
 	margin-top:0 !important;
 }
@@ -13053,4 +13053,29 @@ animation: myfirst 1s;
 .searchHolder  .sbOptions{
 	height:200px;
 	overflow:auto;
+}
+/*Added by naveed*/
+.cns-item img{
+	max-width:100%;
+	position:relative;
+	left:2px;
+	height:254px;
+}
+#cnslider-container{
+	width:214px !important;
+	height:auto !important;
+	padding-top:20px;
+	float:right;
+}
+.cns-contentbox{
+	display:none;
+}
+
+.cns-item{
+	display:block;
+	border-radius: 15px;
+    overflow: hidden;
+}
+.prodLongDesc{
+	text-align:left;
 }
