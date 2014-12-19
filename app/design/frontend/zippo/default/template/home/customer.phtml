@@ -44,96 +44,96 @@
 </style>
 
 <ul id="contactOptions" class="contactOpts txtBebas">
-  <li class="first"><a class="contactOpt" id="lnkOnlineOrders">Online orders</a> </li>
-  <li class="two"><a class="contactOpt" id="lnkSales" >New Retailer Inquiries</a> </li>
-  <li class="three"><a class="contactOpt" id="lnkMedia">Media and PR</a> </li>
-  <li class="four"><a class="contactOpt" id="lnkGeneral">General Inquiries</a> </li>
+  <li class="first"><a class="contactOpt" id="lnkOnlineOrders"><?php echo $this->__('Online orders') ?></a> </li>
+  <li class="two"><a class="contactOpt" id="lnkSales" ><?php echo $this->__('New Retailer Inquiries') ?></a> </li>
+  <li class="three"><a class="contactOpt" id="lnkMedia"><?php echo $this->__('Media and PR') ?></a> </li>
+  <li class="four"><a class="contactOpt" id="lnkGeneral"><?php echo $this->__('General Inquiries') ?></a> </li>
 </ul>
 <div id="contactForms" class="contactForms">
   <div id="dvOnlineOrders" class="oneform">
   
     <div id="from1" class="frombox">
-    <h3 id="contactHeading" class="txtRed txtBebas">ONLINE ORDERS</h3>
-    <p class="txtBold">Providing exceptional service is our priority; feedback is always welcomed. If your inquiry is time-sensitive, please call us Monday-Friday 8:00 am to 4:30 pm EST at 888.442.1932.</p>
-    <p class="txtBold">Fields marked with <strong class="txtRed">*</strong> are required.</p>
+    <h3 id="contactHeading" class="txtRed txtBebas"><?php echo $this->__('ONLINE ORDERS') ?></h3>
+    <p class="txtBold"><?php echo $this->__('ONLINE ORDERS') ?><?php echo $this->__('submitroviding exceptional service is our priority; feedback is always welcomed. If your inquiry is time-sensitive, please call us Monday-Friday 8:00 am to 4:30 pm EST at 888.442.1932.') ?></p>
+    <p class="txtBold"><?php echo $this->__('Fields marked with') ?> <strong class="txtRed">*</strong><?php echo $this->__('are required') ?> .</p>
     <div class="tab-1">
       <form method="post" action="" name="contact_frm" id="contact_frm1">
     
         <ul class="contactFields">
           <li id="liOrderNum">
-            <label class="txtBlack txtBebas" for="txtOrderNumber">Order Number <strong class="txtRed">*</strong></label>
-				    <p class="red" id="txtOrderNumber_1_error">Name is required</p>
+            <label class="txtBlack txtBebas" for="txtOrderNumber"><?php echo $this->__('Order Number') ?> <strong class="txtRed">*</strong></label>
+				    <p class="red" id="txtOrderNumber_1_error"><?php echo $this->__('Name is required') ?></p>
             <input type="text"  class="txtDef" id="txtOrderNumber_1" name="txtOrderNumber_1" value=""  />
              </li>
           
           <li class="clearfix">
             <div class="width50">
-              <label class="txtBlack txtBebas" for="txtFname">First Name <strong class="txtRed">*</strong></label>
-              <p class="red" id="txtFname_1_error">Name is required</p>
+              <label class="txtBlack txtBebas" for="txtFname"><?php echo $this->__('First Name') ?> <strong class="txtRed">*</strong></label>
+              <p class="red" id="txtFname_1_error"><?php echo $this->__('Name is required') ?></p>
               <input type="text" tabindex="2" class="txtDef" id="txtFname_1" name="txtFname_1" >
             </div>
             <div class="width50">
-              <label class="txtBlack txtBebas" for="txtLname">Last Name <strong class="txtRed">*</strong></label>
-				 <p class="red" id="txtLname_1_error">Name is required</p>
+              <label class="txtBlack txtBebas" for="txtLname"><?php echo $this->__('Last Name') ?><strong class="txtRed">*</strong></label>
+				 <p class="red" id="txtLname_1_error"><?php echo $this->__('Name is required') ?></p>
               <input type="text" tabindex="3" class="txtDef" id="txtLname_1" name="txtLname_1" >
             </div>
           </li>
           <li class="clearfix">
             <div class="width50">
-              <label class="txtBlack txtBebas" for="txtStreet">Street Address <strong class="txtRed">*</strong></label>
-			  <p class="red" id="txtStreet_1_error">Name is required</p>
+              <label class="txtBlack txtBebas" for="txtStreet"><?php echo $this->__('Street Address ') ?><strong class="txtRed">*</strong></label>
+			  <p class="red" id="txtStreet_1_error"><?php echo $this->__('Name is required') ?></p>
               <input type="text" tabindex="4" class="txtDef" id="txtStreet_1" name="txtStreet_1" >
             </div>
             <div class="width50">
-              <label class="txtBlack txtBebas" for="txtStreet2">Street Address 2</label>
+              <label class="txtBlack txtBebas" for="txtStreet2"><?php echo $this->__('Street Address 2') ?></label>
               <input type="text" tabindex="5" class="txtDef" id="txtStreet2_1" name="txtStreet2_1"  >
             </div>
           </li>
           <li class="clearfix">
             <div class="width50">
-              <label class="txtBlack txtBebas" for="txtCity">City <strong class="txtRed">*</strong></label>
-              <p class="red" id="txtCity_1_error">Name is required</p>
+              <label class="txtBlack txtBebas" for="txtCity"><?php echo $this->__('City') ?><strong class="txtRed">*</strong></label>
+              <p class="red" id="txtCity_1_error"><?php echo $this->__('Name is required') ?></p>
               <input type="text" tabindex="6" class="txtDef" id="txtCity_1" name="txtCity_1" >
             </div>
             <div id="divSelState" class="width50">
-              <label class="txtBlack txtBebas" for="selState-button">State <strong class="txtRed">*</strong></label>
-              <p class="red" id="state_1_error">Name is required</p>
+              <label class="txtBlack txtBebas" for="selState-button"><?php echo $this->__('State') ?> <strong class="txtRed">*</strong></label>
+              <p class="red" id="state_1_error"><?php echo $this->__('Name is required') ?></p>
               <select name="state" id="state_1">
-                <option value="Duabi">Duabi</option>
-                <option value="Abu Dahabi">Abu Dahabi</option>
+                <option value="Duabi"><?php echo $this->__('Duabi') ?></option>
+                <option value="Abu Dahabi"><?php echo $this->__('Abu Dahabi') ?></option>
               </select>
             </div>
           </li>
           <li class="clearfix clear" id="liTxtZip">
-            <label class="txtBlack txtBebas" for="txtZipCode">Zip Code<strong class="txtRed">*</strong></label>
-            <p class="red" id="txtZipCode_1_error">Name is required</p>
+            <label class="txtBlack txtBebas" for="txtZipCode"><?php echo $this->__('Zip Code') ?><strong class="txtRed">*</strong></label>
+            <p class="red" id="txtZipCode_1_error"><?php echo $this->__('Name is required') ?></p>
             <input type="text" tabindex="9" class="txtDef" id="txtZipCode_1" name="txtZipCode_1" >
           </li>
           <li style="margin-top: 9px;" class="clearfix">
             <div class="width50">
-              <label class="txtBlack txtBebas" for="txtPhoneArea">Phone <strong class="txtRed">*</strong></label>
-              <p class="red" id="txtPhoneArea_1_error">Name is required</p>
-              <p class="red" id="txtPhonePrefix_1_error">Name is required</p>
-              <p class="red" id="txtPhoneSuffix_1_error">Name is required</p>
+              <label class="txtBlack txtBebas" for="txtPhoneArea"><?php echo $this->__('Phone') ?> <strong class="txtRed">*</strong></label>
+              <p class="red" id="txtPhoneArea_1_error"><?php echo $this->__('Name is required') ?></p>
+              <p class="red" id="txtPhonePrefix_1_error"><?php echo $this->__('Name is required') ?></p>
+              <p class="red" id="txtPhoneSuffix_1_error"><?php echo $this->__('Name is required') ?></p>
 
               <input type="text" class="txtDef txt3" tabindex="11" id="txtPhoneArea_1" maxlength="3" name="txtPhoneArea" >
               <input type="text" class="txtDef txt3" tabindex="12" id="txtPhonePrefix_1" maxlength="3" name="txtPhonePrefix" >
               <input type="text" class="txtDef txt4" tabindex="13" id="txtPhoneSuffix_1" maxlength="4" name="txtPhoneSuffix" >
             </div>
             <div class="width50">
-              <label class="txtBlack txtBebas" for="txtEmail">Email <strong class="txtRed">*</strong></label>
-              <p class="red" id="txtEmail_1_error">Name is required</p>
+              <label class="txtBlack txtBebas" for="txtEmail"><?php echo $this->__('Email') ?> <strong class="txtRed">*</strong></label>
+              <p class="red" id="txtEmail_1_error"><?php echo $this->__('Name is required') ?></p>
               <input type="text" class="txtDef" tabindex="14" id="txtEmail_1" name="contact_email" >
             </div>
           </li>
           <li class="clear">
-            <label class="txtBlack txtBebas" for="txtMessage">Message</label>
+            <label class="txtBlack txtBebas" for="txtMessage"><?php echo $this->__('Message') ?></label>
              <textarea name="contact_content" id="contact_content_1" class="bigTxtArea" cols="" rows="">
 </textarea>
           </li>
           <li class="clearfix">
           	<button type="button" class="lnkBlkWhtArw" style="float:right;" onclick="onlineOrder('_1');" >
-            	<span>submit</span>
+            	<span><?php echo $this->__('submit') ?></span>
             </button>
             </li>
         </ul>

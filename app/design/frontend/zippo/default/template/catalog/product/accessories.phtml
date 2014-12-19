@@ -151,28 +151,28 @@ jQuery(document).ready(function(e) {
 
 </script>
 <style type="text/css" id="page-css">
-/* Styles specific to this particular page */
+    /* Styles specific to this particular page */
 
 
-.scroll-pane-before, 
-.scroll-pane-after, 
-.scroll-pane-split, 
-.scroll-pane-os {
-	width: 90%;
-	overflow: auto;
-}
-.horizontal-only {
-	height: auto;
-}
-.jspTrack {
-	width: 576px !important;
-	overflow: hidden;
-}
-.listProdPopUps{
-	position:fixed !important;
-	margin-left:80px !important;
-	margin-top:-250px !important;
-}
+    .scroll-pane-before, 
+    .scroll-pane-after, 
+    .scroll-pane-split, 
+    .scroll-pane-os {
+        width: 90%;
+        overflow: auto;
+    }
+    .horizontal-only {
+        height: auto;
+    }
+    .jspTrack {
+        width: 576px !important;
+        overflow: hidden;
+    }
+    .listProdPopUps{
+        position:fixed !important;
+        margin-left:80px !important;
+        margin-top:-250px !important;
+    }
 </style>
 <?php
 $catModel = Mage::getModel('catalog/category');
@@ -183,104 +183,113 @@ $mainCategory = $catModel->load($categoryId);
 $childern = $catModel->load($categoryId)->getChildrenCategories();
 ?>
 <section class="row zOutdoor" >
-  <section class="listHolder listHolderWhiteBg clearfix">
-    <div class="listTop listOutdoors clearfix" <?php if ($mainCategory->getImageUrl()): ?> style="background:url('<?php echo $mainCategory->getImageUrl() ?> <?php endif; ?>')">
-      <div class="listHero listOutdoorHero">
-        <h3 class="listCatHead txtWhite txtBebas"> <?php echo $mainCategory->getName(); ?> </h3>
-        <?php echo $mainCategory->getDescription(); ?> </div>
-    </div>
-    <div class="listSlider">
-      <?php foreach ($childern as $child): ?>
-      <?php
+    <section class="listHolder listHolderWhiteBg clearfix">
+        <div class="listTop listOutdoors clearfix" <?php if ($mainCategory->getImageUrl()): ?> style="background:url('<?php echo $mainCategory->getImageUrl() ?> <?php endif; ?>')">
+            <div class="listHero listOutdoorHero">
+                <h3 class="listCatHead txtWhite txtBebas"> <?php echo $mainCategory->getName(); ?> </h3>
+                <?php echo $mainCategory->getDescription(); ?> </div>
+        </div>
+        <div class="listSlider">
+            <?php foreach ($childern as $child): ?>
+                <?php
                 $collection = $prodModel->getCollection()
                         ->joinField('category_id', 'catalog/category_product', 'category_id', 'product_id = entity_id', null, 'left')
                         ->addAttributeToSelect('*')
                         ->addUrlRewrite($child->getId())
                         ->addAttributeToFilter('category_id', array('eq' => $child->getId()));
                 ?>
-      <?php $_collectionSize = $collection->count() ?>
-      <div class="slideHdr clearfix">
-        <h3 class="txtBebas"><?php echo $child->getName() ?></h3>
-        <span class="listCount txtBebas"><?php echo $_collectionSize; ?>&nbsp;<?php echo $this->__('items') ?> </span> </div>
-      <div class="multiSlide">
-        <div class="scroll-pane-os horizontal-only"  style="width:624px; height:250px;">
-          <ul class="prodListSm clearfix   listPageProds" style="width: <?php echo $_collectionSize * 126 ?>px;">
-            <?php foreach ($collection as $product): ?>
-           <?php $i ++ ?>
-            <li data-id="<?php echo $i?>"><a class="prodLink" title="<?php echo $product->getName() ?>" href="<?php echo $product->getProductUrl() ?>"><img width="94" alt="<?php echo $product->getName() ?>" src="<?php echo $this->helper('catalog/image')->init($product, 'small_image')->resize(200) ?>">
-              <?php if (Mage::helper('zippo')->isNew($product)): ?>
-              <span class="newTag"></span>
-              <?php endif; ?>
-              </a>
-              <span class="prodListPrice"><?php echo $this->getPriceHtml($product, true) ?></span>
-              <div class="listProdPopUps">
-                <div class="productListingPopup clearfix">
-                  <div class="inner clearfix">
-                    <div class="prodHero"><img id="product-collection-image-<?php echo $product->getId(); ?>"
-                                                                           src="<?php echo $this->helper('catalog/image')->init($product, 'small_image')->resize(162, 230); ?>"
-                                                                           alt="<?php echo $this->stripTags($this->getImageLabel($product, 'small_image'), null, true) ?>" /></div>
-                    <div class="popRight">
-                      <h2 class="jProductName txtRed"><?php echo $_helper->productAttribute($product, $product->getName(), 'name') ?></h2>
-                      <h3 class="jProductPrice"><?php echo $this->getPriceHtml($product, true) ?>
-                        <?php if ($product->getRatingSummary()): ?>
-                        <?php echo $this->getReviewsSummaryHtml($product, 'short') ?>
-                        <?php endif; ?>
-                      </h3>
-                      <h3 class="jProductSKU"> <?php echo nl2br($product->getSku()) ?> <?php echo $this->getChildHtml('product_type_availability'); ?> </h3>
-                      <div class="jProductDescription prodLongDesc"> <?php echo $_helper->productAttribute($product, nl2br($product->getShortDescription()), 'short_description') ?> </div>
-                      <img src="<?php echo $this->getSkinUrl('img/prod_made_USA.gif', array('_secure' => true)) ?>" alt="Made in the USA" width="125" height="30">
-                      <div class="prodCart">
-                        <label for="txtProdQty"><?php echo $this->__('Qty.') ?></label>
-                        <input type="text" name="txtProdQty" id="txtProdQty" class="txtProdQty" placeholder="1" size="1">
-                        <input type="button" class="btnAddCart" onclick="setLocation('<?php echo $this->getAddToCartUrl($product) ?>')" value="<?php echo $this->__('Add To Cart')?>">
-                      </div>
+                <?php $_collectionSize = $collection->count() ?>
+                <div class="slideHdr clearfix">
+                    <h3 class="txtBebas"><?php echo $child->getName() ?></h3>
+                    <span class="listCount txtBebas"><?php echo $_collectionSize; ?>&nbsp;<?php echo $this->__('items') ?> </span> </div>
+                <div class="multiSlide">
+                    <div class="scroll-pane-os horizontal-only"  style="width:624px; height:250px;">
+                        <ul class="prodListSm clearfix   listPageProds" style="width: <?php echo $_collectionSize * 126 ?>px;">
+                            <?php foreach ($collection as $product): 
+                            if (!($product->isSaleable())){continue;}?>
+                                <?php $i ++ ?>
+                                <li data-id="<?php echo $i ?>"><a class="prodLink" title="<?php echo $product->getName() ?>" href="<?php echo $product->getProductUrl() ?>"><img width="94" alt="<?php echo $product->getName() ?>" src="<?php echo $this->helper('catalog/image')->init($product, 'small_image')->resize(200) ?>">
+                                        <?php if (Mage::helper('zippo')->isNew($product)): ?>
+                                            <span class="newTag"></span>
+                                        <?php endif; ?>
+                                        <?php if (!$product->getStockItem()->getIsInStock()): ?>
+                                            <span class="outOfStock"></span>
+                                            <span class="productOverlay"></span>
+                                        <?php endif; ?>
+                                    </a>
+                                    <span class="prodListPrice"><?php echo $this->getPriceHtml($product, true) ?></span>
+                                    <div class="listProdPopUps">
+                                        <div class="productListingPopup clearfix">
+                                            <div class="inner clearfix">
+                                                <div class="prodHero"><img id="product-collection-image-<?php echo $product->getId(); ?>"
+                                                                           src="<?php echo $this->helper('catalog/image')->init($product, 'thumbnail')->resize(162, 230); ?>"
+                                                                           alt="<?php echo $this->stripTags($this->getImageLabel($product, 'thumbnail'), null, true) ?>" /></div>
+                                                <div class="popRight">
+                                                    <h2 class="jProductName txtRed"><?php echo $_helper->productAttribute($product, $product->getName(), 'name') ?></h2>
+                                                    <h3 class="jProductPrice"><?php echo $this->getPriceHtml($product, true) ?>
+                                                        <?php if ($product->getRatingSummary()): ?>
+                                                            <?php echo $this->getReviewsSummaryHtml($product, 'short') ?>
+                                                        <?php endif; ?>
+                                                    </h3>
+                                                    <h3 class="jProductSKU"> <?php echo nl2br($product->getSku()) ?> <?php echo $this->getChildHtml('product_type_availability'); ?> </h3>
+                                                    <div class="jProductDescription prodLongDesc"> <?php echo $_helper->productAttribute($product, nl2br($product->getShortDescription()), 'short_description') ?> </div>
+                                                     <?php if ($product->getCountryOfManufacture() == 'US'): ?>
+                                                        <img src="<?php echo $this->getSkinUrl('img/prod_made_USA.gif', array('_secure' => true)) ?>" alt="Made in the USA" width="125" height="30">
+                                                    <?php endif;?>
+                                                        <div class="prodCart">
+                                                        <label for="txtProdQty"><?php echo $this->__('Qty.') ?></label>
+                                                        <input type="text" name="txtProdQty" id="txtProdQty" class="txtProdQty" placeholder="1" size="1">
+                                                        <input type="button" class="btnAddCart" onclick="setLocation('<?php echo $this->getAddToCartUrl($product) ?>')" value="<?php echo $this->__('Add To Cart') ?>">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- eo .inner --> 
+                                            <a href="<?php echo $product->getProductUrl() ?>" title="<?php echo $this->stripTags($product->getName(), null, true) ?>" class="btnProdClickreviews"><?php echo $this->__('Click for more info!') ?></a> </div>
+                                    </div>
+                                </li>
+                            <?php endforeach ?>
+                        </ul>
+
                     </div>
-                  </div>
-                  <!-- eo .inner --> 
-                  <a href="<?php echo $product->getProductUrl() ?>" title="<?php echo $this->stripTags($product->getName(), null, true) ?>" class="btnProdClickreviews"><?php echo $this->__('Click for more info!')?></a> </div>
-              </div>
-            </li>
-            <?php endforeach ?>
-          </ul>
-          
+                    <ul class="pouplist">
+                        <?php foreach ($collection as $product): ?>
+                            <li>
+                                <div class="listProdPopUps">
+                                    <div class="productListingPopup clearfix">
+                                        <div class="inner clearfix">
+                                            <div class="prodHero"><img id="product-collection-image-<?php echo $product->getId(); ?>"
+                                                                       src="<?php echo $this->helper('catalog/image')->init($product, 'small_image')->resize(162, 230); ?>"
+                                                                       alt="<?php echo $this->stripTags($this->getImageLabel($product, 'small_image'), null, true) ?>" /></div>
+                                            <div class="popRight">
+                                                <h2 class="jProductName txtRed"><?php echo $_helper->productAttribute($product, $product->getName(), 'name') ?></h2>
+                                                <h3 class="jProductPrice"><?php echo $this->getPriceHtml($product, true) ?>
+                                                    <?php if ($product->getRatingSummary()): ?>
+                                                        <?php echo $this->getReviewsSummaryHtml($product, 'short') ?>
+                                                    <?php endif; ?>
+                                                </h3>
+                                                <h3 class="jProductSKU"> <?php echo nl2br($product->getSku()) ?> <?php echo $this->getChildHtml('product_type_availability'); ?> </h3>
+                                                <div class="jProductDescription prodLongDesc"> <?php echo $_helper->productAttribute($product, nl2br($product->getShortDescription()), 'short_description') ?> </div>
+                                                 <?php if ($product->getCountryOfManufacture() == 'US'): ?>
+                                                    <img src="<?php echo $this->getSkinUrl('img/prod_made_USA.gif', array('_secure' => true)) ?>" alt="Made in the USA" width="125" height="30">
+                                                <?php endif;?>
+                                                    <div class="prodCart">
+                                                    <label for="txtProdQty"><?php echo $this->__('Qty.') ?></label>
+                                                    <input type="text" name="txtProdQty" id="txtProdQty" class="txtProdQty" placeholder="1" size="1">
+                                                    <input type="button" class="btnAddCart" onclick="setLocation('<?php echo $this->getAddToCartUrl($product) ?>')" value="<?php echo $this->__('Add To Cart') ?>">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- eo .inner --> 
+                                        <a href="<?php echo $product->getProductUrl() ?>" title="<?php echo $this->stripTags($product->getName(), null, true) ?>" class="btnProdClickreviews"><?php echo $this->__('Click for more info!') ?></a> </div>
+                                </div>
+                            </li>
+                        <?php endforeach ?>
+                    </ul>
+                </div>
+            <?php endforeach; ?>
         </div>
-        <ul class="pouplist">
-           <?php foreach ($collection as $product): ?>
-            <li>
-              <div class="listProdPopUps">
-                <div class="productListingPopup clearfix">
-                  <div class="inner clearfix">
-                    <div class="prodHero"><img id="product-collection-image-<?php echo $product->getId(); ?>"
-                                                                           src="<?php echo $this->helper('catalog/image')->init($product, 'small_image')->resize(162, 230); ?>"
-                                                                           alt="<?php echo $this->stripTags($this->getImageLabel($product, 'small_image'), null, true) ?>" /></div>
-                    <div class="popRight">
-                      <h2 class="jProductName txtRed"><?php echo $_helper->productAttribute($product, $product->getName(), 'name') ?></h2>
-                      <h3 class="jProductPrice"><?php echo $this->getPriceHtml($product, true) ?>
-                        <?php if ($product->getRatingSummary()): ?>
-                        <?php echo $this->getReviewsSummaryHtml($product, 'short') ?>
-                        <?php endif; ?>
-                      </h3>
-                      <h3 class="jProductSKU"> <?php echo nl2br($product->getSku()) ?> <?php echo $this->getChildHtml('product_type_availability'); ?> </h3>
-                      <div class="jProductDescription prodLongDesc"> <?php echo $_helper->productAttribute($product, nl2br($product->getShortDescription()), 'short_description') ?> </div>
-                      <img src="<?php echo $this->getSkinUrl('img/prod_made_USA.gif', array('_secure' => true)) ?>" alt="Made in the USA" width="125" height="30">
-                      <div class="prodCart">
-                        <label for="txtProdQty"><?php echo $this->__('Qty.') ?></label>
-                        <input type="text" name="txtProdQty" id="txtProdQty" class="txtProdQty" placeholder="1" size="1">
-                        <input type="button" class="btnAddCart" onclick="setLocation('<?php echo $this->getAddToCartUrl($product) ?>')" value="<?php echo $this->__('Add To Cart')?>">
-                      </div>
-                    </div>
-                  </div>
-                  <!-- eo .inner --> 
-                  <a href="<?php echo $product->getProductUrl() ?>" title="<?php echo $this->stripTags($product->getName(), null, true) ?>" class="btnProdClickreviews"><?php echo $this->__('Click for more info!')?></a> </div>
-              </div>
-            </li>
-            <?php endforeach ?>
-          </ul>
-      </div>
-      <?php endforeach; ?>
-    </div>
-  </section>
-  <section class="listKickersRight"> <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('bestseller')->toHtml(); ?> </section>
+    </section>
+    <section class="listKickersRight"> <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('bestseller')->toHtml(); ?> </section>
 </section>
 
 

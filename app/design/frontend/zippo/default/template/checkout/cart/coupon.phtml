@@ -27,15 +27,16 @@
 <form id="discount-coupon-form" action="<?php echo $this->getUrl('checkout/cart/couponPost') ?>" method="post">
 
         <div class="promoCode cartInputRow clearfix">
-            <label for="coupon_code">Do you have a promo code?</label>
+            <label for="coupon_code"><?php echo $this->__('Do you have a promo code?') ?></label>
             <div id="promoCodeHelp" class="helpIcon">
                                     <div class="cartTip clearfix" style="display: none;">
                                         <div class="tipText txtA7 clearfix">
                                             <img width="23" height="24" class="bigQ" alt="?" src="../assets/img/bigQuestionIcon.png">
                                             <div class="tipInner">
-                                                <strong>Promo Code:</strong><br>
-                                                Enter your code here to<br>
-                                                save money on this order
+                                            
+                                                <strong><?php echo $this->__('Promo Code:') ?></strong><br>
+                                               <?php echo $this->__('Enter your code here to') ?> <br>
+                                               <?php echo $this->__('save money on this order') ?> 
                                             </div><!-- eo .tipIner -->
                                         </div><!-- eo .tipText -->
                                     </div><!-- eo .cartTip -->
@@ -46,7 +47,7 @@
 
                     <button type="button" title="<?php echo $this->__('Apply') ?>" class="pillDrkGray20" onclick="discountForm.submit(false)" value="<?php echo $this->__('Apply') ?>">
                   
-                    <span><img src="../assets/img/arw_right_red_9x7.png" alt="" width="9" height="7" />Apply Code</span>
+                    <span><img src="../assets/img/arw_right_red_9x7.png" alt="" width="9" height="7" /><?php echo $this->__('Apply Code') ?></span>
                     </button>
                     <?php if(strlen($this->getCouponCode())): ?>
                         <button type="button" title="<?php echo $this->__('Cancel') ?>" class="pillDrkGray20" onclick="discountForm.submit(true)" value="<?php echo $this->__('Cancel') ?>"><span><span><?php echo $this->__('Cancel') ?></span></span>

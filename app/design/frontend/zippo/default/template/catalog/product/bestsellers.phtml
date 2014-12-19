@@ -38,7 +38,7 @@ if (count($products) > 0) {
             <section class="bestSellKicker" style="margin-top:0;">
                 <div class="inner clearfix">
                     <h3 class="bestSellHdr txtBebas">
-                        best sellers
+                       <?php echo $this->__('best sellers') ?> 
                     </h3>
                     <div class="bsSlider">
                         <div class="bsFaker"></div>
@@ -46,7 +46,7 @@ if (count($products) > 0) {
                         <div class="bsSlideWrap clearfix" id="bsKickSlide">
                             <ul id="bestSellersList">
                                 <?php foreach ($_bestsellers as $product): ?>
-                                    <li class="bsSlideItem"><img src="<?php echo $this->helper('catalog/image')->init($product, 'small_image')->resize(162, 230) ?>" alt="<?php echo $product->getName() ?>" />
+                                    <li class="bsSlideItem"><img src="<?php echo $this->helper('catalog/image')->init($product, 'thumbnail')->resize(162, 230) ?>" alt="<?php echo $product->getName() ?>" />
                                         <div class="proname">
                                             <a class="proname-link" href="<?php echo $product->getProductUrl() ?>">&nbsp;</a>
                                             <a style="cursor:pointer;" class="proname-link" onclick="setLocation('<?php echo (string) Mage::helper('checkout/cart')->getAddUrl($product) ?>?options=cart')"></a>

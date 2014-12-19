@@ -29,7 +29,23 @@
 
 <?php //echo $this->getChildHtml() ?>
 <footer class="ftrSite" id="ftrSite" style="position: fixed; width: 100%; botoom: 0px;">
-    <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('footer_links')->toHtml() ?>
+    <?php //echo $this->getLayout()->createBlock('cms/block')->setBlockId('footer_links')->toHtml() ?>
+    
+    <div class="container ftrInner clearfix">
+        	        <section class="ftrLeft">
+            	        <span>&copy; <?php echo $this->__('2014 Zippo Manufacturing Company') ?></span>
+                    </section>
+                    <nav id="ftrSocial" class="ftrSocial">
+                        <a href="{{store url='privacy-policy'}}" class="ftrPrivacy"><span><?php echo $this->__('Privacy') ?> <br> <?php echo $this->__('AND Legal') ?></span></a>
+            	        <a href="http://www.zippoencore.com" target="_blank" class="ftrEncore" title="Zippo Encore"></a>
+            	        <a href="http://www.facebook.com/Zippo" target="_blank" class="ftrFB" title="Zippo on Facebook"></a>
+            	        <a href="http://www.youtube.com/zippo" class="ftrYouTube" target="_blank" title="Zippo YouTube Channel"></a>
+            	        <a href="http://www.instagram.com/originalzippo" class="ftrInstagram" target="_blank" title="Zippo Instagram Feed"></a>
+            	        <a href="http://twitter.com/#!/zippo" class="ftrTwitter" target="_blank" title="Zippo on Twitter"></a>
+<a class="ftrZippoFlame" href="/"></a>
+                    </nav>
+                </div>
+    
 </footer>
 
     <script>window.jQuery || document.write("<script src='<?php echo $this->getSkinUrl('js/jquery-ui-1.8.13.core.min.js', array('_secure'=>true)) ?>'>\x3C/script>")</script>

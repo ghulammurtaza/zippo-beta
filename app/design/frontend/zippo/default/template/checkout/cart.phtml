@@ -57,7 +57,7 @@ jQuery(document).ready(function(e) {
 <section class="row">
             	<section class="cartHolder clearfix">
                 	<header class="cartHeader txtBebas txtWhite">
-                    	Shopping <span class="txtRed">Cart</span>
+                    	 <?php echo $this->__('Shopping') ?>  <span class="txtRed"><?php echo $this->__('Cart') ?></span>
                     </header>
                     <div class="cartBtm clearfix">
                     	
@@ -130,9 +130,9 @@ jQuery(document).ready(function(e) {
                         <div class="clearfix clear">
                         	<div class="cartBtnsLeft" style="float:right; width:auto;">
                          
-                                <button type="submit" name="update_cart_action" value="update_qty" title="<?php echo $this->__('Update Shopping Cart'); ?>" class="pillDrkGray26"><span><img src="<?php echo $this->getSkinUrl('img/arw_right_red_9x7.png', array('_secure'=>true)) ?>" alt="" width="9" height="7" />Update Cart</span></button>
+                                <button type="submit" name="update_cart_action" value="update_qty" title="<?php echo $this->__('Update Shopping Cart'); ?>" class="pillDrkGray26"><span><img src="<?php echo $this->getSkinUrl('img/arw_right_red_9x7.png', array('_secure'=>true)) ?>" alt="" width="9" height="7" /><?php echo $this->__('Update Cart') ?></span></button>
                             	<a href="" onclick="setLocation('<?php echo $this->getContinueShoppingUrl() ?>')" id="btnContinueShopping" class="pillDrkGray26">
-                                	<span><img src="<?php echo $this->getSkinUrl('img/arw_right_red_9x7.png', array('_secure'=>true)) ?>" alt="" width="9" height="7" />Continue Shopping</span>
+                                	<span><img src="<?php echo $this->getSkinUrl('img/arw_right_red_9x7.png', array('_secure'=>true)) ?>" alt="" width="9" height="7" /><?php echo $this->__('Continue Shopping') ?></span>
                                 </a>
                             </div>
                             </div>
@@ -211,14 +211,14 @@ jQuery(document).ready(function(e) {
                          <?php echo $this->getChildHtml('coupon') ?>
                         	<!-- eo .promoCode -->
                             <div class="addMessage cartInputRow clearfix" style="position:relative;">
-                            	<label for="txtMesssage">Add a message (optional):</label><br class="clear" />
+                            	<label for="txtMesssage"><?php echo $this->__('Add a message (optional):') ?></label><br class="clear" />
                                 <textarea name="txtMessage" class="bigTxtArea" id="txtMessage"></textarea>
                                 <div class="txtA7 txtSmall width50">
-                                	Max 300 Characters
+                                	<?php echo $this->__('Max 300 Characters') ?>
                                 </div>
                                 <div class="width50">
                                 	<a href="#" class="pillDrkGray20" id="lnkAddMsg" title="Add Message">
-                                    	<span><img src="<?php echo $this->getSkinUrl('img/arw_right_red_9x7.png', array('_secure'=>true)) ?>" alt="" width="9" height="7" />Add Message</span>
+                                    	<span><img src="<?php echo $this->getSkinUrl('img/arw_right_red_9x7.png', array('_secure'=>true)) ?>" alt="" width="9" height="7" /><?php echo $this->__('Add Message') ?></span>
                                     </a>
                                 </div>
                             </div><!-- eo .addMessage -->
@@ -241,9 +241,9 @@ jQuery(document).ready(function(e) {
                                         <div class="tipText txtA7 clearfix">
                                             <img src="../assets/img/bigQuestionIcon.png" alt="?" width="23" height="24" class="bigQ" />
                                             <div class="tipInner">
-                                                <strong>Shipping &amp; Handling:</strong><br />
-                                                We are estimating the cost <br />
-                                                until we get your address
+                                                <strong><?php echo $this->__('Shipping &amp; Handling:') ?></strong><br />
+                                                <?php echo $this->__('We are estimating the cost ') ?><br />
+                                                <?php echo $this->__('until we get your address') ?>
                                             </div>
                                         </div>
                                     </div><!-- eo .cartTip -->
