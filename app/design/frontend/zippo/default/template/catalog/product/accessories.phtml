@@ -180,7 +180,7 @@ $prodModel = Mage::getModel('catalog/product');
 $_helper = $this->helper('catalog/output');
 $categoryId = $this->getCategoryId();
 $mainCategory = $catModel->load($categoryId);
-$childern = $catModel->load($categoryId)->getChildrenCategories();
+$childern = $mainCategory->getChildren();
 ?>
 <section class="row zOutdoor" >
     <section class="listHolder listHolderWhiteBg clearfix">
@@ -190,8 +190,9 @@ $childern = $catModel->load($categoryId)->getChildrenCategories();
                 <?php echo $mainCategory->getDescription(); ?> </div>
         </div>
         <div class="listSlider">
-            <?php foreach ($childern as $child): ?>
+            <?php foreach (explode(',',$childern) as $subCatid): ?>
                 <?php
+                $child = Mage::getModel('catalog/category')->load($subCatid);
                 $collection = $prodModel->getCollection()
                         ->joinField('category_id', 'catalog/category_product', 'category_id', 'product_id = entity_id', null, 'left')
                         ->addAttributeToSelect('*')
