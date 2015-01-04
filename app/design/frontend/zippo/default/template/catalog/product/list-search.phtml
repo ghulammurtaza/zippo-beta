@@ -16,6 +16,7 @@
 $_productCollection = $this->getLoadedProductCollection();
 $_helper = $this->helper('catalog/output');
 $obj = new Mage_Catalog_Block_Product_List();
+$i = 0;
 ?>
 <?php if (!$_productCollection->count()): ?>
     <section id="searchProducts" class="searchProducts clearfix">
@@ -30,7 +31,6 @@ $obj = new Mage_Catalog_Block_Product_List();
             <?php $_collectionSize = $_productCollection->count() ?>
             <?php $_columnCount = 4; ?>
             <?php
-            $i = 0;
             foreach ($_productCollection as $_product):
                 if (!($_product->isSaleable())) {
                     continue;
@@ -98,8 +98,9 @@ $obj = new Mage_Catalog_Block_Product_List();
 </ul>
 </div>
 <div class="search-cout">
-
+<?php if ($i >0 ):?>
     Your search returned <?php echo $i ?> results</div>
+<?php endif;?>
 
 <script>
     $j(document).ready(function() {
