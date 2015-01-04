@@ -217,7 +217,7 @@ p.red {
                         echo $_product->getDescription();
                         ?>
           </div>
-          <?php echo $_product->getLicensetext()?>
+          <?php echo $_helper->productAttribute($_product, $_product->getLicensetext(), 'licensetext');?>
                                                        <?php if ($_product->getCountryOfManufacture() == 'US'): ?>
           <ul class="prodShoutOuts">
             <li><img src="<?php echo $this->getSkinUrl('img/prod_made_USA.gif', array('_secure' => true)) ?>" alt="Made in the USA" width="125" height="30" /></li>
