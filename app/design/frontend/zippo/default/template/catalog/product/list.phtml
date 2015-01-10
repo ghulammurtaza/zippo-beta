@@ -123,7 +123,7 @@ $_helper = $this->helper('catalog/output');
                     </ul>
                     <div class="listSubNav clearfix">
                         <div class="listInfo">
-                            <span class="listNumItems"> <?php echo($_productCollection->count()); ?> <?php echo $this->__('Items') ?></span> | <a href="<?php echo $this->getUrl('') ?>lighters.html" class="txtRed"><?php echo $this->__('View All') ?></a>
+                            <span class="listNumItems"><span id="totalProductCount"> <?php echo($_productCollection->count()); ?></span> <?php echo $this->__('Items') ?></span> | <a href="<?php echo $this->getUrl('') ?>lighters.html" class="txtRed"><?php echo $this->__('View All') ?></a>
                         </div>
                         <ul style="height:10px; overflow:hidden;" class="listFilters clearfix">
                         </ul>
