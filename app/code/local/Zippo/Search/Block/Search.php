@@ -1,70 +1,79 @@
 <?php
-class Zippo_Search_Block_Search extends Mage_Core_Block_Template 
-{
-   /**
+
+class Zippo_Search_Block_Search extends Mage_Core_Block_Template {
+
+    /**
      * Product Collection
      *
      * @var Mage_Eav_Model_Entity_Collection_Abstract
      */
     protected $_productCollection;
-    
+
     /**
      * Retrieve loaded category collection
      *
      * @return Mage_Eav_Model_Entity_Collection_Abstract
      */
-    protected function _getProductCollection()
-    {
+    protected function _getProductCollection() {
         if (is_null($this->_productCollection)) {
-             $searchCriteria = Mage::getSingleton('zippo_search/search')->getSearchCriteria();
-             $collection = Mage::getResourceModel('catalog/product_collection')
-                ->addAttributeToSelect('*')
-                ->setStoreId(Mage::app()->getStore()->getStoreId());
-             
-             if ((int)$searchCriteria['category']){
-                 $category = Mage::getModel('catalog/category')->load($searchCriteria['category']);
-                 $collection->addCategoryFilter($category); 
-             }
-             
-             if ((int)$searchCriteria['theme']){
-                 $collection->addAttributeToFilter('theme_otheroptions', array('eq' => $searchCriteria['theme'])); 
-             }
-             
-             if ((int)$searchCriteria['fnc']){
-                 $collection->addAttributeToFilter('finishes_colors',  array('eq' => $searchCriteria['fnc'])); 
-             }
-             
-             if ((int)$searchCriteria['price']){
-                 $collection->addAttributeToFilter('price',  array('gteq' => $searchCriteria['price'])); 
-             }
-             
-             if ((int)$searchCriteria['price_to']){
-                 $collection->addAttributeToFilter('price',  array('lteq' => $searchCriteria['price_to'])); 
-             }
-             
-             if ((string)$searchCriteria['searchTerm']){
-                 $collection->addAttributeToFilter(
-                    array(
-                        array('attribute'=> 'name','like' => $searchCriteria['searchTerm']),
-                        array('attribute'=> 'sku','like' => $searchCriteria['searchTerm']),
-                        array('attribute'=> 'model','like' => $searchCriteria['searchTerm']),
-                        array('attribute'=> 'licensed','like' => $searchCriteria['searchTerm']), 
-                        array('attribute'=> 'meta_description','like' => $searchCriteria['searchTerm']),
-                        array('attribute'=> 'meta_keyword','like' => $searchCriteria['searchTerm']),
-                        array('attribute'=> 'meta_title','like' => $searchCriteria['searchTerm']),
-                    )
-                );
-             }
-             
-             $this->_productCollection = $collection;
-                           
+            $searchCriteria = Mage::getSingleton('zippo_search/search')->getSearchCriteria();
+            $collection = Mage::getResourceModel('catalog/product_collection')
+                    ->addAttributeToSelect('*')
+                    ->setStoreId(Mage::app()->getStore()->getStoreId());
+
+            if ((int) $searchCriteria['category']) {
+                $category = Mage::getModel('catalog/category')->load($searchCriteria['category']);
+                $collection->addCategoryFilter($category);
+            }
+
+            if ((int) $searchCriteria['theme']) {
+                $collection->addAttributeToFilter('theme_otheroptions', array('eq' => $searchCriteria['theme']));
+            }
+
+            if ((int) $searchCriteria['fnc']) {
+                $collection->addAttributeToFilter('finishes_colors', array('eq' => $searchCriteria['fnc']));
+            }
+
+            if ((int) $searchCriteria['price']) {
+                $collection->addAttributeToFilter('price', array('gteq' => $searchCriteria['price']));
+            }
+
+            if ((int) $searchCriteria['price_to']) {
+                $collection->addAttributeToFilter('price', array('lteq' => $searchCriteria['price_to']));
+            }
+
+            if ((string) $searchCriteria['searchTerm']) {
+
+                $category = Mage::getResourceModel('catalog/category_collection')->addFieldToFilter('name', array('eq' => $searchCriteria['searchTerm']));
+                $catData = $category->getData();
+                if (count($catData) > 0) {
+                    $categoryId = $catData[0]['entity_id'];
+                    $collection->joinField('category_id', 'catalog/category_product', 'category_id', 'product_id=entity_id', null, 'left')
+                            ->addAttributeToFilter('category_id', array('eq' => $categoryId));
+                } else {
+
+                    $collection->addAttributeToFilter(
+                            array(
+                                array('attribute' => 'name', 'like' => '%' . $searchCriteria['searchTerm'] . '%'),
+                                array('attribute' => 'sku', 'like' => '%' . $searchCriteria['searchTerm'] . '%'),
+                                array('attribute' => 'model', 'like' => '%' . $searchCriteria['searchTerm'] . '%'),
+                                array('attribute' => 'licensed', 'like' => '%' . $searchCriteria['searchTerm'] . '%'),
+                                array('attribute' => 'meta_description', 'like' => '%' . $searchCriteria['searchTerm'] . '%'),
+                                array('attribute' => 'meta_keyword', 'like' => '%' . $searchCriteria['searchTerm'] . '%'),
+                                array('attribute' => 'meta_title', 'like' => '%' . $searchCriteria['searchTerm'] . '%'),
+                            )
+                    );
+                }
+            }
+            
+            $this->_productCollection = $collection;
         }
 
         return $this->_productCollection;
     }
-    
-    public function getLoadedProductCollection()
-    {
+
+    public function getLoadedProductCollection() {
         return $this->_getProductCollection();
     }
+
 }
