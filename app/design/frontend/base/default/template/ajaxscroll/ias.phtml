@@ -38,6 +38,12 @@ jQuery.ias({
 		_gaq.push(['_trackPageview', path]);
 	},
 <?php endif; ?>
+        onPageChange: function(pageNum) {
+            var currentTotal = jQuery('#totalProductCount').html();
+            if (currentTotal < (pageNum*8)){
+                jQuery('#totalProductCount').html(pageNum*8);
+            }
+	},
 	triggerPageThreshold: <?php echo $this->getIasTriggerpagethreshold(); ?>,
 	thresholdMargin: <?php echo $this->getIasThresholdmargin(); ?>,
 	trigger: '<?php echo __('Load more items'); ?>',
